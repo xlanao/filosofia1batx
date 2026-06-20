@@ -5,37 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Filosofia i Ciutadania — 1r Batxillerat</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f4f7f6;
-    --bg2: #eaf0ee;
-    --bg3: #dde7e4;
-    --text: #1a2b28;
-    --text-muted: #526860;
-    --text-dim: #8aa49e;
-    --accent: #2d7d62;
-    --accent-light: rgba(45,125,98,0.10);
-    --accent-glow: rgba(45,125,98,0.22);
-    --gold: #3a7fa8;
-    --gold-light: rgba(58,127,168,0.10);
-    --navy: #3a7fa8;
-    --navy-light: rgba(58,127,168,0.10);
-    --green: #2d7d62;
-    --border: rgba(0,0,0,0.09);
-    --border-light: rgba(0,0,0,0.05);
-    --card-bg: rgba(255,255,255,0.70);
+    --ink: #111111;
+    --ink-soft: #444444;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-off: #fafaf9;
+    --line: #111111;
+    --line-soft: #cfcfcc;
+    --line-faint: #e6e5e1;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Lora', Georgia, serif;
-    background: var(--bg);
-    color: var(--text);
+    font-family: 'Spectral', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
     line-height: 1.7;
     min-height: 100vh;
+    font-weight: 400;
+  }
+
+  .mono {
+    font-family: 'Courier Prime', 'Courier New', monospace;
   }
 
   /* ── NAV ── */
@@ -43,399 +39,368 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(244,247,246,0.94);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 40px;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    padding: 0 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 58px;
+    height: 56px;
   }
   .nav-brand {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 11px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--ink);
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .nav-brand::before {
-    content: '⬡';
-    font-size: 14px;
+    font-weight: 700;
   }
   .nav-links {
     display: flex;
-    gap: 28px;
+    gap: 32px;
     list-style: none;
   }
   .nav-links a {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--ink-faint);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.15s;
+    position: relative;
   }
-  .nav-links a:hover { color: var(--text); }
-  .nav-links a.active { color: var(--accent); }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -4px;
+    height: 1px;
+    background: var(--ink);
+    transform: scaleX(0);
+    transition: transform 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  .nav-links a.active { color: var(--ink); }
+  .nav-links a.active::after { transform: scaleX(1); }
 
   /* ── HERO ── */
   .hero {
-    padding: 100px 40px 80px;
+    padding: 88px 48px 56px;
     max-width: 900px;
     margin: 0 auto;
-    position: relative;
-  }
-  .hero::before {
-    content: '';
-    position: fixed;
-    top: -200px;
-    right: -200px;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(ellipse, rgba(45,125,98,0.07) 0%, transparent 70%);
-    pointer-events: none;
   }
   .hero-tag {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 11px;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 24px;
+    color: var(--ink-faint);
+    margin-bottom: 28px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
-  .hero-tag span {
-    width: 40px;
+  .hero-tag::before {
+    content: '§';
+    color: var(--ink);
+    font-family: 'Spectral', serif;
+    font-size: 14px;
+  }
+  .hero-tag::after {
+    content: '';
+    flex: 1;
     height: 1px;
-    background: var(--accent);
-    display: block;
-    opacity: 0.5;
+    background: var(--line-faint);
   }
   .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.6rem, 6vw, 4.2rem);
-    font-weight: 900;
+    font-family: 'Spectral', serif;
+    font-size: clamp(2.4rem, 5.6vw, 3.8rem);
+    font-weight: 600;
     line-height: 1.1;
-    letter-spacing: -0.03em;
-    margin-bottom: 8px;
-    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+    color: var(--ink);
   }
   .hero h1 em {
-    color: var(--accent);
     font-style: italic;
-  }
-  .hero-sub {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(1.4rem, 3vw, 1.9rem);
-    color: var(--text-muted);
-    margin-bottom: 28px;
     font-weight: 400;
   }
+  .hero-sub {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
   .hero-desc {
-    font-size: 1rem;
-    color: var(--text-muted);
-    max-width: 580px;
-    line-height: 1.8;
-    border-left: 2px solid var(--accent);
-    padding-left: 20px;
-    margin-bottom: 48px;
+    font-size: 1.02rem;
+    color: var(--ink-soft);
+    max-width: 560px;
+    line-height: 1.85;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+  .hero-rule {
+    height: 1px;
+    background: var(--line);
+    margin-bottom: 40px;
   }
   .hero-stats {
     display: flex;
-    gap: 40px;
+    gap: 56px;
     flex-wrap: wrap;
   }
   .stat {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
   }
   .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent);
+    font-family: 'Spectral', serif;
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: var(--ink);
     line-height: 1;
+    font-variant-numeric: oldstyle-nums;
   }
   .stat-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 9px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--ink-faint);
   }
 
   /* ── SECTION HEADER ── */
   .section-header {
     max-width: 900px;
-    margin: 0 auto 32px;
-    padding: 0 40px;
+    margin: 0 auto 8px;
+    padding: 0 48px;
     display: flex;
     align-items: baseline;
+    justify-content: space-between;
     gap: 20px;
   }
   .section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text);
-  }
-  .section-header .line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
+    font-family: 'Spectral', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
   }
   .section-header .count {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
   }
 
-  /* ── TOPIC GRID ── */
-  .topic-grid {
+  /* ── TOPIC LIST (TOC style) ── */
+  .topic-list {
     max-width: 900px;
-    margin: 0 auto 80px;
-    padding: 0 40px;
-    display: grid;
-    gap: 16px;
+    margin: 0 auto 90px;
+    padding: 0 48px;
+    border-top: 1px solid var(--line);
   }
 
-  .topic-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px 32px;
+  .topic-row {
     display: grid;
-    grid-template-columns: 56px 1fr auto;
-    gap: 0 24px;
-    align-items: center;
-    transition: background 0.25s, border-color 0.25s, transform 0.2s;
+    grid-template-columns: 52px 1fr auto;
+    gap: 0 28px;
+    align-items: start;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line-faint);
+    text-decoration: none;
+    color: inherit;
     position: relative;
-    overflow: hidden;
+    transition: padding-left 0.2s;
   }
-  .topic-card::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: var(--accent);
-    opacity: 0;
-    transition: opacity 0.25s;
-    border-radius: 12px 0 0 12px;
-  }
-  .topic-card.available:hover {
-    background: rgba(45,125,98,0.05);
-    border-color: rgba(45,125,98,0.25);
-    transform: translateX(4px);
-  }
-  .topic-card.available:hover::after { opacity: 1; }
-  .topic-card.soon {
-    opacity: 0.45;
-    cursor: default;
-  }
+  a.topic-row { cursor: pointer; }
+  a.topic-row:hover { padding-left: 8px; }
+  a.topic-row:hover .topic-title { text-decoration: underline; text-underline-offset: 4px; }
+  .topic-row.soon { opacity: 0.38; }
 
   .topic-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
-    font-weight: 900;
-    color: var(--text-dim);
-    line-height: 1;
-    text-align: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.95rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    padding-top: 2px;
   }
-  .topic-card.available .topic-num { color: var(--accent); }
+  a.topic-row .topic-num { color: var(--ink); }
 
   .topic-info { min-width: 0; }
   .topic-tag {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 9px;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 6px;
+    color: var(--ink-faint);
+    margin-bottom: 7px;
     display: block;
   }
-  .topic-card.available .topic-tag { color: var(--accent); opacity: 0.7; }
   .topic-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 6px;
+    font-family: 'Spectral', serif;
+    font-size: 1.28rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
     line-height: 1.3;
   }
   .topic-desc {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.5;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    font-weight: 300;
+    max-width: 480px;
   }
 
   .topic-actions {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 7px;
     align-items: flex-end;
-    min-width: 110px;
+    min-width: 96px;
+    padding-top: 4px;
   }
   .btn {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    font-family: 'JetBrains Mono', monospace;
+    gap: 6px;
+    font-family: 'Courier Prime', monospace;
     font-size: 10px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    transition: all 0.2s;
+    padding: 0;
     white-space: nowrap;
+    color: var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding-bottom: 1px;
+    transition: opacity 0.15s;
   }
-  .btn-primary {
-    background: var(--accent);
-    color: white;
+  .btn:hover { opacity: 0.55; }
+  .btn-ghost {
+    color: var(--ink-faint);
+    border-bottom: 1px solid var(--line-soft);
   }
-  .btn-primary:hover {
-    background: #24694f;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px var(--accent-glow);
-  }
-  .btn-secondary {
-    background: white;
-    color: var(--text-muted);
-    border: 1px solid var(--border);
-  }
-  .btn-secondary:hover {
-    background: var(--bg2);
-    color: var(--text);
-    border-color: var(--accent);
-  }
+  .btn-ghost:hover { color: var(--ink); border-bottom-color: var(--ink); opacity: 1; }
+
   .badge-soon {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 9px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--text-dim);
-    border: 1px solid var(--border);
-    padding: 5px 12px;
-    border-radius: 20px;
+    color: var(--ink-faint);
+    border: 1px solid var(--line-soft);
+    padding: 4px 10px;
   }
 
-  /* ── PROGRESS BAR ── */
+  /* ── PROGRESS ── */
   .progress-section {
     max-width: 900px;
-    margin: 0 auto 60px;
-    padding: 0 40px;
+    margin: 0 auto 64px;
+    padding: 0 48px;
   }
-  .progress-bar-wrap {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px 28px;
+  .progress-wrap {
+    border: 1px solid var(--line);
+    padding: 22px 26px;
   }
   .progress-label {
     display: flex;
     justify-content: space-between;
     margin-bottom: 14px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 10px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--ink-soft);
   }
-  .progress-label span { color: var(--accent); }
+  .progress-label span { color: var(--ink); font-weight: 700; }
   .progress-track {
-    height: 4px;
-    background: var(--bg3);
-    border-radius: 4px;
-    overflow: hidden;
+    height: 1px;
+    background: var(--line-faint);
+    position: relative;
   }
   .progress-fill {
-    height: 100%;
+    height: 1px;
     width: 8%;
-    background: linear-gradient(90deg, var(--accent), var(--gold));
-    border-radius: 4px;
-    transition: width 1.5s ease;
+    background: var(--ink);
+    transition: width 1.4s ease;
     position: relative;
   }
   .progress-fill::after {
     content: '';
     position: absolute;
-    right: 0;
+    right: -2px;
     top: 50%;
     transform: translateY(-50%);
-    width: 8px;
-    height: 8px;
-    background: var(--gold);
+    width: 5px;
+    height: 5px;
+    background: var(--ink);
     border-radius: 50%;
-    box-shadow: 0 0 8px var(--gold);
   }
 
   /* ── FOOTER ── */
   footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 40px;
+    border-top: 1px solid var(--line);
+    padding: 28px 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 900px;
     margin: 0 auto;
-    color: var(--text-dim);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    font-family: 'Courier Prime', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.08em;
   }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
+    from { opacity: 0; transform: translateY(14px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .hero > * { animation: fadeUp 0.6s ease both; }
-  .hero > *:nth-child(1) { animation-delay: 0.05s; }
-  .hero > *:nth-child(2) { animation-delay: 0.1s; }
-  .hero > *:nth-child(3) { animation-delay: 0.15s; }
-  .hero > *:nth-child(4) { animation-delay: 0.2s; }
-  .hero > *:nth-child(5) { animation-delay: 0.25s; }
-  .topic-card { animation: fadeUp 0.5s ease both; }
-  .topic-card:nth-child(1) { animation-delay: 0.3s; }
-  .topic-card:nth-child(2) { animation-delay: 0.38s; }
-  .topic-card:nth-child(3) { animation-delay: 0.46s; }
-  .topic-card:nth-child(4) { animation-delay: 0.54s; }
-  .topic-card:nth-child(5) { animation-delay: 0.62s; }
-  .topic-card:nth-child(6) { animation-delay: 0.70s; }
-  .topic-card:nth-child(7) { animation-delay: 0.78s; }
+  .hero > * { animation: fadeUp 0.5s ease both; }
+  .hero > *:nth-child(1) { animation-delay: 0.02s; }
+  .hero > *:nth-child(2) { animation-delay: 0.06s; }
+  .hero > *:nth-child(3) { animation-delay: 0.10s; }
+  .hero > *:nth-child(4) { animation-delay: 0.14s; }
+  .hero > *:nth-child(5) { animation-delay: 0.18s; }
+  .hero > *:nth-child(6) { animation-delay: 0.22s; }
+  .topic-row { animation: fadeUp 0.4s ease both; }
+  .topic-row:nth-child(1) { animation-delay: 0.20s; }
+  .topic-row:nth-child(2) { animation-delay: 0.25s; }
+  .topic-row:nth-child(3) { animation-delay: 0.30s; }
+  .topic-row:nth-child(4) { animation-delay: 0.35s; }
+  .topic-row:nth-child(5) { animation-delay: 0.40s; }
+  .topic-row:nth-child(6) { animation-delay: 0.45s; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 680px) {
-    .nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    .hero { padding: 60px 20px 48px; }
-    .section-header, .topic-grid, .progress-section { padding: 0 20px; }
-    .topic-card {
-      grid-template-columns: 40px 1fr;
+    .nav { padding: 0 22px; }
+    .nav-links { gap: 18px; }
+    .hero { padding: 56px 22px 40px; }
+    .section-header, .topic-list, .progress-section { padding: 0 22px; }
+    .topic-row {
+      grid-template-columns: 36px 1fr;
       grid-template-rows: auto auto;
     }
     .topic-actions {
       grid-column: 1 / -1;
       flex-direction: row;
       align-items: center;
+      gap: 18px;
       padding-top: 14px;
-      border-top: 1px solid var(--border);
-      margin-top: 12px;
+      margin-top: 4px;
+      border-top: 1px dashed var(--line-faint);
     }
-    footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px 20px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 22px; }
   }
 </style>
 </head>
@@ -443,39 +408,41 @@
 
 <!-- NAV -->
 <nav class="nav">
-  <a class="nav-brand" href="index.html">Filosofia 1r Bat.</a>
+  <a class="nav-brand" href="index.html">FILOSOFIA · 1R BAT.</a>
   <ul class="nav-links">
-    <li><a href="index.html" class="active">Inici</a></li>
+    <li><a href="index.html" class="active">Índex</a></li>
     <li><a href="#temes">Temes</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-tag"><span></span>Curs acadèmic</div>
+  <div class="hero-tag">Curs acadèmic — Edició digital</div>
   <h1>Filosofia i <em>Ciutadania</em></h1>
   <p class="hero-sub">1r de Batxillerat</p>
   <p class="hero-desc">
     Apunts, exercicis i recursos per al curs de Filosofia de 1r de Batxillerat.
-    Cada tema inclou els continguts teòrics, exemples i activitats pràctiques.
+    Cada tema inclou els continguts teòrics, exemples i activitats pràctiques,
+    redactats per a la lectura i l'estudi continuat.
   </p>
+  <div class="hero-rule"></div>
   <div class="hero-stats">
     <div class="stat">
-      <span class="stat-num">1</span>
+      <span class="stat-num">01</span>
       <span class="stat-label">Tema disponible</span>
     </div>
     <div class="stat">
       <span class="stat-num">—</span>
-      <span class="stat-label">En construcció</span>
+      <span class="stat-label">En preparació</span>
     </div>
   </div>
 </section>
 
 <!-- PROGRESS -->
 <div class="progress-section">
-  <div class="progress-bar-wrap">
+  <div class="progress-wrap">
     <div class="progress-label">
-      Progrés del curs <span>1 de 12 temes publicats</span>
+      Progrés del curs <span>1 / 4 temes publicats</span>
     </div>
     <div class="progress-track">
       <div class="progress-fill" id="progressFill"></div>
@@ -485,34 +452,33 @@
 
 <!-- TEMES -->
 <div class="section-header" id="temes">
-  <h2>Temes</h2>
-  <div class="line"></div>
-  <div class="count">12 unitats</div>
+  <h2>Índex de temes</h2>
+  <div class="count">4 unitats</div>
 </div>
 
-<div class="topic-grid">
+<div class="topic-list">
 
   <!-- TEMA 1 — DISPONIBLE -->
-  <div class="topic-card available">
+  <a class="topic-row" href="t01_raonabilitat.html">
     <div class="topic-num">01</div>
     <div class="topic-info">
       <span class="topic-tag">Lògica i argumentació</span>
-      <div class="topic-title">Raonabilitat i argumentació</div>
+      <div class="topic-title">Introducció i argumentació</div>
       <div class="topic-desc">Tipus d'arguments, lògica deductiva, fal·làcies i construcció de textos argumentatius.</div>
     </div>
     <div class="topic-actions">
-      <a class="btn btn-primary" href="t01_raonabilitat.html">Apunts →</a>
-      <a class="btn btn-secondary" href="t01_raonabilitat.html#exercicis">Exercicis</a>
+      <span class="btn">Apunts</span>
+      <span class="btn btn-ghost">Exercicis</span>
     </div>
-  </div>
+  </a>
 
   <!-- TEMA 2 — PRÒXIMAMENT -->
-  <div class="topic-card soon">
+  <div class="topic-row soon">
     <div class="topic-num">02</div>
     <div class="topic-info">
       <span class="topic-tag">Epistemologia</span>
-      <div class="topic-title">El coneixement humà</div>
-      <div class="topic-desc">Fonts del coneixement, el problema de la veritat, racionalisme i empirisme.</div>
+      <div class="topic-title">Coneixement i ciència</div>
+      <div class="topic-desc">Fonts del coneixement, el problema de la veritat, racionalisme, empirisme i mètode científic.</div>
     </div>
     <div class="topic-actions">
       <span class="badge-soon">Pròximament</span>
@@ -520,12 +486,12 @@
   </div>
 
   <!-- TEMA 3 — PRÒXIMAMENT -->
-  <div class="topic-card soon">
+  <div class="topic-row soon">
     <div class="topic-num">03</div>
     <div class="topic-info">
-      <span class="topic-tag">Metafísica</span>
-      <div class="topic-title">La realitat i l'existència</div>
-      <div class="topic-desc">El problema de l'ésser, substància i accident, ment i cos.</div>
+      <span class="topic-tag">Ètica</span>
+      <div class="topic-title">Ètica i felicitat</div>
+      <div class="topic-desc">Teories ètiques clàssiques i contemporànies, el bé, la virtut i la recerca de la felicitat.</div>
     </div>
     <div class="topic-actions">
       <span class="badge-soon">Pròximament</span>
@@ -533,38 +499,12 @@
   </div>
 
   <!-- TEMA 4 — PRÒXIMAMENT -->
-  <div class="topic-card soon">
+  <div class="topic-row soon">
     <div class="topic-num">04</div>
     <div class="topic-info">
-      <span class="topic-tag">Antropologia</span>
-      <div class="topic-title">La naturalesa humana</div>
-      <div class="topic-desc">Evolució, cultura, identitat personal i llibertat.</div>
-    </div>
-    <div class="topic-actions">
-      <span class="badge-soon">Pròximament</span>
-    </div>
-  </div>
-
-  <!-- TEMA 5 — PRÒXIMAMENT -->
-  <div class="topic-card soon">
-    <div class="topic-num">05</div>
-    <div class="topic-info">
-      <span class="topic-tag">Ètica</span>
-      <div class="topic-title">Fonaments de l'ètica</div>
-      <div class="topic-desc">Relativisme moral, teories ètiques clàssiques i contemporànies, dilemes morals.</div>
-    </div>
-    <div class="topic-actions">
-      <span class="badge-soon">Pròximament</span>
-    </div>
-  </div>
-
-  <!-- TEMA 6 — PRÒXIMAMENT -->
-  <div class="topic-card soon">
-    <div class="topic-num">06</div>
-    <div class="topic-info">
       <span class="topic-tag">Filosofia política</span>
-      <div class="topic-title">Societat, dret i política</div>
-      <div class="topic-desc">Contracte social, democràcia, drets humans i ciutadania.</div>
+      <div class="topic-title">Política i societat</div>
+      <div class="topic-desc">Contracte social, democràcia, drets humans, justícia i ciutadania.</div>
     </div>
     <div class="topic-actions">
       <span class="badge-soon">Pròximament</span>
@@ -580,11 +520,10 @@
 </footer>
 
 <script>
-  // Animate progress bar on load
   window.addEventListener('load', () => {
     setTimeout(() => {
-      document.getElementById('progressFill').style.width = '8.3%';
-    }, 500);
+      document.getElementById('progressFill').style.width = '25%';
+    }, 400);
   });
 </script>
 

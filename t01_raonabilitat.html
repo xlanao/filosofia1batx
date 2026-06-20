@@ -3,31 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>T01 · Raonabilitat i argumentació — Filosofia 1r Bat.</title>
+<title>T01 · Introducció i argumentació — Filosofia 1r Bat.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f4f7f6;
-    --bg2: #eaf0ee;
-    --bg3: #dde7e4;
-    --bg-warm: #faf8f4;
-    --text-dark: #1a2b28;
-    --text: #1a2b28;
-    --text-muted: #526860;
-    --text-dim: #8aa49e;
-    --accent: #2d7d62;
-    --accent-light: rgba(45,125,98,0.10);
-    --accent-glow: rgba(45,125,98,0.22);
-    --gold: #3a7fa8;
-    --gold-light: rgba(58,127,168,0.10);
-    --navy: #3a7fa8;
-    --navy-light: rgba(58,127,168,0.10);
-    --green: #2d7d62;
-    --green-light: rgba(45,125,98,0.10);
-    --border: rgba(0,0,0,0.09);
-    --border-light: rgba(0,0,0,0.05);
-    --sidebar-w: 260px;
+    --ink: #111111;
+    --ink-soft: #444444;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-off: #fafaf9;
+    --line: #111111;
+    --line-soft: #cfcfcc;
+    --line-faint: #e6e5e1;
+    --sidebar-w: 250px;
     --content-max: 740px;
   }
 
@@ -35,11 +24,12 @@
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Lora', Georgia, serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.8;
+    font-family: 'Spectral', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.75;
     font-size: 16.5px;
+    font-weight: 400;
   }
 
   /* ── NAV ── */
@@ -47,141 +37,128 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(244,247,246,0.94);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 40px;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    padding: 0 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 58px;
+    height: 56px;
   }
   .nav-left { display: flex; align-items: center; gap: 0; }
   .nav-back {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 10px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--ink-faint);
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 12px 6px 0;
-    border-right: 1px solid var(--border);
-    margin-right: 16px;
-    transition: color 0.2s;
+    padding: 6px 14px 6px 0;
+    border-right: 1px solid var(--line-faint);
+    margin-right: 14px;
+    transition: color 0.15s;
   }
-  .nav-back:hover { color: var(--accent); }
+  .nav-back:hover { color: var(--ink); }
   .nav-brand {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 11px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--ink);
     text-decoration: none;
+    font-weight: 700;
   }
   .nav-meta {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
   }
 
-  /* ── TOPIC HEADER ── */
+  /* ── TOPIC HERO ── */
   .topic-hero {
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border);
-    padding: 56px 40px 48px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 52px 48px 44px;
   }
   .topic-hero-inner {
     max-width: calc(var(--sidebar-w) + var(--content-max) + 64px);
     margin: 0 auto;
   }
   .topic-breadcrumb {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 10px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    color: var(--ink-faint);
+    margin-bottom: 22px;
   }
-  .topic-breadcrumb a { color: var(--accent); text-decoration: none; }
-  .topic-breadcrumb a:hover { text-decoration: underline; }
+  .topic-breadcrumb a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+  .topic-breadcrumb a:hover { opacity: 0.6; }
   .topic-num-badge {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 10px;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-  .topic-num-badge::before {
-    content: '';
-    width: 32px;
-    height: 1px;
-    background: var(--accent);
-    opacity: 0.5;
-    display: block;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
   }
   .topic-hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    color: var(--text);
-    margin-bottom: 16px;
+    font-family: 'Spectral', serif;
+    font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.18;
+    color: var(--ink);
+    margin-bottom: 14px;
   }
-  .topic-hero h1 em { color: var(--accent); font-style: italic; }
+  .topic-hero h1 em { font-style: italic; font-weight: 400; }
   .topic-subtitle {
-    font-family: 'Lora', serif;
-    font-style: italic;
-    color: var(--text-muted);
-    font-size: 1rem;
+    font-family: 'Courier Prime', monospace;
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
   }
 
   /* ── TABS ── */
   .tabs-bar {
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border);
-    padding: 0 40px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 0 48px;
     display: flex;
     gap: 0;
-    max-width: 100%;
   }
   .tab-btn {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--ink-faint);
     border: none;
     background: none;
-    padding: 16px 24px;
+    padding: 15px 22px;
     cursor: pointer;
     position: relative;
-    transition: color 0.2s;
+    transition: color 0.15s;
   }
   .tab-btn::after {
     content: '';
     position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--accent);
+    bottom: -1px; left: 0; right: 0;
+    height: 1px;
+    background: var(--ink);
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: opacity 0.15s;
   }
-  .tab-btn:hover { color: var(--text-muted); }
-  .tab-btn.active { color: var(--accent); }
+  .tab-btn:hover { color: var(--ink-soft); }
+  .tab-btn.active { color: var(--ink); font-weight: 700; }
   .tab-btn.active::after { opacity: 1; }
 
   /* ── PAGE WRAP ── */
@@ -196,77 +173,71 @@
   /* ── SIDEBAR ── */
   .sidebar {
     position: sticky;
-    top: 58px;
+    top: 56px;
     padding: 40px 24px 40px 0;
-    max-height: calc(100vh - 58px);
+    max-height: calc(100vh - 56px);
     overflow-y: auto;
     scrollbar-width: none;
   }
   .sidebar::-webkit-scrollbar { display: none; }
   .sidebar-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 9px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--ink-faint);
     margin-bottom: 16px;
-    padding-left: 14px;
-    border-left: 2px solid var(--accent);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
   }
   .toc { list-style: none; }
   .toc a {
     display: block;
-    padding: 5px 14px;
-    font-family: 'Lora', serif;
-    font-size: 0.8rem;
-    color: var(--text-dim);
+    padding: 5px 0 5px 14px;
+    font-family: 'Spectral', serif;
+    font-size: 0.83rem;
+    color: var(--ink-faint);
     text-decoration: none;
-    border-left: 2px solid transparent;
-    transition: all 0.2s;
+    border-left: 1px solid var(--line-faint);
+    transition: all 0.15s;
     line-height: 1.4;
   }
-  .toc a:hover { color: var(--text-muted); border-left-color: rgba(45,125,98,0.3); }
+  .toc a:hover { color: var(--ink); border-left-color: var(--ink-soft); }
   .toc a.active {
-    color: var(--accent);
-    border-left-color: var(--accent);
-    background: var(--accent-light);
+    color: var(--ink);
+    border-left: 1px solid var(--ink);
+    font-weight: 600;
   }
   .toc .toc-sub a {
     padding-left: 28px;
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    opacity: 0.8;
+    font-size: 0.78rem;
+    font-style: italic;
   }
-  .toc .toc-sub a.active { opacity: 1; }
   .sidebar-sep {
     height: 1px;
-    background: var(--border);
-    margin: 16px 14px;
+    background: var(--line-faint);
+    margin: 16px 0;
   }
   .sidebar-exlink {
     display: block;
-    margin: 0 0 6px 14px;
-    font-family: 'JetBrains Mono', monospace;
+    margin: 0;
+    font-family: 'Courier Prime', monospace;
     font-size: 9px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--ink-faint);
     text-decoration: none;
-    padding: 8px 12px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    transition: all 0.2s;
+    padding: 9px 12px;
+    border: 1px solid var(--line);
+    transition: all 0.15s;
+    text-align: center;
   }
-  .sidebar-exlink:hover {
-    color: var(--accent);
-    border-color: var(--accent);
-    background: var(--accent-light);
-  }
+  .sidebar-exlink:hover { color: var(--paper); background: var(--ink); }
 
   /* ── CONTENT ── */
   .content {
     padding: 48px 0 100px 40px;
-    border-left: 1px solid var(--border);
+    border-left: 1px solid var(--line);
     min-width: 0;
   }
   .tab-panel { display: none; }
@@ -275,146 +246,151 @@
   /* ── SECTIONS ── */
   .section { margin-bottom: 64px; padding-top: 8px; }
   .section-num {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 10px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--ink-faint);
     margin-bottom: 10px;
     display: block;
-    opacity: 0.7;
   }
   h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 24px;
-    line-height: 1.25;
+    font-family: 'Spectral', serif;
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 26px;
+    line-height: 1.3;
     padding-bottom: 16px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--line);
   }
   h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text);
+    font-family: 'Spectral', serif;
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: var(--ink);
     margin: 40px 0 14px;
   }
   h4 {
-    font-family: 'Lora', serif;
+    font-family: 'Spectral', serif;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     font-style: italic;
-    color: var(--navy);
+    color: var(--ink-soft);
     margin: 28px 0 10px;
   }
-  p { margin-bottom: 14px; color: var(--text-muted); }
+  p { margin-bottom: 14px; color: var(--ink-soft); font-weight: 300; }
   p:last-child { margin-bottom: 0; }
-  strong { color: var(--text); font-weight: 600; }
+  strong { color: var(--ink); font-weight: 700; }
   em { font-style: italic; }
   ul, ol { padding-left: 22px; margin-bottom: 14px; }
-  li { margin-bottom: 6px; color: var(--text-muted); }
+  li { margin-bottom: 6px; color: var(--ink-soft); font-weight: 300; }
 
   .section-divider {
     border: none;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--line);
     margin: 52px 0;
   }
 
   /* ── DEFINITION BOX ── */
   .def-box {
-    background: var(--navy-light);
-    border-left: 3px solid var(--navy);
+    border: 1px solid var(--ink);
     padding: 18px 20px;
     margin: 20px 0;
-    border-radius: 0 8px 8px 0;
+    position: relative;
   }
   .def-box .def-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 9px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--navy);
+    color: var(--ink);
     margin-bottom: 8px;
     display: block;
+    font-weight: 700;
   }
-  .def-box p { margin: 0; font-size: 0.95rem; }
+  .def-box p { margin: 0; font-size: 0.95rem; color: var(--ink-soft); }
 
   /* ── EXAMPLE BOX ── */
   .example-box {
-    background: var(--gold-light);
-    border-left: 3px solid var(--gold);
+    border: 1px dashed var(--line-soft);
     padding: 16px 20px;
     margin: 18px 0;
-    border-radius: 0 8px 8px 0;
   }
   .example-box .ex-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 9px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--ink-faint);
     margin-bottom: 8px;
     display: block;
   }
-  .example-box p { margin: 0 0 8px; font-size: 0.93rem; font-style: italic; color: var(--text-muted); }
+  .example-box p { margin: 0 0 8px; font-size: 0.93rem; font-style: italic; color: var(--ink-soft); }
   .example-box p:last-child { margin: 0; }
   .example-box .ex-problem {
     font-style: normal;
     font-size: 0.86rem;
-    color: var(--text-muted);
-    background: rgba(0,0,0,0.05);
+    color: var(--ink-soft);
+    background: var(--paper-off);
+    border-left: 2px solid var(--ink);
     padding: 8px 12px;
-    border-radius: 4px;
     margin-top: 8px;
   }
 
   /* ── WARN BOX ── */
   .warn-box {
-    background: var(--accent-light);
-    border-left: 3px solid var(--accent);
-    padding: 16px 20px;
-    margin: 18px 0;
-    border-radius: 0 8px 8px 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 16px 4px;
+    margin: 22px 0;
     font-size: 0.93rem;
-    color: var(--text-muted);
+    color: var(--ink-soft);
+  }
+  .warn-box::before {
+    content: 'ATENCIÓ — ';
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--ink);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
   }
 
   /* ── TIP BOX ── */
   .tip-box {
-    background: var(--green-light);
-    border-left: 3px solid var(--green);
+    border: 1px dotted var(--ink-soft);
     padding: 16px 20px;
     margin: 18px 0;
-    border-radius: 0 8px 8px 0;
     font-size: 0.93rem;
   }
   .tip-box .tip-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 9px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--green);
+    color: var(--ink);
     margin-bottom: 8px;
     display: block;
+    font-weight: 700;
   }
 
   /* ── ARGUMENT DISPLAY ── */
   .argument {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    background: var(--paper-off);
+    border: 1px solid var(--line-soft);
     padding: 18px 22px;
     margin: 18px 0;
     font-size: 0.93rem;
+    font-family: 'Courier Prime', monospace;
   }
   .argument .arg-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 9px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--ink-faint);
     margin-bottom: 14px;
     display: block;
   }
@@ -424,375 +400,354 @@
     gap: 0 10px;
     margin-bottom: 8px;
     align-items: baseline;
+    font-size: 0.86rem;
   }
-  .argument .premise-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.76rem;
-    color: var(--text-dim);
-  }
-  .argument .premise-text { color: var(--text-muted); }
+  .argument .premise-label { color: var(--ink-faint); }
+  .argument .premise-text { color: var(--ink-soft); }
   .argument .conclusion {
     display: grid;
     grid-template-columns: 34px 1fr;
     gap: 0 10px;
     margin-top: 12px;
     padding-top: 12px;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--line-faint);
     align-items: baseline;
+    font-size: 0.86rem;
   }
-  .argument .conclusion-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.76rem;
-    color: var(--accent);
-    font-weight: 500;
-  }
-  .argument .conclusion-text { font-weight: 500; color: var(--accent); }
+  .argument .conclusion-label { color: var(--ink); font-weight: 700; }
+  .argument .conclusion-text { font-weight: 700; color: var(--ink); }
 
-  /* ── EXERCISE BLOCK ── */
+  /* ── EXERCISE BLOCK (inline within apunts) ── */
   .exercise {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    border: 1px solid var(--ink);
     margin: 24px 0;
-    overflow: hidden;
   }
   .exercise-header {
-    background: var(--bg3);
+    background: var(--ink);
+    color: var(--paper);
     padding: 10px 20px;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 10px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 1px solid var(--border);
   }
   .exercise-body { padding: 20px; }
   .exercise-case {
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px dashed var(--line-faint);
     padding: 14px 0;
   }
   .exercise-case:last-child { border-bottom: none; padding-bottom: 0; }
   .case-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 10px;
     letter-spacing: 0.1em;
-    color: var(--accent);
+    color: var(--ink);
     text-transform: uppercase;
     margin-bottom: 6px;
     display: block;
+    font-weight: 700;
   }
   .exercise-case p { margin: 0; font-style: italic; font-size: 0.93rem; }
 
   /* ── FALLACY GRID ── */
-  .fallacy-grid { display: grid; gap: 16px; margin: 24px 0; }
+  .fallacy-grid { display: grid; gap: 0; margin: 24px 0; border-top: 1px solid var(--line); }
   .fallacy-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    border-top: 2px solid var(--accent);
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  }
-  .fallacy-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0,0,0,0.10);
-    border-color: rgba(45,125,98,0.4);
+    border-bottom: 1px solid var(--line-faint);
+    padding: 22px 4px;
   }
   .fallacy-name {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Spectral', serif;
     font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--text);
+    font-weight: 600;
+    color: var(--ink);
     margin-bottom: 10px;
   }
-  .fallacy-def { font-size: 0.9rem; margin-bottom: 12px; color: var(--text-muted); }
+  .fallacy-def { font-size: 0.9rem; margin-bottom: 12px; color: var(--ink-soft); }
   .fallacy-ex {
     font-style: italic;
     font-size: 0.88rem;
-    color: var(--text-muted);
+    color: var(--ink-soft);
     padding: 10px 14px;
-    background: rgba(0,0,0,0.04);
-    border-radius: 6px;
+    background: var(--paper-off);
+    border-left: 2px solid var(--line-soft);
     margin-bottom: 10px;
   }
   .fallacy-prob {
     font-size: 0.83rem;
-    color: var(--text-dim);
+    color: var(--ink-faint);
     padding-top: 8px;
-    border-top: 1px solid var(--border);
+    border-top: 1px dotted var(--line-faint);
   }
-  .fallacy-prob strong { color: var(--accent); }
+  .fallacy-prob strong { color: var(--ink); }
 
   /* ── TABLE ── */
   .table-wrap { overflow-x: auto; margin: 20px 0; }
   table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
   th {
-    background: var(--bg3);
-    color: var(--text-muted);
-    padding: 11px 14px;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 14px;
     text-align: left;
-    font-family: 'Lora', serif;
-    font-style: italic;
-    font-weight: 500;
-    border-bottom: 1px solid var(--border);
+    font-family: 'Courier Prime', monospace;
+    font-weight: 400;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
   }
   td {
     padding: 10px 14px;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--line-faint);
     vertical-align: top;
-    color: var(--text-muted);
+    color: var(--ink-soft);
     font-size: 0.88rem;
   }
-  tr:last-child td { border-bottom: none; }
+  tr:last-child td { border-bottom: 1px solid var(--ink); }
   code {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82em;
-    background: rgba(45,125,98,0.10);
-    padding: 2px 7px;
-    border-radius: 4px;
-    color: var(--accent);
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.86em;
+    background: var(--paper-off);
+    border: 1px solid var(--line-faint);
+    padding: 1px 6px;
+    color: var(--ink);
   }
 
   /* ── LEVELS ── */
   .levels {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 0;
     margin: 24px 0;
+    border: 1px solid var(--line);
   }
   .level-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
     padding: 20px 16px;
     text-align: center;
+    border-right: 1px solid var(--line-faint);
   }
+  .level-card:last-child { border-right: none; }
   .level-num {
-    width: 34px;
-    height: 34px;
-    background: var(--accent);
-    color: white;
-    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
     font-weight: 700;
     margin: 0 auto 12px;
   }
   .level-card h4 {
     margin: 0 0 8px;
     font-style: normal;
-    font-size: 0.78rem;
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.06em;
+    font-size: 0.76rem;
+    font-family: 'Courier Prime', monospace;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: var(--ink);
+    font-weight: 700;
   }
-  .level-card p { font-size: 0.82rem; color: var(--text-dim); margin: 0; line-height: 1.5; }
+  .level-card p { font-size: 0.82rem; color: var(--ink-faint); margin: 0; line-height: 1.5; font-weight: 300; }
 
   /* ── TEXT PARTS ── */
-  .text-parts { counter-reset: part; margin: 24px 0; }
+  .text-parts { margin: 24px 0; border-left: 1px solid var(--line); }
   .text-part {
-    display: grid;
-    grid-template-columns: 4px 1fr;
-    gap: 0 18px;
-    margin-bottom: 16px;
-    align-items: stretch;
+    padding: 4px 0 20px 22px;
+    margin-bottom: 0;
+    position: relative;
   }
-  .text-part-bar { background: var(--accent); border-radius: 4px; }
-  .text-part:nth-child(2) .text-part-bar { background: var(--navy); }
-  .text-part:nth-child(3) .text-part-bar { background: var(--navy); }
-  .text-part:nth-child(4) .text-part-bar { background: var(--gold); }
-  .text-part-body { padding: 4px 0; }
-  .text-part-title { font-family: 'Lora', serif; font-weight: 500; font-size: 0.93rem; margin-bottom: 5px; color: var(--text); }
-  .text-part-body p { font-size: 0.86rem; color: var(--text-muted); margin: 0; }
+  .text-part::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 6px;
+    width: 7px;
+    height: 7px;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+  }
+  .text-part-title { font-family: 'Spectral', serif; font-weight: 600; font-size: 0.97rem; margin-bottom: 5px; color: var(--ink); }
+  .text-part-body p { font-size: 0.87rem; color: var(--ink-faint); margin: 0; font-weight: 300; }
 
   /* ── EXPRESSIONS ── */
   .expr-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 14px;
+    gap: 0;
     margin: 20px 0;
+    border: 1px solid var(--line);
   }
   .expr-group {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
     padding: 14px 16px;
+    border-right: 1px solid var(--line-faint);
+    border-bottom: 1px solid var(--line-faint);
   }
   .expr-group-title {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 9px;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--navy);
+    color: var(--ink);
     margin-bottom: 10px;
-    font-weight: 500;
+    font-weight: 700;
   }
   .expr-group ul { list-style: none; padding: 0; margin: 0; }
   .expr-group li {
     font-size: 0.85rem;
     padding: 4px 0;
-    border-bottom: 1px solid var(--border-light);
-    color: var(--text-muted);
+    border-bottom: 1px dotted var(--line-faint);
+    color: var(--ink-soft);
     font-style: italic;
+    font-weight: 300;
   }
   .expr-group li:last-child { border-bottom: none; }
 
   /* ── EXERCICIS PANEL ── */
   .ex-intro {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px 32px;
+    border: 1px solid var(--ink);
+    padding: 26px 30px;
     margin-bottom: 40px;
     display: flex;
-    gap: 24px;
+    gap: 22px;
     align-items: flex-start;
   }
   .ex-intro-icon {
-    font-size: 2rem;
+    font-family: 'Courier Prime', monospace;
+    font-size: 1.6rem;
+    font-weight: 700;
     flex-shrink: 0;
-    margin-top: 4px;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .ex-intro h3 {
-    margin: 0 0 8px;
-    font-size: 1.1rem;
-  }
-  .ex-intro p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+  .ex-intro h3 { margin: 0 0 8px; font-size: 1.1rem; }
+  .ex-intro p { margin: 0; font-size: 0.9rem; color: var(--ink-faint); font-weight: 300; }
 
   .ex-block {
     margin-bottom: 48px;
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
+    border: 1px solid var(--ink);
   }
   .ex-block-header {
-    background: var(--bg3);
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--border);
+    background: var(--ink);
+    padding: 15px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .ex-block-header h3 { margin: 0; font-size: 1rem; font-family: 'Playfair Display', serif; }
+  .ex-block-header h3 { margin: 0; font-size: 1rem; font-family: 'Spectral', serif; color: var(--paper); }
   .ex-badge {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 9px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     padding: 4px 10px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    color: var(--text-dim);
+    border: 1px solid var(--paper);
+    color: var(--paper);
   }
-  .ex-badge.practica { color: var(--green); border-color: var(--green); }
-  .ex-badge.analisi { color: var(--gold); border-color: var(--gold); }
-  .ex-badge.redaccio { color: var(--accent); border-color: var(--accent); }
 
   .ex-items { padding: 0; }
   .ex-item {
     padding: 22px 24px;
-    border-bottom: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--line-faint);
     display: grid;
-    grid-template-columns: 32px 1fr;
+    grid-template-columns: 30px 1fr;
     gap: 0 16px;
     align-items: baseline;
   }
   .ex-item:last-child { border-bottom: none; }
   .ex-item-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    color: var(--accent);
-    font-weight: 500;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.74rem;
+    color: var(--ink);
+    font-weight: 700;
     padding-top: 2px;
   }
   .ex-item-body {}
   .ex-item-q {
     font-size: 0.95rem;
-    color: var(--text);
+    color: var(--ink);
     margin-bottom: 8px;
     line-height: 1.55;
+    font-weight: 400;
   }
   .ex-item-note {
     font-size: 0.82rem;
-    color: var(--text-dim);
+    color: var(--ink-faint);
     font-style: italic;
   }
   .ex-item-quote {
     font-style: italic;
     font-size: 0.9rem;
-    color: var(--text-muted);
-    background: rgba(0,0,0,0.04);
+    color: var(--ink-soft);
+    background: var(--paper-off);
     padding: 10px 16px;
-    border-radius: 6px;
     margin: 8px 0;
-    border-left: 2px solid var(--gold);
+    border-left: 2px solid var(--ink);
   }
 
   .ex-coming {
-    padding: 36px 24px;
+    padding: 32px 24px;
     text-align: center;
-    color: var(--text-dim);
+    color: var(--ink-faint);
     font-style: italic;
     font-size: 0.9rem;
-    border-top: 1px dashed var(--border);
+    border-top: 1px dashed var(--line-faint);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
   }
   .ex-coming span {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Courier Prime', monospace;
     font-size: 9px;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--text-dim);
-    border: 1px solid var(--border);
+    color: var(--ink-faint);
+    border: 1px solid var(--line-soft);
     padding: 4px 12px;
-    border-radius: 20px;
   }
 
   /* ── FOOTER ── */
   .site-footer {
-    border-top: 1px solid var(--border);
-    padding: 24px 40px;
+    border-top: 1px solid var(--line);
+    padding: 24px 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--text-dim);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.08em;
+    color: var(--ink-faint);
+    font-family: 'Courier Prime', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.06em;
     max-width: calc(var(--sidebar-w) + var(--content-max) + 64px);
     margin: 0 auto;
   }
   .footer-nav { display: flex; gap: 20px; }
-  .footer-nav a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
-  .footer-nav a:hover { color: var(--accent); }
+  .footer-nav a { color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
+  .footer-nav a:hover { color: var(--ink); }
 
   /* ── SCROLL ANIMATION ── */
-  .section { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .section { opacity: 0; transform: translateY(12px); transition: opacity 0.45s ease, transform 0.45s ease; }
   .section.visible { opacity: 1; transform: none; }
-  .ex-block { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .ex-block { opacity: 0; transform: translateY(12px); transition: opacity 0.45s ease, transform 0.45s ease; }
   .ex-block.visible { opacity: 1; transform: none; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 860px) {
     .page-wrap { grid-template-columns: 1fr; }
     .sidebar { display: none; }
-    .content { padding: 32px 20px 60px; border-left: none; }
+    .content { padding: 32px 22px 60px; border-left: none; }
     .levels { grid-template-columns: 1fr; }
-    .topic-hero, .tabs-bar { padding-left: 20px; padding-right: 20px; }
-    .nav { padding: 0 20px; }
+    .level-card { border-right: none; border-bottom: 1px solid var(--line-faint); }
+    .level-card:last-child { border-bottom: none; }
+    .topic-hero, .tabs-bar { padding-left: 22px; padding-right: 22px; }
+    .nav { padding: 0 22px; }
     .nav-meta { display: none; }
-    .site-footer { padding: 20px; flex-direction: column; gap: 10px; }
+    .site-footer { padding: 20px 22px; flex-direction: column; gap: 10px; }
   }
 </style>
 </head>
@@ -804,7 +759,7 @@
     <a class="nav-back" href="index.html">← Inici</a>
     <span class="nav-brand">Filosofia 1r Bat.</span>
   </div>
-  <span class="nav-meta">T01 · Raonabilitat i argumentació</span>
+  <span class="nav-meta">T01 · Introducció i argumentació</span>
 </nav>
 
 <!-- TOPIC HERO -->
@@ -814,15 +769,15 @@
       <a href="index.html">Índex</a> / Tema 01
     </div>
     <div class="topic-num-badge">Tema 01 — Lògica i argumentació</div>
-    <h1>Raonabilitat i <em>argumentació</em></h1>
+    <h1>Introducció i <em>argumentació</em></h1>
     <p class="topic-subtitle">Apunts de classe · Filosofia i Ciutadania 1r Batxillerat</p>
   </div>
 </div>
 
 <!-- TABS -->
 <div class="tabs-bar">
-  <button class="tab-btn active" onclick="switchTab('apunts', this)">📖 Apunts</button>
-  <button class="tab-btn" onclick="switchTab('exercicis', this)">✏️ Exercicis</button>
+  <button class="tab-btn active" onclick="switchTab('apunts', this)">APUNTS</button>
+  <button class="tab-btn" onclick="switchTab('exercicis', this)">EXERCICIS</button>
 </div>
 
 <!-- PAGE WRAP -->
@@ -845,10 +800,9 @@
       <li><a href="#s4">4. Textos argumentatius</a></li>
       <li><a href="#s5">5. Expressions útils</a></li>
       <li><a href="#s6">6. Fal·làcies</a></li>
-      <li><a href="#s7">7. Informativitat</a></li>
     </ul>
     <div class="sidebar-sep"></div>
-    <a class="sidebar-exlink" href="#" onclick="switchTab('exercicis', document.querySelectorAll('.tab-btn')[1]); return false;">✏️ Ves als exercicis →</a>
+    <a class="sidebar-exlink" href="#" onclick="switchTab('exercicis', document.querySelectorAll('.tab-btn')[1]); return false;">Ves als exercicis →</a>
   </nav>
 
   <!-- CONTENT -->
@@ -861,7 +815,7 @@
       <section class="section" id="s1">
         <span class="section-num">Secció 01</span>
         <h2>La raó com a eina</h2>
-        <p>No totes les preguntes es responen de la mateixa manera. Podem distingir tres nivells de complexitat:</p>
+        <p>Al llarg de la vida ens trobem amb tota mena de preguntes, i no totes es resolen de la mateixa manera. Algunes les responem en un instant, d'altres exigeixen recollir dades amb paciència, i unes altres ens obliguen a pensar i argumentar sense que cap experiment ens pugui donar la resposta directament. Per entendre per què la filosofia necessita la <strong>raó</strong> i l'<strong>argumentació</strong> com a eines pròpies, és útil distingir tres nivells de complexitat:</p>
         <div class="levels">
           <div class="level-card">
             <div class="level-num">1</div>
@@ -879,30 +833,34 @@
             <p>No n'hi ha prou amb dades: cal construir raonaments basats en valors i estructura lògica.</p>
           </div>
         </div>
+        <p>El primer nivell és el de les <strong>preguntes de resposta immediata</strong>: la informació ja és davant nostre i només cal mirar, escoltar o tocar per respondre.</p>
         <div class="example-box">
           <span class="ex-label">Exemples de nivell 1</span>
           <p>Està plovent ara? → Mira per la finestra.</p>
           <p>De quin color és el sostre? → Mira amunt.</p>
         </div>
+        <p>El segon nivell exigeix una mica més de feina: la resposta no és evident a simple vista, però existeix un mètode clar (observar, mesurar, comptar) que ens hi pot conduir amb prou temps i recursos.</p>
         <div class="example-box">
           <span class="ex-label">Exemples de nivell 2</span>
           <p>Quin és el nivell de pol·lució de l'aire avui?</p>
           <p>Quantes estrelles hi ha a la Via Làctia?</p>
         </div>
+        <p>El tercer nivell és diferent dels altres dos d'una manera fonamental: per molt que recollim dades, cap experiment ens dirà directament la resposta. Es tracta de <strong>preguntes filosòfiques</strong>, que normalment impliquen valors, conceptes abstractes o judicis sobre allò que hauria de ser, no només sobre allò que és.</p>
         <div class="example-box">
           <span class="ex-label">Exemples de nivell 3 — preguntes filosòfiques</span>
           <p>Pot ser, en alguna circumstància, moralment permès matar una persona?</p>
           <p>Quina és la millor forma de govern?</p>
           <p>És possible conèixer la naturalesa última del món?</p>
         </div>
-        <p>Per a aquest tercer tipus de preguntes no n'hi ha prou amb evidència empírica. Cal construir <strong>arguments</strong>: hem de defensar principis donant <strong>raons</strong> que no es basen únicament en dades observables, sinó en valors, conceptes i estructures lògiques.</p>
+        <p>Per a aquest tercer tipus de preguntes no n'hi ha prou amb evidència empírica. Cal construir <strong>arguments</strong>: hem de defensar principis donant <strong>raons</strong> que no es basen únicament en dades observables, sinó en valors, conceptes i estructures lògiques. Això no vol dir que valgui qualsevol resposta: precisament perquè no podem "mirar per la finestra" per resoldre-les, necessitem mètodes rigorosos que ens permetin distingir un bon raonament d'un de dolent. Aquest és l'objecte d'estudi d'aquest tema.</p>
 
         <h3 id="s1-1">1.1. La lògica: la ciència dels bons arguments</h3>
         <div class="def-box">
           <span class="def-label">Definició · Lògica</span>
           <p>La <strong>lògica</strong> és la branca de la filosofia que teoritza sobre quins arguments són bons o dolents, <em>independentment del seu contingut</em>.</p>
         </div>
-        <p>La lògica no ens diu si el que afirmem és cert o fals, sinó si el <em>raonament</em> és correcte o incorrecte. Podem tenir un argument amb premisses falses però lògicament impecable, i a l'inrevés.</p>
+        <p>La lògica no ens diu si el que afirmem és cert o fals, sinó si el <em>raonament</em> és correcte o incorrecte. Podem tenir un argument amb premisses falses però lògicament impecable, i a l'inrevés. Aquesta distinció és clau i la treballarem amb deteniment a l'apartat 3.5, quan parlem de <strong>validesa</strong> i <strong>solidesa</strong>.</p>
+        <p>Per què interessa això a la filosofia? Perquè separar la forma del contingut ens permet avaluar un raonament fins i tot quan no estem seguint d'acord amb les seves conclusions. Dues persones que discrepen profundament sobre un tema (per exemple, sobre la pena de mort) poden, malgrat tot, posar-se d'acord sobre si l'argument que ha fet servir l'altra persona és lògicament correcte. La lògica, doncs, ofereix un terreny comú de discussió que no depèn de compartir les mateixes opinions.</p>
       </section>
 
       <hr class="section-divider">
@@ -915,18 +873,24 @@
           <span class="def-label">Definició · Argument</span>
           <p>Un <strong>argument</strong> és un conjunt d'oracions (anomenades <strong>premisses</strong>) que intenten donar suport a una <strong>conclusió</strong> particular.</p>
         </div>
+        <p>En el llenguatge col·loquial, la paraula "argument" sovint s'associa a una baralla o discussió acalorada. En filosofia i en lògica, en canvi, un argument és simplement una estructura de raonament: un conjunt de raons (les premisses) que es donen per defensar una afirmació (la conclusió). Tot text argumentatiu, per llarg i complex que sigui, es pot reduir en darrer terme a aquesta estructura bàsica.</p>
         <div class="argument">
           <span class="arg-title">Exemple — identificar premisses i conclusió</span>
           <div class="premise"><span class="premise-label">P1</span><span class="premise-text">Sempre que hi ha un terratrèmol a Barcelona, també passa a Gavà.</span></div>
           <div class="premise"><span class="premise-label">P2</span><span class="premise-text">Ara hi ha un terratrèmol a Gavà.</span></div>
           <div class="conclusion"><span class="conclusion-label">C</span><span class="conclusion-text">Per tant, hi ha un terratrèmol a Barcelona.</span></div>
         </div>
-        <div class="warn-box">⚠️ <strong>Atenció:</strong> Independentment de si les premisses són vertaderes o falses, la seva funció és servir de <strong>raons per creure en la conclusió</strong>. Analitzar un argument vol dir preguntar-se si les premisses <em>justifiquen</em> realment la conclusió, no simplement si són certes.</div>
+        <p>A la pràctica, identificar les premisses i la conclusió d'un text no sempre és tan immediat com en l'exemple anterior, perquè en el llenguatge natural sovint apareixen desordenades, barrejades amb informació irrellevant, o fins i tot amb la conclusió situada al principi del text. Una manera senzilla de localitzar-les és parar atenció a certes paraules que solen funcionar com a <strong>indicadors</strong>:</p>
+        <ul>
+          <li><strong>Indicadors de premissa:</strong> perquè, ja que, donat que, atès que, com que…</li>
+          <li><strong>Indicadors de conclusió:</strong> per tant, així doncs, en conseqüència, d'aquí que, això implica que…</li>
+        </ul>
+        <div class="warn-box"><strong>Atenció:</strong> Independentment de si les premisses són vertaderes o falses, la seva funció és servir de <strong>raons per creure en la conclusió</strong>. Analitzar un argument vol dir preguntar-se si les premisses <em>justifiquen</em> realment la conclusió, no simplement si són certes.</div>
 
         <h3 id="s2-1">2.1. La forma premissa-conclusió</h3>
-        <p>Una eina molt útil per analitzar arguments és la <strong>forma premissa-conclusió (P-C)</strong>. Fa explícites les premisses, distingeix les premisses de la conclusió i mostra l'estructura lògica de l'argument. Sovint cal simplificar una mica el text original, mai modificant-ne el significat, per guanyar en claredat.</p>
+        <p>Una eina molt útil per analitzar arguments és la <strong>forma premissa-conclusió (P-C)</strong>. Fa explícites les premisses, distingeix les premisses de la conclusió i mostra l'estructura lògica de l'argument. Sovint cal simplificar una mica el text original, mai modificant-ne el significat, per guanyar en claredat. Aquest pas és especialment útil quan el text és llarg, quan conté informació accessòria que no forma part del raonament, o quan l'autor dona per fet alguna premissa sense escriure-la explícitament.</p>
         <div class="exercise">
-          <div class="exercise-header">✏️ Arguments per analitzar — Posa'ls en forma P-C</div>
+          <div class="exercise-header">Arguments per analitzar — Posa'ls en forma P-C</div>
           <div class="exercise-body">
             <div class="exercise-case">
               <span class="case-label">Cas 1</span>
@@ -950,13 +914,14 @@
       <section class="section" id="s3">
         <span class="section-num">Secció 03</span>
         <h2>Tipus d'arguments</h2>
-        <p>Hi ha cinc grans tipus d'arguments que estudiarem en aquest tema: d'<strong>exemple</strong>, d'<strong>analogia</strong>, d'<strong>autoritat</strong>, sobre les <strong>causes</strong>, i <strong>deductius</strong>.</p>
+        <p>Hi ha cinc grans tipus d'arguments que estudiarem en aquest tema: d'<strong>exemple</strong>, d'<strong>analogia</strong>, d'<strong>autoritat</strong>, sobre les <strong>causes</strong>, i <strong>deductius</strong>. No es tracta de compartiments estancs: un mateix text pot combinar-ne diversos, i sovint la força d'una argumentació depèn precisament de saber combinar bé diferents tipus. Per a cadascun explicarem en què consisteix, quins avantatges ofereix i quina és la seva principal vulnerabilitat, és a dir, el punt feble pel qual es pot atacar quan no és prou bo.</p>
 
         <h3 id="s3-1">3.1. Arguments d'exemple</h3>
         <div class="def-box">
           <span class="def-label">Definició</span>
           <p>Consisteix a presentar un exemple concret que mostra una situació general que justifica la conclusió. Els exemples han de ser <strong>certs</strong> i provenir de <strong>fonts fiables</strong>.</p>
         </div>
+        <p>Aquest tipus d'argument funciona per <strong>generalització</strong>: a partir d'un cas particular (o uns quants), s'infereix una conclusió més àmplia que s'aplicaria també a altres casos similars. És probablement el tipus d'argument més habitual en la conversa quotidiana, perquè resulta molt intuïtiu: si volem convèncer algú que els gossos són animals lleials, n'hi ha prou amb explicar una bona anècdota.</p>
         <div class="example-box">
           <span class="ex-label">Exemple 1</span>
           <p>Als gossos els encanta jugar a pilota. La meva gossa pot passar-se hores jugant fins a caure de cansament a terra.</p>
@@ -972,14 +937,14 @@
           <li>Aporten dades concretes a favor de la conclusió.</li>
         </ul>
         <h4>Vulnerabilitats</h4>
-        <p>El perill principal és que l'exemple no es pugui generalitzar. La vulnerabilitat típica és el <strong>contraexemple</strong>.</p>
+        <p>El perill principal és que l'exemple no es pugui generalitzar, és a dir, que sigui un cas excepcional o poc representatiu de la generalitat que es vol defensar. La vulnerabilitat típica és el <strong>contraexemple</strong>: si trobem un sol cas que contradiu la generalització, n'hi ha prou per posar en dubte la conclusió, encara que l'exemple original fos del tot cert.</p>
         <div class="example-box">
           <span class="ex-label">Exemple feble i contraexemple</span>
           <p>Els gats són molt carinyosos. El meu gat sempre s'estira amb mi a veure la tele.</p>
-          <div class="ex-problem">❌ <strong>Contraexemple:</strong> El gat d'en Joan mai vol que el toquin. → No es pot generalitzar.</div>
+          <div class="ex-problem"><strong>✗ Contraexemple:</strong> El gat d'en Joan mai vol que el toquin. → No es pot generalitzar.</div>
         </div>
         <div class="exercise">
-          <div class="exercise-header">✏️ Analitza — es pot generalitzar? Hi ha contraexemple?</div>
+          <div class="exercise-header">Analitza — es pot generalitzar? Hi ha contraexemple?</div>
           <div class="exercise-body">
             <div class="exercise-case"><span class="case-label">Cas 1</span><p>Barcelona és una ciutat molt bruta. Tots els carrers del centre estan plens de pixats i de brutícia.</p></div>
             <div class="exercise-case"><span class="case-label">Cas 2</span><p>El tabac provoca malalties cardiovasculars. El meu avi va morir d'un problema del cor i fumava un paquet al dia.</p></div>
@@ -992,6 +957,7 @@
           <span class="def-label">Definició</span>
           <p>Consisteix a defensar una conclusió sobre un fenomen a partir de la <strong>comparació</strong> amb un altre fenomen amb el qual hi ha <strong>similituds rellevants</strong>.</p>
         </div>
+        <p>A diferència de l'argument d'exemple, que parteix d'un cas particular dins de la mateixa categoria, l'analogia compara dues coses de <strong>categories diferents</strong> que comparteixen alguna característica important. La força de l'argument depèn que aquesta característica compartida sigui rellevant per a la conclusió que es vol defensar, i no una simple coincidència superficial.</p>
         <div class="example-box">
           <span class="ex-label">Exemple</span>
           <p>S'ha de privatitzar la sanitat pública perquè el sistema funcioni amb més garanties. La privatització d'altres serveis públics, com el de telèfons, ha portat èxit econòmic i millora del servei.</p>
@@ -1000,16 +966,17 @@
         <ul>
           <li>Parteixen de temes <strong>més coneguts</strong> o verificables.</li>
           <li>Resulten <strong>accessibles i entretingudes</strong> perquè tracten fets concrets.</li>
+          <li>Permeten explicar idees abstractes o complexes a partir de situacions familiars per a l'interlocutor.</li>
         </ul>
         <h4>Vulnerabilitats</h4>
-        <p>Hi ha dues formes d'atacar una analogia: <strong>rebutjar-la</strong> (no hi ha prou similituds rellevants) o <strong>fer-la servir en contra</strong> (acceptar la comparació però mostrar que no recolza la conclusió).</p>
+        <p>Hi ha dues formes d'atacar una analogia. La primera és <strong>rebutjar-la directament</strong>, mostrant que les diferències entre els dos fenòmens comparats pesen més que les semblances, de manera que la comparació no és vàlida per al cas que es discuteix. La segona és més subtil: <strong>fer-la servir en contra</strong>, és a dir, acceptar la comparació tal com l'ha plantejat l'altra persona però mostrar que, si s'aplica amb coherència, en realitat porta a la conclusió contrària.</p>
         <div class="example-box">
           <span class="ex-label">Exemple de rebuig</span>
           <p>Un govern és com un negoci: els governs han de fer que els seus serveis siguin rentables.</p>
-          <div class="ex-problem">❌ <strong>Rebuig:</strong> Un govern no té l'objectiu de generar beneficis, sinó de garantir el benestar de la ciutadania.</div>
+          <div class="ex-problem"><strong>✗ Rebuig:</strong> Un govern no té l'objectiu de generar beneficis, sinó de garantir el benestar de la ciutadania. La diferència d'objectius fa que l'analogia no sigui rellevant per a aquest cas.</div>
         </div>
         <div class="exercise">
-          <div class="exercise-header">✏️ Analitza — (1) hi ha prou similituds? (2) l'analogia recolza la conclusió?</div>
+          <div class="exercise-header">Analitza — (1) hi ha prou similituds? (2) l'analogia recolza la conclusió?</div>
           <div class="exercise-body">
             <div class="exercise-case"><span class="case-label">Cas 1</span><p>La jerarquia natural als grups humans és que els homes tinguin poder sobre les dones. A la natura els mascles tendeixen a dominar. Els lleons mantenen relacions jerarquitzades on els mascles dominen i les femelles cuiden les cries.</p></div>
             <div class="exercise-case"><span class="case-label">Cas 2</span><p>L'univers és com una màquina ben dissenyada: tot encaixa i segueix lleis exactes. Per tant, com en el cas d'un rellotge, l'univers ha de tenir un creador.</p></div>
@@ -1022,34 +989,35 @@
           <span class="def-label">Definició</span>
           <p>Aporten afirmacions que recolzen la conclusió i que estan respaldades per una font que es considera una <strong>autoritat</strong> en el tema tractat.</p>
         </div>
+        <p>Fem servir aquest tipus d'argument constantment, i no sempre és il·legítim: és impossible que cadascú de nosaltres verifiqui personalment tot el coneixement científic, jurídic o tècnic que existeix, de manera que confiar en experts és, sovint, una estratègia raonable. El problema no és recórrer a una autoritat, sinó fer-ho de manera acrítica o amb fonts inadequades.</p>
         <div class="example-box">
           <span class="ex-label">Exemples</span>
           <p>Segons el conseller d'economia, l'atur baixarà el segon trimestre.</p>
           <p>La indústria pesquera japonesa és un risc per a la supervivència de les balenes (Greenpeace, 2011).</p>
         </div>
         <h4>Vulnerabilitats</h4>
-        <p>La força depèn de dues condicions: que la font sigui <strong>fiable</strong> i que sigui <strong>experta en la matèria específica</strong>. Si falla qualsevol d'aquestes, l'argument queda debilitat.</p>
+        <p>La força d'un argument d'autoritat depèn de dues condicions que s'han de complir <strong>alhora</strong>: que la font sigui <strong>fiable</strong> (és a dir, imparcial, honesta i sense interessos ocults en el tema) i que sigui <strong>experta en la matèria específica</strong> que es discuteix (i no simplement una persona reconeguda en un altre àmbit). Si falla qualsevol d'aquestes dues condicions, l'argument queda debilitat, encara que la font sigui molt coneguda o respectada en general.</p>
         <div class="example-box">
           <span class="ex-label">Font no fiable</span>
           <p>Segons la Fundació Francisco Franco, durant la Guerra Civil espanyola no hi va haver cap afusellament sense un judici just.</p>
-          <div class="ex-problem">❌ La Fundació Francisco Franco no és una font imparcial ni independent en aquest tema.</div>
+          <div class="ex-problem">✗ La Fundació Francisco Franco no és una font imparcial ni independent en aquest tema: té un interès directe a defensar una determinada versió dels fets.</div>
         </div>
         <div class="example-box">
           <span class="ex-label">Font no experta en el tema</span>
           <p>La consciència humana no es pot reduir al funcionament del cervell, segons el famós físic Stephen Hawking.</p>
-          <div class="ex-problem">❌ Hawking era autoritat en física teòrica, no en neurociència ni en filosofia de la ment.</div>
+          <div class="ex-problem">✗ Hawking era autoritat en física teòrica, no en neurociència ni en filosofia de la ment. Ser una eminència en un camp no garanteix tenir raó en un altre de molt diferent.</div>
         </div>
         <div class="tip-box">
           <span class="tip-label">Consells per usar bé les autoritats</span>
           <ul style="margin:0; padding-left: 18px;">
-            <li><strong>Actualitza les fonts:</strong> moltes autoritats deixen d'estar al dia.</li>
-            <li><strong>Tria bé el camp:</strong> no tots els experts ho són en tots els temes.</li>
-            <li><strong>Contrasta autoritats</strong> en temes disputats.</li>
-            <li><strong>Presenta l'autoritat</strong> si no és coneguda del lector.</li>
+            <li><strong>Actualitza les fonts:</strong> moltes autoritats deixen d'estar al dia, i el que era cert fa vint anys pot haver-se revisat o desmentit.</li>
+            <li><strong>Tria bé el camp:</strong> no tots els experts ho són en tots els temes; comprova que l'autoritat citada ho és precisament en allò que s'està discutint.</li>
+            <li><strong>Contrasta autoritats</strong> en temes disputats: si hi ha experts que discrepen entre ells, citar-ne només un dona una falsa imatge de consens.</li>
+            <li><strong>Presenta l'autoritat</strong> si no és coneguda del lector, explicant breument per què la seva opinió és rellevant.</li>
           </ul>
         </div>
         <div class="exercise">
-          <div class="exercise-header">✏️ Analitza — (1) la font és fiable? (2) és autoritat en el tema?</div>
+          <div class="exercise-header">Analitza — (1) la font és fiable? (2) és autoritat en el tema?</div>
           <div class="exercise-body">
             <div class="exercise-case"><span class="case-label">Cas 1</span><p>L'ésser humà actual només és capaç d'utilitzar el 5% del potencial de les màquines informàtiques. Afirmació de S. R. Ruth, professor de Ciències de la Computació a la Universitat George Mason.</p></div>
             <div class="exercise-case"><span class="case-label">Cas 2</span><p>La Constitució es pot modificar si el poble ho decideix. Fins i tot un polític com Manuel Fraga ho ha afirmat aquesta setmana al diari La Vanguardia.</p></div>
@@ -1062,25 +1030,44 @@
           <span class="def-label">Definició</span>
           <p>Justifiquen la conclusió explicant les seves <strong>causes</strong>.</p>
         </div>
+        <p>Aquest tipus d'argument respon a la pregunta "per què passa això?" oferint una explicació causal: s'afirma que un fet (la causa) produeix un altre fet (l'efecte). És un dels tipus d'argument més utilitzats en ciència, en medicina i en la vida quotidiana, però també un dels que comet errors amb més facilitat, perquè establir una relació causal real exigeix descartar moltes explicacions alternatives.</p>
         <div class="example-box">
           <span class="ex-label">Exemples</span>
           <p>S'han mort els geranis perquè ha fet molta calor.</p>
           <p>La revolta popular és inevitable. Hi ha hagut un gran malestar per raons d'escassetat econòmica i un gran descontentament per les pràctiques corruptes dels dirigents.</p>
         </div>
         <h4>Vulnerabilitats principals</h4>
+        <p>A continuació es descriuen els quatre errors més freqüents a l'hora d'establir una relació causal. Per a cadascun, s'explica en què consisteix l'error i es mostra un exemple.</p>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>#</th><th>Error</th><th>Exemple</th></tr></thead>
+            <thead><tr><th>Error</th><th>Explicació</th><th>Exemple</th></tr></thead>
             <tbody>
-              <tr><td>1</td><td><strong>Correlació ≠ causalitat</strong></td><td>«L'equip va perdre perquè en Martí no va jugar amb les botes de la sort.»</td></tr>
-              <tr><td>2</td><td><strong>Causa subjacent</strong></td><td>«Molts atletes es van lesionar perquè estaven cansats.» (Causa real: preparació massa intensa prèvia.)</td></tr>
-              <tr><td>3</td><td><strong>Causa oculta</strong></td><td>«Tots els que van prendre la medicina van morir.» (Causa real: ja eren malalts greus cardiovasculars.)</td></tr>
-              <tr><td>4</td><td><strong>Causa i efecte invertits</strong></td><td>«L'economia argentina va malament perquè ha perdut inversió estrangera.» (O és al revés?)</td></tr>
+              <tr>
+                <td><strong>Correlació ≠ causalitat</strong></td>
+                <td>Que dos fets coincideixin en el temps no vol dir que l'un provoqui l'altre. Poden coincidir per pura casualitat, sense cap relació causal real entre ells.</td>
+                <td>«L'equip va perdre perquè en Martí no va jugar amb les botes de la sort.»</td>
+              </tr>
+              <tr>
+                <td><strong>Causa subjacent</strong></td>
+                <td>Dos fets que semblen relacionats com a causa i efecte poden ser, en realitat, dos efectes independents d'una tercera causa comuna que no s'ha tingut en compte.</td>
+                <td>«Molts atletes es van lesionar perquè estaven cansats.» (Causa real: una preparació física massa intensa va provocar tant el cansament com les lesions.)</td>
+              </tr>
+              <tr>
+                <td><strong>Causa oculta</strong></td>
+                <td>S'assenyala com a causa un factor superficial o parcial, mentre la causa veritablement determinant del fenomen queda amagada o no es menciona.</td>
+                <td>«Tots els que van prendre la medicina van morir.» (Causa oculta: ja eren malalts greus amb problemes cardiovasculars previs.)</td>
+              </tr>
+              <tr>
+                <td><strong>Causa i efecte invertits</strong></td>
+                <td>S'inverteix l'ordre causal real: allò que es presenta com a causa és, en realitat, una conseqüència de l'efecte que es vol explicar.</td>
+                <td>«L'economia argentina va malament perquè ha perdut inversió estrangera.» (O potser la inversió va fugir perquè l'economia ja anava malament?)</td>
+              </tr>
             </tbody>
           </table>
         </div>
+        <p>Per evitar aquests errors, és recomanable preguntar-se sempre: hi ha proves directes que A causi B, més enllà que apareguin junts? Hi ha alguna altra explicació possible que no hàgim considerat? I, sobretot, podria ser que la relació anés en sentit contrari?</p>
         <div class="exercise">
-          <div class="exercise-header">✏️ Analitza — es pot posar en dubte la relació causa-efecte?</div>
+          <div class="exercise-header">Analitza — es pot posar en dubte la relació causa-efecte?</div>
           <div class="exercise-body">
             <div class="exercise-case"><span class="case-label">Cas 1</span><p>L'equip va perdre perquè la Marta, la davantera habitual, no va poder jugar per culpa d'una grip.</p></div>
             <div class="exercise-case"><span class="case-label">Cas 2</span><p>La lluna és una mala influència que excita els criminals. Això provoca que les nits de lluna plena hi hagi més detencions.</p></div>
@@ -1093,9 +1080,10 @@
           <span class="def-label">Definició</span>
           <p>Un argument deductiu fa servir la <strong>lògica formal</strong> per derivar la conclusió d'un conjunt de premisses. Té dues propietats fonamentals: <strong>validesa</strong> i <strong>solidesa</strong>.</p>
         </div>
+        <p>A diferència dels altres quatre tipus, els arguments deductius no admeten graus: o bé l'estructura garanteix la conclusió amb total certesa, o bé no la garanteix gens. Aquesta és la gran diferència respecte als arguments d'exemple, d'analogia, d'autoritat o causals, que com a màxim fan la conclusió més o menys <em>probable</em>, però mai del tot certa. Per això la deducció és l'eina central de la lògica i de les matemàtiques.</p>
         <div class="example-box">
           <span class="ex-label">Exemples</span>
-          <p>Tots els estudiants del Santo Àngel són humans. La Júlia és una estudiant del Santo Àngel. Per tant, la Júlia és humana.</p>
+          <p>Tots els estudiants de la Proa són humans. La Júlia és una estudiant de la Proa. Per tant, la Júlia és humana.</p>
           <p>Tothom té dret a la vida i és immoral vulnerar aquest dret. La pena de mort vulnera el dret a la vida. Per tant, la pena de mort és immoral.</p>
         </div>
         <h4>Validesa</h4>
@@ -1103,12 +1091,14 @@
           <span class="def-label">Definició · Argument vàlid</span>
           <p>Un argument és <strong>vàlid</strong> si és impossible que les premisses siguin vertaderes i la conclusió sigui falsa al mateix temps.</p>
         </div>
-        <div class="warn-box">⚠️ Un argument pot ser <strong>vàlid tot i tenir premisses falses</strong>. La validesa fa referència a l'<em>estructura</em> del raonament, no a la veritat del contingut.</div>
+        <p>Fixa't que aquesta definició no diu res sobre si les premisses són certes o falses a la realitat: parla només de la relació lògica entre premisses i conclusió. Un argument és vàlid quan la seva <em>forma</em> garanteix que, <strong>si</strong> les premisses fossin certes, la conclusió també ho seria necessàriament. És per això que es pot avaluar la validesa d'un argument fins i tot quan tractem temes inventats o termes que no coneixem (com a "Gidgets" o "Zombies" als exercicis): la validesa és una propietat de l'esquelet lògic, no del contingut concret.</p>
+        <div class="warn-box"><strong>Atenció:</strong> Un argument pot ser <strong>vàlid tot i tenir premisses falses</strong>. La validesa fa referència a l'<em>estructura</em> del raonament, no a la veritat del contingut.</div>
         <h4>Solidesa</h4>
         <div class="def-box">
           <span class="def-label">Definició · Argument sòlid</span>
           <p>Un argument és <strong>sòlid</strong> si és <em>vàlid</em> <strong>i</strong> totes les seves premisses són vertaderes.</p>
         </div>
+        <p>La solidesa afegeix a la validesa l'exigència que el contingut sigui cert. Per això tot argument sòlid és necessàriament vàlid (la inversa no és certa: hi ha arguments vàlids que no són sòlids, perquè tenen alguna premissa falsa). Quan un argument és sòlid, la veritat de la conclusió queda completament garantida.</p>
         <div class="example-box">
           <span class="ex-label">Argument sòlid</span>
           <p>P1: Tots els éssers humans vius tenen cromosomes.<br>P2: Tot allò que té cromosomes és, almenys parcialment, una substància orgànica.<br>C: Tots els éssers humans vius són, almenys parcialment, una substància orgànica.</p>
@@ -1118,17 +1108,19 @@
           <p>P1: Tots els humans estan desperts. <em>(Falsa → no sòlid)</em><br>P2: Tot allò que està despert té un sistema neuronal.<br>C: Tots els humans tenen un sistema neuronal.</p>
         </div>
         <h4>Estructures vàlides i invàlides</h4>
+        <p>Hi ha estructures lògiques que es repeteixen amb tanta freqüència que tenen nom propi. Conèixer-les ajuda a identificar ràpidament si un argument condicional (del tipus "si... llavors...") és vàlid o no, sense haver de raonar-ho cada vegada des de zero.</p>
         <div class="table-wrap">
           <table>
             <thead><tr><th>Estructura vàlida</th><th>Nom</th></tr></thead>
             <tbody>
-              <tr><td><code>Si A→B / A / ∴ B</code></td><td><em>Modus ponens</em></td></tr>
-              <tr><td><code>Si A→B / ¬B / ∴ ¬A</code></td><td><em>Modus tollens</em></td></tr>
+              <tr><td><code>Si A→B / A / ∴ B</code></td><td><em>Modus ponens</em> — afirmar l'antecedent</td></tr>
+              <tr><td><code>Si A→B / ¬B / ∴ ¬A</code></td><td><em>Modus tollens</em> — negar el conseqüent</td></tr>
               <tr><td><code>Tot A és B / x és A / ∴ x és B</code></td><td>Silogisme universal</td></tr>
               <tr><td><code>Cap A és B / x és B / ∴ x no és A</code></td><td>Silogisme negatiu</td></tr>
             </tbody>
           </table>
         </div>
+        <p>En canvi, les estructures següents semblen vàlides a primera vista però no ho són, perquè en totes elles és possible imaginar una situació amb premisses vertaderes i conclusió falsa:</p>
         <div class="table-wrap">
           <table>
             <thead><tr><th>Estructura invàlida</th><th>Error</th></tr></thead>
@@ -1140,8 +1132,9 @@
             </tbody>
           </table>
         </div>
+        <p>Per exemple, "Si plou, el carrer es mulla" i "el carrer és mullat" no permeten concloure que plogui: algú podria haver-lo regat. Aquest és exactament l'error de l'afirmació del conseqüent.</p>
         <div class="exercise">
-          <div class="exercise-header">✏️ Demostra que l'argument és invàlid — descriu una situació on les premisses siguin certes i la conclusió falsa</div>
+          <div class="exercise-header">Demostra que l'argument és invàlid — descriu una situació on les premisses siguin certes i la conclusió falsa</div>
           <div class="exercise-body">
             <div class="exercise-case"><span class="case-label">Cas 1</span><p>P1: Si la Júlia té 18 anys, és prou gran per conduir. / P2: La Júlia és prou gran per conduir. / C: La Júlia té 18 anys.</p></div>
             <div class="exercise-case"><span class="case-label">Cas 2</span><p>P1: Tot conductor ha d'aprovar un examen escrit i un pràctic. / P2: La Júlia condueix. / C: La Júlia ha aprovat un examen pràctic de conducció.</p></div>
@@ -1155,22 +1148,29 @@
       <section class="section" id="s4">
         <span class="section-num">Secció 04</span>
         <h2>Construir bons textos argumentatius</h2>
-        <p>Tot el text ha d'estar organitzat al voltant de la <strong>conclusió</strong> que volem defensar. Abans de començar a escriure, cal:</p>
-        <ol><li>Decidir quina <strong>conclusió</strong> defensarem.</li><li>Esbossar els <strong>arguments</strong> a favor.</li><li>Buscar almenys un <strong>argument en contra</strong> i preparar la rèplica.</li></ol>
+        <p>Saber identificar i avaluar arguments és el primer pas, però l'objectiu final d'aquest tema és que sigueu capaços de <strong>construir els vostres propis textos argumentatius</strong>: textos en què es defensa una posició de manera raonada, tenint en compte també les objeccions que es podrien fer. Tot el text ha d'estar organitzat al voltant de la <strong>conclusió</strong> (o tesi) que volem defensar; cap paràgraf hauria d'estar-hi de més. Abans de començar a escriure, cal:</p>
+        <ol>
+          <li>Decidir quina <strong>conclusió</strong> defensarem, formulada de manera clara i concreta.</li>
+          <li>Esbossar els <strong>arguments</strong> a favor, triant els que siguin més sòlids i variats (no val la pena acumular deu arguments febles si dos de bons ja convencen).</li>
+          <li>Buscar almenys un <strong>argument en contra</strong> seriós, és a dir, la millor objecció que algú raonable podria fer-nos, i preparar-ne la rèplica.</li>
+        </ol>
         <h3>Estructura del text argumentatiu</h3>
+        <p>Un bon text argumentatiu sol seguir cinc moviments. Tot i que es poden fusionar en menys paràgrafs en textos curts, és important que les cinc funcions hi siguin presents d'una manera o altra.</p>
         <div class="text-parts">
-          <div class="text-part"><div class="text-part-bar"></div><div class="text-part-body"><div class="text-part-title">1. Introducció (tesi)</div><p>Capta l'atenció, explica la qüestió i presenta la posició que es defensarà sense pressuposar que el lector coneix el tema.</p></div></div>
-          <div class="text-part"><div class="text-part-bar"></div><div class="text-part-body"><div class="text-part-title">2. Arguments</div><p>Exposem els arguments a favor de la conclusió, ordenats de manera natural i progressiva.</p></div></div>
-          <div class="text-part"><div class="text-part-bar"></div><div class="text-part-body"><div class="text-part-title">3. Contra-arguments i rèplica</div><p>Presentem els arguments principals contra la nostra posició i els critiquem. Cal haver comprès perfectament els arguments que ataquem.</p></div></div>
-          <div class="text-part"><div class="text-part-bar"></div><div class="text-part-body"><div class="text-part-title">4. Conclusió</div><p>Resumim el que hem dit i recordem les raons principals. L'objectiu és mostrar que no hi ha alternatives millors a la conclusió defensada.</p></div></div>
+          <div class="text-part"><div class="text-part-body"><div class="text-part-title">1. Introducció (tesi)</div><p>Capta l'atenció, explica la qüestió i presenta la posició que es defensarà sense pressuposar que el lector coneix el tema. És el moment de definir els termes clau si poden donar lloc a confusió.</p></div></div>
+          <div class="text-part"><div class="text-part-body"><div class="text-part-title">2. Arguments</div><p>Exposem els arguments a favor de la conclusió, ordenats de manera natural i progressiva: normalment és millor començar pels arguments més sòlids i evidents, i deixar per al final els més subtils o sorprenents.</p></div></div>
+          <div class="text-part"><div class="text-part-body"><div class="text-part-title">3. Contra-arguments</div><p>Presentem, amb honestedat, els arguments principals que algú podria oposar a la nostra posició. Cal exposar-los amb la mateixa força amb què els defensaria una persona que hi estigués d'acord, sense caricaturitzar-los ni simplificar-los per fer-los més fàcils de rebatre.</p></div></div>
+          <div class="text-part"><div class="text-part-body"><div class="text-part-title">4. Rèplica</div><p>Un cop exposat el contra-argument amb honestedat, el critiquem: mostrem per què no és suficient per invalidar la nostra tesi, ja sigui perquè les seves premisses són dubtoses, perquè l'estructura és invàlida, o perquè, fins i tot acceptant-lo, no anul·la la força dels nostres propis arguments.</p></div></div>
+          <div class="text-part"><div class="text-part-body"><div class="text-part-title">5. Conclusió</div><p>Resumim el que hem dit i recordem les raons principals. L'objectiu és mostrar que, considerant tot el que s'ha exposat, no hi ha alternatives millors a la conclusió defensada.</p></div></div>
         </div>
+        <p>Separar els contra-arguments de la rèplica en dos moments diferenciats té un avantatge important: obliga a exposar l'objecció <em>abans</em> de respondre-la, evitant la temptació de barrejar-la directament amb la crítica i, sense voler, deformar-la perquè sigui més fàcil de desmuntar.</p>
         <h3>Regles bàsiques</h3>
         <ul>
-          <li><strong>Considera les premisses i la conclusió:</strong> assegura't que les premisses realment recolzen la conclusió.</li>
-          <li><strong>Ordena les idees de forma natural:</strong> el lector ha de poder seguir el fil.</li>
-          <li><strong>Comença a partir de premisses fiables:</strong> no facis suposicions sense fonament.</li>
-          <li><strong>Centra't en la substància, no en el to:</strong> un argument fort no depèn de la intensitat emocional.</li>
-          <li><strong>Fes servir termes clars i consistents:</strong> no canviïs el significat d'un terme al mig del raonament.</li>
+          <li><strong>Considera les premisses i la conclusió:</strong> assegura't que les premisses realment recolzen la conclusió, i no només que sonen relacionades amb el tema.</li>
+          <li><strong>Ordena les idees de forma natural:</strong> el lector ha de poder seguir el fil sense haver de rellegir per entendre com es connecten les idees.</li>
+          <li><strong>Comença a partir de premisses fiables:</strong> no facis suposicions sense fonament; si una premissa és discutible, argumenta-la abans de fer-la servir.</li>
+          <li><strong>Centra't en la substància, no en el to:</strong> un argument fort no depèn de la intensitat emocional amb què s'exposa, sinó de la qualitat de les raons.</li>
+          <li><strong>Fes servir termes clars i consistents:</strong> no canviïs el significat d'un terme al mig del raonament (recorda la fal·làcia d'equivocació, secció 6).</li>
         </ul>
       </section>
 
@@ -1180,6 +1180,7 @@
       <section class="section" id="s5">
         <span class="section-num">Secció 05</span>
         <h2>Expressions útils per a textos argumentatius</h2>
+        <p>Un text argumentatiu no és només una seqüència d'idees correctes: també ha de quedar ben <strong>cohesionat</strong>, de manera que el lector entengui en tot moment quina funció té cada frase (si presenta la tesi, afegeix un argument, introdueix una objecció o tanca el text). Els connectors següents serveixen precisament per fer explícita aquesta estructura interna i facilitar-ne la lectura.</p>
         <div class="expr-grid">
           <div class="expr-group"><div class="expr-group-title">Expressar la tesi</div><ul><li>Defenso que…</li><li>La meva tesi és...</li><li>Crec / Penso / Opino que...</li><li>Des del meu punt de vista...</li></ul></div>
           <div class="expr-group"><div class="expr-group-title">Ordenar arguments</div><ul><li>En primer lloc... En segon lloc...</li><li>A més...</li><li>D'una banda... D'altra banda...</li><li>Per començar... Finalment...</li></ul></div>
@@ -1212,35 +1213,13 @@
         </div>
       </section>
 
-      <hr class="section-divider">
-
-      <!-- S7 -->
-      <section class="section" id="s7">
-        <span class="section-num">Secció 07</span>
-        <h2>Informativitat dels arguments</h2>
-        <div class="def-box">
-          <span class="def-label">Definició · Argument informatiu</span>
-          <p>Un argument és <strong>informatiu</strong> si és sòlid <strong>i</strong> la conclusió no apareix ja continguda en cap de les premisses. Si la conclusió ja estava implícita en alguna premissa, l'argument comet la fal·làcia de la <strong>petició de principi</strong> (cercle viciós).</p>
-        </div>
-        <div class="example-box">
-          <span class="ex-label">Exemple de petició de principi (NO informatiu)</span>
-          <p>«La Bíblia és la paraula de Déu. Per tant, és veritat, ja que la paraula de Déu sempre és veritat.»</p>
-          <div class="ex-problem">❌ Per creure que la Bíblia és la paraula de Déu ja has d'acceptar que és veritat. L'argument és circular.</div>
-        </div>
-        <div class="example-box">
-          <span class="ex-label">Argument informatiu</span>
-          <p>P1: Galileu va fer experiments molt importants per determinar la gravetat a la Terra.<br>P2: La Terra és part d'un sistema heliocèntric, el sistema solar.<br>C: La Terra gira al voltant del Sol.</p>
-          <div class="ex-problem">✅ La conclusió no estava continguda en cap de les premisses. L'argument aporta informació nova.</div>
-        </div>
-      </section>
-
     </div><!-- /panel-apunts -->
 
     <!-- ════ EXERCICIS PANEL ════ -->
     <div class="tab-panel" id="panel-exercicis">
 
       <div class="ex-intro" id="exercicis">
-        <div class="ex-intro-icon">✏️</div>
+        <div class="ex-intro-icon">Ex</div>
         <div>
           <h3>Exercicis i tasques — Tema 01</h3>
           <p>Activitats de pràctica i reflexió sobre els continguts del tema. Les tasques s'aniran afegint progressivament.</p>
@@ -1385,6 +1364,152 @@
         </div>
       </div>
 
+
+      <!-- BLOC 6: Pràctica anàlisi d'arguments 1 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 6 — Pràctica d'anàlisi d'arguments (I)</h3>
+          <span class="ex-badge analisi">Anàlisi</span>
+        </div>
+        <div class="ex-items">
+
+          <div class="ex-item">
+            <span class="ex-item-num">6.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Digues si els arguments següents són <strong>vàlids o invàlids</strong>. Si són invàlids, dona un contraexemple (descriu una situació en què les premisses siguin vertaderes però la conclusió sigui falsa).</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px;">— <strong>DIAMANTS</strong></div>
+              <div class="ex-item-quote">P1: Tots els diamants són pedres transparents.<br>
+P2: Tots els diamants són pedres basades en el carboni.<br>
+C: Per tant, totes les pedres transparents estan basades en el carboni.</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px; margin-top:14px;">— <strong>PROA</strong></div>
+              <div class="ex-item-quote">P1: Algunes aules de la Proa no estan decorades.<br>
+P2: Totes les aules incloses a la visita estan decorades.<br>
+C: Per tant, algunes aules de la Proa no s'inclouen a la visita.</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px; margin-top:14px;">— <strong>APOSTES</strong></div>
+              <div class="ex-item-quote">P1: En Pere té un dau de sis cares sense trucar.<br>
+P2: En Pere ha tirat el dau 30 vegades i no ha tret cap 6.<br>
+P3: En Pere tirarà el dau una vegada més.<br>
+C: Per tant, en Pere probablement traurà un 6 en la propera tirada.</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px; margin-top:14px;">— <strong>GIDGETS</strong> <span style="font-style:italic; font-weight:400;">(assumeix que tots els termes desconeguts tenen un significat fix; substitueix-los per termes familiars per trobar contraexemples i després "tradueix" el resultat)</span></div>
+              <div class="ex-item-quote">P1: Si això és un gidget, llavors aquest gidget és un ribet i un fidget.<br>
+P2: Si aquest gidget és un ribet, llavors aquest gidget és un wachins.<br>
+P3: Aquest gidget no és un wachins.<br>
+C: Per tant, aquest gidget no és un widget.</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px; margin-top:14px;">— <strong>BLABLABLA</strong></div>
+              <div class="ex-item-quote">P1: Si blablabla, llavors woooo.<br>
+P2: No blablabla.<br>
+C: Per tant, no woooo.</div>
+            </div>
+          </div>
+
+          <div class="ex-item">
+            <span class="ex-item-num">6.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Troba la <strong>premissa que falta</strong> per tal que els arguments siguents siguin vàlids:</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px;">— <strong>BALLEM</strong></div>
+              <div class="ex-item-quote">P1: Si la Júlia va a la festa, ella intentarà ballar i passar-s'ho bé.<br>
+P2: Si la Júlia s'ho passa bé, la Jasmina també s'ho passarà bé.<br>
+P3: <em>[Premissa a omplir]</em><br>
+C: La Júlia no anirà a la festa.</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px; margin-top:14px;">— <strong>JUSTÍCIA</strong></div>
+              <div class="ex-item-quote">P1: Només hem d'empresonar algú si això farà el món un lloc millor.<br>
+P2: La Marta va robar set bancs aquest estiu.<br>
+P3: <em>[Premissa a omplir]</em><br>
+C: No hem d'empresonar la Marta.</div>
+            </div>
+          </div>
+
+          <div class="ex-item">
+            <span class="ex-item-num">6.3</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegeix els arguments següents i escriu-los en forma <strong>premissa-conclusió</strong>. Un cop fet, determina si l'argument és vàlid o invàlid. Si és vàlid, determina si és sòlid. Si és invàlid, dona un contraexemple.</div>
+
+              <div class="ex-item-note" style="margin-bottom:8px; margin-top:12px;">— <strong>ROBAR</strong></div>
+              <div class="ex-item-quote">«Robar està malament. Tots sabem que robar fa mal a la gent i tot allò que fa mal a algú està malament.»</div>
+
+              <div class="ex-item-note" style="margin-bottom:8px; margin-top:14px;">— <strong>ELS GRECS</strong></div>
+              <div class="ex-item-quote">«Els grecs creien que estava malament menjar-se els cossos de la gent morta, però els Callatians creien que estava bé. Menjar gent morta no està ni bé ni malament, és purament una qüestió de diferència d'opinió entre cultures.»</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- BLOC 7: Pràctica anàlisi d'arguments 2 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 7 — Pràctica d'anàlisi d'arguments (II)</h3>
+          <span class="ex-badge analisi">Anàlisi</span>
+        </div>
+        <div class="ex-items">
+
+          <div class="ex-item">
+            <span class="ex-item-num">7.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Digues si els arguments següents són <strong>vàlids o invàlids</strong>. Si són invàlids, dona un contraexemple.</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px;">— Arguments amb <strong>ALGUNS</strong></div>
+              <div class="ex-item-quote">ALGUNS1<br>P1: Alguns cotxes són vehicles blaus.<br>P2: Alguns vehicles blaus són motos.<br>C: Per tant, alguns cotxes són motos.</div>
+              <div class="ex-item-quote" style="margin-top:8px;">ALGUNS2<br>P1: Tots els cotxes són vehicles blaus.<br>P2: Alguns vehicles blaus són motos.<br>C: Per tant, alguns cotxes són motos.</div>
+              <div class="ex-item-quote" style="margin-top:8px;">ALGUNS3<br>P1: Alguns cotxes són vehicles blaus.<br>P2: Tots els vehicles blaus són motos.<br>C: Per tant, alguns cotxes són motos.</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px; margin-top:16px;">— Arguments amb <strong>SI</strong></div>
+              <div class="ex-item-quote">SI1<br>P1: Si surto, llavors plourà.<br>P2: Surto.<br>C: Per tant, plourà.</div>
+              <div class="ex-item-quote" style="margin-top:8px;">SI2<br>P1: Si surto, llavors plourà.<br>P2: No surto.<br>C: Per tant, no plourà.</div>
+              <div class="ex-item-quote" style="margin-top:8px;">SI3<br>P1: Si surto, llavors plourà.<br>P2: Plourà.<br>C: Per tant, no surto.</div>
+              <div class="ex-item-quote" style="margin-top:8px;">SI4<br>P1: Si surto, llavors plourà.<br>P2: No plourà.<br>C: Per tant, no surto.</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px; margin-top:16px;">— Arguments amb termes abstractes (<strong>BLA</strong>)</div>
+              <div class="ex-item-quote">BLA1<br>P1: Alguns bla són blo.<br>P2: Alguns blo són ble.<br>C: Per tant, alguns bla són ble.</div>
+              <div class="ex-item-quote" style="margin-top:8px;">BLA2<br>P1: Alguns bla són blo.<br>P2: Tots els blo són ble.<br>C: Per tant, alguns bla són ble.</div>
+              <div class="ex-item-quote" style="margin-top:8px;">BLA3<br>P1: Si bla, llavors blo.<br>P2: Bla.<br>C: Per tant, blo.</div>
+              <div class="ex-item-quote" style="margin-top:8px;">BLA4<br>P1: Si bla, llavors blo.<br>P2: No bla.<br>C: Per tant, blo.</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px; margin-top:16px;">— Arguments amb <strong>ZOMBIES</strong></div>
+              <div class="ex-item-quote">ZOMBIES1<br>P1: Si tots els zombies mengen cervells, llavors són éssers carnívors.<br>P2: Si un ésser és carnívor, llavors menja fetge.<br>P3: A tothom que menja fetge li agrada el paté.<br>C: Als zombies els agrada el paté.</div>
+              <div class="ex-item-quote" style="margin-top:8px;">ZOMBIES2<br>P1: Si un zombie no menja cervells, llavors menja tomàquets.<br>P2: Si un zombie menja tomàquets, llavors es pot curar.<br>C: Alguns zombies es poden curar.</div>
+            </div>
+          </div>
+
+          <div class="ex-item">
+            <span class="ex-item-num">7.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Digues si els arguments següents són vàlids o invàlids. Si són invàlids, dona un contraexemple. Si són vàlids, digues si són <strong>sòlids</strong>.</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px;">— <strong>INVISIBILITAT</strong></div>
+              <div class="ex-item-quote">P1: La matèria està constituïda d'àtoms.<br>P2: Els àtoms són invisibles.<br>P3: Si un objecte està constituït d'elements invisibles, també és invisible.<br>C: La matèria és invisible.</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px; margin-top:14px;">— <strong>OBJECTES</strong></div>
+              <div class="ex-item-quote">P1: Les persones no són objectes.<br>P2: Tot allò format per matèria és un objecte.<br>C: Les persones no estan formades de matèria.</div>
+
+              <div class="ex-item-note" style="margin-bottom:12px; margin-top:14px;">— <strong>FRUITA</strong></div>
+              <div class="ex-item-quote">P1: Una dieta sana inclou molta fruita i verdura.<br>P2: Per estar sans, hem de fer una dieta sana.<br>C: Menjar fruita i verdura és molt sa.</div>
+            </div>
+          </div>
+
+          <div class="ex-item">
+            <span class="ex-item-num">7.3</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegeix els arguments i escriu-los en forma <strong>premissa-conclusió</strong>. Determina si és vàlid o invàlid. Si és vàlid, digues si és sòlid. Si és invàlid, dona un contraexemple.</div>
+
+              <div class="ex-item-note" style="margin-bottom:8px; margin-top:12px;">— <strong>DEMOCRÀCIA</strong></div>
+              <div class="ex-item-quote">«La democràcia és el millor sistema de govern que podem tenir. Tots els altres sistemes de govern són inferiors perquè no estan basats en deixar que la gent decideixi el que vol fer. La democràcia, en canvi, està basada precisament en deixar decidir a la gent el que vol fer.»</div>
+
+              <div class="ex-item-note" style="margin-bottom:8px; margin-top:14px;">— <strong>JUSTÍCIA</strong></div>
+              <div class="ex-item-quote">«Una acció és justa si no contradiu cap llei i els polítics creen noves lleis sempre seguint un procediment legal, excepte quan hi ha interferències externes. Així que totes les lleis són creades justament.»</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div><!-- /panel-exercicis -->
 
   </main>
@@ -1395,7 +1520,7 @@
   <div class="footer-nav">
     <a href="index.html">← Índex del curs</a>
   </div>
-  <span>T01 · Raonabilitat i argumentació</span>
+  <span>T01 · Introducció i argumentació</span>
 </footer>
 
 <script>
