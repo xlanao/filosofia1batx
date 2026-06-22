@@ -162,6 +162,22 @@
     .nav-meta { display: none; }
     .site-footer { padding: 20px 22px; flex-direction: column; gap: 10px; }
   }
+
+  /* ── VOCABULARI ── */
+  .vocab-intro { border: 1px solid var(--ink); padding: 22px 24px; margin-bottom: 32px; }
+  .vocab-intro h3 { font-family: 'Spectral', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); margin: 0 0 6px; }
+  .vocab-intro p { font-size: 0.88rem; color: var(--ink-faint); font-weight: 300; margin: 0; }
+  .vocab-section { margin-bottom: 36px; }
+  .vocab-section-title { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); padding-bottom: 8px; border-bottom: 1px solid var(--line); display: block; margin-bottom: 0; }
+  .vocab-grid { }
+  .vocab-item { display: grid; grid-template-columns: 200px 1fr; gap: 0 20px; border-bottom: 1px solid var(--line-faint); padding: 11px 4px; align-items: baseline; }
+  .vocab-item:last-child { border-bottom: 1px solid var(--line); }
+  .vocab-term { font-family: 'Spectral', serif; font-size: 0.93rem; font-weight: 600; color: var(--ink); line-height: 1.45; }
+  .vocab-def { font-size: 0.86rem; color: var(--ink-soft); font-weight: 300; line-height: 1.55; }
+  @media (max-width: 600px) {
+    .vocab-item { grid-template-columns: 1fr; gap: 3px; padding: 10px 4px; }
+  }
+
 </style>
 </head>
 <body>
@@ -186,6 +202,7 @@
 <div class="tabs-bar">
   <button class="tab-btn active" onclick="switchTab('apunts', this)">APUNTS</button>
   <button class="tab-btn" onclick="switchTab('exercicis', this)">EXERCICIS</button>
+  <button class="tab-btn" onclick="switchTab('vocabulari', this)">VOCABULARI</button>
 </div>
 
 <div class="page-wrap">
@@ -783,6 +800,25 @@
 
     </div><!-- /panel-exercicis -->
 
+    <div class="tab-panel" id="panel-vocabulari">
+      <div class="vocab-intro">
+        <h3>Vocabulari essencial — T06 Política i justícia social</h3>
+        <p>Els 10 termes clau sobre les teories de la justícia.</p>
+      </div>
+      <div class="vocab-grid">
+          <div class="vocab-item"><div class="vocab-term">Justícia social</div><div class="vocab-def">Criteris per decidir com una societat reparteix recursos, oportunitats, drets i responsabilitats entre els seus membres.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Justícia distributiva</div><div class="vocab-def">Distribució de béns, recursos, drets i oportunitats dins d'una societat; la dimensió central de la justícia social.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Vel d'ignorança (Rawls)</div><div class="vocab-def">Procediment hipotètic per escollir principis de justícia imparcials sense saber quina posició social s'ocuparà.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Principi de diferència (Rawls)</div><div class="vocab-def">Les desigualtats socials i econòmiques només s'accepten si beneficien els membres menys afavorits de la societat.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Plusvàlua (Marx)</div><div class="vocab-def">Diferència entre el valor produït per un treballador i el salari que rep; apropiada pel propietari del capital.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Explotació (Marx)</div><div class="vocab-def">Apropiació sistemàtica per part del capital de la plusvàlua generada pel treball; element estructural del capitalisme.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Alienació (Marx)</div><div class="vocab-def">Separació del treballador respecte del seu treball, del producte, d'altres persones i de si mateix.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Capacitat (Nussbaum / Sen)</div><div class="vocab-def">Possibilitat real d'una persona de fer o ser alguna cosa valuosa; va més lluny de tenir drets formals o recursos.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Dignitat humana</div><div class="vocab-def">Valor inherent de tota persona que una societat justa ha de garantir com a punt de partida mínim.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Reconeixement (Butler)</div><div class="vocab-def">Acceptació social plena d'una persona com a membre legítim de la comunitat; condició prèvia a qualsevol distribució justa.</div></div>
+      </div>
+    </div><!-- /panel-vocabulari -->
+
 
   </main>
 </div>
@@ -822,6 +858,8 @@
   updateToc();
   if (window.location.hash === '#exercicis')
     switchTab('exercicis', document.querySelectorAll('.tab-btn')[1]);
+  if (window.location.hash === '#vocabulari')
+    switchTab('vocabulari', document.querySelectorAll('.tab-btn')[2]);
 </script>
 </body>
 </html>

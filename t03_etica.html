@@ -787,6 +787,22 @@
     .nav-meta { display: none; }
     .site-footer { padding: 20px 22px; flex-direction: column; gap: 10px; }
   }
+
+  /* ── VOCABULARI ── */
+  .vocab-intro { border: 1px solid var(--ink); padding: 22px 24px; margin-bottom: 32px; }
+  .vocab-intro h3 { font-family: 'Spectral', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); margin: 0 0 6px; }
+  .vocab-intro p { font-size: 0.88rem; color: var(--ink-faint); font-weight: 300; margin: 0; }
+  .vocab-section { margin-bottom: 36px; }
+  .vocab-section-title { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); padding-bottom: 8px; border-bottom: 1px solid var(--line); display: block; margin-bottom: 0; }
+  .vocab-grid { }
+  .vocab-item { display: grid; grid-template-columns: 200px 1fr; gap: 0 20px; border-bottom: 1px solid var(--line-faint); padding: 11px 4px; align-items: baseline; }
+  .vocab-item:last-child { border-bottom: 1px solid var(--line); }
+  .vocab-term { font-family: 'Spectral', serif; font-size: 0.93rem; font-weight: 600; color: var(--ink); line-height: 1.45; }
+  .vocab-def { font-size: 0.86rem; color: var(--ink-soft); font-weight: 300; line-height: 1.55; }
+  @media (max-width: 600px) {
+    .vocab-item { grid-template-columns: 1fr; gap: 3px; padding: 10px 4px; }
+  }
+
 </style>
 </head>
 <body>
@@ -816,6 +832,7 @@
 <div class="tabs-bar">
   <button class="tab-btn active" onclick="switchTab('apunts', this)">APUNTS</button>
   <button class="tab-btn" onclick="switchTab('exercicis', this)">EXERCICIS</button>
+  <button class="tab-btn" onclick="switchTab('vocabulari', this)">VOCABULARI</button>
 </div>
 
 <!-- PAGE WRAP -->
@@ -1586,6 +1603,28 @@
 
     </div><!-- /panel-exercicis -->
 
+    <div class="tab-panel" id="panel-vocabulari">
+      <div class="vocab-intro">
+        <h3>Vocabulari essencial — T03 Ètica i acció</h3>
+        <p>Els 13 termes clau de les tres teories ètiques fonamentals.</p>
+      </div>
+      <div class="vocab-grid">
+          <div class="vocab-item"><div class="vocab-term">Ètica</div><div class="vocab-def">Reflexió filosòfica sobre la moral, els seus fonaments i els criteris per jutjar si una acció és correcta.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Moral</div><div class="vocab-def">Conjunt de normes, valors i costums que regulen el comportament d'una persona o grup.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Fal·làcia naturalista</div><div class="vocab-def">Error de derivar judicis normatius («ha de ser») de fets descriptius («és»).</div></div>
+          <div class="vocab-item"><div class="vocab-term">Utilitarisme</div><div class="vocab-def">Teoria ètica que considera correcta l'acció que maximitza la felicitat total del major nombre de persones.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Principi d'utilitat</div><div class="vocab-def">Actua de manera que produeixis la major felicitat per al major nombre; criteri moral suprem del utilitarisme.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Conseqüencialisme</div><div class="vocab-def">La moralitat d'una acció depèn exclusivament de les seves conseqüències.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Deontologia</div><div class="vocab-def">Teoria ètica que avalua les accions per si mateixes (pel deure), no per les seves conseqüències.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Bona voluntat</div><div class="vocab-def">Per a Kant, l'única cosa bona sense restriccions: actuar per respecte al deure, sense cap altre motiu.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Imperatiu categòric</div><div class="vocab-def">Actua únicament segons la màxima que puguis voler que sigui llei universal per a tothom (Kant).</div></div>
+          <div class="vocab-item"><div class="vocab-term">Màxima</div><div class="vocab-def">Principi subjectiu que guia l'acció d'un agent; moralment acceptable si és universalitzable.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Ètica de la virtut</div><div class="vocab-def">Teoria que avalua la moralitat pel caràcter i les disposicions habituals de l'agent, no per regles ni conseqüències.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Eudaimonia</div><div class="vocab-def">Felicitat com a realització plena de la naturalesa humana; fi últim de la vida per Aristòtil.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Dilema moral</div><div class="vocab-def">Situació on dues obligacions morals entren en conflicte i no es poden satisfer simultàniament.</div></div>
+      </div>
+    </div><!-- /panel-vocabulari -->
+
   </main>
 </div>
 
@@ -1641,6 +1680,9 @@
   // Check if URL has #exercicis
   if (window.location.hash === '#exercicis') {
     switchTab('exercicis', document.querySelectorAll('.tab-btn')[1]);
+  }
+  if (window.location.hash === '#vocabulari') {
+    switchTab('vocabulari', document.querySelectorAll('.tab-btn')[2]);
   }
 </script>
 </body>

@@ -220,9 +220,9 @@
     position: relative;
     transition: padding-left 0.2s;
   }
-  a.topic-row { cursor: pointer; }
-  a.topic-row:hover { padding-left: 8px; }
-  a.topic-row:hover .topic-title { text-decoration: underline; text-underline-offset: 4px; }
+  .topic-row:not(.soon) { cursor: pointer; }
+  .topic-row:not(.soon):hover { padding-left: 8px; }
+  .topic-row:not(.soon):hover .topic-title { text-decoration: underline; text-underline-offset: 4px; }
   .topic-row.soon { opacity: 0.38; }
 
   .topic-num {
@@ -232,7 +232,7 @@
     line-height: 1.5;
     padding-top: 2px;
   }
-  a.topic-row .topic-num { color: var(--ink); }
+  .topic-row:not(.soon) .topic-num { color: var(--ink); }
 
   .topic-info { min-width: 0; }
   .topic-tag {
@@ -437,7 +437,7 @@
 <div class="topic-list">
 
   <!-- TEMA 1 — DISPONIBLE -->
-  <a class="topic-row" href="t01_raonabilitat.html">
+  <div class="topic-row" onclick="location.href='t01_raonabilitat.html'">
     <div class="topic-num">01</div>
     <div class="topic-info">
       <span class="topic-tag">Lògica i argumentació</span>
@@ -445,13 +445,14 @@
       <div class="topic-desc">Tipus d'arguments, lògica deductiva, fal·làcies i construcció de textos argumentatius.</div>
     </div>
     <div class="topic-actions">
-      <span class="btn">Apunts</span>
-      <span class="btn btn-ghost">Exercicis</span>
+      <a class="btn" href="t01_raonabilitat.html" onclick="event.stopPropagation()">Apunts</a>
+      <a class="btn btn-ghost" href="t01_raonabilitat.html#exercicis" onclick="event.stopPropagation()">Exercicis</a>
+      <a class="btn btn-ghost" href="t01_raonabilitat.html#vocabulari" onclick="event.stopPropagation()">Vocabulari</a>
     </div>
-  </a>
+  </div>
 
   <!-- TEMA 2 — DISPONIBLE -->
-  <a class="topic-row" href="t02_coneixement.html">
+  <div class="topic-row" onclick="location.href='t02_coneixement.html'">
     <div class="topic-num">02</div>
     <div class="topic-info">
       <span class="topic-tag">Epistemologia</span>
@@ -459,13 +460,14 @@
       <div class="topic-desc">Fonts del coneixement, el problema de la veritat, racionalisme, empirisme i mètode científic.</div>
     </div>
     <div class="topic-actions">
-      <span class="btn">Apunts</span>
-      <span class="btn btn-ghost">Exercicis</span>
+      <a class="btn" href="t02_coneixement.html" onclick="event.stopPropagation()">Apunts</a>
+      <a class="btn btn-ghost" href="t02_coneixement.html#exercicis" onclick="event.stopPropagation()">Exercicis</a>
+      <a class="btn btn-ghost" href="t02_coneixement.html#vocabulari" onclick="event.stopPropagation()">Vocabulari</a>
     </div>
-  </a>
+  </div>
 
   <!-- TEMA 3 — DISPONIBLE -->
-  <a class="topic-row" href="t03_etica.html">
+  <div class="topic-row" onclick="location.href='t03_etica.html'">
     <div class="topic-num">03</div>
     <div class="topic-info">
       <span class="topic-tag">Ètica</span>
@@ -473,13 +475,14 @@
       <div class="topic-desc">Utilitarisme, ètica kantiana i ètica de la virtut: tres criteris per decidir què és correcte fer.</div>
     </div>
     <div class="topic-actions">
-      <span class="btn">Apunts</span>
-      <span class="btn btn-ghost">Exercicis</span>
+      <a class="btn" href="t03_etica.html" onclick="event.stopPropagation()">Apunts</a>
+      <a class="btn btn-ghost" href="t03_etica.html#exercicis" onclick="event.stopPropagation()">Exercicis</a>
+      <a class="btn btn-ghost" href="t03_etica.html#vocabulari" onclick="event.stopPropagation()">Vocabulari</a>
     </div>
-  </a>
+  </div>
 
   <!-- TEMA 4 — DISPONIBLE -->
-  <a class="topic-row" href="t04_etica_felicitat.html">
+  <div class="topic-row" onclick="location.href='t04_etica_felicitat.html'">
     <div class="topic-num">04</div>
     <div class="topic-info">
       <span class="topic-tag">Ètica</span>
@@ -487,13 +490,14 @@
       <div class="topic-desc">Epicur, els estoics i els cínics: tres camins clàssics, amb actualitzacions contemporànies, cap a la vida bona.</div>
     </div>
     <div class="topic-actions">
-      <span class="btn">Apunts</span>
-      <span class="btn btn-ghost">Exercicis</span>
+      <a class="btn" href="t04_etica_felicitat.html" onclick="event.stopPropagation()">Apunts</a>
+      <a class="btn btn-ghost" href="t04_etica_felicitat.html#exercicis" onclick="event.stopPropagation()">Exercicis</a>
+      <a class="btn btn-ghost" href="t04_etica_felicitat.html#vocabulari" onclick="event.stopPropagation()">Vocabulari</a>
     </div>
-  </a>
+  </div>
 
   <!-- TEMA 5 — DISPONIBLE -->
-  <a class="topic-row" href="t05_politica.html">
+  <div class="topic-row" onclick="location.href='t05_politica.html'">
     <div class="topic-num">05</div>
     <div class="topic-info">
       <span class="topic-tag">Filosofia política</span>
@@ -501,14 +505,15 @@
       <div class="topic-desc">Poder polític, contracte social i llibertat: Hobbes, Locke i Goldman.</div>
     </div>
     <div class="topic-actions">
-      <span class="btn">Apunts</span>
-      <span class="btn btn-ghost">Exercicis</span>
+      <a class="btn" href="t05_politica.html" onclick="event.stopPropagation()">Apunts</a>
+      <a class="btn btn-ghost" href="t05_politica.html#exercicis" onclick="event.stopPropagation()">Exercicis</a>
+      <a class="btn btn-ghost" href="t05_politica.html#vocabulari" onclick="event.stopPropagation()">Vocabulari</a>
     </div>
-  </a>
+  </div>
 
 
   <!-- TEMA 6 — DISPONIBLE -->
-  <a class="topic-row" href="t06_justicia.html">
+  <div class="topic-row" onclick="location.href='t06_justicia.html'">
     <div class="topic-num">06</div>
     <div class="topic-info">
       <span class="topic-tag">Filosofia política</span>
@@ -516,16 +521,16 @@
       <div class="topic-desc">Rawls, Nozick, Marx, Nussbaum i Butler: quatre respostes a «Què és una societat justa?»</div>
     </div>
     <div class="topic-actions">
-      <span class="btn">Apunts</span>
-      <span class="btn btn-ghost">Exercicis</span>
+      <a class="btn" href="t06_justicia.html" onclick="event.stopPropagation()">Apunts</a>
+      <a class="btn btn-ghost" href="t06_justicia.html#exercicis" onclick="event.stopPropagation()">Exercicis</a>
+      <a class="btn btn-ghost" href="t06_justicia.html#vocabulari" onclick="event.stopPropagation()">Vocabulari</a>
     </div>
-  </a>
+  </div>
 
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <span>Filosofia i Ciutadania · 1r Batxillerat</span>
   <span>Filosofia i Ciutadania · 1r Batxillerat</span>
 </footer>
 

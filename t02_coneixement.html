@@ -772,6 +772,22 @@
     .nav-meta { display: none; }
     .site-footer { padding: 20px 22px; flex-direction: column; gap: 10px; }
   }
+
+  /* ── VOCABULARI ── */
+  .vocab-intro { border: 1px solid var(--ink); padding: 22px 24px; margin-bottom: 32px; }
+  .vocab-intro h3 { font-family: 'Spectral', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); margin: 0 0 6px; }
+  .vocab-intro p { font-size: 0.88rem; color: var(--ink-faint); font-weight: 300; margin: 0; }
+  .vocab-section { margin-bottom: 36px; }
+  .vocab-section-title { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); padding-bottom: 8px; border-bottom: 1px solid var(--line); display: block; margin-bottom: 0; }
+  .vocab-grid { }
+  .vocab-item { display: grid; grid-template-columns: 200px 1fr; gap: 0 20px; border-bottom: 1px solid var(--line-faint); padding: 11px 4px; align-items: baseline; }
+  .vocab-item:last-child { border-bottom: 1px solid var(--line); }
+  .vocab-term { font-family: 'Spectral', serif; font-size: 0.93rem; font-weight: 600; color: var(--ink); line-height: 1.45; }
+  .vocab-def { font-size: 0.86rem; color: var(--ink-soft); font-weight: 300; line-height: 1.55; }
+  @media (max-width: 600px) {
+    .vocab-item { grid-template-columns: 1fr; gap: 3px; padding: 10px 4px; }
+  }
+
 </style>
 </head>
 <body>
@@ -801,6 +817,7 @@
 <div class="tabs-bar">
   <button class="tab-btn active" onclick="switchTab('apunts', this)">APUNTS</button>
   <button class="tab-btn" onclick="switchTab('exercicis', this)">EXERCICIS</button>
+  <button class="tab-btn" onclick="switchTab('vocabulari', this)">VOCABULARI</button>
 </div>
 
 <!-- PAGE WRAP -->
@@ -1371,6 +1388,25 @@
 
     </div><!-- /panel-exercicis -->
 
+    <div class="tab-panel" id="panel-vocabulari">
+      <div class="vocab-intro">
+        <h3>Vocabulari essencial — T02 Coneixement i ciència</h3>
+        <p>Els 10 termes fonamentals d'epistemologia i filosofia de la ciència.</p>
+      </div>
+      <div class="vocab-grid">
+          <div class="vocab-item"><div class="vocab-term">Epistemologia</div><div class="vocab-def">Branca de la filosofia que estudia la naturalesa, l'origen i els límits del coneixement.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Creença vertadera justificada (CVJ)</div><div class="vocab-def">Definició tripartida clàssica del coneixement (Plató): creure alguna cosa vertadera per bones raons.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Justificació</div><div class="vocab-def">Raons, evidències o arguments que donen suport a una creença i la fan fiable.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Racionalisme</div><div class="vocab-def">La raó és la font fonamental i més fiable del coneixement; els sentits poden enganyar.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Empirisme</div><div class="vocab-def">L'experiència sensorial és la font fonamental del coneixement; tot el que sabem del món ve dels sentits.</div></div>
+          <div class="vocab-item"><div class="vocab-term">A priori / A posteriori</div><div class="vocab-def"><em>A priori:</em> coneixement que no requereix l'experiència (matemàtiques, lògica). <em>A posteriori:</em> coneixement que la necessita.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Realisme científic</div><div class="vocab-def">La ciència descriu una realitat independent de l'observador; les seves entitats existeixen realment.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Intersubjectivitat</div><div class="vocab-def">Validació del coneixement a través de l'acord crític entre múltiples subjectes; base real de la ciència.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Escepticisme</div><div class="vocab-def">Posició filosòfica que dubta que puguem tenir coneixement justificat amb certesa.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Relativisme</div><div class="vocab-def">El coneixement és sempre relatiu a la cultura o perspectiva del subjecte; no hi ha veritat objectiva universal.</div></div>
+      </div>
+    </div><!-- /panel-vocabulari -->
+
   </main>
 </div>
 
@@ -1426,6 +1462,9 @@
   // Check if URL has #exercicis
   if (window.location.hash === '#exercicis') {
     switchTab('exercicis', document.querySelectorAll('.tab-btn')[1]);
+  }
+  if (window.location.hash === '#vocabulari') {
+    switchTab('vocabulari', document.querySelectorAll('.tab-btn')[2]);
   }
 </script>
 </body>

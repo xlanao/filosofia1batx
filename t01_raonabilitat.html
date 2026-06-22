@@ -749,6 +749,22 @@
     .nav-meta { display: none; }
     .site-footer { padding: 20px 22px; flex-direction: column; gap: 10px; }
   }
+
+  /* ── VOCABULARI ── */
+  .vocab-intro { border: 1px solid var(--ink); padding: 22px 24px; margin-bottom: 32px; }
+  .vocab-intro h3 { font-family: 'Spectral', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); margin: 0 0 6px; }
+  .vocab-intro p { font-size: 0.88rem; color: var(--ink-faint); font-weight: 300; margin: 0; }
+  .vocab-section { margin-bottom: 36px; }
+  .vocab-section-title { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); padding-bottom: 8px; border-bottom: 1px solid var(--line); display: block; margin-bottom: 0; }
+  .vocab-grid { }
+  .vocab-item { display: grid; grid-template-columns: 200px 1fr; gap: 0 20px; border-bottom: 1px solid var(--line-faint); padding: 11px 4px; align-items: baseline; }
+  .vocab-item:last-child { border-bottom: 1px solid var(--line); }
+  .vocab-term { font-family: 'Spectral', serif; font-size: 0.93rem; font-weight: 600; color: var(--ink); line-height: 1.45; }
+  .vocab-def { font-size: 0.86rem; color: var(--ink-soft); font-weight: 300; line-height: 1.55; }
+  @media (max-width: 600px) {
+    .vocab-item { grid-template-columns: 1fr; gap: 3px; padding: 10px 4px; }
+  }
+
 </style>
 </head>
 <body>
@@ -778,6 +794,7 @@
 <div class="tabs-bar">
   <button class="tab-btn active" onclick="switchTab('apunts', this)">APUNTS</button>
   <button class="tab-btn" onclick="switchTab('exercicis', this)">EXERCICIS</button>
+  <button class="tab-btn" onclick="switchTab('vocabulari', this)">VOCABULARI</button>
 </div>
 
 <!-- PAGE WRAP -->
@@ -1412,6 +1429,26 @@
 
     </div><!-- /panel-exercicis -->
 
+    <div class="tab-panel" id="panel-vocabulari">
+      <div class="vocab-intro">
+        <h3>Vocabulari essencial — T01 Lògica i argumentació</h3>
+        <p>Els 11 termes clau d'aquest tema. Imprescindibles per a tots els temes posteriors.</p>
+      </div>
+      <div class="vocab-grid">
+          <div class="vocab-item"><div class="vocab-term">Argument</div><div class="vocab-def">Conjunt d'afirmacions en les quals unes (premisses) pretenen justificar-ne una altra (conclusió).</div></div>
+          <div class="vocab-item"><div class="vocab-term">Premissa</div><div class="vocab-def">Afirmació que es presenta com a raó per acceptar la conclusió.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Conclusió</div><div class="vocab-def">Afirmació que l'argument pretén demostrar a partir de les premisses.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Premissa implícita</div><div class="vocab-def">Premissa que un argument pressuposa però no formula explícitament.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Argument vàlid</div><div class="vocab-def">Argument en el qual és impossible que les premisses siguin vertaderes i la conclusió falsa. Depèn de l'estructura, no del contingut.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Argument sòlid</div><div class="vocab-def">Argument vàlid les premisses del qual són totes vertaderes; la conclusió queda completament garantida.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Fal·làcia</div><div class="vocab-def">Error en el raonament que fa que un argument sembli vàlid o convincent sense ser-ho.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Fals dilema</div><div class="vocab-def">Presentar com a úniques dues opcions quan n'hi ha més.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Tesi</div><div class="vocab-def">Posició o afirmació central que un text argumentatiu vol defensar.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Contra-argument</div><div class="vocab-def">Argument que ataca una premissa o la conclusió d'una postura rival.</div></div>
+          <div class="vocab-item"><div class="vocab-term">Rèplica</div><div class="vocab-def">Resposta argumentada a un contra-argument; mostra per quina raó el contra-argument no és definitiu.</div></div>
+      </div>
+    </div><!-- /panel-vocabulari -->
+
 
   </main>
 </div>
@@ -1468,6 +1505,9 @@
   // Check if URL has #exercicis
   if (window.location.hash === '#exercicis') {
     switchTab('exercicis', document.querySelectorAll('.tab-btn')[1]);
+  }
+  if (window.location.hash === '#vocabulari') {
+    switchTab('vocabulari', document.querySelectorAll('.tab-btn')[2]);
   }
 </script>
 </body>
