@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T03 · Ètica i acció — Filosofia 1r Bat.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111;
+    --ink-soft: #444444;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-off: #fafaf9;
+    --line: #111111;
+    --line-soft: #cfcfcc;
+    --line-faint: #e6e5e1;
+    --sidebar-w: 250px;
+    --content-max: 740px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Spectral', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.75;
+    font-size: 16.5px;
+    font-weight: 400;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .nav-left { display: flex; align-items: center; gap: 0; }
+  .nav-back {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px 6px 0;
+    border-right: 1px solid var(--line-faint);
+    margin-right: 14px;
+    transition: color 0.15s;
+  }
+  .nav-back:hover { color: var(--ink); }
+  .nav-brand {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 700;
+  }
+  .nav-meta {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── TOPIC HERO ── */
+  .topic-hero {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 52px 48px 44px;
+  }
+  .topic-hero-inner {
+    max-width: calc(var(--sidebar-w) + var(--content-max) + 64px);
+    margin: 0 auto;
+  }
+  .topic-breadcrumb {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 22px;
+  }
+  .topic-breadcrumb a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+  .topic-breadcrumb a:hover { opacity: 0.6; }
+  .topic-num-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+  }
+  .topic-hero h1 {
+    font-family: 'Spectral', serif;
+    font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.18;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .topic-hero h1 em { font-style: italic; font-weight: 400; }
+  .topic-subtitle {
+    font-family: 'Courier Prime', monospace;
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── TABS ── */
+  .tabs-bar {
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 0 48px;
+    display: flex;
+    gap: 0;
+  }
+  .tab-btn {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border: none;
+    background: none;
+    padding: 15px 22px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.15s;
+  }
+  .tab-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 1px;
+    background: var(--ink);
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .tab-btn:hover { color: var(--ink-soft); }
+  .tab-btn.active { color: var(--ink); font-weight: 700; }
+  .tab-btn.active::after { opacity: 1; }
+
+  /* ── PAGE WRAP ── */
+  .page-wrap {
+    max-width: calc(var(--sidebar-w) + var(--content-max) + 64px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr;
+    align-items: start;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: sticky;
+    top: 56px;
+    padding: 40px 24px 40px 0;
+    max-height: calc(100vh - 56px);
+    overflow-y: auto;
+    scrollbar-width: none;
+  }
+  .sidebar::-webkit-scrollbar { display: none; }
+  .sidebar-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  .toc { list-style: none; }
+  .toc a {
+    display: block;
+    padding: 5px 0 5px 14px;
+    font-family: 'Spectral', serif;
+    font-size: 0.83rem;
+    color: var(--ink-faint);
+    text-decoration: none;
+    border-left: 1px solid var(--line-faint);
+    transition: all 0.15s;
+    line-height: 1.4;
+  }
+  .toc a:hover { color: var(--ink); border-left-color: var(--ink-soft); }
+  .toc a.active {
+    color: var(--ink);
+    border-left: 1px solid var(--ink);
+    font-weight: 600;
+  }
+  .toc .toc-sub a {
+    padding-left: 28px;
+    font-size: 0.78rem;
+    font-style: italic;
+  }
+  .sidebar-sep {
+    height: 1px;
+    background: var(--line-faint);
+    margin: 16px 0;
+  }
+  .sidebar-exlink {
+    display: block;
+    margin: 0;
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-decoration: none;
+    padding: 9px 12px;
+    border: 1px solid var(--line);
+    transition: all 0.15s;
+    text-align: center;
+  }
+  .sidebar-exlink:hover { color: var(--paper); background: var(--ink); }
+
+  /* ── CONTENT ── */
+  .content {
+    padding: 48px 0 100px 40px;
+    border-left: 1px solid var(--line);
+    min-width: 0;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ── SECTIONS ── */
+  .section { margin-bottom: 64px; padding-top: 8px; }
+  .section-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 10px;
+    display: block;
+  }
+  h2 {
+    font-family: 'Spectral', serif;
+    font-size: 1.65rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 26px;
+    line-height: 1.3;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  h3 {
+    font-family: 'Spectral', serif;
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 40px 0 14px;
+  }
+  h4 {
+    font-family: 'Spectral', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin: 28px 0 10px;
+  }
+  p { margin-bottom: 14px; color: var(--ink-soft); font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 700; }
+  em { font-style: italic; }
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; color: var(--ink-soft); font-weight: 300; }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--line);
+    margin: 52px 0;
+  }
+
+  /* ── DEFINITION BOX ── */
+  .def-box {
+    border: 1px solid var(--ink);
+    padding: 18px 20px;
+    margin: 20px 0;
+    position: relative;
+  }
+  .def-box .def-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 700;
+  }
+  .def-box p { margin: 0; font-size: 0.95rem; color: var(--ink-soft); }
+
+  /* ── EXAMPLE BOX ── */
+  .example-box {
+    border: 1px dashed var(--line-soft);
+    padding: 16px 20px;
+    margin: 18px 0;
+  }
+  .example-box .ex-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+    display: block;
+  }
+  .example-box p { margin: 0 0 8px; font-size: 0.93rem; font-style: italic; color: var(--ink-soft); }
+  .example-box p:last-child { margin: 0; }
+  .example-box .ex-problem {
+    font-style: normal;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+    background: var(--paper-off);
+    border-left: 2px solid var(--ink);
+    padding: 8px 12px;
+    margin-top: 8px;
+  }
+
+  /* ── WARN BOX ── */
+  .warn-box {
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 16px 4px;
+    margin: 22px 0;
+    font-size: 0.93rem;
+    color: var(--ink-soft);
+  }
+  .warn-box::before {
+    content: 'ATENCIÓ — ';
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    color: var(--ink);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  /* ── TIP BOX ── */
+  .tip-box {
+    border: 1px dotted var(--ink-soft);
+    padding: 16px 20px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+  }
+  .tip-box .tip-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 700;
+  }
+
+  /* ── ARGUMENT DISPLAY ── */
+  .argument {
+    background: var(--paper-off);
+    border: 1px solid var(--line-soft);
+    padding: 18px 22px;
+    margin: 18px 0;
+    font-size: 0.93rem;
+    font-family: 'Courier Prime', monospace;
+  }
+  .argument .arg-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .argument .premise {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 0 10px;
+    margin-bottom: 8px;
+    align-items: baseline;
+    font-size: 0.86rem;
+  }
+  .argument .premise-label { color: var(--ink-faint); }
+  .argument .premise-text { color: var(--ink-soft); }
+  .argument .conclusion {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 0 10px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line-faint);
+    align-items: baseline;
+    font-size: 0.86rem;
+  }
+  .argument .conclusion-label { color: var(--ink); font-weight: 700; }
+  .argument .conclusion-text { font-weight: 700; color: var(--ink); }
+
+  /* ── EXERCISE BLOCK (inline within apunts) ── */
+  .exercise {
+    border: 1px solid var(--ink);
+    margin: 24px 0;
+  }
+  .exercise-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 20px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .exercise-body { padding: 20px; }
+  .exercise-case {
+    border-bottom: 1px dashed var(--line-faint);
+    padding: 14px 0;
+  }
+  .exercise-case:last-child { border-bottom: none; padding-bottom: 0; }
+  .case-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    display: block;
+    font-weight: 700;
+  }
+  .exercise-case p { margin: 0; font-style: italic; font-size: 0.93rem; }
+
+  /* ── CARD GRID (fal·làcies / virtuts) ── */
+  .fallacy-grid { display: grid; gap: 0; margin: 24px 0; border-top: 1px solid var(--line); }
+  .fallacy-card {
+    border-bottom: 1px solid var(--line-faint);
+    padding: 22px 4px;
+  }
+  .fallacy-name {
+    font-family: 'Spectral', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .fallacy-def { font-size: 0.9rem; margin-bottom: 12px; color: var(--ink-soft); }
+  .fallacy-ex {
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    padding: 10px 14px;
+    background: var(--paper-off);
+    border-left: 2px solid var(--line-soft);
+    margin-bottom: 10px;
+  }
+  .fallacy-prob {
+    font-size: 0.83rem;
+    color: var(--ink-faint);
+    padding-top: 8px;
+    border-top: 1px dotted var(--line-faint);
+  }
+  .fallacy-prob strong { color: var(--ink); }
+
+  /* ── TABLE ── */
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 14px;
+    text-align: left;
+    font-family: 'Courier Prime', monospace;
+    font-weight: 400;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line-faint);
+    vertical-align: top;
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+  }
+  tr:last-child td { border-bottom: 1px solid var(--ink); }
+  code {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.86em;
+    background: var(--paper-off);
+    border: 1px solid var(--line-faint);
+    padding: 1px 6px;
+    color: var(--ink);
+  }
+
+  /* ── LEVELS (3-column intro boxes) ── */
+  .levels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 24px 0;
+    border: 1px solid var(--line);
+  }
+  .level-card {
+    padding: 20px 16px;
+    text-align: center;
+    border-right: 1px solid var(--line-faint);
+  }
+  .level-card:last-child { border-right: none; }
+  .level-num {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 0 auto 12px;
+  }
+  .level-card h4 {
+    margin: 0 0 8px;
+    font-style: normal;
+    font-size: 0.76rem;
+    font-family: 'Courier Prime', monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .level-card p { font-size: 0.82rem; color: var(--ink-faint); margin: 0; line-height: 1.5; font-weight: 300; }
+
+  /* ── TEXT PARTS (timeline) ── */
+  .text-parts { margin: 24px 0; border-left: 1px solid var(--line); }
+  .text-part {
+    padding: 4px 0 20px 22px;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .text-part::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 6px;
+    width: 7px;
+    height: 7px;
+    background: var(--paper);
+    border: 1px solid var(--ink);
+    border-radius: 50%;
+  }
+  .text-part-title { font-family: 'Spectral', serif; font-weight: 600; font-size: 0.97rem; margin-bottom: 5px; color: var(--ink); }
+  .text-part-body p { font-size: 0.87rem; color: var(--ink-faint); margin: 0; font-weight: 300; }
+
+  /* ── TWO-COLUMN COMPARISON GRID ── */
+  .expr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0;
+    margin: 20px 0;
+    border: 1px solid var(--line);
+  }
+  .expr-group {
+    padding: 14px 16px;
+    border-right: 1px solid var(--line-faint);
+    border-bottom: 1px solid var(--line-faint);
+  }
+  .expr-group-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .expr-group ul { list-style: none; padding: 0; margin: 0; }
+  .expr-group li {
+    font-size: 0.85rem;
+    padding: 4px 0;
+    border-bottom: 1px dotted var(--line-faint);
+    color: var(--ink-soft);
+    font-style: italic;
+    font-weight: 300;
+  }
+  .expr-group li:last-child { border-bottom: none; }
+
+  /* ── EXERCICIS PANEL ── */
+  .ex-intro {
+    border: 1px solid var(--ink);
+    padding: 26px 30px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+  }
+  .ex-intro-icon {
+    font-family: 'Courier Prime', monospace;
+    font-size: 1.6rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ex-intro h3 { margin: 0 0 8px; font-size: 1.1rem; }
+  .ex-intro p { margin: 0; font-size: 0.9rem; color: var(--ink-faint); font-weight: 300; }
+
+  .ex-block {
+    margin-bottom: 48px;
+    border: 1px solid var(--ink);
+  }
+  .ex-block-header {
+    background: var(--ink);
+    padding: 15px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ex-block-header h3 { margin: 0; font-size: 1rem; font-family: 'Spectral', serif; color: var(--paper); }
+  .ex-badge {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border: 1px solid var(--paper);
+    color: var(--paper);
+  }
+
+  .ex-items { padding: 0; }
+  .ex-item {
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--line-faint);
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    gap: 0 16px;
+    align-items: baseline;
+  }
+  .ex-item:last-child { border-bottom: none; }
+  .ex-item-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.74rem;
+    color: var(--ink);
+    font-weight: 700;
+    padding-top: 2px;
+  }
+  .ex-item-body {}
+  .ex-item-q {
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.55;
+    font-weight: 400;
+  }
+  .ex-item-note {
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+  .ex-item-quote {
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    background: var(--paper-off);
+    padding: 10px 16px;
+    margin: 8px 0;
+    border-left: 2px solid var(--ink);
+  }
+
+  .ex-coming {
+    padding: 32px 24px;
+    text-align: center;
+    color: var(--ink-faint);
+    font-style: italic;
+    font-size: 0.9rem;
+    border-top: 1px dashed var(--line-faint);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .ex-coming span {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border: 1px solid var(--line-soft);
+    padding: 4px 12px;
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--ink-faint);
+    font-family: 'Courier Prime', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.06em;
+    max-width: calc(var(--sidebar-w) + var(--content-max) + 64px);
+    margin: 0 auto;
+  }
+  .footer-nav { display: flex; gap: 20px; }
+  .footer-nav a { color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
+  .footer-nav a:hover { color: var(--ink); }
+
+  /* ── SCROLL ANIMATION ── */
+  .section { opacity: 0; transform: translateY(12px); transition: opacity 0.45s ease, transform 0.45s ease; }
+  .section.visible { opacity: 1; transform: none; }
+  .ex-block { opacity: 0; transform: translateY(12px); transition: opacity 0.45s ease, transform 0.45s ease; }
+  .ex-block.visible { opacity: 1; transform: none; }
+
+  /* ── CASE STUDY (aplicacions contemporànies) ── */
+  .case-study {
+    border-left: 3px solid var(--ink);
+    background: var(--paper-off);
+    padding: 20px 24px;
+    margin: 22px 0;
+  }
+  .case-study-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .case-study-title {
+    font-family: 'Spectral', serif;
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .case-study p {
+    font-size: 0.93rem;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .case-study p:last-child { margin-bottom: 0; }
+  .case-study-verdict {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dotted var(--line-soft);
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+  .case-study-verdict strong { color: var(--ink); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .content { padding: 32px 22px 60px; border-left: none; }
+    .levels { grid-template-columns: 1fr; }
+    .level-card { border-right: none; border-bottom: 1px solid var(--line-faint); }
+    .level-card:last-child { border-bottom: none; }
+    .topic-hero, .tabs-bar { padding-left: 22px; padding-right: 22px; }
+    .nav { padding: 0 22px; }
+    .nav-meta { display: none; }
+    .site-footer { padding: 20px 22px; flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-back" href="index.html">← Inici</a>
+    <span class="nav-brand">Filosofia 1r Bat.</span>
+  </div>
+  <span class="nav-meta">T03 · Ètica i acció</span>
+</nav>
+
+<!-- TOPIC HERO -->
+<div class="topic-hero">
+  <div class="topic-hero-inner">
+    <div class="topic-breadcrumb">
+      <a href="index.html">Índex</a> / Tema 03
+    </div>
+    <div class="topic-num-badge">Tema 03 — Ètica</div>
+    <h1>Ètica i <em>acció</em></h1>
+    <p class="topic-subtitle">Apunts de classe · Filosofia i Ciutadania 1r Batxillerat</p>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('apunts', this)">APUNTS</button>
+  <button class="tab-btn" onclick="switchTab('exercicis', this)">EXERCICIS</button>
+</div>
+
+<!-- PAGE WRAP -->
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar" aria-label="Índex de continguts" id="sidebar-apunts">
+    <div class="sidebar-title">Continguts</div>
+    <ul class="toc" id="toc">
+      <li><a href="#s1">1. Introducció a l'ètica</a></li>
+      <li class="toc-sub"><a href="#s1-1">1.1 Ètica i moral</a></li>
+      <li class="toc-sub"><a href="#s1-2">1.2 Arguments avaluatius</a></li>
+      <li class="toc-sub"><a href="#s1-3">1.3 La fal·làcia naturalista</a></li>
+      <li><a href="#s2">2. Ètica utilitarista (Mill)</a></li>
+      <li class="toc-sub"><a href="#s2-1">2.1 Hedonisme ètic</a></li>
+      <li class="toc-sub"><a href="#s2-2">2.2 Principi d'utilitat</a></li>
+      <li class="toc-sub"><a href="#s2-3">2.3 La felicitat és social</a></li>
+      <li class="toc-sub"><a href="#s2-4">2.4 Plaers superiors i inferiors</a></li>
+      <li class="toc-sub"><a href="#s2-5">2.5 Felicitat i contentament</a></li>
+      <li class="toc-sub"><a href="#s2-6">2.6 L'utilitarisme a la pràctica</a></li>
+      <li><a href="#s3">3. Ètica kantiana i Korsgaard</a></li>
+      <li class="toc-sub"><a href="#s3-1">3.1 La bona voluntat</a></li>
+      <li class="toc-sub"><a href="#s3-2">3.2 Conforme al deure / per deure</a></li>
+      <li class="toc-sub"><a href="#s3-3">3.3 L'imperatiu categòric</a></li>
+      <li class="toc-sub"><a href="#s3-4">3.4 Tipus d'accions</a></li>
+      <li class="toc-sub"><a href="#s3-5">3.5 Korsgaard: identitat pràctica</a></li>
+      <li class="toc-sub"><a href="#s3-6">3.6 L'ètica kantiana a la pràctica</a></li>
+      <li><a href="#s4">4. Ètica de la virtut</a></li>
+      <li class="toc-sub"><a href="#s4-1">4.1 El caràcter</a></li>
+      <li class="toc-sub"><a href="#s4-2">4.2 Virtuts i vicis</a></li>
+      <li class="toc-sub"><a href="#s4-3">4.3 Les quatre virtuts</a></li>
+      <li class="toc-sub"><a href="#s4-4">4.4 Eudaimonia</a></li>
+      <li class="toc-sub"><a href="#s4-5">4.5 Hursthouse: actualització</a></li>
+      <li class="toc-sub"><a href="#s4-6">4.6 L'ètica de la virtut a la pràctica</a></li>
+      <li><a href="#s5">5. El dilema del tramvia</a></li>
+    </ul>
+    <div class="sidebar-sep"></div>
+    <a class="sidebar-exlink" href="#" onclick="switchTab('exercicis', document.querySelectorAll('.tab-btn')[1]); return false;">Ves als exercicis →</a>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- ════ APUNTS PANEL ════ -->
+    <div class="tab-panel active" id="panel-apunts">
+
+      <!-- S1 -->
+      <section class="section" id="s1">
+        <span class="section-num">Secció 01</span>
+        <h2>Introducció a l'ètica</h2>
+        <div class="def-box">
+          <span class="def-label">Definició · Ètica</span>
+          <p>L'<strong>ètica</strong> és la branca de la filosofia que estudia les obligacions morals, les accions correctes i incorrectes, i la seva justificació racional.</p>
+        </div>
+        <p>L'ètica intenta respondre preguntes fonamentals que apareixeran constantment al llarg d'aquest tema: Què és una acció correcta? Què vol dir ser una bona persona? Quina és la millor manera de viure? Què és la felicitat? Aquestes preguntes tenen una cosa en comú: no es poden respondre simplement observant el món, tal com vam veure al tema anterior amb les preguntes filosòfiques de "nivell 3". L'ètica no es limita a descriure què fan o què pensen les persones, sinó que intenta determinar què <em>haurien</em> de fer.</p>
+
+        <h3 id="s1-1">1.1. Ètica i moral</h3>
+        <p>En el llenguatge quotidià, "ètica" i "moral" sovint es fan servir com a sinònims. En filosofia, però, és útil distingir-los amb precisió, perquè designen dues coses diferents.</p>
+        <div class="def-box">
+          <span class="def-label">Definició · Moral</span>
+          <p>La <strong>moral</strong> és el conjunt de normes, costums, valors i creences que té una persona o una societat sobre el que està bé o malament. La moral és <strong>descriptiva</strong>: descriu allò que una comunitat considera correcte o incorrecte, sigui quin sigui el seu contingut.</p>
+        </div>
+        <div class="def-box">
+          <span class="def-label">Definició · Ètica</span>
+          <p>L'<strong>ètica</strong>, en canvi, és la reflexió filosòfica sobre aquestes normes i valors. L'ètica és <strong>prescriptiva</strong>: intenta determinar racionalment què hauria de considerar-se correcte o incorrecte, més enllà del que una societat concreta pensi de fet.</p>
+        </div>
+        <p>Aquesta distinció és important perquè ens permet separar dues preguntes molt diferents: "què pensa aquesta societat sobre X?" (pregunta moral, descriptiva) i "té raó aquesta societat en pensar això sobre X?" (pregunta ètica, prescriptiva). Una societat pot estar moralment convençuda d'alguna cosa i, tot i així, estar èticament equivocada.</p>
+        <div class="example-box">
+          <span class="ex-label">Exemple — el desacord entre el fet i el valor</span>
+          <p>Algunes societats han considerat acceptable la mutilació genital femenina. Aquest és un <strong>fet moral</strong>: descriu una pràctica que existeix i que algunes comunitats aproven.</p>
+          <p>L'ètica, però, es pregunta una altra cosa: és aquesta pràctica realment correcta? Quines raons podrien justificar-la o condemnar-la? Aquesta segona pregunta no es respon descrivint què fa la gent, sinó avaluant-ho amb arguments.</p>
+        </div>
+        <p>Aquest exemple il·lustra per què calen les dues disciplines: la moral ens diu com és, de fet, la vida normativa d'una societat; l'ètica ens dona les eines per jutjar-la críticament des de fora.</p>
+
+        <h3 id="s1-2">1.2. Arguments avaluatius i principis ètics</h3>
+        <p>Molts dels arguments que trobem en els debats morals són <strong>arguments avaluatius</strong>.</p>
+        <div class="def-box">
+          <span class="def-label">Definició · Argument avaluatiu</span>
+          <p>Un argument és <strong>avaluatiu</strong> quan alguna de les seves premisses, o la seva conclusió, conté un <strong>judici de valor</strong>: una afirmació sobre allò que és bo, dolent, correcte, incorrecte, just o injust.</p>
+        </div>
+        <div class="argument">
+          <span class="arg-title">Exemple — un argument avaluatiu</span>
+          <div class="premise"><span class="premise-label">P1</span><span class="premise-text">Fer patir innecessàriament els éssers humans és incorrecte.</span></div>
+          <div class="premise"><span class="premise-label">P2</span><span class="premise-text">La tortura fa patir innecessàriament els éssers humans.</span></div>
+          <div class="conclusion"><span class="conclusion-label">C</span><span class="conclusion-text">Per tant, la tortura és incorrecta.</span></div>
+        </div>
+        <p>Aquest argument és vàlid (com vam veure al tema 1, l'estructura és un silogisme correcte), però fixa't en un detall important: només funciona perquè acceptem la P1 com un <strong>principi ètic</strong>. Sense aquest principi normatiu de partida, la conclusió no es pot derivar únicament a partir de fets. Això mostra una idea central per a tot aquest tema: els arguments morals sempre requereixen, en algun punt, almenys una premissa <strong>normativa o avaluativa</strong> que permeti passar dels fets a les valoracions. Un argument format únicament per premisses descriptives mai pot generar, per si sol, una conclusió prescriptiva.</p>
+
+        <h3 id="s1-3">1.3. La fal·làcia naturalista</h3>
+        <div class="def-box">
+          <span class="def-label">Definició · Fal·làcia naturalista</span>
+          <p>La <strong>fal·làcia naturalista</strong> consisteix a intentar derivar una conclusió moral únicament a partir de fets descriptius, sense reconèixer que cal una premissa normativa addicional per fer el salt.</p>
+        </div>
+        <div class="argument">
+          <span class="arg-title">Exemple — fal·làcia naturalista</span>
+          <div class="premise"><span class="premise-label">P1</span><span class="premise-text">Els éssers humans tendeixen a preocupar-se més pels membres de la seva pròpia família que pels desconeguts.</span></div>
+          <div class="premise"><span class="premise-label">P2</span><span class="premise-text">Aquesta tendència es troba en gairebé totes les societats humanes.</span></div>
+          <div class="conclusion"><span class="conclusion-label">C</span><span class="conclusion-text">Per tant, és moralment correcte preocupar-se només per la pròpia família i ignorar els desconeguts.</span></div>
+        </div>
+        <div class="warn-box">Aquest argument és <strong>invàlid</strong>. Les premisses descriuen com es comporten habitualment les persones, però la conclusió afirma com <em>haurien</em> de comportar-se. Per passar de les premisses a la conclusió caldria afegir una premissa avaluativa addicional, per exemple: <em>«Tot allò que és natural o habitual en els éssers humans és moralment correcte.»</em> Però aquesta premissa és molt discutible i necessitaria, al seu torn, una justificació pròpia.</div>
+        <p>La fal·làcia naturalista consisteix precisament a <strong>ocultar o ignorar</strong> aquest tipus de premisses normatives addicionals, i pretendre que els valors es poden derivar directament dels fets, com si "el que és" determinés automàticament "el que hauria de ser". Per això l'ètica necessita sempre principis normatius que indiquin què és correcte o incorrecte, i no es pot basar exclusivament en observacions sobre com funciona el món.</p>
+        <p>A partir d'aquí, la pregunta central de l'ètica és: <strong>quins principis normatius hem d'acceptar?</strong> Tradicionalment es distingeixen tres grans famílies de respostes, que estudiarem en les properes tres seccions:</p>
+        <div class="levels">
+          <div class="level-card">
+            <div class="level-num">1</div>
+            <h4>Conseqüencialistes</h4>
+            <p>Una acció és correcta si les seves conseqüències són les millors possibles.</p>
+          </div>
+          <div class="level-card">
+            <div class="level-num">2</div>
+            <h4>Del deure (deontològiques)</h4>
+            <p>Una acció és correcta si compleix amb el deure moral, independentment de les conseqüències.</p>
+          </div>
+          <div class="level-card">
+            <div class="level-num">3</div>
+            <h4>De la virtut</h4>
+            <p>Una acció és correcta si és la que faria una persona virtuosa, és a dir, de bon caràcter.</p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S2 -->
+      <section class="section" id="s2">
+        <span class="section-num">Secció 02</span>
+        <h2>L'ètica utilitarista de John Stuart Mill</h2>
+        <div class="def-box">
+          <span class="def-label">Definició · Utilitarisme</span>
+          <p>L'<strong>utilitarisme</strong> és una teoria <strong>conseqüencialista</strong> desenvolupada principalment per Jeremy Bentham i John Stuart Mill. Segons aquesta teoria, la correcció moral d'una acció depèn <strong>exclusivament de les seves conseqüències</strong>.</p>
+        </div>
+        <p>Això vol dir que, per a un utilitarista, no importa la intenció amb què es fa una acció, ni si respecta cap norma abstracta: l'única cosa que compta és el resultat final que produeix en el món.</p>
+
+        <h3 id="s2-1">2.1. Hedonisme ètic</h3>
+        <div class="def-box">
+          <span class="def-label">Definició · Hedonisme ètic</span>
+          <p>Mill sosté que la <strong>felicitat consisteix en la presència de plaer i l'absència de dolor</strong>. Totes les persones tendeixen naturalment a buscar el plaer i evitar el sofriment; per això Mill considera que la felicitat és l'objectiu últim de l'acció humana.</p>
+        </div>
+        <p>Aquesta idea ja apareixia, abans que Mill, en Jeremy Bentham, el fundador de l'utilitarisme, que ho va formular d'una manera memorable:</p>
+        <div class="example-box">
+          <span class="ex-label">Bentham, <em>Introducció als principis de la moral i la legislació</em> (1789)</span>
+          <p>«La natura ha posat la humanitat sota l'imperi de dos amos sobirans: el dolor i el plaer. Només ells ens indiquen el que hem de fer i el que no hem de fer.»</p>
+        </div>
+
+        <h3 id="s2-2">2.2. El principi d'utilitat</h3>
+        <div class="def-box">
+          <span class="def-label">Definició · Principi d'utilitat</span>
+          <p>El principi fonamental de l'utilitarisme afirma que una acció és correcta quan produeix la <strong>major felicitat possible per al major nombre possible de persones</strong>.</p>
+        </div>
+        <p>Davant de qualsevol decisió, l'utilitarisme proposa un mètode molt clar: no ens hem de preguntar si una acció respecta una norma o si expressa una bona intenció, sinó únicament <strong>quines conseqüències tindrà</strong>. Una acció és moralment correcta quan augmenta el balanç total de felicitat i disminueix el balanç total de dolor, sumant els efectes sobre totes les persones afectades.</p>
+        <div class="example-box">
+          <span class="ex-label">Formulació de Mill</span>
+          <p>«Les accions són correctes en la mesura que tendeixen a promoure la felicitat; incorrectes en tant que tendeixen a produir l'oposat a la felicitat.»</p>
+        </div>
+
+        <h3 id="s2-3">2.3. La felicitat és social</h3>
+        <p>Mill rebutja una concepció purament individualista de la felicitat. La felicitat humana depèn de la <strong>convivència social</strong>: les persones només poden desenvolupar plenament les seves capacitats dins d'una societat que garanteixi determinades condicions de vida. Per això, segons Mill, les institucions i les lleis han de promoure el benestar col·lectiu, harmonitzant els interessos de cada individu amb els interessos del conjunt.</p>
+        <div class="tip-box">
+          <span class="tip-label">Per què importa això</span>
+          <p>Aquesta idea evita una mala interpretació molt habitual de l'utilitarisme: no es tracta de buscar el plaer individual a qualsevol preu, sinó de calcular el benestar de <strong>totes</strong> les persones afectades, inclosa la societat sencera i, com veurem, també les generacions futures.</p>
+        </div>
+
+        <h3 id="s2-4">2.4. Plaers superiors i inferiors</h3>
+        <p>A diferència de Bentham, que considerava que tots els plaers valien el mateix si tenien la mateixa intensitat i durada, Mill defensa que <strong>no tots els plaers tenen el mateix valor</strong>. Distingeix entre dos tipus:</p>
+        <div class="expr-grid">
+          <div class="expr-group">
+            <div class="expr-group-title">Plaers inferiors o sensuals</div>
+            <ul>
+              <li>Relacionats amb les necessitats corporals i les satisfaccions immediates.</li>
+              <li>Menjar</li>
+              <li>Dormir</li>
+              <li>Descansar</li>
+              <li>Plaer físic</li>
+            </ul>
+          </div>
+          <div class="expr-group">
+            <div class="expr-group-title">Plaers superiors o intel·lectuals</div>
+            <ul>
+              <li>Relacionats amb les capacitats més elevades dels éssers humans.</li>
+              <li>Aprendre</li>
+              <li>Llegir</li>
+              <li>Crear art</li>
+              <li>Desenvolupar amistats profundes</li>
+              <li>Reflexionar</li>
+            </ul>
+          </div>
+        </div>
+        <p>Segons Mill, és preferible una vida amb plaers intel·lectuals, encara que comporti algunes dificultats, que una vida centrada exclusivament en els plaers corporals. Un ésser humà insatisfet que exercita les seves capacitats superiors viu, per a Mill, una vida més plena que un ésser satisfet que només persegueix plaers immediats.</p>
+        <div class="exercise">
+          <div class="exercise-header">Activitat — Són tots els plaers iguals?</div>
+          <div class="exercise-body">
+            <div class="exercise-case">
+              <p>Ordena els següents plaers segons el criteri de Mill (de més sensual a més intel·lectual, o classifica'ls en els dos grups): menjar — dormir — veure una bona sèrie — un massatge a l'esquena — mirar un programa de telerealitat — sexe — llegir un bon llibre — treure molt bona nota en un examen — aprendre una cosa nova — una conversa agradable amb un amic o amiga — banyar-te a la platja — tocar un instrument.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="s2-5">2.5. Felicitat i contentament</h3>
+        <p>És important evitar la idea simplista que l'utilitarisme proposa gaudir dels plaers individuals a qualsevol preu. Mill diferencia explícitament entre dos conceptes que sovint es confonen:</p>
+        <div class="def-box">
+          <span class="def-label">Contentament vs. Felicitat</span>
+          <p><strong>Contentament:</strong> gaudi purament personal i immediat. Consisteix en el pur "estar bé", que encara no és "viure bé".<br><br><strong>Felicitat:</strong> gaudi solidari i durador. Només es pot arribar a ser plenament feliç quan es viu voltat de gent que també ho és. La felicitat autèntica implica el desenvolupament integral de la persona i, com a primera condició, la dignitat i l'autorespecte, tant propi com aliè.</p>
+        </div>
+        <p>Una persona pot estar contenta en un moment puntual (per exemple, gaudint d'un plaer immediat) sense ser, en sentit ple, feliç. La felicitat, per a Mill, és un projecte de vida més ampli, que inclou els altres.</p>
+
+        <h3 id="s2-6">2.6. L'utilitarisme a la pràctica</h3>
+        <p>Per veure realment com pensa un utilitarista, val la pena aplicar el principi d'utilitat a dilemes contemporanis concrets, més enllà dels exemples escolars.</p>
+
+        <div class="case-study">
+          <span class="case-study-label">Cas contemporani</span>
+          <div class="case-study-title">La pena de mort</div>
+          <p>Un utilitarista no es pregunta si la pena de mort és "merescuda" pel criminal: aquesta pregunta, per a Mill, és irrellevant, perquè mira cap al passat. La pregunta correcta mira cap al futur: <strong>quina política redueix més el patiment total?</strong> Cal sumar-ho tot: el patiment de la persona executada (i de la seva família), el dolor i l'angoixa dels processos d'apel·lació que duren anys, el cost econòmic d'aquests processos (que sovint és més alt que el de la presó perpètua), el risc real i documentat d'executar persones innocents (un error irreversible que cap altra pena permet esmenar), i, de l'altra banda, el possible efecte dissuasiu sobre futurs crims i la tranquil·litat que aporta a les víctimes.</p>
+          <div class="case-study-verdict"><strong>→ Conclusió utilitarista:</strong> la majoria d'estudis empírics no troben un efecte dissuasiu clar de la pena de mort per sobre de la presó perpètua, mentre que el risc d'error irreversible i els costos són molt alts. Per a un utilitarista coherent amb les dades, això fa que la pena de mort sigui difícil de justificar: el balanç de patiment que genera tendeix a superar el benefici social que aporta.</div>
+        </div>
+
+        <div class="case-study">
+          <span class="case-study-label">Cas contemporani</span>
+          <div class="case-study-title">El consum d'animals</div>
+          <p>Aquí l'utilitarisme mostra tota la seva força transformadora. Si el que compta moralment és la <strong>capacitat de patir</strong> (i no, per exemple, pertànyer a l'espècie humana), aleshores el patiment d'un animal en una granja industrial compta exactament igual que el patiment equivalent d'una persona. Bentham ja ho va formular fa més de dos segles amb una frase que continua sent radical avui: la pregunta rellevant no és si els animals poden raonar o parlar, sinó si poden patir. Si la resposta és sí (i la ciència actual ho confirma per a un gran nombre d'espècies), el seu patiment ha d'entrar al càlcul moral amb el mateix pes relatiu.</p>
+          <div class="case-study-verdict"><strong>→ Conclusió utilitarista:</strong> donat el volum massiu de patiment que genera la ramaderia industrial actual, i que existeixen alternatives alimentàries que produeixen molt menys patiment net, un utilitarista coherent té raons molt fortes per reduir o eliminar el consum de productes d'origen animal produïts industrialment. Aquest argument no depèn de "estimar els animals": depèn únicament del càlcul imparcial de plaer i dolor.</div>
+        </div>
+
+        <h4>Resum de l'utilitarisme</h4>
+        <p>L'essència de l'utilitarisme no és, en el fons, "buscar el plaer": és la idea, radicalment igualitària per a la seva època, que <strong>el benestar de cada persona compta exactament igual</strong> en el càlcul moral, sense privilegiar el propi interès, la pròpia família, el propi país o, com mostra l'exemple anterior, fins i tot la pròpia espècie. És precisament aquesta capacitat d'eixamplar el cercle moral (cap a desconeguts, cap a generacions futures, cap a altres espècies) el que fa de l'utilitarisme una teoria encara avui molt influent en bioètica, política pública i ètica animal.</p>
+        <ul>
+          <li>La felicitat és el bé suprem, i consisteix en el plaer i l'absència de dolor.</li>
+          <li>Una acció és correcta si produeix la major felicitat possible per al major nombre d'afectats, ponderats imparcialment.</li>
+          <li>Les conseqüències són l'únic criteri per determinar la correcció moral d'una acció: ni la intenció ni el respecte a una norma compten per si mateixos.</li>
+          <li>No tots els plaers valen el mateix: els intel·lectuals són superiors als merament sensuals.</li>
+          <li>Cal tenir en compte totes les persones (i, per coherència amb el seu propi principi, tots els éssers sensibles) afectades, incloses les generacions futures.</li>
+        </ul>
+        <p>El punt feble més citat de l'utilitarisme és precisament la contrapartida del seu punt fort: en calcular-ho tot en termes agregats, sembla permetre sacrificar un individu si això maximitza el benestar del conjunt, sense cap límit intern que protegeixi els drets d'aquell individu. És exactament aquesta preocupació la que dona origen a la pròxima teoria que estudiarem.</p>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S3 -->
+      <section class="section" id="s3">
+        <span class="section-num">Secció 03</span>
+        <h2>L'ètica kantiana i la seva actualització en Christine Korsgaard</h2>
+        <div class="def-box">
+          <span class="def-label">Definició · Ètica deontològica</span>
+          <p>Immanuel Kant defensa una teoria <strong>deontològica</strong> o <strong>del deure</strong>. Segons Kant, la moralitat no depèn de les conseqüències de les accions, sinó dels principis que les guien. L'element central de la vida moral és el <strong>deure</strong>: una acció és moralment correcta quan es realitza perquè és el que s'ha de fer, independentment dels beneficis o perjudicis que pugui generar.</p>
+        </div>
+        <p>Aquesta posició és exactament oposada a l'utilitarisme en un punt clau: per a Kant, no importen les conseqüències; importa la intenció. I el màxim objectiu a la vida no és la felicitat, sinó tenir <strong>bona voluntat</strong>.</p>
+
+        <h3 id="s3-1">3.1. La bona voluntat</h3>
+        <div class="def-box">
+          <span class="def-label">Definició · Bona voluntat</span>
+          <p>Kant afirma que l'única cosa <strong>bona sense restriccions</strong> és la bona voluntat. La intel·ligència, la riquesa, el poder, el talent o fins i tot trets de caràcter com la valentia poden utilitzar-se per fer el bé o el mal; per això no són bons en si mateixos.</p>
+        </div>
+        <div class="example-box">
+          <span class="ex-label">Exemple — el caràcter no és bo en si mateix</span>
+          <p>La sang freda d'un assassí no solament el fa molt més perillós, sinó que també el fa més detestable del que ens hauria semblat si no tingués sang freda. La sang freda (un tret de caràcter normalment valorat positivament) només és bona quan està guiada per la bona voluntat.</p>
+        </div>
+        <div class="example-box">
+          <span class="ex-label">Exemple — els dons de la fortuna</span>
+          <p>La riquesa d'una persona rica no és bona en si mateixa: depèn de si aquesta persona té bona voluntat en com la fa servir. Els mateixos diners poden finançar una escola o alimentar una xarxa de corrupció.</p>
+        </div>
+        <p>Kant distingeix també entre <strong>ser feliç</strong> i <strong>merèixer ser feliç</strong>. Ser feliç no depèn totalment de nosaltres (hi intervenen altres persones, la sort, les circumstàncies), però merèixer ser feliç sí que en depèn: és la bona voluntat la que ens fa dignes de ser-ho. Per a Kant, el que és important a la vida no és, doncs, ser feliç, sinó merèixer-ho.</p>
+
+        <h3 id="s3-2">3.2. Conforme al deure o per deure</h3>
+        <p>Què fa bona, exactament, la bona voluntat? Per a Kant, tenir bona voluntat és <strong>actuar segons la llei moral</strong>; a la necessitat d'actuar segons aquesta llei l'anomena <strong>deure</strong>. Però no n'hi ha prou de fer allò que el deure mana: cal distingir entre dues maneres molt diferents de relacionar-se amb el deure.</p>
+        <div class="def-box">
+          <span class="def-label">Conforme al deure vs. Per deure</span>
+          <p>Actuem <strong>conforme al deure</strong> quan fem allò correcte, però per algun motiu aliè (interès personal, por, conveniència). Actuem <strong>per deure</strong> quan fem allò correcte precisament perquè és correcte. Només les accions realitzades <em>per deure</em> tenen valor moral ple.</p>
+        </div>
+        <div class="example-box">
+          <span class="ex-label">Exemple comparatiu</span>
+          <p>Donar diners a una ONG per sentir-nos millor amb nosaltres mateixos: actuar conforme al deure.</p>
+          <p>Donar diners a una ONG perquè creiem que és el que s'ha de fer (llei moral): actuar per deure.</p>
+        </div>
+        <div class="exercise">
+          <div class="exercise-header">Activitat — Conforme al deure o per deure?</div>
+          <div class="exercise-body">
+            <div class="exercise-case">
+              <span class="case-label">Cas 1</span>
+              <p>Un dentista diagnostica correctament el que té el seu pacient (i al qual li hauria pogut diagnosticar dues càries de més) amb l'esperança que el pacient li deixi una bona ressenya a internet.</p>
+            </div>
+            <div class="exercise-case">
+              <span class="case-label">Cas 2</span>
+              <p>Una persona col·labora com a voluntària en una ONG. Hi va cada setmana tot i que li costa molt d'esforç i dolor, ja que a l'ONG hi treballa una ex-parella de la qual encara n'està enamorada.</p>
+            </div>
+            <div class="exercise-case">
+              <span class="case-label">Cas 3</span>
+              <p>Una persona organitza esdeveniments per recaptar diners per a bones causes. Recull moltes donacions perquè té molt de talent organitzatiu, i ho fa perquè li agrada la feina i es sent bé recaptant diners, sigui quina sigui la causa.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 id="s3-3">3.3. L'imperatiu categòric</h3>
+        <p>Per determinar quins són exactament els nostres deures, Kant formula l'<strong>imperatiu categòric</strong>: una llei moral que representa accions bones en si mateixes, no perquè ens portin a algun altre fi. L'imperatiu categòric és <strong>objectiu</strong>: no depèn d'un subjecte concret, sinó de la raó que tots compartim per igual.</p>
+        <div class="def-box">
+          <span class="def-label">Definició · Imperatiu categòric (fórmula de la universalitat)</span>
+          <p>«Actua només segons aquella màxima que puguis voler, al mateix temps, que es converteixi en una llei universal.»</p>
+        </div>
+        <p>Abans d'actuar, hem de preguntar-nos: <em>què passaria si tothom actués sempre d'aquesta manera?</em> Si la norma es pot universalitzar sense contradicció ni problema, l'acció és moralment acceptable. Si no es pot universalitzar (perquè generaria un problema per a algú, o perquè la pròpia norma es destruiria a si mateixa si tothom l'apliqués), l'acció és incorrecta.</p>
+        <div class="warn-box">L'imperatiu categòric no és una excusa per actuar com cadascú vulgui en el seu propi cas: la llei moral ha de ser una llei que s'apliqui a <strong>tothom per igual</strong>, sense excepcions personals.</div>
+
+        <h3 id="s3-4">3.4. Accions prohibides, permeses i obligatòries</h3>
+        <p>A partir de l'imperatiu categòric podem classificar qualsevol acció en tres categories:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Tipus d'acció</th><th>Relació amb el deure</th><th>Exemple</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Prohibida</strong></td><td>Contrària al deure (encara que pugui ser útil)</td><td>Matar és prohibit.</td></tr>
+              <tr><td><strong>Permesa</strong></td><td>Indiferent al deure</td><td>Menjar bròquil és permès; no menjar-ne, també.</td></tr>
+              <tr><td><strong>Obligatòria</strong></td><td>Manada pel deure</td><td>Respectar la vida dels altres és obligatori.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="exercise">
+          <div class="exercise-header">Activitat — Anàlisi de casos amb l'imperatiu categòric</div>
+          <div class="exercise-body">
+            <div class="exercise-case"><p>Mentir està prohibit.</p></div>
+            <div class="exercise-case"><p>Matar humans és permissible.</p></div>
+            <div class="exercise-case"><p>Ajudar els altres és obligatori.</p></div>
+            <div class="exercise-case"><p>Menjar animals està prohibit.</p></div>
+            <div class="exercise-case"><p>Experimentar amb humans, sense el seu consentiment, és permissible.</p></div>
+            <div class="exercise-case"><span class="case-label">Tasca</span><p>Per a cada afirmació, digues si la consideres certa o falsa segons Kant, justificant-ho amb l'imperatiu categòric: què passaria si tothom actués sempre seguint aquesta màxima?</p></div>
+          </div>
+        </div>
+
+        <h3 id="s3-5">3.5. Christine Korsgaard: una actualització contemporània</h3>
+        <p>Per entendre per què calia "actualitzar" Kant, primer cal veure quin problema deixa obert. Kant afirma que la llei moral ens obliga perquè som éssers <strong>racionals i autònoms</strong>, però la seva resposta final recorre a un argument molt abstracte i difícil de defensar avui: l'existència d'un "jo nouemènic", una mena de jo pur al marge del temps i de la causalitat física, que seria la font última de la nostra llibertat. Per a la filosofia contemporània, fortament influenciada per la ciència, aquesta metafísica resulta poc convincent: <strong>per què, exactament, hauria d'obeir la llei moral, si no crec en aquest jo metafísic separat del meu cos?</strong></p>
+        <p>La filòsofa contemporània <strong>Christine Korsgaard</strong> intenta respondre precisament aquesta pregunta sense recórrer a la metafísica de Kant, mantenint alhora la seva idea central: que la moralitat es fonamenta en la raó i en l'autonomia, no en les conseqüències ni en el caràcter.</p>
+        <div class="def-box">
+          <span class="def-label">La proposta de Korsgaard · Identitat pràctica</span>
+          <p>Segons Korsgaard, els éssers humans no actuem simplement per impulsos: necessitem <strong>justificar les nostres accions davant de nosaltres mateixos</strong> abans de poder actuar amb sentit. Això ens obliga a construir una <strong>identitat pràctica</strong>: una concepció de qui som i de quins valors guien la nostra vida (ser una bona amiga, ser una persona honesta, ser un bon professional...). Quan actuem, no només decidim què fem; també decidim, implícitament, quin tipus de persona volem ser.</p>
+        </div>
+        <div class="tip-box">
+          <span class="tip-label">Per què és una millora respecte a Kant</span>
+          <p>Korsgaard substitueix la pregunta metafísica de Kant ("per què existeix una llei moral universal?") per una pregunta pràctica que tothom pot reconèixer en si mateix: "què necessito per poder viure i actuar amb una identitat coherent?" Actuar immoralment no és, per tant, simplement infringir una norma abstracta i externa; és actuar de manera <strong>incoherent amb la pròpia identitat racional</strong>, i per tant fracassar com a agent. La moralitat esdevé així una condició necessària per mantenir-nos coherents amb nosaltres mateixos (una idea que connecta directament amb la "coherència" que vam treballar al tema 1), sense necessitat de postular cap realitat metafísica addicional.</p>
+        </div>
+        <p>D'aquesta manera, Korsgaard conserva tot l'èmfasi kantià en el deure i la dignitat de la persona racional, però en desplaça el fonament: ja no és una llei que ens ve donada des de fora (o des d'un jo metafísic), sinó una exigència que sorgeix de la pròpia estructura de l'acció humana reflexiva. És, en aquest sentit, una versió de Kant més "psicològicament" plausible i menys dependent d'una metafísica difícil de defensar avui.</p>
+
+        <h3 id="s3-6">3.6. L'ètica kantiana a la pràctica</h3>
+
+        <div class="case-study">
+          <span class="case-study-label">Cas contemporani</span>
+          <div class="case-study-title">La pena de mort</div>
+          <p>Aquí trobem un contrast fascinant amb l'utilitarisme: a diferència de Mill, el mateix Kant va defensar la pena de mort, però amb un raonament completament diferent del càlcul de costos i beneficis. Per a Kant, el càstig no s'ha de fixar pensant en la dissuasió de futurs crims (això seria utilitzar el condemnat com a <strong>mer instrument</strong> per intimidar els altres, violant la seva dignitat com a fi en si mateix). El càstig s'ha de fixar únicament en funció de la <strong>justícia retributiva</strong>: el criminal, com a agent racional, ha "triat" amb la seva pròpia acció el tracte que rebrà, segons el principi del talió (qui mata, mereix —per la seva pròpia lògica racional— perdre la vida).</p>
+          <div class="case-study-verdict"><strong>→ Tensió kantiana contemporània:</strong> aquesta posició de Kant és, avui, molt discutida fins i tot entre kantians: si el respecte per l'autonomia exigeix no utilitzar mai una persona com a mer instrument (ni tan sols per dissuadir altres crims), per què seria diferent matar-la en nom de la justícia retributiva? Molts filòsofs kantians contemporanis defensen que el respecte incondicional per la dignitat humana —el nucli mateix de la filosofia de Kant— hauria de portar, de manera més coherent, a rebutjar la pena de mort.</div>
+        </div>
+
+        <div class="case-study">
+          <span class="case-study-label">Cas contemporani</span>
+          <div class="case-study-title">Robar per sobreviure</div>
+          <p>Imagina algú que roba menjar perquè no té cap altra manera d'alimentar la seva família. Kant, llegit de manera estricta, donaria una resposta incòmoda: la màxima "robaré quan estigui en una necessitat extrema" no es pot universalitzar sense contradicció, perquè si tothom robés sempre que ho considerés necessari, el mateix concepte de propietat (que fa possible robar) col·lapsaria. Per tant, per a un Kant estricte, robar continua sent un deure prohibit, fins i tot en aquest cas.</p>
+          <p>Aquí és on l'actualització de Korsgaard aporta més matís que el Kant original: si la moralitat neix de mantenir una identitat pràctica coherent, una persona pot tenir <strong>diverses identitats pràctiques en conflicte</strong> (ser-respectuosa-amb-la-propietat-aliena, però també ser-una-bona-mare-o-pare-que-protegeix-la-seva-família). Korsgaard reconeix que, quan dos compromisos identitaris xoquen, cal una deliberació pràctica real sobre quin és més fonamental per a qui som, en lloc d'aplicar una única regla universal de manera mecànica.</p>
+          <div class="case-study-verdict"><strong>→ Conclusió:</strong> el Kant més estricte i original probablement condemnaria el robatori sense excepcions. Una lectura kantiana més contemporània, influenciada per Korsgaard, pot reconèixer la legitimitat del conflicte intern sense abandonar la idea central que la moralitat exigeix coherència amb un mateix, sense caure tampoc en el simple càlcul utilitarista de conseqüències.</div>
+        </div>
+
+        <div class="case-study">
+          <span class="case-study-label">Cas contemporani</span>
+          <div class="case-study-title">Dir una veritat difícil a un amic</div>
+          <p>Saps que la xicota d'un bon amic l'està enganyant. Dir-li la veritat li farà molt de mal; callar-ho és, en certa manera, mentir-li per omissió. Per a Kant, la resposta és relativament clara: mentir (fins i tot per "protegir" algú) tracta l'altra persona com algú que no pot gestionar la veritat per si mateix, en lloc de respectar-la com un agent racional capaç de prendre les seves pròpies decisions amb informació certa. La màxima "menteixo quan crec que és pel bé de l'altre" tampoc es pot universalitzar sense problemes: si tothom mentís cada vegada que ho cregués convenient pel bé aliè, la confiança humana —la base mateixa de la comunicació— es faria impossible.</p>
+          <div class="case-study-verdict"><strong>→ Conclusió kantiana:</strong> el deure és dir-li la veritat, encara que sigui dolorosa, perquè això respecta la seva autonomia com a agent racional. Korsgaard afegiria que callar també seria incoherent amb la pròpia identitat pràctica d'"amic lleial": un amic que oculta sistemàticament veritats importants per "protegir" l'altre, en realitat, no l'està tractant com un igual capaç de decidir per si mateix.</div>
+        </div>
+
+        <h4>Resum de l'ètica kantiana</h4>
+        <p>L'essència de l'ètica kantiana no és, simplement, "seguir regles": és la convicció que les persones tenen una <strong>dignitat incondicional</strong> que mai es pot sacrificar en nom d'un benefici col·lectiu, ni tan sols per salvar moltes altres vides. Allà on l'utilitarisme suma i resta benestar com si fos una sola massa, Kant insisteix que cada persona és un <strong>fi en si mateixa</strong>, mai un simple mitjà per als fins d'altres. Aquesta idea és, probablement, la contribució més duradora de Kant a l'ètica contemporània: és la base filosòfica de conceptes com els drets humans inalienables, que no es poden negociar ni "compensar" per molt benefici social que se n'obtingui.</p>
+        <ul>
+          <li>La moralitat depèn del deure i del respecte a la dignitat de les persones, no de les conseqüències.</li>
+          <li>L'única cosa bona sense restriccions és la bona voluntat.</li>
+          <li>Les accions moralment valuoses són les que es realitzen per deure, no només conforme al deure.</li>
+          <li>L'imperatiu categòric permet determinar els deures morals mitjançant la universalització.</li>
+          <li>El fonament metafísic original de Kant (el "jo noumènic") resulta poc convincent avui; Korsgaard el substitueix per la necessitat humana de mantenir una identitat pràctica coherent, sense perdre l'èmfasi en l'autonomia i la dignitat.</li>
+        </ul>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S4 -->
+      <section class="section" id="s4">
+        <span class="section-num">Secció 04</span>
+        <h2>L'ètica de la virtut: d'Aristòtil a Rosalind Hursthouse</h2>
+        <div class="def-box">
+          <span class="def-label">Definició · Ètica de la virtut</span>
+          <p>L'ètica de la virtut té el seu origen principal en <strong>Aristòtil</strong>. A diferència de l'utilitarisme i de l'ètica kantiana, no es pregunta principalment quines accions són correctes o incorrectes, sinó: <em>quin tipus de persona hauríem de ser?</em></p>
+        </div>
+
+        <h3 id="s4-1">4.1. Una ètica centrada en el caràcter</h3>
+        <p>L'objectiu principal d'aquesta teoria no és simplement actuar correctament en cada ocasió, sinó <strong>desenvolupar un bon caràcter</strong>. L'ètica de la virtut es centra en l'interès humà en determinar el caràcter d'una persona més que en saber si una acció particular concreta és bona o dolenta: normalment volem saber si algú, en general, és bona persona, no només si una acció puntual que ha fet és bona.</p>
+        <p>Això també té conseqüències per pensar la societat: si volem construir una bona societat, l'ètica de la virtut suggereix que el que cal és ajudar els seus membres a <strong>ser</strong> bones persones, no únicament crear lleis i càstigs per prevenir o castigar males accions.</p>
+        <div class="def-box">
+          <span class="def-label">Definició · Persona virtuosa</span>
+          <p>Una persona <strong>virtuosa</strong> és aquella que posseeix i exerceix virtuts de manera estable al llarg de la seva vida. No n'hi ha prou de realitzar ocasionalment una bona acció: la bondat moral depèn del conjunt del caràcter i de la manera habitual de viure, no de moments concrets aïllats.</p>
+        </div>
+        <div class="exercise">
+          <div class="exercise-header">Activitat — Bona persona?</div>
+          <div class="exercise-body">
+            <div class="exercise-case">
+              <span class="case-label">Situació 1</span>
+              <p>En Santi col·labora amb una ONG ajudant la gent sense sostre del seu barri. Cuina i reparteix menjar cada dilluns a la nit.</p>
+            </div>
+            <div class="exercise-case">
+              <span class="case-label">Situació 2</span>
+              <p>La Maria ha donat un dels seus ronyons a una persona desconeguda que el necessitava, sense demanar res a canvi.</p>
+            </div>
+            <div class="exercise-case">
+              <span class="case-label">Situació 3</span>
+              <p>La Júlia treballa de metgessa i, durant el seu temps lliure, fa de voluntària prestant serveis mèdics a gent en situació de vulnerabilitat.</p>
+            </div>
+            <div class="exercise-case"><span class="case-label">Tasca</span><p>Per a cada situació, determina si creus que el protagonista és bona persona i per què. Necessites més informació per decidir-ho? Quina, i per què?</p></div>
+          </div>
+        </div>
+
+        <h3 id="s4-2">4.2. Les virtuts i els vicis</h3>
+        <div class="def-box">
+          <span class="def-label">Definició · Virtut</span>
+          <p>Les <strong>virtuts</strong> són excel·lències del caràcter que permeten viure bé. No són qualitats innates completament desenvolupades, sinó disposicions que s'<strong>adquireixen i es perfeccionen mitjançant la pràctica</strong>: com més exercitem una virtut, més fàcil ens resulta actuar virtuosament.</p>
+        </div>
+        <p>El contrari d'una virtut és un <strong>vici</strong>: una característica humana perjudicial per a la nostra vida moral. Una virtut s'exercita quan decidim racionalment comportar-nos d'acord amb el que dicta, i no simplement per instint: la majoria de teòrics de la virtut insisteixen que l'acció virtuosa ha de ser el resultat d'un pensament racional.</p>
+
+        <h3 id="s4-3">4.3. Les quatre virtuts principals</h3>
+        <p>La tradició aristotèlica (i, abans, platònica) ha destacat especialment quatre grans virtuts:</p>
+        <div class="fallacy-grid">
+          <div class="fallacy-card">
+            <div class="fallacy-name">Prudència (saviesa pràctica)</div>
+            <div class="fallacy-def">Capacitat de deliberar correctament sobre què cal fer en cada situació concreta. És la virtut principal: orienta i regula totes les altres.</div>
+            <div class="fallacy-ex">Saber, en una situació difícil, quina és la millor manera d'aplicar la justícia, la fortalesa o la moderació.</div>
+          </div>
+          <div class="fallacy-card">
+            <div class="fallacy-name">Justícia</div>
+            <div class="fallacy-def">Capacitat de tractar totes les persones de manera imparcial i respectuosa, donant a cadascú allò que li correspon.</div>
+            <div class="fallacy-ex">No afavorir algú només perquè és un amic o un familiar, quan això suposa un tracte injust per a una altra persona.</div>
+          </div>
+          <div class="fallacy-card">
+            <div class="fallacy-name">Fortalesa (fortitud)</div>
+            <div class="fallacy-def">Capacitat de mantenir-se ferm davant les dificultats, la por o les pressions externes, i de dur a terme allò que creiem correcte.</div>
+            <div class="fallacy-ex">Denunciar una injustícia encara que això comporti conseqüències personals negatives.</div>
+          </div>
+          <div class="fallacy-card">
+            <div class="fallacy-name">Moderació</div>
+            <div class="fallacy-def">Capacitat de controlar els desitjos i les passions primàries, evitant tant l'excés com el defecte.</div>
+            <div class="fallacy-ex">Gaudir del menjar o del plaer sense que aquest desig domini les nostres decisions.</div>
+          </div>
+        </div>
+        <div class="exercise">
+          <div class="exercise-header">Activitat — Virtuós o no?</div>
+          <div class="exercise-body">
+            <div class="exercise-case">
+              <span class="case-label">Situació 1</span>
+              <p>Després de cobrir totes les teves despeses personals i estalviar una mica, et sobren 100 euros que vols donar a una ONG. La teva família i amics et diuen que no ho facis, que t'ho gastis en tu. Què hauries de fer? Per què?</p>
+            </div>
+            <div class="exercise-case">
+              <span class="case-label">Situació 2</span>
+              <p>El teu amic treballa per l'ajuntament i saps que roba diners públics (no gaires, et diu, només uns 1.000 euros l'any). Creus que l'has de denunciar? Per què?</p>
+            </div>
+            <div class="exercise-case"><span class="case-label">Tasca</span><p>Per a cada situació, identifica quines virtuts estan en joc (prudència, justícia, fortalesa, moderació) i com creus que s'haurien d'exercir.</p></div>
+          </div>
+        </div>
+
+        <h3 id="s4-4">4.4. Eudaimonia: el floriment humà</h3>
+        <p>Quin és, doncs, l'objectiu últim de la vida humana segons l'ètica de la virtut? Aristòtil respon amb un terme grec difícil de traduir: <strong>eudaimonia</strong>.</p>
+        <div class="def-box">
+          <span class="def-label">Definició · Eudaimonia</span>
+          <p>L'<strong>eudaimonia</strong> pot traduir-se aproximadament com a "floriment humà" o "vida bona". És el ple desenvolupament de les capacitats humanes: en particular, de la nostra capacitat racional, ja que és allò que ens fa humans i ens permet guiar la nostra vida per ser virtuosos.</p>
+        </div>
+        <p>Val la pena notar el contrast amb les altres dues teories: per a l'ètica de la virtut, l'objectiu últim de la vida <strong>no</strong> és el plaer (com en l'hedonisme de Mill) ni tampoc simplement tenir bona voluntat o complir amb el deure (com en Kant). L'eudaimonia és un concepte més ampli: una vida bona és aquella en què una persona desenvolupa les seves capacitats intel·lectuals, emocionals i morals de manera excel·lent, al llarg de tota una vida.</p>
+
+        <h3 id="s4-5">4.5. Rosalind Hursthouse: una actualització contemporània</h3>
+        <p>L'ètica de la virtut arrossega, des de fa temps, una objecció clàssica que cal entendre abans de veure com hi respon Hursthouse: si diem que «una acció és correcta quan és la que faria una persona virtuosa», sembla que estem donant una resposta <strong>circular</strong>. Per saber què faria una persona virtuosa, primer hauríem de saber què és correcte fer; i per saber què és correcte fer, segons la teoria, hauríem de mirar què faria una persona virtuosa. La teoria sembla, doncs, incapaç de <strong>guiar l'acció</strong> de manera concreta: a diferència de l'imperatiu categòric de Kant o del càlcul d'utilitat de Mill, no dona cap procediment clar per decidir què fer en un cas difícil.</p>
+        <p>La filòsofa <strong>Rosalind Hursthouse</strong> és la principal responsable d'haver donat una resposta convincent a aquesta objecció. La seva proposta trenca el cercle introduint les anomenades <strong>v-rules</strong> (regles de virtut): regles concretes derivades directament de cada virtut i del seu vici corresponent, com ara «fes allò honest», «fes allò generós», «evita allò covard» o «evita allò cruel».</p>
+        <div class="def-box">
+          <span class="def-label">La solució de Hursthouse · Les v-rules</span>
+          <p>Aquestes regles no defineixen "virtuós" com "el que és correcte" (evitant així la circularitat), sinó que connecten directament una virtut reconeixible (l'honestedat, la generositat, la valentia) amb un tipus d'acció identificable. Davant d'un dilema concret, Hursthouse proposa preguntar-se explícitament: <em>quina opció expressa millor l'honestedat? Quina expressa la compassió? Quina, la justícia?</em> Quan diverses v-rules entren en conflicte (com sovint passa), cal exercir la <strong>prudència</strong> per decidir quina pesa més en aquell context concret.</p>
+        </div>
+        <div class="tip-box">
+          <span class="tip-label">Per què és una millora respecte a Aristòtil</span>
+          <p>Hursthouse no es limita a la teoria abstracta: ha aplicat directament aquest mètode a dilemes bioètics reals i contemporanis (com l'avortament), mostrant que l'ètica de la virtut pot donar respostes concretes i matisades sense necessitat de reduir la decisió a un càlcul fred de conseqüències ni a una regla universal rígida. Això converteix l'ètica de la virtut, que durant dècades es considerava una teoria "massa vaga" per a la filosofia moral aplicada, en una eina realment <strong>operativa</strong> per afrontar problemes morals contemporanis.</p>
+        </div>
+        <p>D'aquesta manera, Hursthouse conserva l'èmfasi aristotèlic en el caràcter i en l'eudaimonia, però el doto d'una estructura interna (les v-rules més la prudència com a virtut "directora") que permet aplicar-lo a casos concrets sense caure en la circularitat que se li retreia.</p>
+
+        <h3 id="s4-6">4.6. L'ètica de la virtut a la pràctica</h3>
+
+        <div class="case-study">
+          <span class="case-study-label">Cas contemporani</span>
+          <div class="case-study-title">L'eutanàsia</div>
+          <p>Davant d'una persona amb una malaltia terminal que pateix intensament i demana ajuda per morir, l'ètica de la virtut no busca primer una regla universal ("matar és sempre prohibit", a la manera de Kant) ni un càlcul net de plaer i dolor (a la manera de Mill). Pregunta, seguint el mètode de Hursthouse: <em>quina resposta expressa millor la compassió, la justícia i la prudència en aquest cas concret?</em> La compassió ens inclina a alleujar el patiment evitable; la prudència exigeix considerar el context real (és realment irreversible la situació? hi ha pressions externes sobre la persona? és una decisió lliure i informada?); la justícia demana protegir les persones vulnerables de possibles abusos.</p>
+          <div class="case-study-verdict"><strong>→ Conclusió virtuosa:</strong> a diferència de les altres dues teories, que tendeixen a donar una resposta general aplicable a tots els casos (sí o no a l'eutanàsia, com a política), l'ètica de la virtut és més còmoda assenyalant que la resposta correcta depèn molt del context particular: la mateixa acció pot ser compassiva i justa en un cas, i imprudent o injusta en un altre amb detalls diferents.</div>
+        </div>
+
+        <div class="case-study">
+          <span class="case-study-label">Cas contemporani</span>
+          <div class="case-study-title">Robar per sobreviure (revisitat)</div>
+          <p>Recorda el cas de la secció anterior: algú roba menjar perquè no té cap altra manera d'alimentar la seva família. Mentre que un Kant estricte tendia a prohibir-ho sense excepcions (la màxima no es pot universalitzar), l'ètica de la virtut hi arriba de manera molt diferent. Pregunta quines virtuts hi entren en joc: la justícia (no perjudicar injustament el propietari del menjar) i, alhora, la cura i la responsabilitat cap a la pròpia família, que també són trets d'una persona virtuosa.</p>
+          <div class="case-study-verdict"><strong>→ Conclusió virtuosa:</strong> una persona prudent reconeixeria que, en una situació de necessitat extrema i sense alternatives raonables, robar per no deixar morir de gana algú al teu càrrec no és el tret d'un caràcter viciós, sinó d'algú atrapat en una circumstància extrema; la "justícia" que protegeix la propietat no és l'única virtut en joc. Aristòtil mateix reconeixia que la virtut depèn de jutjar bé el context, no de seguir una norma cega.</div>
+        </div>
+
+        <h4>Resum de l'ètica de la virtut</h4>
+        <p>L'essència de l'ètica de la virtut no és, doncs, una llista fixa de regles ni un càlcul: és la convicció que la pregunta moral fonamental no és «què he de fer en aquest cas?» sinó «<strong>quin tipus de persona estic esdevenint</strong> amb les decisions que prenc?». Aquesta perspectiva té un avantatge que ni l'utilitarisme ni el kantisme capturen del tot: reconeix que la vida moral no es redueix a decisions puntuals i aïllades, sinó a la formació, dia rere dia, d'un caràcter. I gràcies a l'aportació de Hursthouse, ja no és una teoria merament inspiradora, sinó una eina amb prou estructura interna (les virtuts, les v-rules i la prudència com a virtut directora) per orientar decisions concretes i difícils.</p>
+        <ul>
+          <li>La moralitat se centra en el caràcter més que en les accions aïllades.</li>
+          <li>Una acció és correcta si és la que faria una persona virtuosa en les mateixes circumstàncies.</li>
+          <li>Les virtuts són excel·lències del caràcter, adquirides mitjançant l'hàbit, no regles imposades des de fora.</li>
+          <li>Les virtuts principals són la prudència, la justícia, la fortalesa i la moderació; la prudència és la que en regula l'aplicació conjunta.</li>
+          <li>L'objectiu últim és la eudaimonia o floriment humà, no el plaer ni el simple compliment del deure.</li>
+          <li>Hursthouse resol l'objecció clàssica de la circularitat amb les v-rules, fent l'ètica de la virtut plenament operativa per a dilemes contemporanis.</li>
+        </ul>
+      </section>
+
+      <hr class="section-divider">
+
+
+      <!-- S5 -->
+      <section class="section" id="s5">
+        <span class="section-num">Secció 05</span>
+        <h2>El dilema del tramvia: comparant les tres teories</h2>
+        <p>Per acabar el tema, val la pena veure com es comporten les tres teories ètiques davant d'un mateix problema. El <strong>dilema del tramvia</strong> (formulat per la filòsofa Philippa Foot el 1967) és, probablement, l'experiment mental més conegut de la filosofia moral contemporània, i permet veure amb claredat en què discrepen realment l'utilitarisme, la deontologia kantiana i l'ètica de la virtut.</p>
+        <div class="def-box">
+          <span class="def-label">El dilema</span>
+          <p>Un tramvia fora de control es dirigeix cap a cinc persones que treballen a la via i que moriran si no fas res. Tens accés a una palanca que pot desviar el tramvia cap a una via secundària, on només hi ha una persona treballant. Si estiressis la palanca, el tramvia mataria una persona en lloc de cinc. <strong>Què hauries de fer?</strong></p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Teoria</th><th>Pregunta que es fa</th><th>Resposta i raonament</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Utilitarisme</strong></td>
+                <td>Quina acció produeix el millor balanç total de plaer i dolor?</td>
+                <td>Estirar la palanca: cinc vides salvades pesen objectivament més que una de perduda. El càlcul és directe i la resposta, des d'aquesta òptica, sembla relativament clara.</td>
+              </tr>
+              <tr>
+                <td><strong>Ètica kantiana</strong></td>
+                <td>Es pot universalitzar la màxima d'aquesta acció? Tracto algú merament com un mitjà, o el seu dany és només un efecte advers no buscat?</td>
+                <td>Aquí la resposta és, de fet, més discutida del que sembla. Es pot argumentar que estirar la palanca <em>no</em> utilitza la persona de la via secundària com a instrument: la seva mort és un efecte advers <strong>previst però no perseguit</strong> com a finalitat (l'objectiu és desviar el perill, no matar-la). Però també es pot objectar que, igualment, és la seva presència a la via la que "absorbeix" el perill que estava destinat als altres cinc, cosa que alguns filòsofs consideren que continua sent tractar-la com un mitjà per a un fi aliè. Kant no dona, doncs, una resposta automàtica: exigeix analitzar amb precisió si la mort de l'única persona és un mitjà per salvar les altres cinc, o només una conseqüència lateral d'una acció dirigida a un altre objectiu.</td>
+              </tr>
+              <tr>
+                <td><strong>Ètica de la virtut</strong></td>
+                <td>Què faria una persona prudent i virtuosa en aquesta situació?</td>
+                <td>No hi ha una resposta calculable automàticament. Una persona virtuosa actuaria probablement amb fortalesa i responsabilitat, prenent una decisió ràpida i raonada (probablement estirant la palanca, ja que la inacció també és una elecció amb conseqüències), però sense pretendre que la decisió es pugui reduir a una fórmula universal aplicable sense matisos a qualsevol variant del dilema.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Aquest exemple mostra bé per què cap de les tres teories és simplement "la correcta" de manera òbvia: cadascuna posa l'atenció en un aspecte diferent i rellevant de la moralitat (les conseqüències, el respecte per les persones com a fins en si mateixes, i el caràcter de qui actua). Saber-les aplicar i comparar és precisament l'habilitat que es treballarà als exercicis d'aquest tema.</p>
+      </section>
+
+    </div><!-- /panel-apunts -->
+
+    <!-- ════ EXERCICIS PANEL ════ -->
+    <div class="tab-panel" id="panel-exercicis">
+
+      <div class="ex-intro" id="exercicis">
+        <div class="ex-intro-icon">Ex</div>
+        <div>
+          <h3>Exercicis i tasques — Tema 03</h3>
+          <p>Activitats de pràctica i reflexió sobre les tres teories ètiques. Les tasques s'aniran afegint progressivament.</p>
+        </div>
+      </div>
+
+      <!-- BLOC 1 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 1 — Ètica, moral i fal·làcia naturalista</h3>
+          <span class="ex-badge analisi">Anàlisi</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">1.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Digueu tres "bones accions" i, per a cadascuna, expliqueu per quina raó les considereu bones. Intenteu identificar si la raó que doneu apel·la a les conseqüències, al deure o al caràcter de qui les fa.</div>
+              <div class="ex-item-note">Aquesta activitat servirà per introduir, sense saber-ho encara, les tres teories ètiques que estudiarem al tema.</div>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">1.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Digueu si els arguments següents cometen la fal·làcia naturalista. Justifiqueu la resposta indicant quina premissa normativa caldria afegir perquè l'argument fos vàlid.</div>
+              <div class="ex-item-quote">«A la natura, els animals més forts es mengen els més febles. Per tant, és moralment acceptable que les persones més poderoses explotin les més vulnerables.»</div>
+              <div class="ex-item-quote">«Històricament, la majoria de societats han practicat algun tipus d'esclavitud. Per tant, l'esclavitud no pot ser tan greument immoral.»</div>
+              <div class="ex-item-quote">«Els humans tenim instints agressius innats que ens porten a la violència. Per tant, no podem ser considerats responsables de les nostres accions violentes.»</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 2 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 2 — Ètica utilitarista</h3>
+          <span class="ex-badge practica">Pràctica</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">2.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Justifica si estàs d'acord o en desacord amb la següent afirmació de Mill: <em>«la felicitat consisteix en la presència de plaer i l'absència de dolor»</em>. Argumenta la teva posició amb almenys una raó a favor i una objecció possible.</div>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">2.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Aplica el principi d'utilitat al cas següent, seguint aquests passos: (1) descriu la situació i els agents implicats; (2) identifica les accions possibles; (3) per a cada acció, calcula aproximadament el balanç de plaer i dolor que generaria en totes les persones afectades; (4) determina quina acció és la moralment correcta segons l'utilitarisme.</div>
+              <div class="ex-item-quote">Una fàbrica de roba pot reduir els seus costos traslladant la producció a un país amb sous molt més baixos i menys regulació laboral. Això abarateix la roba per a milions de consumidors, però empitjora les condicions de treball d'uns centenars d'operaris.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 3 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 3 — Ètica kantiana</h3>
+          <span class="ex-badge analisi">Anàlisi</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">3.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Per a cadascuna de les situacions següents, aplica l'imperatiu categòric per determinar si l'acció és prohibida, permesa o obligatòria. Justifica-ho explicant què passaria si tothom actués sempre d'aquesta manera.</div>
+              <div class="ex-item-quote">Copiar en un examen quan ningú no se n'adona.</div>
+              <div class="ex-item-quote">No tornar els diners que algú t'ha deixat per error de més.</div>
+              <div class="ex-item-quote">Prometre alguna cosa sabent que no la compliràs, només per sortir d'un mal moment.</div>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">3.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Explica, amb les teves paraules, la diferència entre actuar <em>conforme al deure</em> i actuar <em>per deure</em>. Després, descriu un exemple propi (no extret de classe) que il·lustri cadascun dels dos casos.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 4 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 4 — Ètica de la virtut</h3>
+          <span class="ex-badge analisi">Anàlisi</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">4.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Per a cada situació, indica quina virtut (prudència, justícia, fortalesa o moderació) hi és més rellevant i explica per què.</div>
+              <div class="ex-item-quote">Mantenir la calma i prendre una decisió ben raonada enmig d'una discussió familiar tensa.</div>
+              <div class="ex-item-quote">Repartir les tasques d'un treball en grup tenint en compte equitativament l'esforç de cada membre.</div>
+              <div class="ex-item-quote">Continuar entrenant per a una competició malgrat les crítiques de companys que no hi creuen.</div>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">4.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Pensa en una persona (real o fictícia) que consideris especialment virtuosa. Descriu, almenys, dues virtuts concretes que aquesta persona exhibeix de manera estable en la seva vida (no en una sola acció puntual) i explica com es manifesten.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 5 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 5 — Casos pràctics: anàlisi comparada</h3>
+          <span class="ex-badge redaccio">Redacció</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">5.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Tria un dels casos següents i analitza'l <strong>des de les tres perspectives ètiques</strong> (utilitarista, kantiana i de la virtut), explicant en cada cas quina seria la conclusió i per què.</div>
+              <ul style="margin-top: 8px; padding-left: 18px; color: var(--ink-faint); font-size: 0.9rem;">
+                <li><strong>Les cèl·lules HeLa:</strong> l'any 1951 es van extreure cèl·lules canceroses d'una pacient, Henrietta Lacks, sense el seu consentiment ni el de la seva família. Aquestes cèl·lules es van convertir en una eina fonamental per a la investigació mèdica mundial, generant enormes beneficis científics i econòmics, mentre la família Lacks no en va rebre cap compensació durant dècades.</li>
+                <li><strong>El coltan:</strong> aquest mineral, imprescindible per fabricar mòbils i ordinadors, s'extreu en gran part de zones en conflicte armat de la República Democràtica del Congo, en condicions laborals molt precàries i, sovint, finançant grups armats.</li>
+                <li><strong>La indústria ramadera:</strong> la producció industrial de carn permet alimentar milions de persones a preus assequibles, però genera un impacte ambiental molt significatiu i implica el patiment d'un gran nombre d'animals.</li>
+                <li><strong>L'experimentació mèdica sense consentiment:</strong> al llarg de la història, alguns avenços mèdics s'han obtingut mitjançant experiments realitzats sobre persones sense el seu consentiment, en contextos de coacció extrema.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="ex-coming">
+          <span>Pròximament</span>
+          S'afegiran més activitats d'aquest bloc
+        </div>
+      </div>
+
+      <!-- BLOC 6 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 6 — Rúbriques d'anàlisi ètica</h3>
+          <span class="ex-badge practica">Eina de treball</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">6.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Fes servir aquesta rúbrica com a guia per analitzar qualsevol cas des de la perspectiva <strong>utilitarista</strong>:</div>
+              <ol style="margin-top: 10px; padding-left: 18px; color: var(--ink-soft); font-size: 0.9rem;">
+                <li>Descriu la situació.</li>
+                <li>Identifica els agents rellevants (qui pot fer accions).</li>
+                <li>Identifica les accions possibles.</li>
+                <li>Determina a qui afecten aquestes accions.</li>
+                <li>Per cada acció i cada persona afectada, calcula el plaer i el dolor que els causaria.</li>
+                <li>Suma el plaer total i el dolor total que produiria cada acció.</li>
+                <li>Resta el dolor total del plaer total, per a cada acció.</li>
+                <li>L'acció correcta és la que produeix la major felicitat neta (plaer menys dolor) de totes les possibles.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">6.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Fes servir aquesta rúbrica com a guia per analitzar qualsevol cas des de la perspectiva <strong>kantiana</strong>:</div>
+              <ol style="margin-top: 10px; padding-left: 18px; color: var(--ink-soft); font-size: 0.9rem;">
+                <li>Descriu la situació i els agents rellevants.</li>
+                <li>Identifica les accions possibles per a cada agent.</li>
+                <li>Aplica l'imperatiu categòric a cada acció: és generalitzable a tothom, sempre, sota qualsevol condició?</li>
+                <li>Si sí, i tot aniria bé: és un deure moral.</li>
+                <li>Si no, però tampoc passaria res greu: no és un deure moral (és permesa).</li>
+                <li>Si no, i seria un desastre: el seu contrari és un deure moral (l'acció original és prohibida).</li>
+                <li>Si hi ha diversos deures que es contraposen, decideix quin és més important.</li>
+                <li>Conclou quines accions són obligatòries, permeses o prohibides per a cada agent.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">6.3</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Fes servir aquesta rúbrica com a guia per analitzar qualsevol cas des de la perspectiva de l'<strong>ètica de la virtut</strong>:</div>
+              <ol style="margin-top: 10px; padding-left: 18px; color: var(--ink-soft); font-size: 0.9rem;">
+                <li>Descriu la situació i els agents rellevants.</li>
+                <li>Identifica les accions possibles.</li>
+                <li>Considera quines virtuts entren en joc en cada acció.</li>
+                <li>Per cada acció, pregunta't: exercita i cultiva alguna virtut?</li>
+                <li>Si sí, l'acció és virtuosa. Si no, no ho és. Si va en contra d'una virtut, és viciosa i s'ha d'evitar.</li>
+                <li>Si hi ha més d'una acció virtuosa possible, decideix amb prudència quina ho és més.</li>
+                <li>L'acció correcta és la que exercita i cultiva la virtut de la millor manera possible.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /panel-exercicis -->
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-nav">
+    <a href="index.html">← Índex del curs</a>
+  </div>
+  <span>T03 · Ètica i acció</span>
+</footer>
+
+<script>
+  // Tab switching
+  function switchTab(name, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    btn.classList.add('active');
+    // Trigger animations for new panel
+    setTimeout(animateVisible, 50);
+  }
+
+  // Scroll animation
+  function animateVisible() {
+    document.querySelectorAll('.section, .ex-block').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', animateVisible, { passive: true });
+  animateVisible();
+
+  // TOC active link (only for apunts panel)
+  const tocLinks = document.querySelectorAll('.toc a');
+  const headingIds = Array.from(tocLinks)
+    .map(a => a.getAttribute('href').slice(1))
+    .filter(id => document.getElementById(id));
+
+  function updateToc() {
+    let current = headingIds[0];
+    headingIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 120) current = id;
+    });
+    tocLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateToc, { passive: true });
+  updateToc();
+
+  // Check if URL has #exercicis
+  if (window.location.hash === '#exercicis') {
+    switchTab('exercicis', document.querySelectorAll('.tab-btn')[1]);
+  }
+</script>
+</body>
+</html>
