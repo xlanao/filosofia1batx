@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T05 · Política i societat — Filosofia 1r Bat.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111;
+    --ink-soft: #444444;
+    --ink-faint: #8a8a8a;
+    --paper: #ffffff;
+    --paper-off: #fafaf9;
+    --line: #111111;
+    --line-soft: #cfcfcc;
+    --line-faint: #e6e5e1;
+    --sidebar-w: 250px;
+    --content-max: 740px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Spectral', Georgia, serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.75;
+    font-size: 16.5px;
+    font-weight: 400;
+  }
+
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    padding: 0 48px;
+    display: flex; align-items: center; justify-content: space-between; height: 56px;
+  }
+  .nav-left { display: flex; align-items: center; gap: 0; }
+  .nav-back {
+    font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-faint); text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 14px 6px 0; border-right: 1px solid var(--line-faint);
+    margin-right: 14px; transition: color 0.15s;
+  }
+  .nav-back:hover { color: var(--ink); }
+  .nav-brand { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; font-weight: 700; }
+  .nav-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.06em; }
+
+  .topic-hero { background: var(--paper); border-bottom: 1px solid var(--line); padding: 52px 48px 44px; }
+  .topic-hero-inner { max-width: calc(var(--sidebar-w) + var(--content-max) + 64px); margin: 0 auto; }
+  .topic-breadcrumb { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 22px; }
+  .topic-breadcrumb a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+  .topic-breadcrumb a:hover { opacity: 0.6; }
+  .topic-num-badge { display: inline-flex; align-items: center; gap: 10px; font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px; }
+  .topic-hero h1 { font-family: 'Spectral', serif; font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.18; color: var(--ink); margin-bottom: 14px; }
+  .topic-hero h1 em { font-style: italic; font-weight: 400; }
+  .topic-subtitle { font-family: 'Courier Prime', monospace; color: var(--ink-soft); font-size: 0.82rem; letter-spacing: 0.03em; }
+
+  .tabs-bar { background: var(--paper); border-bottom: 1px solid var(--line); padding: 0 48px; display: flex; gap: 0; }
+  .tab-btn { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); border: none; background: none; padding: 15px 22px; cursor: pointer; position: relative; transition: color 0.15s; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.15s; }
+  .tab-btn:hover { color: var(--ink-soft); }
+  .tab-btn.active { color: var(--ink); font-weight: 700; }
+  .tab-btn.active::after { opacity: 1; }
+
+  .page-wrap { max-width: calc(var(--sidebar-w) + var(--content-max) + 64px); margin: 0 auto; display: grid; grid-template-columns: var(--sidebar-w) 1fr; align-items: start; }
+
+  .sidebar { position: sticky; top: 56px; padding: 40px 24px 40px 0; max-height: calc(100vh - 56px); overflow-y: auto; scrollbar-width: none; }
+  .sidebar::-webkit-scrollbar { display: none; }
+  .sidebar-title { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .toc { list-style: none; }
+  .toc a { display: block; padding: 5px 0 5px 14px; font-family: 'Spectral', serif; font-size: 0.83rem; color: var(--ink-faint); text-decoration: none; border-left: 1px solid var(--line-faint); transition: all 0.15s; line-height: 1.4; }
+  .toc a:hover { color: var(--ink); border-left-color: var(--ink-soft); }
+  .toc a.active { color: var(--ink); border-left: 1px solid var(--ink); font-weight: 600; }
+  .toc .toc-sub a { padding-left: 28px; font-size: 0.78rem; font-style: italic; }
+  .sidebar-sep { height: 1px; background: var(--line-faint); margin: 16px 0; }
+  .sidebar-exlink { display: block; margin: 0; font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; padding: 9px 12px; border: 1px solid var(--line); transition: all 0.15s; text-align: center; }
+  .sidebar-exlink:hover { color: var(--paper); background: var(--ink); }
+
+  .content { padding: 48px 0 100px 40px; border-left: 1px solid var(--line); min-width: 0; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .section { margin-bottom: 64px; padding-top: 8px; }
+  .section-num { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; display: block; }
+  h2 { font-family: 'Spectral', serif; font-size: 1.65rem; font-weight: 600; color: var(--ink); margin-bottom: 26px; line-height: 1.3; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+  h3 { font-family: 'Spectral', serif; font-size: 1.18rem; font-weight: 600; color: var(--ink); margin: 40px 0 14px; }
+  h4 { font-family: 'Spectral', serif; font-size: 0.95rem; font-weight: 600; font-style: italic; color: var(--ink-soft); margin: 28px 0 10px; }
+  p { margin-bottom: 14px; color: var(--ink-soft); font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 700; }
+  em { font-style: italic; }
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; color: var(--ink-soft); font-weight: 300; }
+  .section-divider { border: none; border-top: 1px solid var(--line); margin: 52px 0; }
+
+  .def-box { border: 1px solid var(--ink); padding: 18px 20px; margin: 20px 0; position: relative; }
+  .def-box .def-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; display: block; font-weight: 700; }
+  .def-box p { margin: 0; font-size: 0.95rem; color: var(--ink-soft); }
+
+  .example-box { border: 1px dashed var(--line-soft); padding: 16px 20px; margin: 18px 0; }
+  .example-box .ex-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; display: block; }
+  .example-box p { margin: 0 0 8px; font-size: 0.93rem; font-style: italic; color: var(--ink-soft); }
+  .example-box p:last-child { margin: 0; }
+  .example-box .ex-problem { font-style: normal; font-size: 0.86rem; color: var(--ink-soft); background: var(--paper-off); border-left: 2px solid var(--ink); padding: 8px 12px; margin-top: 8px; }
+
+  .warn-box { border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 16px 4px; margin: 22px 0; font-size: 0.93rem; color: var(--ink-soft); }
+  .warn-box::before { content: 'ATENCIÓ — '; font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; color: var(--ink); font-weight: 700; display: block; margin-bottom: 6px; }
+
+  .tip-box { border: 1px dotted var(--ink-soft); padding: 16px 20px; margin: 18px 0; font-size: 0.93rem; }
+  .tip-box .tip-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; display: block; font-weight: 700; }
+
+  .argument { background: var(--paper-off); border: 1px solid var(--line-soft); padding: 18px 22px; margin: 18px 0; font-family: 'Courier Prime', monospace; }
+  .argument .arg-title { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px; display: block; }
+  .argument .premise { display: grid; grid-template-columns: 34px 1fr; gap: 0 10px; margin-bottom: 8px; align-items: baseline; font-size: 0.86rem; }
+  .argument .premise-label { color: var(--ink-faint); }
+  .argument .premise-text { color: var(--ink-soft); }
+  .argument .conclusion { display: grid; grid-template-columns: 34px 1fr; gap: 0 10px; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line-faint); align-items: baseline; font-size: 0.86rem; }
+  .argument .conclusion-label { color: var(--ink); font-weight: 700; }
+  .argument .conclusion-text { font-weight: 700; color: var(--ink); }
+
+  .exercise { border: 1px solid var(--ink); margin: 24px 0; }
+  .exercise-header { background: var(--ink); color: var(--paper); padding: 10px 20px; font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .exercise-body { padding: 20px; }
+  .exercise-case { border-bottom: 1px dashed var(--line-faint); padding: 14px 0; }
+  .exercise-case:last-child { border-bottom: none; padding-bottom: 0; }
+  .case-label { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--ink); text-transform: uppercase; margin-bottom: 6px; display: block; font-weight: 700; }
+  .exercise-case p { margin: 0; font-style: italic; font-size: 0.93rem; }
+
+  .fallacy-grid { display: grid; gap: 0; margin: 24px 0; border-top: 1px solid var(--line); }
+  .fallacy-card { border-bottom: 1px solid var(--line-faint); padding: 22px 4px; }
+  .fallacy-name { font-family: 'Spectral', serif; font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .fallacy-def { font-size: 0.9rem; margin-bottom: 12px; color: var(--ink-soft); }
+  .fallacy-ex { font-style: italic; font-size: 0.88rem; color: var(--ink-soft); padding: 10px 14px; background: var(--paper-off); border-left: 2px solid var(--line-soft); margin-bottom: 10px; }
+  .fallacy-prob { font-size: 0.83rem; color: var(--ink-faint); padding-top: 8px; border-top: 1px dotted var(--line-faint); }
+  .fallacy-prob strong { color: var(--ink); }
+
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th { background: var(--ink); color: var(--paper); padding: 10px 14px; text-align: left; font-family: 'Courier Prime', monospace; font-weight: 400; font-size: 0.78rem; letter-spacing: 0.04em; }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--line-faint); vertical-align: top; color: var(--ink-soft); font-size: 0.88rem; }
+  tr:last-child td { border-bottom: 1px solid var(--ink); }
+
+  .levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 24px 0; border: 1px solid var(--line); }
+  .level-card { padding: 20px 16px; text-align: center; border-right: 1px solid var(--line-faint); }
+  .level-card:last-child { border-right: none; }
+  .level-num { width: 30px; height: 30px; border: 1px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'Courier Prime', monospace; font-size: 0.9rem; font-weight: 700; margin: 0 auto 12px; }
+  .level-card h4 { margin: 0 0 8px; font-style: normal; font-size: 0.76rem; font-family: 'Courier Prime', monospace; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); font-weight: 700; }
+  .level-card p { font-size: 0.82rem; color: var(--ink-faint); margin: 0; line-height: 1.5; font-weight: 300; }
+
+  .expr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; margin: 20px 0; border: 1px solid var(--line); }
+  .expr-group { padding: 14px 16px; border-right: 1px solid var(--line-faint); border-bottom: 1px solid var(--line-faint); }
+  .expr-group-title { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin-bottom: 10px; font-weight: 700; }
+  .expr-group p { font-size: 0.85rem; color: var(--ink-soft); font-weight: 300; margin: 0; }
+
+  .case-study { border-left: 3px solid var(--ink); background: var(--paper-off); padding: 20px 24px; margin: 22px 0; }
+  .case-study-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; display: block; }
+  .case-study-title { font-family: 'Spectral', serif; font-size: 1.08rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .case-study p { font-size: 0.93rem; color: var(--ink-soft); margin-bottom: 10px; }
+  .case-study p:last-child { margin-bottom: 0; }
+  .case-study-verdict { margin-top: 12px; padding-top: 12px; border-top: 1px dotted var(--line-soft); font-size: 0.9rem; color: var(--ink); }
+  .case-study-verdict strong { color: var(--ink); }
+
+  /* Exercicis */
+  .ex-intro { border: 1px solid var(--ink); padding: 26px 30px; margin-bottom: 40px; display: flex; gap: 22px; align-items: flex-start; }
+  .ex-intro-icon { font-family: 'Courier Prime', monospace; font-size: 1.6rem; font-weight: 700; flex-shrink: 0; color: var(--ink); border: 1px solid var(--ink); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+  .ex-intro h3 { margin: 0 0 8px; font-size: 1.1rem; }
+  .ex-intro p { margin: 0; font-size: 0.9rem; color: var(--ink-faint); font-weight: 300; }
+  .ex-block { margin-bottom: 48px; border: 1px solid var(--ink); }
+  .ex-block-header { background: var(--ink); padding: 15px 24px; display: flex; justify-content: space-between; align-items: center; }
+  .ex-block-header h3 { margin: 0; font-size: 1rem; font-family: 'Spectral', serif; color: var(--paper); }
+  .ex-badge { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--paper); color: var(--paper); }
+  .ex-items { padding: 0; }
+  .ex-item { padding: 22px 24px; border-bottom: 1px solid var(--line-faint); display: grid; grid-template-columns: 30px 1fr; gap: 0 16px; align-items: baseline; }
+  .ex-item:last-child { border-bottom: none; }
+  .ex-item-num { font-family: 'Courier Prime', monospace; font-size: 0.74rem; color: var(--ink); font-weight: 700; padding-top: 2px; }
+  .ex-item-q { font-size: 0.95rem; color: var(--ink); margin-bottom: 8px; line-height: 1.55; font-weight: 400; }
+  .ex-item-note { font-size: 0.82rem; color: var(--ink-faint); font-style: italic; }
+  .ex-item-quote { font-style: italic; font-size: 0.9rem; color: var(--ink-soft); background: var(--paper-off); padding: 10px 16px; margin: 8px 0; border-left: 2px solid var(--ink); }
+  .ex-coming { padding: 32px 24px; text-align: center; color: var(--ink-faint); font-style: italic; font-size: 0.9rem; border-top: 1px dashed var(--line-faint); display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .ex-coming span { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); border: 1px solid var(--line-soft); padding: 4px 12px; }
+
+  .site-footer { border-top: 1px solid var(--line); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; color: var(--ink-faint); font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.06em; max-width: calc(var(--sidebar-w) + var(--content-max) + 64px); margin: 0 auto; }
+  .footer-nav { display: flex; gap: 20px; }
+  .footer-nav a { color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
+  .footer-nav a:hover { color: var(--ink); }
+
+  .section { opacity: 0; transform: translateY(12px); transition: opacity 0.45s ease, transform 0.45s ease; }
+  .section.visible { opacity: 1; transform: none; }
+  .ex-block { opacity: 0; transform: translateY(12px); transition: opacity 0.45s ease, transform 0.45s ease; }
+  .ex-block.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .content { padding: 32px 22px 60px; border-left: none; }
+    .levels { grid-template-columns: 1fr; }
+    .level-card { border-right: none; border-bottom: 1px solid var(--line-faint); }
+    .level-card:last-child { border-bottom: none; }
+    .topic-hero, .tabs-bar { padding-left: 22px; padding-right: 22px; }
+    .nav { padding: 0 22px; }
+    .nav-meta { display: none; }
+    .site-footer { padding: 20px 22px; flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-back" href="index.html">← Inici</a>
+    <span class="nav-brand">Filosofia 1r Bat.</span>
+  </div>
+  <span class="nav-meta">T05 · Política i societat</span>
+</nav>
+
+<div class="topic-hero">
+  <div class="topic-hero-inner">
+    <div class="topic-breadcrumb"><a href="index.html">Índex</a> / Tema 05</div>
+    <div class="topic-num-badge">Tema 05 — Filosofia política</div>
+    <h1>Política i <em>societat</em></h1>
+    <p class="topic-subtitle">Apunts de classe · Filosofia i Ciutadania 1r Batxillerat</p>
+  </div>
+</div>
+
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('apunts', this)">APUNTS</button>
+  <button class="tab-btn" onclick="switchTab('exercicis', this)">EXERCICIS</button>
+</div>
+
+<div class="page-wrap">
+
+  <nav class="sidebar" aria-label="Índex de continguts" id="sidebar-apunts">
+    <div class="sidebar-title">Continguts</div>
+    <ul class="toc" id="toc">
+      <li><a href="#s1">1. De la bona vida a la vida en comú</a></li>
+      <li><a href="#s2">2. Llibertat o seguretat?</a></li>
+      <li><a href="#s3">3. Per què existeix el poder polític?</a></li>
+      <li class="toc-sub"><a href="#s3-1">3.1 L'estat de natura</a></li>
+      <li><a href="#s4">4. Thomas Hobbes</a></li>
+      <li class="toc-sub"><a href="#s4-1">4.1 Naturalesa humana</a></li>
+      <li class="toc-sub"><a href="#s4-2">4.2 Estat de natura = guerra</a></li>
+      <li class="toc-sub"><a href="#s4-3">4.3 La llei natural</a></li>
+      <li class="toc-sub"><a href="#s4-4">4.4 El contracte social</a></li>
+      <li class="toc-sub"><a href="#s4-5">4.5 L'Estat i el monopoli</a></li>
+      <li><a href="#s5">5. John Locke</a></li>
+      <li class="toc-sub"><a href="#s5-1">5.1 Una visió diferent</a></li>
+      <li class="toc-sub"><a href="#s5-2">5.2 Drets naturals</a></li>
+      <li class="toc-sub"><a href="#s5-3">5.3 Estat de natura i guerra</a></li>
+      <li class="toc-sub"><a href="#s5-4">5.4 El contracte social</a></li>
+      <li class="toc-sub"><a href="#s5-5">5.5 Separació de poders</a></li>
+      <li class="toc-sub"><a href="#s5-6">5.6 El dret de resistència</a></li>
+      <li><a href="#s6">6. Emma Goldman</a></li>
+      <li class="toc-sub"><a href="#s6-0">6.1 Naturalesa humana</a></li>
+      <li class="toc-sub"><a href="#s6-1">6.2 Desconfiança de l'autoritat</a></li>
+      <li class="toc-sub"><a href="#s6-2">6.3 Una llibertat exigent</a></li>
+      <li class="toc-sub"><a href="#s6-3">6.4 Cooperació i suport mutu</a></li>
+      <li><a href="#s7">7. Síntesi: tres respostes</a></li>
+    </ul>
+    <div class="sidebar-sep"></div>
+    <a class="sidebar-exlink" href="#" onclick="switchTab('exercicis', document.querySelectorAll('.tab-btn')[1]); return false;">Ves als exercicis →</a>
+  </nav>
+
+  <main class="content">
+
+    <div class="tab-panel active" id="panel-apunts">
+
+      <!-- S1 -->
+      <section class="section" id="s1">
+        <span class="section-num">Secció 01</span>
+        <h2>De la bona vida a la vida en comú</h2>
+        <p>Al tema anterior hem estudiat diferents maneres d'entendre la felicitat: la serenitat d'Epicur, la fortalesa estoica, la llibertat dels cínics. Malgrat les diferències entre aquests autors, tots ells reconeixen una mateixa realitat de fons: <strong>els éssers humans no som éssers autosuficients</strong>.</p>
+        <p>Necessitem altres persones per sobreviure, aprendre, desenvolupar-nos emocionalment, construir la nostra identitat i satisfer les nostres necessitats materials. Des del naixement fins a la mort depenem de relacions de cooperació, ajuda mútua i cura. Per això la pregunta ètica «Com he de viure?» ens condueix inevitablement a una altra pregunta de caràcter diferent:</p>
+        <div class="def-box">
+          <span class="def-label">La pregunta política fonamental</span>
+          <p><em>Com hem de viure junts?</em></p>
+          <p style="margin-top: 8px;">La bona vida no és només una qüestió individual. Depèn del tipus de societat en què vivim, de les normes que compartim, dels drets que tenim reconeguts i de la manera com resolem els conflictes.</p>
+        </div>
+        <p>La <strong>filosofia política</strong> neix precisament d'aquesta constatació: si necessitem conviure amb altres persones, hem de pensar com organitzar aquesta convivència de manera justa i estable. S'interessa per qüestions com: Què justifica l'existència de l'Estat? D'on prové l'autoritat política? Per què hem d'obeir les lleis? Quins límits ha de tenir el poder? Com podem compatibilitzar la llibertat individual amb la convivència social? Totes aquestes preguntes continuen sent actuals perquè totes les societats necessiten prendre decisions col·lectives i gestionar desacords, conflictes i interessos molt diversos.</p>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S2 -->
+      <section class="section" id="s2">
+        <span class="section-num">Secció 02</span>
+        <h2>El problema fonamental: llibertat o seguretat?</h2>
+        <p>Gran part de la història de la filosofia política pot entendre's com un intent de respondre una pregunta fonamental: <strong>quanta llibertat estem disposats a sacrificar per viure més segurs?</strong></p>
+        <p>Quan vivim en societat, guanyem moltes coses —protecció davant la violència, accés a serveis comuns, estabilitat, garantia de drets— però al mateix temps acceptem limitacions: hem d'obeir lleis, pagar impostos, acceptar decisions polítiques amb les quals potser no estem d'acord i respectar els drets dels altres. Per això la política sempre implica una tensió entre dos valors:</p>
+        <div class="expr-grid">
+          <div class="expr-group">
+            <div class="expr-group-title">Llibertat</div>
+            <p>La capacitat de decidir sobre la pròpia vida i actuar segons els propis projectes i conviccions, sense interferències externes arbitràries.</p>
+          </div>
+          <div class="expr-group">
+            <div class="expr-group-title">Seguretat</div>
+            <p>La garantia que la nostra vida, els nostres drets i els nostres béns no estaran constantment amenaçats per la violència o la dominació d'altres.</p>
+          </div>
+        </div>
+        <p>Aquests dos valors poden entrar en conflicte de maneres molt concretes. Més vigilància policial pot augmentar la seguretat però reduir la privacitat. Lleis molt estrictes poden augmentar l'ordre però limitar les llibertats individuals. Una llibertat absoluta podria generar inseguretat si permetés que els més forts dominessin els més dèbils sense cap límit.</p>
+        <div class="case-study">
+          <span class="case-study-label">Per debatre</span>
+          <div class="case-study-title">¿Acceptaries eliminar la democràcia per evitar una guerra civil?</div>
+          <p>Imagina una situació en què el país es troba al bord d'un conflicte armat molt destructiu. Un grup proposa suspendre temporalment les eleccions i concentrar el poder en un govern fort que garanteixi l'ordre. L'objectiu declarat és evitar la violència. Acceptaries aquest pacte? Fins a quin punt la por a la inseguretat pot justificar renunciar a drets fonamentals?</p>
+          <div class="case-study-verdict"><strong>→ Per pensar-hi:</strong> si responeu que sí, implica que esteu disposats a cedir drets i llibertat davant d'amenaces de violència prou greus. Si responeu que no, penseu que hi ha un límit al qual no s'han de comprometre els valors polítics, per molt que el risc sigui gran. Les tres teories que estudiarem en aquest tema donen respostes molt diferents a aquesta pregunta.</div>
+        </div>
+        <p>Les tres teories que estudiem —Hobbes, Locke i Goldman— es poden entendre, precisament, com tres maneres molt diferents d'intentar equilibrar llibertat i seguretat davant d'aquest tipus de dilemes.</p>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S3 -->
+      <section class="section" id="s3">
+        <span class="section-num">Secció 03</span>
+        <h2>Per què existeix el poder polític?</h2>
+        <p>Si els éssers humans necessitem conviure, apareix un problema inevitable: els conflictes. Les persones tenen interessos, valors i objectius molt diferents, i de vegades entren en contradicció directa. La pregunta és simple però profunda: <strong>qui decideix quan hi ha desacord?</strong></p>
+        <div class="def-box">
+          <span class="def-label">Definició · Poder polític</span>
+          <p>La <strong>capacitat legítima</strong> d'establir normes obligatòries per a una comunitat i fer-les complir.</p>
+        </div>
+        <p>La característica distintiva del poder polític és que les seves decisions afecten tota la comunitat. Quan una llei és aprovada, s'aplica a tothom, obliga fins i tot aquells que no hi estan d'acord, i pot anar acompanyada de sancions si no es compleix. Això genera immediatament una qüestió filosòfica: <strong>per què algú té dret a donar ordres a altres persones? Què fa legítim el poder polític?</strong></p>
+
+        <h3 id="s3-1">3.1. L'experiment mental de l'estat de natura</h3>
+        <p>Els filòsofs moderns intenten respondre aquesta pregunta imaginant una situació sense govern ni institucions polítiques: l'anomenat <strong>estat de natura</strong>.</p>
+        <p>L'estat de natura no és una realitat històrica ni una etapa documentada del passat humà. És un <strong>experiment mental</strong>: ens invita a imaginar com seria la vida humana si no existís cap poder polític ni cap llei establerta, per entendre millor per qué l'Estat existeix i quins límits hauria de tenir. Tanqueu els ulls un moment i imagineu-ho: sense institucions, sense policia, sense jutges, sense cap autoritat externa. Com us comportaríeu? Hi hauria problemes? Qui resoldria els conflictes? Com a Hobbes i Locke, les respostes que donem a aquestes preguntes determinen tota la nostra teoria política.</p>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S4 -->
+      <section class="section" id="s4">
+        <span class="section-num">Secció 04</span>
+        <h2>Thomas Hobbes: la necessitat d'un poder fort</h2>
+
+        <h3 id="s4-1">4.1. La naturalesa humana segons Hobbes</h3>
+        <p>Thomas Hobbes (1588–1679) considera que els éssers humans som fonamentalment individus independents, que busquem satisfer els nostres interessos i conservar la nostra vida. Hobbes defensa un <strong>individualisme absolut</strong>: a l'estat de natura no hi ha cap dependència natural entre persones; cadascú actua pels seus propis instints i desitjos. Les persones desitgen poder i recursos, temen la mort i volen garantir la seva supervivència. Com que tots persegueixen objectius similars en un context de recursos limitats, els conflictes apareixen de manera inevitable.</p>
+
+        <h3 id="s4-2">4.2. L'estat de natura com a estat de guerra</h3>
+        <p>Per a Hobbes, si no existeix cap autoritat superior que imposi límits, la llibertat absoluta no porta a la felicitat, sinó al conflicte permanent. Sense lleis ni institucions, tothom té el dret il·limitat a qualsevol cosa, inclòs el cos dels altres. Aquesta situació converteix l'estat de natura en una guerra:</p>
+        <div class="def-box">
+          <span class="def-label">Hobbes, <em>Leviatan</em> (1651)</span>
+          <p>«En tal condició no hi ha lloc per a la indústria [...] no hi ha conreu de la terra [...] no hi ha coneixement de la superfície de la terra; no hi ha còmput del temps; no hi ha arts; no hi ha lletres; no hi ha societat; i el que és pitjor de tot: un por contínua i un perill de mort violenta; i la vida de l'home, solitària, pobra, bruta, brutal i curta.»</p>
+        </div>
+        <p>Hobbes no vol dir que en l'estat de natura hi hagi combats constants, sinó que <em>sempre existeix la possibilitat</em> de la violència. Ningú no pot estar mai segur: els forts poden ser atacats per grups de persones més dèbils; els dèbils viuen sota l'amenaça permanent dels forts. Per resumir-ho amb la frase que ell mateix recupera de Plaute: <em>«L'home és un llop per a l'home.»</em></p>
+
+        <h3 id="s4-3">4.3. La llei natural</h3>
+        <p>Tot i que en l'estat de natura no hi ha lleis polítiques, Hobbes considera que existeixen principis racionals que qualsevol persona intel·ligent pot reconèixer: les <strong>lleis naturals</strong>. Totes elles apunten a un objectiu: preservar la vida humana.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Llei</th><th>Contingut</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Primera</strong></td><td>Buscar la pau sempre que sigui possible i, si no n'hi ha, fer servir tots els mitjans per defensar-se.</td></tr>
+              <tr><td><strong>Segona</strong></td><td>No exigir per a un mateix més llibertat de la que s'estaria disposat a concedir als altres.</td></tr>
+              <tr><td><strong>Tercera</strong></td><td>Complir els pactes i els acords establerts.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Val la pena notar que la segona llei natural de Hobbes té una estructura molt semblant a la de l'imperatiu categòric de Kant, que vam veure al tema d'ètica: no facis als altres el que no vols que et facin a tu. Però Hobbes n'extreu una conclusió política molt diferent: si la raó ens diu que hem de buscar la pau, la raó ens obliga també a acceptar un poder que la garanteixi.</p>
+
+        <h3 id="s4-4">4.4. El contracte social</h3>
+        <p>Per escapar de l'estat de guerra, els individus decideixen establir un pacte: el <strong>contracte social</strong>. Cadascú cedeix el seu poder i la seva llibertat a una autoritat comuna —el <em>Leviatan</em>, la gran criatura bíblica que representa el poder de l'Estat— a canvi d'una sola cosa: la seguretat. Locke descriu el resultat d'aquest pacte:</p>
+        <div class="example-box">
+          <span class="ex-label">Hobbes, <em>Leviatan</em> (1651)</span>
+          <p>«Un Estat per adquisició és aquell en què el poder sobirà s'adquireix per la força. I per la força s'adquireix quan els homes, singularment units o per la pluralitat de vots, per temor a la mort o a la servitud, autoritzen totes les accions d'aquell home o assemblea que té al seu poder les seves vides i la seva llibertat.»</p>
+        </div>
+        <p>Hobbes entén que la racionalitat humana és capaç de reconèixer que, davant de la inseguretat absoluta de l'estat de natura, val la pena renunciar a gran part de la pròpia llibertat per obtenir protecció. El contracte social no és un error ni una trampa: és la solució racional al problema de la convivència.</p>
+
+        <h3 id="s4-5">4.5. L'Estat i el monopoli de la violència</h3>
+        <p>Per Hobbes, el sobirà que resulta del contracte social ha de tenir <strong>poder absolut</strong>. La seva funció principal és garantir la pau, i per fer-ho necessita el <strong>monopoli de la violència legítima</strong>: només l'Estat pot utilitzar la força de manera legal; els individus no poden prendre la justícia pel seu compte. Un cop signat el contracte, no es pot dissoldre: els individus han renunciat als seus drets i només tenen la llibertat que l'Estat decideixi atorgar-los.</p>
+        <div class="warn-box">La pregunta central de Hobbes és: <strong>quanta llibertat estem disposats a perdre per sentir-nos segurs?</strong> Per ell, sense seguretat no hi ha possibilitat de viure una vida humana estable. Per tant, considera legítim un poder polític molt fort, fins i tot si això significa sacrificar grans dosis de llibertat individual. La seguretat és el valor polític fonamental.</div>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S5 -->
+      <section class="section" id="s5">
+        <span class="section-num">Secció 05</span>
+        <h2>John Locke: la defensa dels drets individuals</h2>
+
+        <h3 id="s5-1">5.1. Una visió molt diferent de la naturalesa humana</h3>
+        <p>John Locke (1632–1704) parteix d'una premissa radicalment diferent. Per a ell, els éssers humans som naturalment sociables i cooperatius. Posseïm llenguatge i capacitat de raonament, que ens permeten comunicar-nos i establir acords sense necessitat de cap autoritat que ho imposi. L'estat de natura, per a Locke, és molt diferent del de Hobbes:</p>
+        <div class="def-box">
+          <span class="def-label">Locke, <em>Segon tractat sobre el govern civil</em> (1689)</span>
+          <p>«Un estat de perfecta llibertat per ordenar els seus actes i disposar de les seves propietats i de les persones com creguin convenient, dins dels límits de la llei natural, sense demanar permís ni dependre de la voluntat de cap altre home. [...] Un estat d'igualtat, on tot el poder i la jurisdicció són recíprocs i ningú no en té més que els altres.»</p>
+        </div>
+        <p>L'estat de natura de Locke, doncs, no és un infierno de guerra permanent, sinó una situació de llibertat i igualtat en la qual els éssers humans ja reconeixen, gràcies a la raó, un conjunt de drets naturals.</p>
+
+        <h3 id="s5-2">5.2. La llei natural i els drets fonamentals</h3>
+        <p>Locke defensa que tots els éssers humans posseïm drets naturals que existeixen <em>abans</em> de qualsevol govern i que cap govern no pot legítimament suprimir. Són <strong>universals i inalienables</strong>:</p>
+        <div class="fallacy-grid">
+          <div class="fallacy-card">
+            <div class="fallacy-name">Dret a la vida</div>
+            <div class="fallacy-def">Ningú no pot privar arbitràriament una persona de la seva existència. La vida és el dret fonamental del qual deriven tots els altres.</div>
+          </div>
+          <div class="fallacy-card">
+            <div class="fallacy-name">Dret a la salut</div>
+            <div class="fallacy-def">Tothom té dret a preservar la seva integritat física i a no ser sotmès a condicions que deteriorin el seu cos.</div>
+          </div>
+          <div class="fallacy-card">
+            <div class="fallacy-name">Dret a la llibertat</div>
+            <div class="fallacy-def">Cada individu ha de poder actuar i expressar-se sense dominació arbitrària per part d'altri.</div>
+          </div>
+          <div class="fallacy-card">
+            <div class="fallacy-name">Dret a la propietat</div>
+            <div class="fallacy-def">Les persones tenen dret a posseir allò que han obtingut legítimament amb el seu treball. Nota important: per a Locke, el dret de propietat és <em>anterior</em> a la societat política, perquè es fonamenta en la llei natural racional.</div>
+          </div>
+        </div>
+
+        <h3 id="s5-3">5.3. De l'estat de natura a l'estat de guerra</h3>
+        <p>Tot i que l'estat de natura de Locke és relativament pacífic, presenta dificultats importants: no hi ha jutges imparcials, no hi ha lleis clarament definides, ni institucions capaces de fer complir les normes. Quan algú viola els drets d'un altre, qualsevol persona pot, en principi, castigar el transgressor (ja que tots els humans som iguals en drets). Però aquesta autojustícia difusa pot escalar fàcilment.</p>
+        <p>Locke distingeix clarament entre l'<strong>estat de natura</strong> i l'<strong>estat de guerra</strong>: el segon no és el punt de partida permanent (com en Hobbes), sinó la situació que apareix quan algú <em>intenta dominar, esclavitzar o destruir</em> una altra persona. En l'estat de guerra, la convivència racional desapareix, la confiança es trenca i el conflicte es torna destructiu. Evitar que l'estat de natura degeneri en estat de guerra és precisament la raó principal per crear una societat política.</p>
+
+        <h3 id="s5-4">5.4. El contracte social segons Locke</h3>
+        <p>A diferència de Hobbes, el contracte social de Locke no suposa que les persones renunciïn als seus drets fonamentals. Només cedeixen una <strong>part limitada</strong> de la seva llibertat: la de fer-se justícia per si mateixes. L'objectiu és protegir millor els drets naturals, no sacrificar-los. <strong>L'Estat existeix per servir els ciutadans, no a l'inrevés.</strong></p>
+        <div class="def-box">
+          <span class="def-label">Locke, <em>Segon tractat</em>, cap. 1</span>
+          <p>«El poder polític és el dret a dictar lleis, incloent-hi la pena de mort i, consegüentment, totes les penes inferiors, per a la regulació i salvaguarda de la propietat, i a emprar la força de la comunitat en l'execució de tals lleis i en la defensa de l'Estat contra agressions forasteres, i això únicament en pro del bé públic.»</p>
+        </div>
+        <p>Locke distingeix també entre la <strong>societat política</strong> (el conjunt de ciutadans que accepten viure sota unes mateixes normes) i el <strong>govern</strong> (la institució encarregada d'aplicar les lleis i administrar el poder). Aquesta distinció és molt important: el govern no és propietari de la societat. <em>Només administra un poder que la societat li ha confiat.</em></p>
+
+        <h3 id="s5-5">5.5. La separació de poders i els límits del govern</h3>
+        <p>El punt central de la teoria política de Locke —i el que el distingeix radicalment de Hobbes— és que el poder polític té <strong>límits fonamentals</strong> que cap govern no pot traspassar legítimament. Per garantir que el poder es mantingui dins d'aquests límits, Locke és el primer gran defensor de la <strong>separació de poders</strong>: cap institució no ha de concentrar tot el poder, perquè la divisió de funcions evita els abusos i protegeix la llibertat.</p>
+        <p>En la seva proposta, Locke distingeix tres poders: el <strong>legislatiu</strong> (crea i interpreta les lleis), l'<strong>executiu</strong> (aplica les lleis) i el <strong>federatiu</strong> (gestiona les relacions internacionals). Posteriorment, Montesquieu i els fundadors dels Estats Units completaran i desenvoluparan aquesta doctrina fins a la separació clàssica (legislatiu, executiu, judicial) que coneixem avui.</p>
+        <p>Però la separació de poders no és per a Locke un fi en si mateixa: és un mecanisme per fer efectius els <strong>límits del govern</strong>. Locke estableix amb claredat quines coses cap govern no pot fer legítimament, amb independència de la seva força o de la seva majoria:</p>
+        <div class="example-box">
+          <span class="ex-label">Locke, <em>Segon tractat sobre el govern civil</em>, cap. XI (1689)</span>
+          <p>«El poder legislatiu [...] no és ni pot ser absolutament arbitrari sobre les vides i fortunes del poble. [...] No pot governar per decrets arbitraris improvisats, sinó per lleis establertes i promulgades i jutges autoritzats i coneguts. [...] El poder suprem no pot prendre a cap home cap part de la seva propietat sense el seu propi consentiment.»</p>
+        </div>
+        <p>Un govern perd la seva legitimitat quan traspasssa aquests límits: quan viola els drets fonamentals dels ciutadans, quan actua pel seu propi benefici en lloc del bé comú, quan no respecta les lleis que ell mateix ha d'aplicar, o quan impedeix la participació política. Locke ho resumeix en una idea poderosa: <em>el govern és un <strong>fideicomís</strong></em> —un encàrrec de confiança que la societat fa a una institució. Si la institució traeix aquest encàrrec, el fideicomís s'extingeix.</em></p>
+
+        <h3 id="s5-6">5.6. El dret de resistència: quan es pot legítimament revoltar-se?</h3>
+        <p>La conseqüència directa del plantejament de Locke és el <strong>dret de resistència</strong>: quan un govern trenca el pacte social i viola els drets naturals que hauria de protegir, els ciutadans no només <em>poden</em> resistir-se; és legítim que ho facin i, si cal, que substitueixin el govern per un de nou. Locke ho expressava amb claredat al capítol XIX del <em>Segon tractat</em>:</p>
+        <div class="example-box">
+          <span class="ex-label">Locke, <em>Segon tractat sobre el govern civil</em>, cap. XIX (1689)</span>
+          <p>«Quan el legislatiu infringeix aquesta confiança fonamental, actua contràriament a l'encàrrec que ha rebut, i el poder recau de nou en el poble, que té el dret de recuperar la seva llibertat original i, per mitjà de l'establiment d'un nou legislatiu [...], procurar la seva pròpia salvació i seguretat. [...] Car els governants, en totes les formes de govern, que s'esforcen a aconseguir i a ampliar tot el poder possible [...] han de ser resistits.»</p>
+        </div>
+        <p>Però Locke no diu que qualsevol desacord justifiqui la rebel·lió. Estableix condicions molt precises. Un govern perd la seva legitimitat i els ciutadans adquireixen el dret de resistir-s'hi quan es compleix almenys una de les situacions següents:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Condició</th><th>En què consisteix</th><th>Exemple il·lustratiu</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>1. El govern busca el poder per a si mateix</strong></td>
+                <td>El govern actua en benefici propi en lloc del bé comú, o impedeix el funcionament del poder legislatiu que hauria de controlar-lo.</td>
+                <td>Un executiu que suspèn el parlament, que convoca eleccions fraudulentes, o que elimina la separació de poders.</td>
+              </tr>
+              <tr>
+                <td><strong>2. L'executiu no aplica les lleis</strong></td>
+                <td>El poder encarregat d'executar les lleis les ignora, les aplica de manera selectiva per beneficiar uns i perjudicar altres, o les incompleix impunement.</td>
+                <td>Un govern que aplica les lleis contra l'oposició però no als seus propis membres quan cometen les mateixes infraccions.</td>
+              </tr>
+              <tr>
+                <td><strong>3. El legislatiu fa lleis contràries als drets naturals</strong></td>
+                <td>Les lleis aprovades vulneren directament els drets naturals dels ciutadans (vida, salut, llibertat, propietat) en lloc de protegir-los.</td>
+                <td>Una llei que prohibeix la llibertat d'expressió o d'associació, o que permet l'arrest sense judici de dissidents polítics.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="warn-box">Locke afegeix dues precisions importants. Primera: que el govern es dissolgui <em>no vol dir que la societat desaparegui</em>; vol dir que el govern concret perd la legitimitat per governar, i la sobirania retorna al poble perquè n'esculli un de nou. Segona: la resistència no ha de ser el primer recurs; Locke considera que un poble raonable aguanta molt abans de revoltar-se. L'important del seu argument no és animar les rebel·lions constants, sinó establir un criteri filosòfic clar sobre quan el poder deixa de ser legítim.</div>
+        <p>Aquesta formulació serà fonamental per a les grans revolucions liberals dels segles XVIII i XIX. La Declaració d'Independència dels Estats Units (1776) n'és una aplicació directa: enumera les violacions concretes del rei britànic (equivalents a les condicions de Locke) i en dedueix el dret de les colònies a constituir-se en una nova societat política. L'estructura del document és, filosòficament, pura doctrina lockiana.</p>
+
+        <div class="case-study">
+          <span class="case-study-label">Per debatre</span>
+          <div class="case-study-title">Qui decideix quan el govern ha traspassat el límit?</div>
+          <p>La teoria de Locke planteja una pregunta pràctica difícil: les condicions que justifiquen la resistència (el govern actua pel seu propi benefici, no aplica les lleis, viola drets naturals) solen ser justament aquelles sobre les quals el govern i la ciutadania discreparan. El govern dirà que actua pel bé comú; els dissidents diran que viola els seus drets. No hi ha cap jutge extern que ho arbitri. Qui té, doncs, l'última paraula?</p>
+          <div class="case-study-verdict"><strong>→ La resposta de Locke:</strong> en última instància, el jutge és el propi poble, que ha de valorar si el govern ha trencat el pacte. Locke és conscient que això pot semblar perillós (pot legitimar qualsevol rebel·lió), però considera que el perill contrari és pitjor: un govern sense límits que no pot ser mai qüestionat. "Si el poble és el jutge", diu, "que ho sigui."</div>
+        </div>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S6 -->
+      <section class="section" id="s6">
+        <span class="section-num">Secció 06</span>
+        <h2>Emma Goldman: una crítica del poder i una defensa de la llibertat</h2>
+        <p>Emma Goldman (1869–1940) va ser una de les pensadores polítiques més influents de finals del segle XIX i principis del XX. Nascuda a l'Imperi Rus i emigrada als Estats Units, va dedicar la seva vida a reflexionar sobre la llibertat, el poder polític, els drets de les dones, la llibertat d'expressió i les condicions de vida de les classes treballadores. Va viure en una època marcada per grans desigualtats socials, condicions laborals molt dures i una forta repressió dels moviments obrers. Aquest context la va portar a fer-se una pregunta que ni Hobbes ni Locke s'havien plantejat amb la mateixa centralitat:</p>
+        <p style="text-align:center; font-style:italic; margin: 20px 0; font-size: 1.05rem;"><strong>Com podem evitar que el poder polític es converteixi en una font de dominació?</strong></p>
+
+        <h3 id="s6-0">6.1. La naturalesa humana segons Goldman</h3>
+        <p>Goldman parteix d'una visió de la naturalesa humana molt diferent de la de Hobbes. Per a Hobbes, l'ésser humà sense institucions és egoista, competitiu i perillós. Goldman rebutja de rels aquesta premissa: els éssers humans no som fonamentalment animals en competència permanent, sinó éssers amb una capacitat profunda i natural per a la <strong>cooperació, la solidaritat i l'ajuda mútua</strong>.</p>
+        <p>Inspirada en les idees del pensador Piotr Kropotkin, Goldman argumenta que si mirem la història de la humanitat amb honestedad, descobrim que les societats han prosperat no gràcies a la competència i al control imposat des de dalt, sinó gràcies a xarxes de col·laboració, confiança i responsabilitat compartida. La violència i el conflicte no són el punt de partida natural de la vida humana, sinó molt sovint el resultat de sistemes d'opressió i desigualtat que destrueixen la capacitat natural de les persones per cooperar.</p>
+        <p>Aquesta visió de la naturalesa humana té conseqüències polítiques importants: si les persones som naturalment capaços de cooperar i de reconèixer els drets dels altres sense necessitat d'un poder coercitiu que ho imposi, llavors la necessitat d'un Estat fort (com proposa Hobbes) no neix de la naturalesa humana, sinó de les condicions concretes d'injustícia i opressió en les quals viuen les persones.</p>
+
+        <h3 id="s6-1">6.2. La desconfiança envers l'autoritat</h3>
+        <p>Mentre Hobbes considera que el principal problema és l'absència d'autoritat i Locke es preocupa sobretot pels límits del govern, Goldman dirigeix la seva atenció cap a un aspecte diferent: els efectes que el poder té sobre la llibertat de les persones, fins i tot quan aquest poder és formalment legítim.</p>
+        <p>Segons Goldman, <strong>totes les institucions que concentren molt poder tendeixen a justificar-se a si mateixes i a ampliar la seva capacitat de control</strong>. Per això considera necessari mantenir sempre una actitud crítica davant qualsevol forma d'autoritat, no com una actitud nihilista, sinó com una exigència de la pròpia llibertat. Goldman observa que molts governs afirmen actuar en nom de la seguretat, de l'ordre o de l'interès general, però que aquestes justificacions poden acabar limitant la llibertat d'expressió, la participació política o la capacitat dels ciutadans per decidir sobre les seves pròpies vides.</p>
+        <p>A diferència de Hobbes, Goldman no considera que <em>més poder impliqui necessàriament més seguretat</em>. Al contrari: un poder excessivament concentrat pot esdevenir una amenaça per a la llibertat. Escriu a <em>The Individual, Society and the State</em> (1940): <em>«Ningú no pot ser lliure en una societat que limita, reglamenta i subjecta el seu pensament, la seva acció i els seus impulsos. La llibertat no és una concessió; és part inherent de l'ésser humà.»</em></p>
+
+        <h3 id="s6-2">6.3. Una concepció exigent de la llibertat</h3>
+        <p>Per a Goldman, la llibertat és molt més que l'absència d'obstacles físics o jurídics. Una persona no és plenament lliure simplement perquè pugui votar o perquè la llei li reconegui determinats drets. La llibertat requereix també la <strong>possibilitat real de desenvolupar les pròpies capacitats</strong>, expressar les pròpies idees i participar activament en la vida social i política.</p>
+        <div class="tip-box">
+          <span class="tip-label">La concepció de llibertat de Goldman: comparació</span>
+          <p>Per a Hobbes, la llibertat és la capacitat d'actuar sense cap restricció externa (la llibertat màxima és en l'estat de natura, sense Estat ni lleis).<br><br>Per a Locke, la llibertat és la capacitat d'actuar sense restriccions externes en un entorn de seguretat (no hi ha llibertat real sense Estat i lleis que protegeixin els drets).<br><br>Per a Goldman, la llibertat no és l'absència de restriccions externes, sinó la <strong>capacitat real de decidir, participar i desenvolupar-se</strong>. Una persona pot tenir formalment tots els drets reconeguts per la llei i, tot i així, no ser lliure si les condicions socials i econòmiques ho fan impossible de facto.</p>
+        </div>
+        <p>Per això Goldman va defensar causes que avui considerem fonamentals: la llibertat d'expressió i d'associació, la igualtat entre homes i dones, el dret de les persones treballadores a organitzar-se, l'accés a l'educació, i l'autonomia personal en les decisions que afecten la pròpia vida. Per a Goldman, la llibertat no és un dret que es tingui individualment de manera passiva, sinó una <strong>pràctica que s'aprèn i s'exerceix</strong> mitjançant la participació en la comunitat.</p>
+
+        <h3 id="s6-3">6.4. Cooperació i suport mutu</h3>
+        <p>Un dels aspectes més interessants del pensament de Goldman és la seva confiança en la capacitat humana de cooperar. Moltes teories polítiques modernes, especialment la de Hobbes, parteixen de la idea que els éssers humans tendim principalment a competir entre nosaltres i que, sense una autoritat forta, la convivència es tornaria impossible. Goldman rebutja aquesta visió pessimista.</p>
+        <p>Inspirada en idees desenvolupades per pensadors com <strong>Piotr Kropotkin</strong>, considera que la cooperació, l'ajuda mútua i la solidaritat no són excepcions rares a la regla de la competència: són <em>dimensions fonamentals</em> de la vida humana. Les persones no només competeixen; també col·laboren constantment per satisfer necessitats comunes i construir projectes compartits. Kropotkin havia argumentat, a <em>L'ajuda mútua</em> (1902), que tant en la naturalesa com en la història humana la cooperació és tan prevalent com la competència, i que les societats humanes han prosperat precisament gràcies a ella.</p>
+        <p>Aquesta idea connecta directament amb el que vam veure al tema anterior: si els éssers humans som éssers relacionals i dependents dels altres, llavors una societat justa no pot basar-se únicament en la competència ni en l'obediència a una autoritat superior. Necessita, necessàriament, <strong>espais de cooperació, confiança i responsabilitat compartida</strong>.</p>
+        <div class="case-study">
+          <span class="case-study-label">Cas pràctic</span>
+          <div class="case-study-title">La vigilància massiva i la llibertat digital</div>
+          <p>Molts governs actuals justifiquen la recollida massiva de dades personals (correus electrònics, missatges, ubicació, historial de cerca) amb l'argument de la seguretat: cal vigilar per prevenir el terrorisme. En Goldman, una crítica que continua avui en plena vigència: qui controla que els qui vigilen no abusin d'aquest poder? I, sobretot, si una persona sap que és vigilada constantment, és realment lliure per expressar-se, associar-se o dissentir?</p>
+          <div class="case-study-verdict"><strong>→ La pregunta de Goldman actualitzada:</strong> fins a quin punt podem acceptar la vigilància massiva sense perdre les condicions mínimes que fan possible la llibertat real? I qui vigila els vigilants?</div>
+        </div>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S7 -->
+      <section class="section" id="s7">
+        <span class="section-num">Secció 07</span>
+        <h2>Síntesi: tres respostes a una mateixa pregunta</h2>
+        <p>Els tres autors estudiats ofereixen respostes molt diferents a la pregunta fonamental del tema: <em>com podem conviure en societat preservant alhora la llibertat i la seguretat?</em></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Autor</th><th>Naturalesa humana</th><th>Estat de natura</th><th>Contracte social</th><th>El poder ha de ser...</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Hobbes</strong></td>
+                <td>Individualista, egoista, competitiva</td>
+                <td>Guerra de tots contra tots</td>
+                <td>Renúncia total a la llibertat a canvi de seguretat</td>
+                <td>Absolut i sense límits. La seguretat és el valor suprem.</td>
+              </tr>
+              <tr>
+                <td><strong>Locke</strong></td>
+                <td>Sociable, racional, cooperativa</td>
+                <td>Llibertat i igualtat, amb riscos puntuals</td>
+                <td>Cessió limitada; es conserven els drets naturals</td>
+                <td>Limitat, separat i subjecte a la revocació ciutadana.</td>
+              </tr>
+              <tr>
+                <td><strong>Goldman</strong></td>
+                <td>Cooperativa, solidària, no competitiva per naturalesa</td>
+                <td>No és el punt de partida rellevant; el problema és el poder concentrat</td>
+                <td>Escèptica de tot acord que concentri poder sense control continu</td>
+                <td>Desconfiat, vigilat i qüestionat constantment per la ciutadania.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Malgrat les seves diferències, tots tres comparteixen una mateixa preocupació de fons: comprendre quines condicions fan possible la vida en comú, i com evitar que la vida col·lectiva es torni injusta o opressiva. La filosofia política no ofereix una resposta definitiva a aquesta qüestió, però ens proporciona eines per reflexionar-hi amb rigor.</p>
+        <div class="def-box">
+          <span class="def-label">La pregunta final del tema</span>
+          <p>Encara que tinguem institucions legítimes i governs acceptats per la ciutadania... <strong>això garanteix que la societat sigui justa?</strong></p>
+        </div>
+        <p>Aquesta pregunta — que Hobbes respondria que sí (si hi ha seguretat, n'hi ha prou), que Locke matisaria (depèn de si els drets naturals hi estan protegits) i que Goldman qüestionaria (el poder formal no és garantia de llibertat real) — ens condueix al gran debat de la filosofia política contemporània sobre la justícia, la igualtat i la democràcia.</p>
+      </section>
+
+    </div><!-- /panel-apunts -->
+
+    <!-- ════ EXERCICIS PANEL ════ -->
+    <div class="tab-panel" id="panel-exercicis">
+
+      <div class="ex-intro" id="exercicis">
+        <div class="ex-intro-icon">Ex</div>
+        <div>
+          <h3>Exercicis i tasques — Tema 05</h3>
+          <p>Activitats d'anàlisi de textos originals dels autors i autores estudiats, traduits al català, complementats amb veus contemporànies que treballen els mateixos problemes.</p>
+        </div>
+      </div>
+
+      <!-- BLOC 1 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 1 — Hobbes: el <em>Leviatan</em> i la naturalesa humana</h3>
+          <span class="ex-badge analisi">Anàlisi de text</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">1.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el fragment del capítol XIII del <em>Leviatan</em> i responeu les preguntes que el segueixen.</div>
+              <div class="ex-item-quote">«Amb tot això, és manifest que durant el temps en què els homes viuen sense un poder comú que els tingui a tots en respecte, es troben en aquella condició que s'anomena guerra; i una guerra que és de tots contra tots. En una guerra com aquesta, res no pot ser injust. Les nocions de dret i falta, de justícia i injustícia, no hi tenen lloc. On no hi ha poder comú, no hi ha llei; on no hi ha llei, no hi ha injustícia. La força i la traïció són en la guerra les dues virtuts cardinals.»
+              <br><br>— Thomas Hobbes, <em>Leviatan</em>, cap. XIII (1651)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Quina relació estableix Hobbes entre poder, llei i justícia? Podria haver-hi justícia sense un poder que la imposi? (b) Hobbes diu que en l'estat de natura "la força i la traïció són les dues virtuts cardinals." Creieu que aquesta afirmació és descriptiva (descriu la realitat) o normativa (diu el que s'hauria de fer)? Per què? (c) Si acceptem la premissa de Hobbes que sense poder no hi ha justícia, quin tipus d'Estat estaria justificat? Estaríeu d'acord?</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">1.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el segon fragment i compareu-lo amb la visió de Locke.</div>
+              <div class="ex-item-quote">«La causa final, fi o designi dels homes (que s'estimen naturalment la llibertat i el domini sobre els altres) en introduir aquella restricció sobre si mateixos (en la qual els veiem viure en societats civils) és tenir cura de la seva pròpia conservació i, per consegüent, d'una vida més satisfeta: és a dir, de sortir d'aquella condició miserable de guerra que [...] és la conseqüència necessària de les passions naturals dels homes.»
+              <br><br>— Thomas Hobbes, <em>Leviatan</em>, cap. XVII (1651)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">Hobbes diu que les persones "estimen naturalment la llibertat i el domini sobre els altres", però que igualment accepten restriccions per conservar la vida. Expliqueu en les vostres paraules per què, per a Hobbes, la racionalitat humana ens condueix a acceptar el poder de l'Estat tot i que limiti la nostra llibertat. Esteu d'acord que és racional fer-ho?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 2 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 2 — Locke: drets, límits del govern i resistència</h3>
+          <span class="ex-badge analisi">Anàlisi de text</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">2.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el fragment sobre la finalitat del poder legislatiu i responeu.</div>
+              <div class="ex-item-quote">«El poder legislatiu [...] no pot ser absolutament arbitrari sobre les vides i fortunes del poble. [...] No pot governar per decrets arbitraris improvisats, sinó per lleis establertes i promulgades i jutges autoritzats i coneguts. [...] Aquests lleis han d'estar adreçades únicament al bé del poble. No pot el poder suprem prendre a cap home cap part de la seva propietat sense el seu propi consentiment.»
+              <br><br>— John Locke, <em>Segon tractat sobre el govern civil</em>, cap. XI (1689)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Locke estableix tres restriccions al poder legislatiu en aquest fragment. Identifiqueu-les i expliqueu per què cadascuna és important. (b) Locke diu que les lleis han d'estar "adreçades únicament al bé del poble." Qui decideix, però, quin és el bé del poble? Aquest és un problema que Locke deixa obert?</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">2.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el fragment sobre el dret de resistència i responeu.</div>
+              <div class="ex-item-quote">«Quan el legislatiu infringeix aquesta confiança fonamental, actua contràriament a l'encàrrec que ha rebut, i el poder recau de nou en el poble, que té el dret de recuperar la seva llibertat original i, per mitjà de l'establiment d'un nou legislatiu [...], procurar la seva pròpia salvació i seguretat. [...] Car els governants, en totes les formes de govern, que s'esforcen a aconseguir i a ampliar tot el poder possible [...] han de ser resistits.»
+              <br><br>— John Locke, <em>Segon tractat sobre el govern civil</em>, cap. XIX (1689)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Locke diu que quan el govern traeix el seu encàrrec, "el poder recau de nou en el poble." Expliqueu en les vostres paraules el que vol dir. Qui és el poble, en aquest context, i com exerceix aquest poder recuperat? (b) Locke afirma que els governants que volen ampliar el seu poder "han de ser resistits." Aplicat avui: existeix algun govern actual que, al vostre parer, hagi traspassat els límits que Locke descriu? Raoneu-ho.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 3 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 3 — Goldman: llibertat, poder i naturalesa humana</h3>
+          <span class="ex-badge analisi">Anàlisi de text</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">3.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el fragment de Goldman sobre la llibertat i l'individu, i responeu.</div>
+              <div class="ex-item-quote">«L'individu és el cor de la societat, que conserva l'essència de la vida social; la societat és el pulmó que distribueix l'element per mantenir pur i fort el cor, és a dir, l'individu. Però si el pulmó imposa les seves pròpies lleis al cor, si les institucions determinen qui pot i no pot respirar, la vida s'extingeix.»
+              <br><br>— Emma Goldman, <em>The Individual, Society and the State</em> (1940)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Goldman fa servir una metàfora mèdica (cor / pulmó / individu / societat). Expliqueu en les vostres paraules quin punt filosòfic vol il·lustrar. (b) Per a Goldman, quan es converteix la societat o l'Estat en una amenaça per a l'individu? (c) Compareu la relació individu-societat que proposa Goldman amb la que proposa Hobbes: en quins punts fonamentals discrepen?</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">3.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Goldman va escriure el text següent arran de les restriccions a la llibertat d'expressió als Estats Units durant la Primera Guerra Mundial.</div>
+              <div class="ex-item-quote">«Ens parlen de patriotisme, d'ordre, de seguretat nacional. Però no ens parlen mai de les persones que han estat empresonades per pensar en veu alta, per defensar els seus drets, per negarse a matar. La seguretat de qui se'ns demana que sacrifiquem la nostra llibertat?»
+              <br><br>— Emma Goldman, discurs pronunciat el 1917, recollit a <em>Red Emma Speaks</em> (ed. Alix Shulman, 1972)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Goldman pregunta "la seguretat de qui?" Explicau a qui va dirigida aquesta pregunta i quin és el seu argument implícit. (b) Apliqueu la mateixa pregunta a un context contemporani: la vigilància massiva de comunicacions privades justificada per la seguretat nacional, la seguretat de qui protegeix realment i a quina costa?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 4 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 4 — Hannah Arendt: poder, violència i legitimitat</h3>
+          <span class="ex-badge analisi">Anàlisi de text</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">4.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Hannah Arendt (1906–1975) va ser una de les filòsofes polítiques més influents del segle XX. Llegiu el fragment d'<em>Sobre la violència</em> i responeu.</div>
+              <div class="ex-item-quote">«El poder correspon a la capacitat humana no simplement d'actuar, sinó d'actuar conjuntament. El poder mai no és propietat d'un individu; pertany a un grup i roman en existència únicament mentre el grup es manté unit. Quan diem que algú "està en el poder" volem dir que ha estat investit de poder per un cert nombre de persones per a actuar en el seu nom. En el moment que el grup, d'on el poder es va originar, desapareix, "el seu poder" s'evapora.»
+              <br><br>— Hannah Arendt, <em>Sobre la violència</em> (On Violence, 1970)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Per a Arendt, el poder és sempre col·lectiu i basat en el consens. Compareu aquesta definició de poder amb la de Hobbes (el sobirà que concentra la força) i la de Locke (el govern com a fideicomís). En quins punts coincideixen i en quins difereixen? (b) Arendt diu que el poder "s'evapora" quan el grup se separa. Podeu pensar en un exemple històric en què un govern ha perdut el poder precisament perquè la ciutadania ha deixat de donar-li suport?</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">4.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el segon fragment d'Arendt sobre la distinció entre poder i violència.</div>
+              <div class="ex-item-quote">«El poder i la violència s'oposen: on l'un domina absolutament, l'altra és absent. La violència apareix on el poder amenaça de desaparèixer. [...] Políticament parlant, és insuficient de dir que poder i violència no són el mateix. El poder i la violència s'oposen l'un a l'altra: on l'un domina absolutament, l'altra és absent.»
+              <br><br>— Hannah Arendt, <em>Sobre la violència</em> (On Violence, 1970)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Arendt distingeix netament poder (basat en el consens col·lectiu) de violència (la força). Per a Hobbes, en canvi, el poder de l'Estat inclou el monopoli de la violència legítima. Qui creieu que té raó? La violència pot ser una expressió de poder, o és més aviat el seu fracàs? (b) Doneu un exemple concret (d'un govern, d'una institució o d'una situació) que il·lustri el que Arendt vol dir quan afirma que "la violència apareix on el poder amenaça de desaparèixer."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 5 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 5 — Carole Pateman: el contracte social i les seves exclusions</h3>
+          <span class="ex-badge analisi">Anàlisi de text</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">5.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Carole Pateman (n. 1940) és una filòsofa política britànica que ha analitzat les limitacions dels teòrics clàssics del contracte social. Llegiu el fragment i responeu.</div>
+              <div class="ex-item-quote">«Els "individus" que fan el contracte original no són realment "individus" en el sentit ordinari de la paraula. Són caps de família masculins. [...] Les dones no són parts del contracte original. En el relat del contracte social, les dones estan presents en la seva absència: els seus cossos i la seva capacitat sexual i reproductiva estan disponibles per als homes, però elles no figuren com a agents polítics lliures i iguals.»
+              <br><br>— Carole Pateman, <em>El contracte sexual</em> (The Sexual Contract, 1988)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Pateman argumenta que el contracte social clàssic exclou les dones. Repreneu els textos de Hobbes i Locke del tema: creieu que aquesta crítica és justa? Es pot trobar en ells algun argument que justifiqui (o contradigui) l'exclusió de les dones de la vida política? (b) Si els "individus" del contracte social eren, de fet, homes caps de família, quines conseqüències pràctiques té aquesta exclusió per als drets que el contracte pretén garantir? (c) Creieu que la teoria política de Locke és reparable (es pot reformar per incloure tothom) o que el problema és estructural?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 6 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 6 — Síntesi: les tres teories davant d'un cas real</h3>
+          <span class="ex-badge redaccio">Redacció</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">6.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Analitza el cas següent des dels punts de vista de Hobbes, Locke i Goldman, explicant el que diria cadascun i per quina raó. Integra, si ho veus rellevant, alguna de les idees d'Arendt o Pateman. Finalment, explica amb quina posició estàs més d'acord i per què.</div>
+              <div class="ex-item-quote">Un govern democràtic, per aturar el creixement d'una pandèmia, imposa durant sis mesos el confinament domiciliari obligatori, suspèn les reunions de més de deu persones (incloses les manifestacions), limita la llibertat de moviment i implementa un sistema de rastreig digital de contactes. El govern afirma que totes les mesures són temporals i necessàries per protegir la vida de la població. Diversos grups socials, especialment els treballadors en precarietat, viuen les restriccions de manera molt més greu que altres sectors de la societat.</div>
+              <div class="ex-item-note">Cal aplicar conceptes específics de cada autor: estat de natura, drets naturals, monopoli de la violència, límits del govern, fideicomís, dret de resistència, concepció exigent de la llibertat, poder vs. violència (Arendt), exclusions del contracte (Pateman).</div>
+            </div>
+          </div>
+        </div>
+        <div class="ex-coming">
+          <span>Pròximament</span>
+          S'afegiran més activitats d'aquest bloc
+        </div>
+      </div>
+
+
+      <!-- BLOC ARG: ANÀLISI ARGUMENTATIVA (TEMA 5) -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 7 — Anàlisi argumentativa de textos del tema</h3>
+          <span class="ex-badge analisi">Eines del Tema 1</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">7.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Analitzeu l'argument central de Hobbes a favor d'un poder fort.</div>
+              <div class="ex-item-quote">«En l'estat de natura sense govern, cadascú té dret il·limitat a tot. Quan tothom té dret a tot, inevitablement es produeix una guerra de tots contra tots. En una guerra permanent, la vida de l'home és solitària, pobra, bruta, brutal i curta. Per tant, racionalment, tothom hauria d'acceptar cedir la seva llibertat a una autoritat sobirana que garanteixi la pau.»<br><br>— Paràfrasi de Hobbes, <em>Leviatan</em>, caps. 13-17</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Posa l'argument en forma P-C. (b) Quin tipus d'argument és? (c) Identifica les dues premisses més vulnerables i explica per quina raó. (d) Escriu la crítica de Locke a la premissa més vulnerable com a argument: formula-la en forma P-C. (e) Escriu la crítica de Goldman a una premissa diferent: també en forma P-C.</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">7.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Analitzeu l'argument de Locke sobre el dret de resistència com a argument del tema 1.</div>
+              <div class="ex-item-quote">«L'Estat existeix per protegir els drets naturals dels ciutadans. Un govern que viola els drets naturals trenca el pacte social. Si el pacte social es trenca, el poder torna als ciutadans. Per tant, quan un govern viola els drets naturals, els ciutadans tenen dret a resistir-s'hi.»<br><br>— Paràfrasi de Locke, <em>Segon tractat</em>, cap. XIX</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Identifica el tipus d'argument. L'argument és vàlid? (b) Quina de les premisses donaria Hobbes per falsa, i per quina raó? (c) Quin tipus de fal·làcia podria cometre algú que usés aquest argument de manera excessiva per justificar qualsevol rebel·lió política? (d) Formula un argument d'analogia a favor de la postura de Locke sobre el dret de resistència.</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">7.3</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Construeix un text argumentatiu curt (tres paràgrafs) a favor o en contra de la tesi: <em>«La seguretat col·lectiva justifica, en certes circumstàncies, imposar limitacions importants a la llibertat individual.»</em> El text ha d'incloure la tesi formulada, almenys dos arguments de tipus diferent, un contra-argument amb rèplica i una conclusió. Pots fer servir idees de Hobbes, Locke, Goldman o Arendt.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /panel-exercicis -->
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-nav"><a href="index.html">← Índex del curs</a></div>
+  <span>T05 · Política i societat</span>
+</footer>
+
+<script>
+  function switchTab(name, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    btn.classList.add('active');
+    setTimeout(animateVisible, 50);
+  }
+
+  function animateVisible() {
+    document.querySelectorAll('.section, .ex-block').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', animateVisible, { passive: true });
+  animateVisible();
+
+  const tocLinks = document.querySelectorAll('.toc a');
+  const headingIds = Array.from(tocLinks)
+    .map(a => a.getAttribute('href').slice(1))
+    .filter(id => document.getElementById(id));
+
+  function updateToc() {
+    let current = headingIds[0];
+    headingIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 120) current = id;
+    });
+    tocLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', updateToc, { passive: true });
+  updateToc();
+
+  if (window.location.hash === '#exercicis') {
+    switchTab('exercicis', document.querySelectorAll('.tab-btn')[1]);
+  }
+</script>
+</body>
+</html>

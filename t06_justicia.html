@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T06 · Política i justícia social — Filosofia 1r Bat.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111; --ink-soft: #444444; --ink-faint: #8a8a8a;
+    --paper: #ffffff; --paper-off: #fafaf9;
+    --line: #111111; --line-soft: #cfcfcc; --line-faint: #e6e5e1;
+    --sidebar-w: 250px; --content-max: 740px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Spectral', Georgia, serif; background: var(--paper); color: var(--ink); line-height: 1.75; font-size: 16.5px; font-weight: 400; }
+
+  .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-left { display: flex; align-items: center; }
+  .nav-back { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; display: flex; align-items: center; gap: 8px; padding: 6px 14px 6px 0; border-right: 1px solid var(--line-faint); margin-right: 14px; transition: color 0.15s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-brand { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; font-weight: 700; }
+  .nav-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.06em; }
+
+  .topic-hero { background: var(--paper); border-bottom: 1px solid var(--line); padding: 52px 48px 44px; }
+  .topic-hero-inner { max-width: calc(var(--sidebar-w) + var(--content-max) + 64px); margin: 0 auto; }
+  .topic-breadcrumb { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 22px; }
+  .topic-breadcrumb a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+  .topic-breadcrumb a:hover { opacity: 0.6; }
+  .topic-num-badge { display: inline-flex; align-items: center; gap: 10px; font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px; }
+  .topic-hero h1 { font-family: 'Spectral', serif; font-size: clamp(1.7rem, 3.6vw, 2.6rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.18; color: var(--ink); margin-bottom: 14px; }
+  .topic-hero h1 em { font-style: italic; font-weight: 400; }
+  .topic-subtitle { font-family: 'Courier Prime', monospace; color: var(--ink-soft); font-size: 0.82rem; letter-spacing: 0.03em; }
+
+  .tabs-bar { background: var(--paper); border-bottom: 1px solid var(--line); padding: 0 48px; display: flex; }
+  .tab-btn { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); border: none; background: none; padding: 15px 22px; cursor: pointer; position: relative; transition: color 0.15s; }
+  .tab-btn::after { content: ''; position: absolute; bottom: -1px; left: 0; right: 0; height: 1px; background: var(--ink); opacity: 0; transition: opacity 0.15s; }
+  .tab-btn:hover { color: var(--ink-soft); }
+  .tab-btn.active { color: var(--ink); font-weight: 700; }
+  .tab-btn.active::after { opacity: 1; }
+
+  .page-wrap { max-width: calc(var(--sidebar-w) + var(--content-max) + 64px); margin: 0 auto; display: grid; grid-template-columns: var(--sidebar-w) 1fr; align-items: start; }
+
+  .sidebar { position: sticky; top: 56px; padding: 40px 24px 40px 0; max-height: calc(100vh - 56px); overflow-y: auto; scrollbar-width: none; }
+  .sidebar::-webkit-scrollbar { display: none; }
+  .sidebar-title { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .toc { list-style: none; }
+  .toc a { display: block; padding: 5px 0 5px 14px; font-family: 'Spectral', serif; font-size: 0.83rem; color: var(--ink-faint); text-decoration: none; border-left: 1px solid var(--line-faint); transition: all 0.15s; line-height: 1.4; }
+  .toc a:hover { color: var(--ink); border-left-color: var(--ink-soft); }
+  .toc a.active { color: var(--ink); border-left: 1px solid var(--ink); font-weight: 600; }
+  .toc .toc-sub a { padding-left: 28px; font-size: 0.78rem; font-style: italic; }
+  .sidebar-sep { height: 1px; background: var(--line-faint); margin: 16px 0; }
+  .sidebar-exlink { display: block; font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; padding: 9px 12px; border: 1px solid var(--line); transition: all 0.15s; text-align: center; }
+  .sidebar-exlink:hover { color: var(--paper); background: var(--ink); }
+
+  .content { padding: 48px 0 100px 40px; border-left: 1px solid var(--line); min-width: 0; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .section { margin-bottom: 64px; padding-top: 8px; opacity: 0; transform: translateY(12px); transition: opacity 0.45s ease, transform 0.45s ease; }
+  .section.visible { opacity: 1; transform: none; }
+  .section-num { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; display: block; }
+  h2 { font-family: 'Spectral', serif; font-size: 1.65rem; font-weight: 600; color: var(--ink); margin-bottom: 26px; line-height: 1.3; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+  h3 { font-family: 'Spectral', serif; font-size: 1.18rem; font-weight: 600; color: var(--ink); margin: 40px 0 14px; }
+  h4 { font-family: 'Spectral', serif; font-size: 0.95rem; font-weight: 600; font-style: italic; color: var(--ink-soft); margin: 28px 0 10px; }
+  p { margin-bottom: 14px; color: var(--ink-soft); font-weight: 300; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 700; }
+  em { font-style: italic; }
+  ul, ol { padding-left: 22px; margin-bottom: 14px; }
+  li { margin-bottom: 6px; color: var(--ink-soft); font-weight: 300; }
+  .section-divider { border: none; border-top: 1px solid var(--line); margin: 52px 0; }
+
+  .def-box { border: 1px solid var(--ink); padding: 18px 20px; margin: 20px 0; }
+  .def-box .def-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; display: block; font-weight: 700; }
+  .def-box p { margin: 0; font-size: 0.95rem; color: var(--ink-soft); }
+
+  .example-box { border: 1px dashed var(--line-soft); padding: 16px 20px; margin: 18px 0; }
+  .example-box .ex-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; display: block; }
+  .example-box p { margin: 0 0 8px; font-size: 0.93rem; font-style: italic; color: var(--ink-soft); }
+  .example-box p:last-child { margin: 0; }
+  .example-box .ex-problem { font-style: normal; font-size: 0.86rem; color: var(--ink-soft); background: var(--paper-off); border-left: 2px solid var(--ink); padding: 8px 12px; margin-top: 8px; }
+
+  .warn-box { border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 16px 4px; margin: 22px 0; font-size: 0.93rem; color: var(--ink-soft); }
+  .warn-box::before { content: 'ATENCIÓ — '; font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; color: var(--ink); font-weight: 700; display: block; margin-bottom: 6px; }
+
+  .tip-box { border: 1px dotted var(--ink-soft); padding: 16px 20px; margin: 18px 0; font-size: 0.93rem; }
+  .tip-box .tip-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; display: block; font-weight: 700; }
+
+  .fallacy-grid { display: grid; gap: 0; margin: 24px 0; border-top: 1px solid var(--line); }
+  .fallacy-card { border-bottom: 1px solid var(--line-faint); padding: 22px 4px; }
+  .fallacy-name { font-family: 'Spectral', serif; font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .fallacy-def { font-size: 0.9rem; margin-bottom: 12px; color: var(--ink-soft); }
+  .fallacy-ex { font-style: italic; font-size: 0.88rem; color: var(--ink-soft); padding: 10px 14px; background: var(--paper-off); border-left: 2px solid var(--line-soft); margin-bottom: 10px; }
+  .fallacy-prob { font-size: 0.83rem; color: var(--ink-faint); padding-top: 8px; border-top: 1px dotted var(--line-faint); }
+  .fallacy-prob strong { color: var(--ink); }
+
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th { background: var(--ink); color: var(--paper); padding: 10px 14px; text-align: left; font-family: 'Courier Prime', monospace; font-weight: 400; font-size: 0.78rem; letter-spacing: 0.04em; }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--line-faint); vertical-align: top; color: var(--ink-soft); font-size: 0.88rem; }
+  tr:last-child td { border-bottom: 1px solid var(--ink); }
+
+  .levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 24px 0; border: 1px solid var(--line); }
+  .level-card { padding: 20px 16px; text-align: center; border-right: 1px solid var(--line-faint); }
+  .level-card:last-child { border-right: none; }
+  .level-num { width: 30px; height: 30px; border: 1px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'Courier Prime', monospace; font-size: 0.9rem; font-weight: 700; margin: 0 auto 12px; }
+  .level-card h4 { margin: 0 0 8px; font-style: normal; font-size: 0.76rem; font-family: 'Courier Prime', monospace; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); font-weight: 700; }
+  .level-card p { font-size: 0.82rem; color: var(--ink-faint); margin: 0; line-height: 1.5; font-weight: 300; }
+
+  .expr-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; margin: 20px 0; border: 1px solid var(--line); }
+  .expr-group { padding: 14px 16px; border-right: 1px solid var(--line-faint); border-bottom: 1px solid var(--line-faint); }
+  .expr-group-title { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); margin-bottom: 10px; font-weight: 700; }
+  .expr-group p { font-size: 0.85rem; color: var(--ink-soft); font-weight: 300; margin: 0; }
+  .expr-group ul { list-style: none; padding: 0; margin: 0; }
+  .expr-group li { font-size: 0.85rem; padding: 3px 0; border-bottom: 1px dotted var(--line-faint); color: var(--ink-soft); font-weight: 300; }
+  .expr-group li:last-child { border-bottom: none; }
+
+  .case-study { border-left: 3px solid var(--ink); background: var(--paper-off); padding: 20px 24px; margin: 22px 0; }
+  .case-study-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; display: block; }
+  .case-study-title { font-family: 'Spectral', serif; font-size: 1.08rem; font-weight: 600; color: var(--ink); margin-bottom: 10px; }
+  .case-study p { font-size: 0.93rem; color: var(--ink-soft); margin-bottom: 10px; }
+  .case-study p:last-child { margin-bottom: 0; }
+  .case-study-verdict { margin-top: 12px; padding-top: 12px; border-top: 1px dotted var(--line-soft); font-size: 0.9rem; color: var(--ink); }
+
+  .ex-intro { border: 1px solid var(--ink); padding: 26px 30px; margin-bottom: 40px; display: flex; gap: 22px; align-items: flex-start; }
+  .ex-intro-icon { font-family: 'Courier Prime', monospace; font-size: 1.6rem; font-weight: 700; flex-shrink: 0; color: var(--ink); border: 1px solid var(--ink); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; }
+  .ex-intro h3 { margin: 0 0 8px; font-size: 1.1rem; }
+  .ex-intro p { margin: 0; font-size: 0.9rem; color: var(--ink-faint); font-weight: 300; }
+
+  .ex-block { margin-bottom: 48px; border: 1px solid var(--ink); opacity: 0; transform: translateY(12px); transition: opacity 0.45s ease, transform 0.45s ease; }
+  .ex-block.visible { opacity: 1; transform: none; }
+  .ex-block-header { background: var(--ink); padding: 15px 24px; display: flex; justify-content: space-between; align-items: center; }
+  .ex-block-header h3 { margin: 0; font-size: 1rem; font-family: 'Spectral', serif; color: var(--paper); }
+  .ex-badge { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 10px; border: 1px solid var(--paper); color: var(--paper); }
+  .ex-items { padding: 0; }
+  .ex-item { padding: 22px 24px; border-bottom: 1px solid var(--line-faint); display: grid; grid-template-columns: 30px 1fr; gap: 0 16px; align-items: baseline; }
+  .ex-item:last-child { border-bottom: none; }
+  .ex-item-num { font-family: 'Courier Prime', monospace; font-size: 0.74rem; color: var(--ink); font-weight: 700; padding-top: 2px; }
+  .ex-item-q { font-size: 0.95rem; color: var(--ink); margin-bottom: 8px; line-height: 1.55; font-weight: 400; }
+  .ex-item-note { font-size: 0.82rem; color: var(--ink-faint); font-style: italic; }
+  .ex-item-quote { font-style: italic; font-size: 0.9rem; color: var(--ink-soft); background: var(--paper-off); padding: 10px 16px; margin: 8px 0; border-left: 2px solid var(--ink); }
+  .ex-coming { padding: 32px 24px; text-align: center; color: var(--ink-faint); font-style: italic; font-size: 0.9rem; border-top: 1px dashed var(--line-faint); display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .ex-coming span { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); border: 1px solid var(--line-soft); padding: 4px 12px; }
+
+  .site-footer { border-top: 1px solid var(--line); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; color: var(--ink-faint); font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.06em; max-width: calc(var(--sidebar-w) + var(--content-max) + 64px); margin: 0 auto; }
+  .footer-nav { display: flex; gap: 20px; }
+  .footer-nav a { color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
+  .footer-nav a:hover { color: var(--ink); }
+
+  @media (max-width: 860px) {
+    .page-wrap { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    .content { padding: 32px 22px 60px; border-left: none; }
+    .levels { grid-template-columns: 1fr; }
+    .level-card { border-right: none; border-bottom: 1px solid var(--line-faint); }
+    .level-card:last-child { border-bottom: none; }
+    .topic-hero, .tabs-bar { padding-left: 22px; padding-right: 22px; }
+    .nav { padding: 0 22px; }
+    .nav-meta { display: none; }
+    .site-footer { padding: 20px 22px; flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-back" href="index.html">← Inici</a>
+    <span class="nav-brand">Filosofia 1r Bat.</span>
+  </div>
+  <span class="nav-meta">T06 · Política i justícia social</span>
+</nav>
+
+<div class="topic-hero">
+  <div class="topic-hero-inner">
+    <div class="topic-breadcrumb"><a href="index.html">Índex</a> / Tema 06</div>
+    <div class="topic-num-badge">Tema 06 — Filosofia política</div>
+    <h1>Política i <em>justícia social</em></h1>
+    <p class="topic-subtitle">Apunts de classe · Filosofia i Ciutadania 1r Batxillerat</p>
+  </div>
+</div>
+
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="switchTab('apunts', this)">APUNTS</button>
+  <button class="tab-btn" onclick="switchTab('exercicis', this)">EXERCICIS</button>
+</div>
+
+<div class="page-wrap">
+
+  <nav class="sidebar" aria-label="Índex de continguts" id="sidebar-apunts">
+    <div class="sidebar-title">Continguts</div>
+    <ul class="toc" id="toc">
+      <li><a href="#s1">1. Del poder a la justícia social</a></li>
+      <li><a href="#s2">2. El concepte de justícia</a></li>
+      <li class="toc-sub"><a href="#s2-1">2.1 Correctiva i distributiva</a></li>
+      <li class="toc-sub"><a href="#s2-2">2.2 Tres criteris bàsics</a></li>
+      <li><a href="#s3">3. Nozick: la justícia com a llibertat</a></li>
+      <li class="toc-sub"><a href="#s3-1">3.1 La llibertat com a dret fonamental</a></li>
+      <li class="toc-sub"><a href="#s3-2">3.2 L'argument de Messi</a></li>
+      <li><a href="#s4">4. Rawls: la justícia com a imparcialitat</a></li>
+      <li class="toc-sub"><a href="#s4-1">4.1 El vel d'ignorància</a></li>
+      <li class="toc-sub"><a href="#s4-2">4.2 Dos principis de justícia</a></li>
+      <li><a href="#s5">5. Marx: la crítica del capitalisme</a></li>
+      <li class="toc-sub"><a href="#s5-1">5.1 Classes, explotació i alienació</a></li>
+      <li class="toc-sub"><a href="#s5-2">5.2 El principi comunista</a></li>
+      <li><a href="#s6">6. Nussbaum: les capacitats</a></li>
+      <li class="toc-sub"><a href="#s6-1">6.1 Més enllà dels recursos</a></li>
+      <li class="toc-sub"><a href="#s6-2">6.2 Les deu capacitats bàsiques</a></li>
+      <li><a href="#s7">7. Butler: reconeixement i precarietat</a></li>
+      <li class="toc-sub"><a href="#s7-1">7.1 Quines vides compten?</a></li>
+      <li class="toc-sub"><a href="#s7-2">7.2 Precarietat i exclusió</a></li>
+      <li class="toc-sub"><a href="#s7-3">7.3 La crítica a Nussbaum</a></li>
+      <li><a href="#s8">8. Síntesi comparada</a></li>
+    </ul>
+    <div class="sidebar-sep"></div>
+    <a class="sidebar-exlink" href="#" onclick="switchTab('exercicis', document.querySelectorAll('.tab-btn')[1]); return false;">Ves als exercicis →</a>
+  </nav>
+
+  <main class="content">
+    <div class="tab-panel active" id="panel-apunts">
+
+      <!-- S1 -->
+      <section class="section" id="s1">
+        <span class="section-num">Secció 01</span>
+        <h2>Del poder polític a la justícia social</h2>
+        <p>Al tema anterior vam estudiar per què els éssers humans vivim en societat i com es justifica l'existència del poder polític. Vam veure que les grans teories —Hobbes, Locke i Goldman— intenten explicar per què acceptem l'autoritat, quina funció té l'Estat i quines condicions fan legítim el govern.</p>
+        <p>Tanmateix, queda oberta una pregunta fonamental que cap d'ells no respon del tot:</p>
+        <div class="def-box">
+          <span class="def-label">La pregunta d'aquest tema</span>
+          <p><em>Encara que un govern sigui legítim, això garanteix que la societat sigui justa?</em></p>
+          <p style="margin-top: 8px;">Podria existir una societat amb lleis legítimes però profundament desigual. Podria existir una democràcia que discriminés determinats grups o que permetés que una part de la població visqués en la pobresa.</p>
+        </div>
+        <p>La filosofia política no només s'interessa per l'origen i la legitimitat del poder, sinó també per la manera com una societat reparteix els seus recursos, les seves oportunitats, els seus drets i les seves responsabilitats. Aquesta és precisament la qüestió de la <strong>justícia social</strong>: qui ha de tenir accés als recursos d'una societat, com s'han de repartir les oportunitats, quins drets han de tenir les persones, quines desigualtats són acceptables i com hem de tractar les persones més vulnerables.</p>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S2 -->
+      <section class="section" id="s2">
+        <span class="section-num">Secció 02</span>
+        <h2>El concepte de justícia</h2>
+        <p>La justícia és un dels conceptes més importants de la filosofia política, però també un dels més difícils de definir. La dificultat prové del fet que persones molt raonables poden tenir intuïcions molt diferents sobre què és just. Considereu les preguntes següents:</p>
+        <ul>
+          <li>És just que tothom rebi exactament el mateix?</li>
+          <li>És just que qui treballa més rebi més?</li>
+          <li>És just que qui té més necessitats rebi més ajuda?</li>
+          <li>És just respectar qualsevol acord lliure encara que produeixi desigualtat?</li>
+        </ul>
+        <p>Totes quatre preguntes semblen raonables, i tanmateix les seves respostes poden donar lloc a societats radicalment diferents. Una de les definicions de justícia més antigues i conegudes és la que prové del Dret romà clàssic, recollida al codi de l'emperador Justinià al segle VI:</p>
+        <div class="example-box">
+          <span class="ex-label">Corpus Juris Civilis, Digest (533 dC)</span>
+          <p>«La justícia és la voluntat constant i perpètua de donar a cadascú allò que li correspon.»</p>
+          <div class="ex-problem">Aquesta definició és útil perquè posa l'accent en dues coses: que la justícia és una <em>disposició estable</em> (no un acte puntual) i que implica donar a cada persona el que mereix o necessita. Però deixa totalment oberta la pregunta decisiva: <strong>Què és exactament allò que correspon a cadascú?</strong> És sobre aquesta pregunta que han discutit els filòsofs durant segles.</div>
+        </div>
+
+        <h3 id="s2-1">2.1. Justícia correctiva i justícia distributiva</h3>
+        <p>La filosofia distingeix dos tipus principals de justícia amb funcions molt diferents:</p>
+        <div class="expr-grid">
+          <div class="expr-group">
+            <div class="expr-group-title">Justícia correctiva</div>
+            <p>Apareix quan una persona perjudica injustament una altra. La seva funció és <strong>reparar el dany</strong> ja produït: mira cap al passat.<br><br>Exemples: un robatori, una agressió, un frau, un accident per negligència. Si en Pere roba l'ordinador a la Júlia, la justícia correctiva exigeix retornar l'ordinador i compensar la víctima.</p>
+          </div>
+          <div class="expr-group">
+            <div class="expr-group-title">Justícia distributiva</div>
+            <p>S'ocupa de com es reparteixen els béns, recursos, drets i oportunitats dins d'una societat. Mira cap al futur: com <strong>organitzem</strong> la distribució.<br><br>Preguntes típiques: com repartim la riquesa? Qui té accés a l'educació? Com s'organitzen els impostos? Qui rep ajuda sanitària?</p>
+          </div>
+        </div>
+        <p>Quan parlem de justícia social en filosofia política, ens referim gairebé sempre a la <strong>justícia distributiva</strong>. La resta del tema se centrarà en ella.</p>
+
+        <h3 id="s2-2">2.2. Tres criteris bàsics de justícia</h3>
+        <p>Quan discutim sobre justícia distributiva, fem servir intuïtivament tres criteris molt diferents, cadascun amb el seu propi valor de referència:</p>
+        <div class="levels">
+          <div class="level-card">
+            <div class="level-num">1</div>
+            <h4>Igualtat</h4>
+            <p>Totes les persones han de rebre el mateix tracte i la mateixa quantitat de recursos, independentment de les seves circumstàncies.</p>
+          </div>
+          <div class="level-card">
+            <div class="level-num">2</div>
+            <h4>Mèrit</h4>
+            <p>Cada persona ha de rebre en funció del seu esforç, talent o contribució: qui treballa més o millor ha de rebre proporcionalment més.</p>
+          </div>
+          <div class="level-card">
+            <div class="level-num">3</div>
+            <h4>Necessitat</h4>
+            <p>Els recursos s'han de distribuir segons les necessitats de cada individu, posant l'accent en la protecció de les persones més vulnerables.</p>
+          </div>
+        </div>
+        <div class="case-study">
+          <span class="case-study-label">Cas pràctic</span>
+          <div class="case-study-title">Cent persones, cinc-centes hores, cent-vint racions</div>
+          <p>Imagineu un grup de 100 persones: 50 homes i 50 dones; 10 persones de 80 anys o més; 10 menors de 12 anys; entre els adults, 5 persones amb mobilitat reduïda i 1 persona amb dificultats cognitives greus. Teniu 500 hores de feina a repartir, que produiran 120 racions de subsistència.</p>
+          <p>Aplicant cada criteri: (1) <em>Igualtat</em>: tothom rep 5 hores de treball i 1,2 racions. (2) <em>Mèrit</em>: qui treballa més hores rep més racions; els que no poden treballar no reben racions. (3) <em>Necessitat</em>: les hores de treball es reparteixen en funció de la capacitat de cada persona, i les racions en funció de les seves necessitats.</p>
+          <div class="case-study-verdict"><strong>→ Per debatre:</strong> quines societats sorgirien de cadascuna d'aquestes tres distribucions? Quin criteri us sembla més just, i per quin motiu? Hi ha situacions on canviaríeu de criteri?</div>
+        </div>
+        <p>Aquestes tres intuïcions apareixeran, de maneres molt diferents, en les quatre teories polítiques que estudiarem a les seccions següents.</p>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S3 -->
+      <section class="section" id="s3">
+        <span class="section-num">Secció 03</span>
+        <h2>Robert Nozick: la justícia com a llibertat</h2>
+
+        <h3 id="s3-1">3.1. La llibertat com a dret fonamental i inalienable</h3>
+        <p>Robert Nozick (1938–2002) parteix d'una premissa molt clara: la <strong>llibertat individual és el dret fonamental i inalienable</strong> de l'ésser humà, que cap altra consideració pot legítimament trepitjar. En una societat lliure, les persones poden establir acords i contractes entre elles, i el resultat d'aquests acords és, per definició, just, perquè és el resultat de decisions lliures i voluntàries.</p>
+        <p>D'aquí es desprèn la seva objecció fonamental a qualsevol teoria de la justícia que exigeixi redistribuir la riquesa: si jo he obtingut el que tinc de manera legítima (per treball, per herència lliurement donada, per acords voluntaris), ningú no té dret a prendre-m'ho, ni tan sols l'Estat en nom de la igualtat. Nozick argumenta que <strong>qualsevol redistribució coercitiva de la riquesa —sigui mitjançant impostos o socialització— és una forma d'injustícia</strong>, perquè viola la llibertat individual.</p>
+        <div class="example-box">
+          <span class="ex-label">Nozick, <em>Anarchy, State, and Utopia</em> (1974)</span>
+          <p>«La imposició obliga les persones a treballar per a fins que no han triat. [...] Pren-ne hores de x i dona-les a y. Tan sols difereix en mecanisme de prendre directament les hores de x i donar-les a y.»</p>
+        </div>
+        <p>Nozick conclou que la justícia no consisteix en una distribució final determinada (tots iguals, o els desfavorits millor), sinó en el <strong>respecte als processos</strong> pels quals s'han obtingut els béns: si el procés ha estat lliure i voluntari, el resultat és just, per molt desigual que sigui.</p>
+
+        <h3 id="s3-2">3.2. L'argument de Messi</h3>
+        <p>Per il·lustrar la seva posició, Nozick proposa un argument que avui s'explica habitualment amb l'exemple de Messi (a l'original, Nozick feia servir el jugador de bàsquet Wilt Chamberlain):</p>
+        <div class="case-study">
+          <span class="case-study-label">Cas pràctic — l'argument de Messi</span>
+          <div class="case-study-title">La llibertat porta inevitablement a la desigualtat</div>
+          <p>Imaginem que partim d'una distribució perfectament igualitària de béns. Messi anuncia que cobrarà 25 cèntims a cadascú dels fans que vinguin a veure'l jugar. Al llarg de la temporada, un milió de persones accepten lliurement pagar-los. Al final, Messi ha acumulat 250.000 euros, mentre els fans han cedit 25 cèntims cadascú: ara hi ha desigualtat.</p>
+          <p>Per tornar a la distribució inicial igualitària, caldrà <em>prendre</em> els diners a Messi. Però aquests diners els hi van donar voluntàriament fans feliços de fer-ho. Prendre'ls equivaldrà a violar els seus acords lliures.</p>
+          <div class="case-study-verdict"><strong>→ La conclusió de Nozick:</strong> la llibertat porta inevitablement a la desigualtat. Si es vol corregir la desigualtat redistribuint la riquesa, s'ha de violar la llibertat individual. Com que la llibertat és fonamental, la redistribució coercitiva sempre és injusta. Per tant: <em>«la justícia és el respecte als acords lliures i voluntaris entre individus.»</em></div>
+        </div>
+        <div class="warn-box">La postura de Nozick implica que models socioeconòmics que requereixen redistribució —com la socialdemocracia o els estats del benestar— seria difícil de justificar des del seu punt de vista. Per a Nozick, un sistema just és aquell en el qual l'Estat es limita a protegir la vida, la llibertat i la propietat, sense redistribuir res. Rawls (la teoria següent) serà, en bona mesura, una resposta directa a Nozick.</div>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S4 -->
+      <section class="section" id="s4">
+        <span class="section-num">Secció 04</span>
+        <h2>John Rawls: la justícia com a imparcialitat</h2>
+        <p>John Rawls (1921–2002) és probablement el filòsof polític més influent del segle XX. La seva obra <em>A Theory of Justice</em> (1971) va renovar completament el debat filosòfic sobre la justícia i continua sent la referència central de la teoria política liberal contemporània. El punt de partida de Rawls és una constatació que ja vam veure al tema 1 d'aquest curs: les persones tendeixen a defensar els seus propis interessos, i això distorsiona el seu judici sobre el que és just.</p>
+
+        <h3 id="s4-1">4.1. El vel d'ignorància</h3>
+        <p>Per respondre la pregunta «com podem descobrir principis de justícia realment imparcials?», Rawls proposa un experiment mental que ha esdevingut un dels més cèlebres de tota la filosofia:</p>
+        <div class="def-box">
+          <span class="def-label">El vel d'ignorància</span>
+          <p>Imaginem que totes les persones han de decidir les normes fonamentals de la societat en la qual viuran. Però, abans de prendre aquestes decisions, un <strong>vel d'ignorància</strong> els impedeix saber qui seran: no saben el seu sexe, la seva classe social, la seva riquesa, la seva salut, la seva religió, la seva nacionalitat ni les seves capacitats naturals. Ningú sap quina posició ocuparà en la societat quan el vel desaparegui.</p>
+        </div>
+        <p>En aquesta situació, les persones actuarien racionalment. Com que ningú sap si serà ric o pobre, sa o malalt, privilegiat o vulnerable, tothom intentarà protegir-se davant les pitjors situacions possibles. Ning no sabent a quin grup pertanyerà, ningú no voldria que cap grup fos tractat pitjor que un altre. Ningú no sabent si serà el més desfavorit, voldria garantir que la situació del més desfavorit fos la millor possible.</p>
+        <div class="example-box">
+          <span class="ex-label">Rawls, <em>A Theory of Justice</em> (1971)</span>
+          <p>«Negar que han de ser parts en acords on estarien desavantatjats és el racionalisme al qual no es pot objectar. [...] Com que tothom es troba en la mateixa situació i ningú no és capaç de dissenyar principis que l'avantgin, els principis de la justícia són el resultat d'un acord o d'una negociació justa.»</p>
+        </div>
+        <p>Val la pena notar que l'argument del vel d'ignorància <strong>no depèn d'una visió optimista de la naturalesa humana</strong>: funciona fins i tot si les persones som completament egoistes. Per funcionar, només cal que siguem racionals i capaços de considerar el nostre propi benestar a llarg termini.</p>
+
+        <h3 id="s4-2">4.2. Dos principis de justícia</h3>
+        <p>Rawls afirma que persones racionals darrera del vel d'ignorància acord arien dos principis fonamentals:</p>
+        <div class="fallacy-grid">
+          <div class="fallacy-card">
+            <div class="fallacy-name">Primer principi: igualtat de llibertats</div>
+            <div class="fallacy-def">Totes les persones han de gaudir del màxim conjunt possible de llibertats compatibles amb les llibertats de totes les altres. Inclou: llibertat d'expressió, llibertat religiosa, llibertat política, drets civils fonamentals. Ningú, sabent a quina minoria podria pertànyer, voldria que les minories tinguessin menys drets que la majoria.</div>
+          </div>
+          <div class="fallacy-card">
+            <div class="fallacy-name">Segon principi: principi de diferència</div>
+            <div class="fallacy-def">Les desigualtats econòmiques i socials només són acceptables quan: (a) estan associades a càrrecs i posicions obertes a tothom en igualtat d'oportunitats, i (b) beneficien les persones més desafavorides. En altres paraules: es poden tolerar certes desigualtats, però <em>només si milloren la situació dels que pitjor estan</em>. Ningú, sabent que podria ser el més desfavorit, acceptaria desigualtats que no li beneficiessin.</div>
+          </div>
+        </div>
+        <p>El principi de diferència és el que separa Rawls de Nozick: Rawls accepta la desigualtat, però la condiciona. No n'hi ha prou que els rics s'hagin enriquit per acords lliures; cal, a més, que la societat organitzada per maximitzar la riquesa total millori la situació dels que estan pitjor. Una societat on la majoria guanya molt però la minoria més pobra no millora en absolut no seria justa per a Rawls, per molt que fos el resultat d'acords lliures.</p>
+        <div class="tip-box">
+          <span class="tip-label">La idea central de Rawls</span>
+          <p>Una societat és justa quan les seves institucions podrien ser acceptades per qualsevol persona des d'una posició imparcial, sense saber quina posició ocuparia en ella. Aquesta idea ha influït profundament en les democràcies liberals i en el disseny dels estats del benestar contemporanis.</p>
+        </div>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S5 -->
+      <section class="section" id="s5">
+        <span class="section-num">Secció 05</span>
+        <h2>Karl Marx: la justícia i la crítica del capitalisme</h2>
+        <p>Karl Marx (1818–1883) ofereix la crítica més radical a les teories liberals de la justícia. Per a Marx, Rawls i Nozick (tot i les seves diferències) comparteixen un error fonamental: discutir com redistribuir millor una riquesa que, de manera estructural, es produeix ja de forma injusta. La justícia, per a Marx, no és una qüestió de distribució, sinó de <strong>producció</strong>.</p>
+
+        <h3 id="s5-1">5.1. Classes socials, explotació i alienació</h3>
+        <p>Marx considera que les societats capitalistes modernes estan dividides estructuralment en dues grans <strong>classes socials</strong> amb interessos fonamentalment oposats:</p>
+        <div class="expr-grid">
+          <div class="expr-group">
+            <div class="expr-group-title">La burgesia</div>
+            <p>Propietària dels <em>mitjans de producció</em>: les fàbriques, les màquines, les terres i les matèries primeres necessàries per produir. No necessita treballar per obtenir ingressos: obté els seus guanys de la propietat.</p>
+          </div>
+          <div class="expr-group">
+            <div class="expr-group-title">El proletariat</div>
+            <p>No posseeix mitjans de producció. L'únic que pot vendre és la seva <em>força de treball</em>: el seu temps i el seu esforç. Depèn estructuralment del burgès per sobreviure.</p>
+          </div>
+        </div>
+        <p>Segons Marx, aquesta divisió genera <strong>explotació</strong> de manera estructural, no accidental. El treballador produeix, durant les seves hores de feina, un valor que és <em>major</em> que el salari que rep. La diferència —que Marx anomena <strong>plusvàlua</strong>— és apropiada pel propietari de l'empresa. No és que els patrons siguin individus particularment malvats: és que el sistema capitalista està dissenyat de manera que la plusvàlua flueixi sempre dels treballadors cap als propietaris.</p>
+        <p>A més de l'explotació econòmica, Marx detecta un altre problema: l'<strong>alienació</strong>. El treballador capitalista no controla allò que produeix, no controla el procés de producció ni les seves condicions de treball, i sovint ni tan sols reconeix el producte final de la seva feina com a propi. Això provoca una separació entre les persones i la seva pròpia activitat, que hauria de ser una de les formes principals de realització humana.</p>
+
+        <h3 id="s5-2">5.2. La crítica a Rawls i el principi comunista</h3>
+        <p>Marx consideraria la proposta de Rawls profundament insuficient. Rawls vol que les desigualtats beneficiïn els més pobres; Marx respon que les desigualtats del capitalisme no són accidents que una bona distribució pot corregir, sinó el resultat necessari de les <strong>relacions de producció</strong> que defineixen el sistema. Intentar redistribuir sense canviar l'estructura econòmica és com voler netejar l'aigua d'una font envenenada sense eliminar la font de contaminació.</p>
+        <div class="example-box">
+          <span class="ex-label">Marx, <em>Crítica del Programa de Gotha</em> (1875)</span>
+          <p>«De cadascú segons les seves capacitats; a cadascú segons les seves necessitats.»</p>
+          <div class="ex-problem">Aquest principi, formulat per a una societat que ha superat el capitalisme, articula la visió marxista de la justícia: la contribució de cadascú al bé comú ha d'estar determinada per allò que pot aportar, i la distribució de béns ha d'estar determinada per allò que necessita, no per allò que ha produït ni per l'atzar de la propietat que possseeix. En el tercer criteri bàsic de la secció 2, és clarament el criteri de la <strong>necessitat</strong> elevat a principi rector de tota l'economia.</div>
+        </div>
+        <p>Mentre Rawls busca <em>reformar</em> les institucions perquè distribuïn millor, Marx argumenta que cal <em>transformar radicalment</em> el sistema econòmic que produeix les desigualtats en primer lloc. La justícia no consisteix simplement en repartir millor, sinó en superar una organització social basada en l'explotació.</p>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S6 -->
+      <section class="section" id="s6">
+        <span class="section-num">Secció 06</span>
+        <h2>Martha Nussbaum: la justícia com a capacitats</h2>
+        <p>Martha Nussbaum (n. 1947) comparteix preocupacions presents en Rawls i en Marx: com Rawls, defensa la dignitat humana i la igualtat moral; com Marx, considera que les condicions materials importan i que les desigualtats poden impedir viure una vida digna. Però considera que cap dels dos enfocaments captura allò que és veritablement essencial per a la justícia.</p>
+
+        <h3 id="s6-1">6.1. Més enllà dels recursos i dels drets formals</h3>
+        <p>El problema principal que Nussbaum detecta en Rawls és que <strong>tenir drets sobre el paper no garanteix poder exercir-los de manera efectiva</strong>. Una persona cega i una persona vident poden tenir formalment els mateixos drets polítics, però si no hi ha mesures específiques per garantir l'accessibilitat, la persona cega no podrà exercir-los en les mateixes condicions. Una persona en situació de pobresa extrema pot tenir formalment dret a l'educació, però si no hi ha ajudes que eliminin les barreres econòmiques, aquest dret és buit a la pràctica.</p>
+        <p>Nussbaum proposa, doncs, centrar la justícia no en la distribució de recursos ni en el reconeixement formal de drets, sinó en les <strong>capacitats</strong>:</p>
+        <div class="def-box">
+          <span class="def-label">Definició · Capacitat</span>
+          <p>Una <strong>capacitat</strong> és una possibilitat real de fer o ser alguna cosa valuosa. No es tracta de tenir drets o recursos sobre el paper, sinó de <em>poder exercir-los efectivament</em>. La pregunta rellevant per a la justícia no és «quants recursos té una persona?», sinó «<strong>què pot fer realment aquesta persona amb els recursos que té?</strong>»</p>
+        </div>
+        <div class="example-box">
+          <span class="ex-label">Nussbaum, <em>Creating Capabilities</em> (2011)</span>
+          <p>«L'enfocament de les capacitats comença per una pregunta: qué és capaç de fer i de ser cada persona? El seu punt central és la dignitat humana i una vida que es correspongui amb aquesta dignitat. [...] El concepte central és la idea d'una vida digna dels éssers humans.»</p>
+        </div>
+        <p>Nussbaum argumenta que el problema de Nozick és que ignora completament les condicions de partida: que dues persones puguin fer acords lliures entre elles no diu res sobre si partien de la mateixa posició. Una persona nascuda en extrema pobresa, en un entorn sense educació ni salut, no és realment lliure en el sentit que Nozick assumeix. I el problema de Rawls és que els drets i recursos que el vel d'ignorància garanteix poden ser insuficients per a persones que, per la seva situació específica, necessiten condicions molt concretes per poder viure dignament.</p>
+
+        <h3 id="s6-2">6.2. Les deu capacitats bàsiques</h3>
+        <p>Per concretar el que una societat justa hauria de garantir, Nussbaum proposa una llista de deu <strong>capacitats bàsiques</strong> que constitueixen un llindar mínim de justícia. Una societat que no garanteixi cap d'elles a tots els seus membres no pot ser considerada justa:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Capacitat</th><th>En qué consisteix</th></tr></thead>
+            <tbody>
+              <tr><td><strong>1. Vida</strong></td><td>Poder viure fins al final d'una vida humana de durada normal; no morir prematurament.</td></tr>
+              <tr><td><strong>2. Salut corporal</strong></td><td>Tenir bona salut, incloent-hi salut reproductiva; tenir un allotjament adequat; menjar suficientment.</td></tr>
+              <tr><td><strong>3. Integritat corporal</strong></td><td>Poder moure's lliurement; estar protegit davant la violència; tenir oportunitats per a la satisfacció sexual i per a les pròpies decisions en matèria reproductiva.</td></tr>
+              <tr><td><strong>4. Sentits, imaginació i pensament</strong></td><td>Poder usar els sentits; imaginar, pensar i raonar de manera veritablement "humana", cultivats per una educació adequada.</td></tr>
+              <tr><td><strong>5. Emocions</strong></td><td>Poder sentir afecte per coses i persones; poder estimar, doldre's, sentir gratitud i ira justificada. No tenir el desenvolupament emocional marcit per la por.</td></tr>
+              <tr><td><strong>6. Raó pràctica</strong></td><td>Poder formar-se una concepció del bé i comprometre's en una reflexió crítica sobre la planificació de la pròpia vida.</td></tr>
+              <tr><td><strong>7. Afiliació</strong></td><td>Poder viure amb altres persones; tenir les bases socials del respecte propi i la no-humiliació; ser tractada com un ésser digne d'igual vàlua que els altres.</td></tr>
+              <tr><td><strong>8. Altres espècies</strong></td><td>Poder viure amb preocupació per i en relació amb animals, plantes i el món natural.</td></tr>
+              <tr><td><strong>9. Joc</strong></td><td>Poder riure's, jugar i gaudir d'activitats recreatives.</td></tr>
+              <tr><td><strong>10. Control sobre el propi entorn</strong></td><td>Poder participar efectivament en les decisions polítiques; tenir propietat de manera igualitària; tenir dret a buscar treball en igualtat de condicions amb els altres.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Aquestes deu capacitats no formen una llista exhaustiva ni immutable: Nussbaum les considera un punt de partida per al debat públic. Però l'argument és clar: una societat que permeti que alguns dels seus membres visquin per sota d'un llindar mínim en qualsevol d'elles no és justa, independentment de com es distribueixi formalment la riquesa o dels drets reconeguts per la llei.</p>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S7 -->
+      <section class="section" id="s7">
+        <span class="section-num">Secció 07</span>
+        <h2>Judith Butler: reconeixement, precarietat i justícia</h2>
+        <p>Judith Butler (n. 1956) planteja una pregunta diferent de totes les anteriors. Rawls es pregunta com repartir justament drets i oportunitats. Marx, com eliminar les desigualtats estructurals del capitalisme. Nussbaum, quines capacitats necessita tota persona per viure dignament. Butler retrocedeix un pas i pregunta alguna cosa prèvia a tot plegat:</p>
+        <p style="text-align: center; font-style: italic; font-size: 1.05rem; margin: 24px 0;"><strong>Qui és reconegut com a persona plenament humana, i qui no?</strong></p>
+        <p>Segons Butler, abans de discutir com distribuïm recursos o oportunitats, hem d'analitzar quines vides la societat considera importants i quines ignora o margina. La justícia no depèn únicament del repartiment de recursos: depèn també del <strong>reconeixement social</strong>.</p>
+
+        <h3 id="s7-1">7.1. Quines vides compten?</h3>
+        <p>Butler defensa que les identitats humanes —el gènere, la sexualitat, la raça, la nacionalitat— no existeixen completament al marge de la societat. Les <strong>normes socials</strong> influeixen profundament en la manera com s'entenen i es valoren. Algunes persones encaixen fàcilment en les categories dominants; d'altres queden excloses o invisibilitzades per no ajustar-se a elles.</p>
+        <p>Al llarg de la història, moltes societats han exclòs parcialment o totalment les dones, les minories sexuals, les persones trans, les minories racials, les persones migrants. Butler insisteix que aquestes exclusions no són simplement prejudicis individuals que una bona redistribució de recursos podria corregir: són <strong>formes estructurals de desigualtat</strong> que determinen, molt abans que arribi la qüestió de la distribució, qui és reconegut com a subjecte digne de drets i qui no.</p>
+        <div class="example-box">
+          <span class="ex-label">Butler, <em>Precarious Life</em> (2004)</span>
+          <p>«La pregunta sobre qui compta com a humà, i el paper que juga la representació visual i narrativa en aquell reconeixement, ens porta al nucli d'una política de la humanitat que va molt més lluny de la lluita per les garanties de drets civils i socials formals.»</p>
+        </div>
+
+        <h3 id="s7-2">7.2. Precarietat i vulnerabilitat</h3>
+        <p>Un dels conceptes centrals de Butler és la distinció entre dues formes de vulnerabilitat:</p>
+        <div class="expr-grid">
+          <div class="expr-group">
+            <div class="expr-group-title">Precariousness (vulnerabilitat universal)</div>
+            <p>Tots els éssers humans som vulnerables. Necessitem cures, suport social i relacions amb altres. És una condició universal i inalienable de la vida humana: néixer, emmalaltir, envellir i morir ens afecta a tots.</p>
+          </div>
+          <div class="expr-group">
+            <div class="expr-group-title">Precarity (precarietat socialment produïda)</div>
+            <p>Alguns grups estan exposats a riscos molt majors que d'altres. La seva vulnerabilitat és <em>augmentada</em> per decisions polítiques, econòmiques o culturals concretes. No totes les vides reben la mateixa protecció ni són igualment valorades.</p>
+          </div>
+        </div>
+        <p>La distinció és crucial: la primera forma de vulnerabilitat és inevitable i no és responsabilitat de ningú; la segona és el resultat de decisions col·lectives i, per tant, és qüestionable des del punt de vista de la justícia. Una persona sense llar i una persona amb recursos abundants comparteixen la vulnerabilitat humana fonamental, però la primera ha estat condemnada per la societat a una precarietat addicional, evitable, que la segona no pateix.</p>
+        <p>A obres com <em>Precarious Life</em> (2004) i <em>Frames of War</em> (2009), Butler analitza com les societats i les institucions decideixen quines morts es consideren importants, quines vides es ploren i quines passen desapercebudes. La seva pregunta és directa: <strong>per qué les morts de certes persones generen resposta col·lectiva i les d'altres no?</strong> La resposta té implicacions polítiques concretes: les polítiques públiques, els drets, la protecció legal i fins i tot la percepció social depenen de qui és considerat plenament humà per la societat que els aplica.</p>
+
+        <h3 id="s7-3">7.3. La crítica a Nussbaum i la justícia com a reconeixement</h3>
+        <p>Butler comparteix amb Nussbaum la preocupació per la dignitat humana, però li formula tres crítiques importants.</p>
+        <p><strong>Primera: el problema de l'universalisme.</strong> Nussbaum defensa una llista universal de capacitats bàsiques vàlida per a tota la humanitat. Butler sospita que és molt difícil establir una definició universal de les necessitats humanes vàlida per a totes les cultures i contextos: qui defineix la llista, des d'on, i amb quina perspectiva?</p>
+        <p><strong>Segona: qui defineix la vida digna.</strong> La definició de la dignitat humana no és completament neutral: pot reflectir valors culturals concrets o formes dominants d'entendre la persona. Si la llista de capacitats de Nussbaum és generada des d'una perspectiva cultural determinada, pot excloure o subvalorar formes de vida que no s'hi ajusten.</p>
+        <p><strong>Tercera: la política del reconeixement.</strong> Nussbaum se centra en allò que les persones poden fer. Butler se centra en una qüestió prèvia: qui és reconegut com a subjecte digne de drets? Una persona pot tenir sobre el paper totes les capacitats de la llista de Nussbaum i, tanmateix, continuar patint exclusió, discriminació o invisibilització si la societat no la reconeix com a membre legítim de la comunitat.</p>
+        <p>La proposta de Butler, doncs, amplia la noció de justícia:</p>
+        <div class="def-box">
+          <span class="def-label">La justícia segons Butler</span>
+          <p>Una societat és justa quan <strong>totes les persones són reconegudes com a igualment valuoses</strong> i quan cap grup és condemnat a una situació de vulnerabilitat o exclusió estructural. La justícia requereix no només distribuir recursos i garantir capacitats, sinó transformar les normes socials que determinen quines vides són visibles, protegides i reconegudes.</p>
+        </div>
+      </section>
+
+      <hr class="section-divider">
+
+      <!-- S8 -->
+      <section class="section" id="s8">
+        <span class="section-num">Secció 08</span>
+        <h2>Síntesi: quatre respostes a la mateixa pregunta</h2>
+        <p>Les quatre teories estudiades ofereixen respostes molt diferents a la pregunta «què és una societat justa?», però juntes mostren totes les dimensions del problema:</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Autor/a</th><th>Pregunta central</th><th>La justícia consisteix en...</th><th>Criteri bàsic</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>Nozick</strong></td>
+                <td>Respectem la llibertat de les persones?</td>
+                <td>Respectar els acords lliures i voluntaris, sense redistribució coercitiva.</td>
+                <td>Llibertat individual</td>
+              </tr>
+              <tr>
+                <td><strong>Rawls</strong></td>
+                <td>Podrien les institucions ser acceptades des d'una posició imparcial?</td>
+                <td>Garantir igualtat de llibertats i que les desigualtats beneficiïn els menys afavorits.</td>
+                <td>Imparcialitat</td>
+              </tr>
+              <tr>
+                <td><strong>Marx</strong></td>
+                <td>Eliminem les estructures que produeixen explotació?</td>
+                <td>Superar les relacions de producció que generen explotació i alienació.</td>
+                <td>Necessitat / eliminació de l'explotació</td>
+              </tr>
+              <tr>
+                <td><strong>Nussbaum</strong></td>
+                <td>Totes les persones poden viure una vida digna?</td>
+                <td>Garantir un conjunt de capacitats reals per a tota persona, no només drets formals.</td>
+                <td>Dignitat / capacitats efectives</td>
+              </tr>
+              <tr>
+                <td><strong>Butler</strong></td>
+                <td>Totes les vides són reconegudes com a igualment valuoses?</td>
+                <td>Eliminar les normes socials que exclouen, invisibilitzen o precaritzen determinats grups.</td>
+                <td>Reconeixement / no-exclusió estructural</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Observant conjuntament aquestes teories, descobrim una idea de fons: les injustícies no apareixen únicament quan hi ha pobresa o desigualtat econòmica. També apareixen quan existeixen relacions de dominació que impedeixen a les persones participar en igualtat de condicions en la vida social, política i econòmica.</p>
+        <div class="def-box">
+          <span class="def-label">La pregunta final del tema</span>
+          <p>La justícia social no és un objectiu que s'assoleix definitivament. És un procés continu de crítica, revisió i transformació de les institucions, les pràctiques i les normes socials per ampliar la llibertat, la igualtat, la dignitat i el reconeixement de totes les persones. <em>Quina injustícia és la més urgent d'eliminar?</em></p>
+        </div>
+      </section>
+
+    </div><!-- /panel-apunts -->
+
+    <!-- ════ EXERCICIS ════ -->
+    <div class="tab-panel" id="panel-exercicis">
+
+      <div class="ex-intro" id="exercicis">
+        <div class="ex-intro-icon">Ex</div>
+        <div>
+          <h3>Exercicis i tasques — Tema 06</h3>
+          <p>Anàlisi de textos originals dels autors i autores del tema i de pensadores complementàries, tots traduïts al català. Inclou una lectura ampliada al Bloc 6.</p>
+        </div>
+      </div>
+
+      <!-- BLOC 1 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 1 — Nozick: l'estat mínim i l'entitlement</h3>
+          <span class="ex-badge analisi">Anàlisi de text</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">1.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el fragment de Nozick sobre per què el repartiment igualitari és incompatible amb la llibertat, i responeu.</div>
+              <div class="ex-item-quote">«Si la gent té el dret de portar a terme accions individuals que produeixen una distribució determinada, no té dret a fer accions que produïsquen una altra distribució diferent? [...] La imposició obliga les persones a treballar per a fins que elles no han triat. Una presa de guanys per a fins no triats no és diferent de prendre hores de feina; tan sols difereix en mecanisme. Forçar una persona a treballar determinades hores per a una altra persona equival al treball forçat.»<br><br>— Robert Nozick, <em>Anarchy, State, and Utopia</em> (1974)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Nozick compara els impostos redistributius amb el "treball forçat". Creieu que la comparació és vàlida? Quins arguments podria donar Rawls per rebutjar-la? (b) Si acceptem la premissa de Nozick que la redistribució coercitiva sempre és injusta, quines institucions de l'estat del benestar quedarien sense justificació? (c) Nozick defensa que qualsevol distribució que sorgeixi d'acords lliures és justa. Quina objecció li faria Marx? I Butler?</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">1.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el segon fragment, on Nozick explica el nucli de la seva teoria dels drets de possessió (<em>entitlement theory</em>).</div>
+              <div class="ex-item-quote">«Si el món fos completament just, les definicions inductives següents cobririen de manera exhaustiva el tema de la justícia en les possessions. (1) Una persona que adquireix una possessió d'acord amb el principi de justícia en l'adquisició té dret a aquella possessió. (2) Una persona que adquireix una possessió d'acord amb el principi de justícia en la transferència, a partir d'una altra persona que tenia dret a la possessió, té dret a ella. (3) Ningú no té dret a una possessió excepte per aplicació (repetida) dels principis 1 i 2.»<br><br>— Robert Nozick, <em>Anarchy, State, and Utopia</em> (1974)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Nozick diu "si el món fos completament just". Creieu que la distribució actual de riquesa al món compleix els seus dos primers principis (adquisició justa i transferència justa)? Penseu en l'herència colonial, l'esclavitud o les expropiacions històriques. (b) Si algunes possessions actuals no compleixen els criteris 1 i 2 (per exemple, perquè es van obtenir per la força en algun moment del passat), la teoria de Nozick les justificaria igualment? Com ho resoldria ell?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 2 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 2 — Rawls: el vel d'ignorància i els dos principis</h3>
+          <span class="ex-badge analisi">Anàlisi de text</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">2.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el fragment llarg de Rawls on explica per quins principis optarien persones racionals sota el vel d'ignorança, i responeu.</div>
+              <div class="ex-item-quote">«Com ningú no coneix el seu lloc en la societat, la seva posició de classe o el seu estatus social, tampoc la seva sort en la distribució dels béns i capacitats naturals —la seva intel·ligència, força i similars—, cap de les parts no es troba en posició d'avantatge ni de desavantatge a l'hora d'escollir principis. [...] La distribució natural no és ni justa ni injusta; tampoc no és injust que les persones neixin en una posició determinada de la societat. Aquests simplement son fets naturals. El que és just o injust és la manera en què les institucions tracten aquests fets. [...] El principi de diferència representa, en un sentit, un acord de considerar la distribució de talents naturals com un actiu comú i de compartir els beneficis d'aquesta distribució, sigui la que sigui.»<br><br>— John Rawls, <em>A Theory of Justice</em> (1971), §§3 i 17</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Rawls diu que la "distribució natural no és ni justa ni injusta". Creieu que és cert? Si no escollim el lloc on neixem, la nostra riquesa, la nostra salut ni el nostre talent, podem ser considerats plenament responsables dels avantatges que tenim? (b) Rawls parla de considerar els talents naturals com un "actiu comú". Nozick protestaria enèrgicament contra aquesta idea. Formuleu l'objecció de Nozick i la possible resposta de Rawls. (c) Heu sentit mai l'expressió "loteria del naixement" (lottery of birth)? Creieu que el concepte de Rawls hi té relació? Expliqueu-ho.</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">2.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu la formulació precisa dels dos principis de justícia de Rawls tal com apareix a <em>A Theory of Justice</em>.</div>
+              <div class="ex-item-quote">«Primer: cada persona ha de tenir un dret igual al sistema total més extens de llibertats bàsiques iguals compatible amb un sistema similar de llibertat per a tothom. Segon: les desigualtats socials i econòmiques han d'estar organitzades de manera que siguin: (a) en el major benefici dels membres menys afavorits de la societat, consistent amb el principi d'estalvi just, i (b) vinculades a càrrecs i posicions accessibles a tothom en condicions d'igualtat equitativa d'oportunitats.»<br><br>— John Rawls, <em>A Theory of Justice</em> (1971), §11</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) El segon principi de Rawls permet les desigualtats econòmiques, però només si beneficien els menys afavorits. Poseu un exemple real de desigualtat econòmica que, al vostre parer, compleix aquest criteri (és a dir, que efectivament millora la situació dels que estan pitjor), i un exemple que no el compleix. (b) Nussbaum considera que els drets formals reconeguts al primer principi de Rawls no n'hi ha prou. Quina diferència hi ha entre tenir el dret a l'educació i tenir la capacitat efectiva d'accedir-hi? El primer principi de Rawls cobreix aquesta diferència?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 3 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 3 — Marx: el Manifest Comunista i el Capital</h3>
+          <span class="ex-badge analisi">Anàlisi de text</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">3.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el fragment d'obertura del <em>Manifest Comunista</em> i responeu.</div>
+              <div class="ex-item-quote">«La història de tota societat humana fins als nostres dies és la història de la lluita de classes. Homes lliures i esclaus, patricis i plebeus, senyors feudals i serfs, mestres d'ofici i aprenents; en una paraula, opressors i oprimits, es van mantenir en oposició constant, van dur a terme una lluita ininterrompuda, ara amagada, ara oberta, una lluita que es va acabar sempre, o bé amb una transformació revolucionària de tota la societat, o bé amb l'ensorrament comú de les classes en conflicte.»<br><br>— Karl Marx i Friedrich Engels, <em>Manifest Comunista</em> (1848)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Marx afirma que la lluita de classes és el motor de la història. Creieu que aquesta visió permet explicar algun conflicte o transformació social important del segle XX o XXI? Poseu-ne un exemple concret. (b) Per a Nozick, la desigualtat és el resultat natural dels acords lliures entre persones. Per a Marx, és l'expressió d'un conflicte estructural. Quin dels dos diagnòstics us sembla més ajustat als fets? Per quina raó?</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">3.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el fragment del <em>Capital</em> sobre l'acumulació i la misèria, i responeu.</div>
+              <div class="ex-item-quote">«L'acumulació de riquesa en un pol és, per tant, al mateix temps acumulació de misèria, martiri del treball, esclavitud, ignorància, brutalitat i degradació moral en el pol oposat, és a dir, en el cantó de la classe que produeix el seu propi producte com a capital.»<br><br>— Karl Marx, <em>El Capital</em>, vol. I, cap. 25 (1867)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Marx diu que riquesa i misèria creixen juntes i necessàriament. Doneu un exemple contemporani que il·lustri aquesta relació: un context on l'enriquiment d'uns s'hagi produït lligat a l'empobriment d'altres. (b) Rawls proposa que les desigualtats econòmiques siguin acceptables si beneficien els menys afavorits. Marx responaria que el problema no és com es distribueix la riquesa, sinó com es produeix. En les vostres pròpies paraules, expliqueu per quina raó Marx consideraria insuficient la proposta del vel d'ignorança.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 4 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 4 — Nussbaum i Sen: capacitats i llibertat real</h3>
+          <span class="ex-badge analisi">Anàlisi de text</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">4.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el fragment de Nussbaum que explica per quina raó els recursos o els drets formals no basten per garantir la justícia, i responeu.</div>
+              <div class="ex-item-quote">«Les persones amb deficiències físiques o mentals necessiten, en general, més recursos que altres persones per arribar a un nivell comparable de funcionament. Les persones amb malalties cròniques, les persones grans, les dones en edat reproductiva, les persones de poques habilitats: totes requereixen una provisió diferenciada per poder assolir capacitats comparables. [...] La qüestió no és simplement quant recursos es posseeixen, sinó si la persona és plenament capaç de funcionar humanament.»<br><br>— Martha Nussbaum, <em>Creating Capabilities</em> (2011)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Nussbaum diu que algunes persones necessiten "més recursos" per assolir un nivell "comparable de funcionament." Poseu tres exemples concrets de grups que, a la societat en la qual viviu, necessiten condicions especials per exercir drets que els estan formalment reconeguts. (b) La crítica de Nussbaum a Rawls és que el vel d'ignorança garanteix drets i recursos iguals però no necessàriament capacitats iguals. Creieu que Rawls podria respondre que el seu segon principi (beneficiar els menys afavorits) ja cobreix les necessitats diferencials? Per quina raó sí o no?</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">4.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Amartya Sen (n. 1933) va desenvolupar juntament amb Nussbaum l'enfocament de les capacitats. Llegiu el fragment del seu llibre <em>Development as Freedom</em> i responeu.</div>
+              <div class="ex-item-quote">«El desenvolupament pot entendre's com un procés d'ampliació de les llibertats reals de les quals gaudeix la gent. Posar l'atenció en les llibertats humanes contrasta amb visions més estretes del desenvolupament, com identificar-lo amb el creixement del producte nacional brut, o amb l'augment dels ingressos personals, o amb la industrialització, o amb el progrés tecnològic, o amb la modernització social. El creixement del PNB o dels ingressos individuals pot ser, certament, un mitjà molt important per ampliar les llibertats de les quals gaudeixen els membres d'una societat. Però les llibertats depenen també d'altres factors determinants, com les condicions socials i econòmiques —per exemple, les facilitats per a l'educació i l'atenció sanitària— i els drets polítics i civils.»<br><br>— Amartya Sen, <em>Development as Freedom</em> (1999)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Sen proposa mesurar el "desenvolupament" no amb el PIB sinó amb la "ampliació de les llibertats reals." Creieu que hi ha països que creixen econòmicament però on les persones no guanyen llibertat real? I a l'inrevés: països on la llibertat real millora sense que el PIB creixi molt? (b) Compareu la idea central de Sen en aquest fragment amb l'enfocament de Rawls (recursos i drets) i el de Nozick (acords lliures). En quina mesura el concepte de "llibertat real" de Sen és diferent de la "llibertat" de Nozick?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 5 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 5 — Butler: quines vides compten?</h3>
+          <span class="ex-badge analisi">Anàlisi de text</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">5.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el fragment de <em>Frames of War</em> on Butler explica com els marcs culturals i polítics determinen quines vides poden ser reconegudes com a tals.</div>
+              <div class="ex-item-quote">«Si certes vides no es qualifiquen com a vides o, des del principi, no són concebibles com a vides dins de determinats marcs epistemològics, aleshores aquestes vides no s'han viscut ni perdut en el sentit ple de la paraula. [...] Allò que anomenem la "humanitat" de la vida és ella mateixa produïda per cert marcs selectius; el plorar per les pèrdues ocorre en el context de normes que delimiten quins éssers perduts seran i no seran objecte de dol. Aquestes normes operen de manera eficaç produint un camp de vides humanament reconeixibles i un altre camp de vides que no hi pertanyen.»<br><br>— Judith Butler, <em>Frames of War: When Is Life Grievable?</em> (2009)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Butler parla de "marcs" que determinen quines pèrdues es ploren. Penseu en la cobertura mediàtica d'atacs terroristes, guerres o desastres naturals: les morts de persones de quins orígens o contextos reben més cobertura i dol públic? Quines queden en segon pla? (b) Per a Nussbaum, la justícia consisteix a garantir les deu capacitats bàsiques. Butler respondria que, fins i tot si les capacitats hi son sobre el paper, el problema del reconeixement subsisteix. Expliqueu un exemple en el qual una persona pugui tenir totes les capacitats formals de Nussbaum i, tanmateix, no ser reconeguda com a membre de ple dret de la comunitat.</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">5.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el segon fragment de Butler, extret de <em>Precarious Life</em>, sobre la precarietat distribuïda de manera desigual.</div>
+              <div class="ex-item-quote">«La distribució diferencial de la precarietat és alhora una qüestió material i perceptual, atès que els qui pateixen la precarietat induïda políticament s'han d'enfrontar amb l'absència de reconeixement del seu patiment per part dels altres. Les seves vides no compten com a vides, i el seu dol no compta com a dol. Hi ha una distribució desigual de la vulnerabilitat física i la precaució diferencial aplicada a les poblacions; algunes poblacions estan molt més exposades que d'altres a la violència, la malaltia, la pobresa i la mort.»<br><br>— Judith Butler, <em>Precarious Life</em> (2004)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Butler distingeix entre la precarietat universal (tots som vulnerables) i la precarietat políticament induïda (alguns grups pateixen molt més que altres). Identifiqueu tres grups en el context europeu actual que pateixin una precarietat políticament induïda, i expliqueu quines decisions polítiques o estructures socials les hi han incrementat. (b) Marx parla d'explotació econòmica estructural; Butler parla d'exclusió i invisibilització estructural. Creieu que els dos fenòmens estan relacionats, o que es tracta de dos problemes independents? Raoneu-ho.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 6 — LECTURA AMPLIADA -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 6 — Iris Marion Young: els cinc rostres de l'opressió (lectura ampliada)</h3>
+          <span class="ex-badge analisi">Lectura i anàlisi</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">6.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Iris Marion Young (1949–2006) va ser una de les pensadores polítiques feministes més influents del segle XX. En el capítol «Els cinc rostres de l'opressió» de <em>Justice and the Politics of Difference</em> (1990), Young critica el paradigma distributiu i proposa una nova manera d'entendre la injustícia. Llegiu el fragment i responeu les preguntes que el segueixen.</div>
+              <div class="ex-item-quote">«El paradigma distributiu tracta implícitament els béns socials com si fossin coses, matèria que els individus poden posseir. [...] Quan la justícia es concep com a distribució, les anàlisis polítiques se centren principalment en qui té quina quantitat i si algú en té massa o massa poc. La lògica de la distribució tendeix, a més, a estendre's a béns que no es comporten com a coses materials, com ara la presa de decisions, les oportunitats de treball o el reconeixement social. Però quan analitzem la justícia de béns no materials o no distribuïbles, cal que examinem els processos socials que els produeixen i els reprodueixen.<br><br>En el seu sentit més general, l'opressió consisteix en processos institucionals sistemàtics que impedeixen a algunes persones aprendre i usar habilitats satisfactòries i àmplies en entorns socialment reconeguts, o que dificulten la capacitat de les persones de jugar i comunicar-se amb altres, o d'expressar els seus sentiments i perspectives sobre la vida social en contextos on d'altres puguin escoltar. Mentre qualsevol d'aquests processos afecti un grup, podem parlar d'opressió.<br><br>Defineixo cinc rostres de l'opressió: explotació, marginació, manca de poder, imperialisme cultural i violència. Cadascun d'aquests cinc rostres d'opressió és una forma autònoma d'injustícia, irreductible als altres. Una societat que elimini un d'ells però en mantingui d'altres no haurà aconseguit la justícia plena.»<br><br>— Iris Marion Young, <em>Justice and the Politics of Difference</em> (1990), cap. 2</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Young critica que el "paradigma distributiu" converteixi tots els problemes socials en qüestions de "qui té quant." Expliqueu, en les vostres paraules, per quina raó considera que aquesta manera d'entendre la justícia és incompleta. (b) Young identifica cinc rostres de l'opressió: <em>explotació</em> (apropiació del treball d'altri), <em>marginació</em> (exclusió de la participació social útil), <em>manca de poder</em> (no tenir veu ni capacitat de decidir), <em>imperialisme cultural</em> (imposició de la perspectiva dominant com a universal) i <em>violència</em> (risc sistemàtic d'atacs injustificats). Per a cada un dels cinc rostres, poseu un exemple contemporani. (c) Compareu el marc teòric de Young amb el de Butler: en quins punts coincideixen i en quins difereixen? Quina de les dues crítiques al paradigma distributiu us sembla més convincent? (d) Young diu que una societat que elimini un dels cinc rostres però en mantingui d'altres "no haurà aconseguit la justícia plena." Aplicat al cas de la societat en la qual viviu: quin dels cinc rostres creieu que s'hi tracta amb menys eficàcia? Per quina raó?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 7 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 7 — Angela Davis: presons, raça i exclusió estructural</h3>
+          <span class="ex-badge analisi">Anàlisi de text</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">7.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Angela Davis (n. 1944) ha analitzat com el sistema penitenciari dels Estats Units funciona com un mecanisme d'exclusió racial i social. Llegiu el fragment d'<em>Are Prisons Obsolete?</em> i responeu.</div>
+              <div class="ex-item-quote">«Les presons no fan desaparèixer els problemes socials, fan desaparèixer els éssers humans. La manca de sostre, l'atur, la drogodependència, les malalties mentals i l'analfabetisme són només alguns dels problemes que desapareixen de la vista pública quan els éssers humans que els pateixen són reclosos en gàbies. Però la solució és evident: quan els governs decideixen de finançar presons en lloc de finançar educació i serveis socials quan la bona gent ignora la situació de les presons i la societat criminalitza aquells que no han aconseguit superar les condicions adverses que els ha imposat el sistema, llavors les presons simplement tapen els símptomes d'una societat molt més profundament malalta.»<br><br>— Angela Davis, <em>Are Prisons Obsolete?</em> (2003)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Davis diu que les presons "fan desaparèixer els éssers humans" en lloc de resoldre els problemes socials. Relacioneu aquesta afirmació amb el concepte de "precarietat socialment produïda" de Butler: de quina manera el sistema penitenciari pot augmentar la precarietat d'alguns grups en lloc de reduir-la? (b) Rawls consideraria un sistema penitenciari com el que descriu Davis acceptable des del vel d'ignorança? Raoneu la resposta aplicant els dos principis de justícia. (c) Davis suggereix que el sistema puneix els "símptomes" en lloc de tractar les causes. Quin remei proposarien per a les causes subjacents cada un dels autors del tema (Nozick, Rawls, Marx, Nussbaum, Butler)?</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">7.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Llegiu el segon fragment de Davis sobre la intersecció entre raça, gènere i exclusió.</div>
+              <div class="ex-item-quote">«Les poblacions que es consideren "descartables" —les que l'economia globalitzada no pot o no vol absorbir— es criminalitzen i s'emmagatzemen a les presons. [...] La invisibilitat d'aquestes poblacions és, en si mateixa, un element central del seu control. Fora de la vista, fora de la ment de la societat. La vigilància policial es concentra en determinats barris, determinades comunitats racials i determinats cossos —sobretot cossos joves, masculins i negres— de manera que la criminalitat sembla inherent a certs grups en lloc d'estar produïda per les condicions en les quals viuen.»<br><br>— Angela Davis, <em>Are Prisons Obsolete?</em> (2003)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Davis parla de poblacions que es consideren "descartables." Poseu en relació aquest concepte amb els "cinc rostres de l'opressió" de Young: quins dels cinc rostres podeu identificar en el fenomen que descriu Davis? (b) Davis afirma que la criminalitat "sembla inherent" a certs grups quan en realitat és "produïda per les condicions en les quals viuen." Expliqueu com Nussbaum analitzaria aquesta situació des de la perspectiva de les capacitats: quines capacitats falten en les comunitats que Davis descriu?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 8 -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 8 — Síntesi: cinc mirades sobre un cas real</h3>
+          <span class="ex-badge redaccio">Redacció</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">8.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Analitzeu el cas següent des dels punts de vista de Nozick, Rawls, Marx, Nussbaum i Butler. Per a cadascun, expliqueu: (a) quin seria el seu diagnòstic del problema, (b) quina seria la seva proposta concreta i (c) quina seria la limitació del seu punt de vista que un dels altres autors o autores assenyalaria. Incorporeu també, si ho veieu rellevant, els marcs de Young i Davis. Acabeu amb la vostra pròpia posició argumentada (150–200 paraules).</div>
+              <div class="ex-item-quote">Al país X, tothom té accés legal a l'educació pública gratuïta. Tanmateix, l'escola pública dels barris benestants disposa de molt més finançament, instal·lacions millors i atrau el professorat més qualificat. Les famílies amb recursos accedeixen a educació privada de qualitat superior. Els fills i filles de famílies amb menys recursos acaben, en una proporció molt més alta, a treballs precaris. Les estadístiques mostren, a més, que els alumnes d'origen immigrant i les noies de certes comunitats abandonen els estudis a una taxa molt superior, tot i tenir el mateix accés formal. Formalment, tothom té el mateix dret a l'educació. Però les trajectòries vitals ja estan en gran mesura determinades en néixer.</div>
+              <div class="ex-item-note">Cal fer servir conceptes específics: drets formals vs. capacitats reals, vel d'ignorança, principi de diferència, llibertat d'acords i entitlement, plusvàlua i relacions de producció, reconeixement i precarietat, cinc rostres de l'opressió.</div>
+            </div>
+          </div>
+        </div>
+        <div class="ex-coming">
+          <span>Pròximament</span>
+          S'afegiran més activitats d'aquest bloc
+        </div>
+      </div>
+
+
+      <!-- BLOC ARG: ANÀLISI ARGUMENTATIVA (TEMA 6) -->
+      <div class="ex-block">
+        <div class="ex-block-header">
+          <h3>Bloc 9 — Anàlisi argumentativa de textos del tema</h3>
+          <span class="ex-badge analisi">Eines del Tema 1</span>
+        </div>
+        <div class="ex-items">
+          <div class="ex-item">
+            <span class="ex-item-num">9.1</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Analitzeu l'argument de Nozick sobre la redistribució i la llibertat.</div>
+              <div class="ex-item-quote">«Si comencem en una situació de distribució igualitària i la gent, lliurement, fa acords que produeixen desigualtat, per tornar a la igualtat caldria prendre allò que els altres han obtingut de manera voluntària. Prendre allò que algú ha obtingut voluntàriament és una violació de la seva llibertat. Per tant, qualsevol redistribució coercitiva viola la llibertat individual.»<br><br>— Paràfrasi de Nozick, <em>Anarchy, State, and Utopia</em> (1974)</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Posa l'argument en forma P-C. Quin tipus d'argument és? (b) L'argument és vàlid? Podria acceptar Rawls totes les premisses? Quina rebutjaria i per quina raó? (c) Escriu un contra-argument de Marx a l'argument de Nozick, en forma P-C: Marx negaria que els acords del mercat siguin realment "voluntaris". Per quina raó? (d) Existeix una fal·làcia potencial en el salt entre "acords lliures" i "resultat just"? Identifica-la i dóna un exemple.</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">9.2</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Analitzeu l'argument del vel d'ignorança de Rawls com a argument del tema 1.</div>
+              <div class="ex-item-quote">«Si ningú no sap quina posició ocuparà en la societat, tothom triarà principis que protegeixin les pitjors posicions possibles. Si tothom tria principis que protegeixin les pitjors posicions, els principis resultants garantiran que la situació dels menys afavorits sigui la millor possible. Per tant, els principis triats sota el vel d'ignorança seran principis de justícia veritablement imparcials.»</div>
+              <p style="margin-top:8px; font-size:0.9rem; color:var(--ink-soft);">(a) Identifica el tipus d'argument. L'argument és vàlid? (b) Nozick atacaria la premissa que afirma que "tothom triarà principis que protegeixin les pitjors posicions." Per quina raó? (c) Butler afegiria que el vel d'ignorança ignora alguna cosa essencial. Quin element de la seva teoria no queda cobert pel vel d'ignorança? Formuleu la crítica de Butler com un argument en forma P-C. (d) Construeix un argument d'analogia a favor del procediment rawlsià del vel d'ignorança.</p>
+            </div>
+          </div>
+          <div class="ex-item">
+            <span class="ex-item-num">9.3</span>
+            <div class="ex-item-body">
+              <div class="ex-item-q">Construeix un text argumentatiu curt (tres paràgrafs) a favor de la tesi: <em>«Una societat justa ha de garantir no només drets iguals per a tothom, sinó condicions reals que permetin exercir-los efectivament.»</em> El text ha d'incloure: la tesi, almenys dos arguments de tipus diferent, un contra-argument (inspirat en Nozick) amb la seva rèplica (inspirada en Nussbaum o Butler), i una conclusió.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /panel-exercicis -->
+
+
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-nav"><a href="index.html">← Índex del curs</a></div>
+  <span>T06 · Política i justícia social</span>
+</footer>
+
+<script>
+  function switchTab(name, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    btn.classList.add('active');
+    setTimeout(animateVisible, 50);
+  }
+  function animateVisible() {
+    document.querySelectorAll('.section, .ex-block').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.92)
+        el.classList.add('visible');
+    });
+  }
+  window.addEventListener('scroll', animateVisible, { passive: true });
+  animateVisible();
+  const tocLinks = document.querySelectorAll('.toc a');
+  const headingIds = Array.from(tocLinks).map(a => a.getAttribute('href').slice(1)).filter(id => document.getElementById(id));
+  function updateToc() {
+    let current = headingIds[0];
+    headingIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 120) current = id;
+    });
+    tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  }
+  window.addEventListener('scroll', updateToc, { passive: true });
+  updateToc();
+  if (window.location.hash === '#exercicis')
+    switchTab('exercicis', document.querySelectorAll('.tab-btn')[1]);
+</script>
+</body>
+</html>
