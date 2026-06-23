@@ -39,6 +39,9 @@
   .vocab-pre-item:last-child { border-bottom: none; padding-bottom: 0; }
   .vocab-pre-term { font-weight: 600; color: var(--ink); font-style: italic; }
   .vocab-pre-def { color: var(--ink-soft); font-weight: 300; line-height: 1.5; }
+  .vocab-pre-body { font-size: 0.9rem; color: var(--ink-soft); line-height: 1.7; margin-bottom: 14px; font-weight: 300; }
+  .vocab-pre-body:last-child { margin-bottom: 0; }
+  .vocab-pre-body strong { color: var(--ink); font-weight: 600; }
   .reading-text p { margin-bottom: 22px; color: var(--ink-soft); font-weight: 300; font-size: 1rem; line-height: 1.85; }
   .reading-text p:last-child { margin-bottom: 0; }
   .reading-text strong { color: var(--ink); font-weight: 600; }
@@ -90,26 +93,38 @@
   </div>
 
   <div class="vocab-pre">
-    <span class="vocab-pre-label">Vocabulari clau — llegiu-lo abans del text</span>
+    <span class="vocab-pre-label">Vocabulari clau — Llegiu abans de començar</span>
     <div class="vocab-pre-item">
       <span class="vocab-pre-term">Utilitarisme</span>
-      <span class="vocab-pre-def">Teoria ètica que considera correcta l'acció que maximitza la felicitat total de tots els afectats. Singer s'hi identifica explícitament: el que compta és el resultat, no la intenció ni les regles.</span>
+      <span class="vocab-pre-def">Teoria ètica que considera correcta l'acció que maximitza la felicitat (o benestar) total de tots els afectats, independentment de qui siguin. Singer s'hi identifica explícitament: el que compta és el resultat final, no la intenció ni les regles seguides. Implicació directa per al text: la distància geogràfica entre qui ajuda i qui és ajudat no té rellevància moral si el resultat és el mateix.</span>
     </div>
     <div class="vocab-pre-item">
       <span class="vocab-pre-term">Ètica aplicada</span>
-      <span class="vocab-pre-def">Branca de la filosofia que aplica les teories ètiques a problemes concrets: pobresa, medi ambient, drets animals, bioètica. Singer és un dels seus fundadors.</span>
+      <span class="vocab-pre-def">Branca de la filosofia que aplica les teories ètiques a problemes concrets i actuals: pobresa, medi ambient, drets dels animals, bioètica, IA. Singer és un dels seus fundadors moderns. La diferència amb l'ètica teòrica: l'ètica aplicada no es pregunta «quina teoria és correcta» sinó «donada una teoria, quines obligacions concretes genera?»</span>
     </div>
     <div class="vocab-pre-item">
       <span class="vocab-pre-term">Equivalent moral</span>
-      <span class="vocab-pre-def">Dues situacions són moralment equivalents si les conseqüències moralment rellevants (qui viu, qui mor, qui pateix) són les mateixes, encara que el context extern difereixi.</span>
+      <span class="vocab-pre-def">Dues situacions són moralment equivalents si les conseqüències moralment rellevants (qui viu, qui mor, qui pateix) són les mateixes, encara que el context extern difereixi. Singer usa aquesta noció per argumentar que la situació de la Dora i la del consumidor americà son moralment equivalents tot i ser psicològicament molt diferents.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Contrafactual</span>
+      <span class="vocab-pre-def">Suposició sobre el que hauria passat si les coses haguessin estat diferents: «i si la Dora s'hagués encongit d'espatlles?» Singer usa contrafactuals per revelar les intuïcions morals del lector sense fer-les explícites, deixant que apareguin soles en imaginar el cas alternatiu.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Argument per analogia</span>
+      <span class="vocab-pre-def">L'estratègia argumentativa central del text: Singer construeix un cas A (la Dora, en Bob) en el qual la resposta moral sembla clara, i argumenta que el cas B (el lector) és estructuralment idèntic en tots els aspectes moralment rellevants. Si A és incorrecte, B també ho és. La força de l'argument depèn de si l'analogia aguanta.</span>
     </div>
     <div class="vocab-pre-item">
       <span class="vocab-pre-term">Part justa (fair share)</span>
-      <span class="vocab-pre-def">L'objecció que sosté que cadascú només hauria de contribuir la seva part proporcional i no és responsable de compensar el que no fan els altres. Singer la examina i la rebutja.</span>
+      <span class="vocab-pre-def">L'objecció que sosté que cadascú només hauria de contribuir la seva part proporcional del total necessari, i no és responsable de compensar el que no fan els altres. Singer la examina i la rebutja: si sé que els nens moriran perquè els altres no donen la seva part, el fet que sigui injust que jo hagi de compensar-ho no em eximeix de fer-ho.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Distància psicològica</span>
+      <span class="vocab-pre-def">El fet que reaginem emotivament de manera molt diferent a danys que veiem davant nostre que a danys idèntics que no veiem. Singer reconeix la distància psicològica com un fet, però argumenta que no és una raó moral: que no vegis la víctima no fa que la teva responsabilitat sigui menor.</span>
     </div>
     <div class="vocab-pre-item">
       <span class="vocab-pre-term">Psicologia evolutiva</span>
-      <span class="vocab-pre-def">Camp que estudia com l'evolució biològica ha configurat la ment humana. Singer s'hi enfronta en respondre l'objecció que «la naturalesa humana no és prou altruista».</span>
+      <span class="vocab-pre-def">Camp que estudia com l'evolució biològica ha configurat la ment humana i els seus biaixos. Singer l'esmenta quan respon l'objecció que «la naturalesa humana no és prou altruista». La seva resposta: que la natura humana sigui com és no implica que hagi de ser així ni que estigui bé que ho sigui.</span>
     </div>
   </div>
 
@@ -131,7 +146,7 @@
 
     <span class="reading-section-label">El cas d'en Bob i el Bugatti</span>
 
-    <p>Per precisar l'argument, Singer pren prestada la situació del filòsof Peter Unger, del seu llibre <em>Living High and Letting Die</em> (1996). En Bob és un home a punt de jubilar-se que ha invertit tots els seus estalvis en un Bugatti antiquíssim i rarísim, que no ha pogut assegurar. El cotxe és el seu tresor i la seva garantia financera per a la vellesa. Un dia, mentre passeja per les vies del ferrocarril, veu un tren desbocat avançant cap a un nen que no pot escapar. En Bob podria desviar el tren accionant un canvi d'agulles, però el tren destruiria el Bugatti, que és a la via morta. Decideix no accionar l'agulla. El nen mor. En Bob conserva el cotxe.</p>
+    <p>Per precisar l'argument, Singer pren prestada la situació del filòsof Peter Unger, del seu llibre <em>Living High and Letting Die</em> (1996). <em>(Unger és un filòsof analític nord-americà que ha dedicat gran part de la seva obra a demostrar que les intuïcions morals del sentit comú sobre la responsabilitat i la distància son filosòficament insostenibles.)</em> En Bob és un home a punt de jubilar-se que ha invertit tots els seus estalvis en un Bugatti antiquíssim i rarísim, que no ha pogut assegurar. El cotxe és el seu tresor i la seva garantia financera per a la vellesa. Un dia, mentre passeja per les vies del ferrocarril, veu un tren desbocat avançant cap a un nen que no pot escapar. En Bob podria desviar el tren accionant un canvi d'agulles, però el tren destruiria el Bugatti, que és a la via morta. Decideix no accionar l'agulla. El nen mor. En Bob conserva el cotxe.</p>
 
     <p>La reacció gairebé unànime, diu Singer, és que en Bob ha actuat de manera greument incorrecta. Però llavors arriba la pregunta incòmoda: quant caldria donar a organitzacions com UNICEF o Oxfam per tenir una probabilitat alta de salvar la vida d'un nen amenaçat per malalties prevenibles? Unger ho va calcular: al voltant de dos-cents dòlars. La informació per fer-ho és pública i accessible.</p>
 
