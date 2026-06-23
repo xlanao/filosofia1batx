@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L04 · El sentit de la vida — Filosofia 1r Bat.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111; --ink-soft: #444444; --ink-faint: #8a8a8a;
+    --paper: #ffffff; --paper-off: #fafaf9;
+    --line: #111111; --line-soft: #cfcfcc; --line-faint: #e6e5e1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Spectral', Georgia, serif; background: var(--paper); color: var(--ink); line-height: 1.85; font-size: 17px; font-weight: 400; }
+
+  .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-left { display: flex; align-items: center; }
+  .nav-back { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; display: flex; align-items: center; gap: 8px; padding: 6px 14px 6px 0; border-right: 1px solid var(--line-faint); margin-right: 14px; transition: color 0.15s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-brand { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; font-weight: 700; }
+  .nav-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.06em; }
+
+  .reading-header { max-width: 700px; margin: 0 auto; padding: 64px 40px 48px; border-bottom: 1px solid var(--line); }
+  .reading-breadcrumb { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; }
+  .reading-breadcrumb a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+  .reading-breadcrumb a:hover { opacity: 0.6; }
+  .reading-num { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; }
+  .reading-title { font-family: 'Spectral', serif; font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.18; color: var(--ink); margin-bottom: 12px; }
+  .reading-title em { font-style: italic; font-weight: 400; }
+  .reading-author { font-family: 'Spectral', serif; font-size: 1rem; color: var(--ink-soft); font-style: italic; margin-bottom: 8px; }
+  .reading-source { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.06em; color: var(--ink-faint); }
+
+  .reading-body { max-width: 700px; margin: 0 auto; padding: 52px 40px 100px; }
+
+  .reading-intro { border-left: 2px solid var(--line-soft); padding: 4px 0 4px 20px; margin-bottom: 36px; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.65; }
+  .reading-intro strong { color: var(--ink); font-weight: 600; }
+
+  .vocab-pre { border: 1px solid var(--line-faint); background: var(--paper-off); padding: 20px 24px; margin-bottom: 40px; }
+  .vocab-pre-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; font-weight: 700; }
+  .vocab-pre-item { display: grid; grid-template-columns: 190px 1fr; gap: 0 16px; padding: 8px 0; border-bottom: 1px solid var(--line-faint); align-items: baseline; font-size: 0.87rem; }
+  .vocab-pre-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .vocab-pre-term { font-weight: 600; color: var(--ink); font-style: italic; }
+  .vocab-pre-def { color: var(--ink-soft); font-weight: 300; line-height: 1.5; }
+
+  .reading-text p { margin-bottom: 22px; color: var(--ink-soft); font-weight: 300; font-size: 1rem; line-height: 1.85; }
+  .reading-text p:last-child { margin-bottom: 0; }
+  .reading-text strong { color: var(--ink); font-weight: 600; }
+  .reading-text em { font-style: italic; }
+
+  .reading-section-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin: 40px 0 18px; padding-top: 36px; border-top: 1px solid var(--line-faint); }
+
+  .reading-omission { font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: var(--ink-faint); border-top: 1px dashed var(--line-soft); border-bottom: 1px dashed var(--line-soft); padding: 7px 0; margin: 26px 0; text-align: center; }
+
+  .reading-example { background: var(--paper-off); border: 1px solid var(--line-faint); padding: 16px 20px; margin: 20px 0; }
+  .reading-example-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 8px; font-weight: 700; }
+  .reading-example p { color: var(--ink-soft); font-weight: 300; margin-bottom: 8px; font-size: 0.92rem; line-height: 1.7; }
+  .reading-example p:last-child { margin-bottom: 0; }
+
+  .reading-questions { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
+  .reading-questions-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; display: block; }
+  .question-item { display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; margin-bottom: 18px; align-items: baseline; }
+  .question-num { font-family: 'Courier Prime', monospace; font-size: 0.8rem; color: var(--ink); font-weight: 700; }
+  .question-text { font-size: 0.93rem; color: var(--ink-soft); font-weight: 300; line-height: 1.65; }
+  .question-note { font-size: 0.82rem; color: var(--ink-faint); font-style: italic; margin-top: 5px; }
+  .questions-group-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); margin: 28px 0 14px; display: block; padding-top: 20px; border-top: 1px dotted var(--line-faint); }
+
+  .reading-footer { max-width: 700px; margin: 0 auto; padding: 24px 40px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.06em; color: var(--ink-faint); }
+  .reading-footer a { color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
+  .reading-footer a:hover { color: var(--ink); }
+
+  @media (max-width: 680px) {
+    .nav { padding: 0 22px; } .nav-meta { display: none; }
+    .reading-header, .reading-body, .reading-footer { padding-left: 22px; padding-right: 22px; }
+    .reading-header { padding-top: 40px; padding-bottom: 36px; }
+    .vocab-pre-item { grid-template-columns: 1fr; gap: 3px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-back" href="index.html">← Inici</a>
+    <span class="nav-brand">Filosofia 1r Bat.</span>
+  </div>
+  <span class="nav-meta">L·04 — Wolf</span>
+</nav>
+
+<div class="reading-header">
+  <div class="reading-breadcrumb">
+    <a href="index.html">Índex</a> / <a href="index.html#lectures">Lectures</a>
+  </div>
+  <span class="reading-num">Lectura 04</span>
+  <h1 class="reading-title">El <em>sentit de la vida</em></h1>
+  <div class="reading-author">Susan Wolf (n. 1952)</div>
+  <div class="reading-source">Adaptació del capítol 1 de <em>Meaning in Life and Why It Matters</em> (Princeton University Press, 2010) · Traducció i adaptació didàctica al català</div>
+</div>
+
+<div class="reading-body">
+
+  <div class="reading-intro">
+    <strong>Context:</strong> Susan Wolf és professora de filosofia a la Universitat de Carolina del Nord. <em>Meaning in Life and Why It Matters</em> recull dues conferències que va pronunciar a la Universitat de Princeton el 2007. El primer capítol, reproduït aquí en adaptació al català, proposa una nova categoria filosòfica —el <em>sentit de la vida</em>— que no es redueix ni a la felicitat ni a la moralitat. Wolf argumenta que hi ha una dimensió fonamental de la vida bona que els models filosòfics clàssics passen per alt: l'amor actiu per objectes veritablement valuosos. El capítol connecta directament amb els debats sobre la bona vida (Tema 4) i sobre la naturalesa de les raons per actuar (Tema 3).
+    <br><br>
+    <strong>Nota sobre aquesta versió:</strong> Adaptació didàctica al català que segueix fidelment l'estructura i els arguments del capítol original. On el text original ha estat condensat o omès s'indica amb [···].
+  </div>
+
+  <div class="vocab-pre">
+    <span class="vocab-pre-label">Vocabulari clau — llegiu-lo abans del text</span>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Egoisme psicològic</span>
+      <span class="vocab-pre-def">Tesi descriptiva que afirma que les persones sempre actuen buscant el seu propi interès. No diu com hauria de ser, sinó com és (o suposadament és) la motivació humana.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Egoisme racional</span>
+      <span class="vocab-pre-def">Tesi normativa que afirma que les persones <em>haurien de</em> maximitzar el seu propi benestar. Diferent de l'egoisme psicològic: és una proposta sobre com actuar, no sobre com actuem de fet.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Raons d'amor</span>
+      <span class="vocab-pre-def">Terme encunyat per Wolf (i usat paral·lelament per Harry Frankfurt): les motivacions que provenen de l'amor a persones, activitats o ideals, i que no es redueixen ni a l'interès propi ni al deure moral.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Sentit de la vida (meaningfulness)</span>
+      <span class="vocab-pre-def">Per a Wolf, una dimensió de valor de la vida bona distinta de la felicitat i de la moralitat. Una vida significativa és la d'algú que estima activament objectes o persones que realment mereixen ser estimades.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Mètode endòxic</span>
+      <span class="vocab-pre-def">Mètode filosòfic d'Aristòtil: partir de les creences i opinions àmpliament compartides (<em>endoxa</em>) com a punt de partida per a l'anàlisi. Si una teoria les explica i les harmonitza, això compta a favor seu.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Element subjectiu / objectiu</span>
+      <span class="vocab-pre-def">Wolf sosté que el sentit de la vida requereix tots dos: l'element <em>subjectiu</em> és l'amor o interès genuí del subjecte; l'element <em>objectiu</em> és que l'objecte estimat mereixi efectivament ser-ho. Cap dels dos no és suficient per si sol.</span>
+    </div>
+  </div>
+
+  <div class="reading-text">
+
+    <span class="reading-section-label">1. La falsa dicotomia: egoisme i dualisme</span>
+
+    <p>Els models filosòfics de la motivació humana tendeixen a caure en una de dues categories. El primer i més popular —l'<strong>egoisme psicològic</strong>— concep les persones com a éssers moguts exclusivament per allò que consideren el seu propi interès. Hi ha, però, un segon model, el <strong>dualisme</strong>, que defensa que les persones també poden ser mogudes per alguna cosa «superior»: Kant, per exemple, pensava que, a més de les inclinacions, som capaços d'actuar guiats per la raó pura i el deure moral.</p>
+
+    <p>A aquests dos models descriptius de la motivació corresponen dos models normatius de la raó pràctica. L'egoisme psicològic —la tesi que les persones busquen exclusivament el propi bé— va estretament lligat a l'<strong>egoisme racional</strong>, que prescriu que les persones només actuen racionalment en la mesura que maximitzen el propi benestar. Al costat d'aquest, i de manera explícita en l'obra de Henry Sidgwick, apareix la perspectiva impersonal, que urgeix a fer allò que és millor «des del punt de vista de l'univers» —és a dir, el punt de vista de la moralitat.</p>
+
+    <p>En el discurs ordinari i en la filosofia, quan justifiquem les nostres accions, el més freqüent és que les raons que adduïm caiguin sota la categoria de l'interès propi. Quan intentem persuadir algú, apel·lem al seu interès personal. Però hi ha ocasions en les quals invocar l'interès propi seria simplement poc convincent, o fins i tot inoportú; en aquests casos, parlem el llenguatge del deure: la justícia, la compassió o la moralitat exigeixen que actuem d'una manera determinada, al marge de si ens beneficia o no.</p>
+
+    <p>Tanmateix, aquests models de motivació i raó pràctica em sembla que <strong>ometen moltes de les motivacions i raons que conformen les nostres vides</strong>. I les raons omeses no són perifèriques ni excèntriques: podria dir-se que són algunes de les més importants i centrals. Són les raons i motivacions que ens impliquen en les activitats que fan que les nostres vides mereixin ser viscudes; ens donen raons per seguir endavant; fan girar el nostre món. Elles, i les activitats que generen, <strong>donen sentit a les nostres vides</strong>.</p>
+
+    <p>El meu objectiu en aquesta conferència és posar en relleu el caràcter distintiu d'aquestes raons i el paper especial que juguen en la qualitat de les nostres vides. Específicament, proposaré que la nostra sensibilitat a aquest tipus de raons està lligada a la possibilitat de viure una vida significativa —entenent el <em>sentit</em> com un atribut que les vides poden tenir, que no és reductible ni subsumible ni en la felicitat, en el sentit ordinari, ni en la moralitat.</p>
+
+    <span class="reading-section-label">2. Les raons d'amor</span>
+
+    <p>Deixeu-me començar amb alguns exemples de les raons i motivacions que tinc en ment —raons que no s'entenen millor en termes de les seves contribucions ni a la felicitat ni al que la raó impersonal o la moralitat exigeix.</p>
+
+    <p>Els exemples més obvis es produeixen quan actuem per amor a persones per les quals ens importem profundament. Quan visito el meu germà a l'hospital, o ajudo un amic a fer la mudança, o em quedo despert tota la nit cosint a la meva filla un disfressa d'Halloween, no actuo ni per raons egoistes ni per raons morals. No crec que m'afavoreixi personalment passar una hora depriment en una habitació grisa i petita veient el meu germà irritable i adolorit, ni arriscar-me a fer-me mal a l'esquena intentant baixar el sofà d'un amic per dos trams d'escala, ni privar-me d'hores de son molt necessitades per assegurar-me que les ales sobresurtin bé del disfressa de papallona que la meva filla vol portar al desfilada de l'endemà. Però tampoc no em considero moralment obligat a fer-ho, ni em faig la il·lusió que amb això faig el millor pel món. Actuo <strong>per amor</strong>.</p>
+
+    <p>De la mateixa manera que els models egoista i dualista de la raó pràctica deixen fora el que podríem anomenar aquestes «<strong>raons d'amor</strong>», sembla que també ometen moltes de les raons que ens impulsen a perseguir interessos no personals pels quals sentim una passió especial. Escriure filosofia, practicar el violoncel, mantenir el jardí lliure de males herbes, pot exigir més temps i atenció del que seria òptim des del punt de vista del propi benestar. Tanmateix, en aquests casos, fins i tot més que en els casos d'amor a persones estimades, és evident que cap perspectiva impersonal no ens exigeix actuar.</p>
+
+    <p>Igual que, en el cas d'actuar per una persona estimada, és el bé d'aquella altra persona el que ens proporciona una raó per a l'acció, el que ens impulsa en les activitats no personals que tinc en ment és un <strong>valor percebut o imaginat que es troba fora d'un mateix</strong>. M'afanyo sobre l'article que intento escriure perquè vull fer-lo bé —és a dir, perquè vull que l'argument sigui sòlid, que la tesi sigui correcta, que l'escriptura sigui clara i elegant. No és per a mi —almenys no només per a mi— que lluito tant amb el meu treball. Podríem dir que lluito «per amor a la filosofia» en lloc de per amor propi; però allò que sembla que m'impulsa és el valor de la bona filosofia, del mateix manera que podria ser la bellesa de la música o del jardí en potència el que mou la violoncelista o el jardiner a sacrificar el confort i a exercitar la disciplina en la persecució del seu objectiu.</p>
+
+    <p>Faig servir la frase <strong>«raons d'amor»</strong> per cobrir tots dos tipus de casos: l'amor a persones individuals i l'amor a activitats, ideals o objectes de tota mena. La meva tesi és que les raons d'amor —tant de persones humanes i d'altres éssers vius com d'activitats, ideals o objectes de diversos tipus— tenen un paper distintiu i important en les nostres vides. No s'han d'assimilar ni a raons d'interès propi ni a raons de moralitat.</p>
+
+    <div class="reading-omission">[···  Wolf examina en quins casos les raons d'amor poden estar equivocades: quan l'amor no beneficia realment el seu objecte, o quan l'amor és desproporcionat respecte al que l'objecte mereix. Exemples: la dona que abandona carrera i amistats per un home que «no la mereix»; l'adolescent que cedeix el seu patrimoni a un culte. ···]</div>
+
+    <span class="reading-section-label">3. Una concepció del sentit de la vida</span>
+
+    <p>Els filòsofs acadèmics no parlen gaire del <em>sentit de la vida</em>. El terme és més probable que el facin servir teòlegs o terapeutes, i persones que estan d'alguna manera insatisfetes amb la seva vida però no saben precisar per quina raó. Les persones de vegades es queixen que les seves vides manquen de sentit; anheLen sentit; busquen sentit. Sovint el sentit s'associa amb una mena de profunditat. La necessitat de sentit es connecta amb la sensació que la pròpia vida és buida o superficial. Un interès pel sentit s'associa freqüentment amb els pensaments que un pot tenir en el llit de mort, o en la contemplació de la pròpia mort eventual.</p>
+
+    <p>La concepció de sentit que vull proposar és la següent: <strong>el sentit sorgeix d'estimar objectes dignes d'amor i de comprometre's activament amb ells</strong>. Però cal precisar: el que és potser més distintiu de la meva concepció és que implica elements <strong>subjectius i objectius, adequadament i inextricablement vinculats</strong>.</p>
+
+    <p>«L'amor» és almenys en part subjectiu: implica actituds i sentiments. En insistir que l'objecte requisit ha de ser «digne d'amor», però, aquesta concepció invoca un <strong>estàndard objectiu</strong>. Que l'objecte sigui digne d'amor per tal de contribuir al sentit de la vida de l'amant implica que no qualsevol objecte servirà. Ni tampoc no es garanteix que la pròpia avaluació del subjecte sobre la digni­tat sigui privilegiada. Podria parafrasejar-se dient que, d'acord amb la meva concepció, <strong>el sentit sorgeix quan l'atracció subjectiva troba l'atractiu objectiu</strong>.</p>
+
+    <p>En essència, la idea és que la vida d'una persona només pot ser significativa si se li importa profundament alguna cosa o diverses coses, si n'és commoguda, excitada, interessada, compromesa —o, com ho he dit abans, si <em>estima</em> alguna cosa— en lloc de estar avorrida o alienada de la major part o de tot el que fa. Fins i tot una persona plenament compromesa, però, no viurà una vida significativa si els objectes o activitats amb els quals s'ocupa no valen res.</p>
+
+    <div class="reading-example">
+      <span class="reading-example-label">L'exemple del fumador de marihuana</span>
+      <p>Una persona que estima fumar marihuana tot el dia o fer mots encreuats de manera interminable, i que té el luxe de poder-ho fer sense restriccions, no fa per això que la seva vida sigui significativa. L'amor o l'interès genuí hi és (element subjectiu), però l'objecte no és digne d'aquest amor (falta l'element objectiu).</p>
+    </div>
+
+    <p>Finalment, aquesta concepció del sentit especifica que la relació entre el subjecte i l'objecte de la seva atracció ha de ser <strong>activa</strong>. La condició que diu que el sentit implica comprometre's amb l'objecte (digne) d'amor de manera positiva pretén deixar clar que la mera re­co­nei­xença passiva i una actitud positiva envers el valor d'un objecte o activitat no és suficient per a una vida significativa. Cal ser capaç de tenir algun tipus de relació amb l'objecte valuós de l'atenció: crear-lo, protegir-lo, promoure'l, honorar-lo o, en general, afirmar-lo activament d'alguna manera.</p>
+
+    <span class="reading-section-label">4. El mètode endòxic i les dues visions populars</span>
+
+    <p>Aristòtil és conegut pel seu ús del <strong>mètode endòxic</strong> en la defensa de les seves afirmacions morals i conceptuals: pren les <em>endoxa</em> —«les coses que accepten tothom, la majoria de persones o els savis»— com a punt de partida en les seves investigacions. Si una tesi pot explicar i donar suport a aquestes creences comunes, o fins i tot millor, si pot harmonitzar-les entre si, això compta com un argument a favor seu.</p>
+
+    <p>En aquest esperit, suggereixo que la meva visió podria entendre's com una combinació, o una soldadura, de dues visions populars que sovint s'escolten, si no com a anàlisis del sentit de la vida, almenys com a ingredients d'una vida ben viscuda.</p>
+
+    <p><strong>La primera visió</strong> ens diu que no importa el que facis amb la vida, sempre que sigui alguna cosa que estimes. No et quedes aturat, ni et conformes a fer alguna cosa simplement perquè s'espera de tu, o perquè es reconeix convencionalment com a bona, o perquè no se t'acut res millor. Troba la teva passió. Descobreix el que t'apassiona i vés a per ell.</p>
+
+    <p><strong>La segona visió</strong> diu que per viure una vida realment satisfactòria cal implicar-se en alguna cosa «més gran que un mateix». Podria entendre's metafòricament, com una manera d'apuntar cap a l'objectiu de participar en o contribuir a alguna cosa el valor de la qual és independent d'un mateix.</p>
+
+    <p>Enteses d'aquesta manera, la primera visió («troba la teva passió») pot entendre's com una manera d'advocar per alguna cosa similar a l'element subjectiu contingut en la meva anàlisi proposada del sentit, mentre que la segona visió («sigues part d'alguna cosa més gran que tu mateix») ens urgeix a satisfer la condició objectiva. <strong>La meva proposta solda les dues</strong>: les vides significatives requereixen tant la passió genuïna del subjecte com el valor objectiu de l'objecte estimat.</p>
+
+    <span class="reading-section-label">5. Exemples: vides significatives i vides buides</span>
+
+    <p>Quan busquem paradigmes de vides significatives, qui ens ve al cap? Gandhi, potser, o la Mare Teresa, o Einstein, o Cézanne. El Sísif, condemnat a un cicle interminable de fer rodar una pedra enorme costa amunt, tan sols per veure-la rodar de nou cap avall, és un exemplar estàndard d'una existència sense sentit. La tria d'aquests exemples sembla basada en el valor —o la manca de valor— que atribuïm a les activitats d'aquestes persones, més que en la qualitat subjectiva de la seva vida interior.</p>
+
+    <p>Quan considerem les nostres pròpies vides, en canvi, la preocupació o la queixa que la vida manqui de sentit acostuma a ser una expressió d'insatisfacció amb la qualitat <em>subjectiva</em> d'aquella vida: alguna cosa es percep com absent. La vida se sent buida. Hom anhela trobar alguna cosa que omple aquest buit i el fa sentir-se, diguem-ne, plenament realitzat (<em>fulfilled</em>).</p>
+
+    <div class="reading-omission">[··· Wolf presenta el Sísif de Camus com a contrast: un Sísif que ha perdut el dolor de la seva situació i en el qual s'ha induït un amor irresistible per les pedres. Té l'element subjectiu (estima les pedres passionalment) però li manca l'element objectiu (fer rodar pedres per sempre no té cap valor). Wolf argumenta que la seva vida no seria significativa malgrat la satisfacció subjectiva. ···]</div>
+
+    <span class="reading-section-label">6. Per quina raó el sentit no és ni felicitat ni moralitat</span>
+
+    <p>Wolf insisteix en la distinció entre el sentit, la felicitat i la moralitat com a tres dimensions independents del valor d'una vida. Una vida pot ser feliç sense ser significativa: un hedonista satisfet que no estima res fora del propi plaer immediat podria ser feliç, però difícilment diríem que la seva vida és profunda o significativa. Una vida pot ser moralment exemplar sense generar el tipus d'implicació passional i activa que Wolf associa al sentit: un buròcrata escrupulosament honest que compleix els seus deures sense estimar cap projecte no seria significativa en el sentit de Wolf, però tampoc immoral.</p>
+
+    <p>I, en sentit invers, una vida pot ser significativa en el sentit de Wolf —profundament implicada en objectes valuosos— sense ser la vida que maximitza la felicitat personal (l'artista que es priva de confort per la seva obra) ni la que fa el màxim bé possible al món (el científic apassionat per un problema teòric que no té aplicació immediata).</p>
+
+    <p>La conclusió és que la nostra reflexió sobre com viure bé necessita no dos paràmetres, sinó <strong>tres</strong>: la felicitat, la moralitat i el sentit. Deixar fora el tercer empobreix tant la manera com entenem les nostres pròpies vides com la manera com jutgem les dels altres.</p>
+
+    <div class="reading-omission">[··· El capítol conclou avançant l'argument de la segona conferència: que la categoria del sentit no sols és filosòficament interessant, sinó que, si s'accepta, té conseqüències importants per a com entenem la felicitat, la moralitat i l'interès propi. A més, reconèixer el sentit com a valor implica acceptar un cert grau d'objectivitat en els judicis de valor —una conclusió amb implicacions significatives per a la metaètica. ···]</div>
+
+  </div><!-- /reading-text -->
+
+  <div class="reading-questions">
+    <span class="reading-questions-label">Guia de lectura — Preguntes de comprensió i reflexió</span>
+
+    <span class="questions-group-label" style="margin-top:0; border-top:none; padding-top:0;">Comprensió del text</span>
+
+    <div class="question-item">
+      <span class="question-num">1</span>
+      <div>
+        <div class="question-text">Explica amb les teves paraules la «falsa dicotomia» que Wolf identifica al principi del capítol. Quins dos models de motivació humana hi ha en joc, i per quina raó Wolf considera que tots dos deixen fora alguna cosa fonamental?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">2</span>
+      <div>
+        <div class="question-text">Wolf descriu tres situacions en les quals actua per raons que no son ni d'interès propi ni de deure moral: visitar el seu germà malalt, ajudar a la mudança d'un amic i cosir el disfressa de la seva filla. Per quina raó no considera que siguin accions d'interès propi? I per quina raó tampoc no les considera moralment obligatòries?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">3</span>
+      <div>
+        <div class="question-text">Explica la distinció entre «estimar persones» i «estimar activitats o ideals» en el marc de les raons d'amor de Wolf. Per quina raó considera que ambdues formes d'amor cauen sota la mateixa categoria?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">4</span>
+      <div>
+        <div class="question-text">La concepció de Wolf del sentit de la vida té tres elements: element subjectiu, element objectiu i compromís actiu. Explica cada element amb les teves paraules i posa un exemple propi de cada un.</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">5</span>
+      <div>
+        <div class="question-text">Wolf argumenta que una persona que estima passionalment fumar marihuana tot el dia no viu per això una vida significativa. Quin dels tres elements (subjectiu, objectiu, actiu) hi és i quin hi falta? Estàs d'acord amb Wolf que li falta l'element objectiu?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">6</span>
+      <div>
+        <div class="question-text">Wolf usa el mètode endòxic d'Aristòtil. Explica en què consisteix aquest mètode i com l'aplica Wolf per defensar la seva proposta combinant les dues visions populars («troba la teva passió» i «sigues part d'alguna cosa més gran que tu»).</div>
+      </div>
+    </div>
+
+        <span class="questions-group-label">Reflexió</span>
+
+    <div class="question-item">
+      <span class="question-num">1</span>
+      <div><div class="question-text">Wolf distingeix entre viure una vida feliç i viure una vida significativa. Pensa en una persona del teu entorn que tingui moltes comoditats però que sembli buida de sentit, i en una altra que tingui poc però que sembli profundament compromesa amb alguna cosa. Quina de les dues vides elegiries si haguessis de triar? La resposta canvia si la pregunta és en abstracte o si és sobre la teva pròpia vida concreta?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">2</span>
+      <div><div class="question-text">Wolf argumenta que necessitem un element objectiu: que l'objecte estimat sigui realment valuós, no únicament que nosaltres el valorem. Però qui decideix qué és «objectivament valuós»? Pensa en alguna activitat que la societat considera trivial o sense valor però que qui la practica viu com a profundament significativa. Com resoldries la tensió entre la valoració personal i l'estàndard extern?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">3</span>
+      <div><div class="question-text">L'economia de les xarxes socials ha creat una nova categoria de treball: la creació de contingut digital per a audiències massives. Aplicant el marc de Wolf, en quin sentit podria ser una activitat significativa —té un element subjectiu genuí i possiblement un objecte valuós— i en quin sentit podria ser un cas paradigmàtic de significat fals? Quins elements caldria examinar per distingir-ho?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">4</span>
+      <div><div class="question-text">Wolf insisteix que el sentit requereix un compromís <em>actiu</em>: no n'hi ha prou amb apreciar passivament allò que és valuós. Creus que hi ha activitats que la gent s'imagina que li donaran sentit però que en la pràctica les deixa passives o consumidores? En quin sentit la diferència entre «consumir cultura» i «produir cultura» és rellevant per al marc de Wolf?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">5</span>
+      <div><div class="question-text">Reflexiona sobre la teva pròpia vida: quina activitat, si la perseguissis seriosament, creus que tindria el potencial de ser el que Wolf anomena «profundament significativa»? Quins obstacles —socials, econòmics, familiars, culturals— hi veus per poder-la perseguir de debò? Creus que Wolf té en compte suficientment el fet que no tothom té les mateixes condicions materials per perseguir les seves passions?</div></div>
+    </div>
+
+</div>
+
+</div><!-- /reading-body -->
+
+<footer class="reading-footer">
+  <a href="index.html#lectures">← Totes les lectures</a>
+  <span>Filosofia i Ciutadania · 1r Batxillerat</span>
+</footer>
+
+</body>
+</html>

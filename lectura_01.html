@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L01 · El valor de la filosofia — Filosofia 1r Bat.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111; --ink-soft: #444444; --ink-faint: #8a8a8a;
+    --paper: #ffffff; --paper-off: #fafaf9;
+    --line: #111111; --line-soft: #cfcfcc; --line-faint: #e6e5e1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Spectral', Georgia, serif; background: var(--paper); color: var(--ink); line-height: 1.85; font-size: 17px; font-weight: 400; }
+
+  .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-left { display: flex; align-items: center; }
+  .nav-back { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; display: flex; align-items: center; gap: 8px; padding: 6px 14px 6px 0; border-right: 1px solid var(--line-faint); margin-right: 14px; transition: color 0.15s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-brand { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; font-weight: 700; }
+  .nav-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.06em; }
+
+  .reading-header { max-width: 700px; margin: 0 auto; padding: 64px 40px 48px; border-bottom: 1px solid var(--line); }
+  .reading-breadcrumb { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; }
+  .reading-breadcrumb a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+  .reading-breadcrumb a:hover { opacity: 0.6; }
+  .reading-num { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; }
+  .reading-title { font-family: 'Spectral', serif; font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.18; color: var(--ink); margin-bottom: 12px; }
+  .reading-title em { font-style: italic; font-weight: 400; }
+  .reading-author { font-family: 'Spectral', serif; font-size: 1rem; color: var(--ink-soft); font-style: italic; margin-bottom: 8px; }
+  .reading-source { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.06em; color: var(--ink-faint); }
+
+  .reading-body { max-width: 700px; margin: 0 auto; padding: 52px 40px 100px; }
+
+  .reading-intro { border-left: 2px solid var(--line-soft); padding: 4px 0 4px 20px; margin-bottom: 40px; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.65; }
+  .reading-intro strong { color: var(--ink); font-weight: 600; }
+
+  /* Vocabulary box */
+  .vocab-pre { border: 1px solid var(--line-faint); background: var(--paper-off); padding: 20px 24px; margin-bottom: 40px; }
+  .vocab-pre-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; font-weight: 700; }
+  .vocab-pre-item { display: grid; grid-template-columns: 170px 1fr; gap: 0 16px; padding: 8px 0; border-bottom: 1px solid var(--line-faint); align-items: baseline; font-size: 0.87rem; }
+  .vocab-pre-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .vocab-pre-term { font-weight: 600; color: var(--ink); font-style: italic; }
+  .vocab-pre-def { color: var(--ink-soft); font-weight: 300; line-height: 1.5; }
+
+  /* Reading text */
+  .reading-text p { margin-bottom: 22px; color: var(--ink-soft); font-weight: 300; font-size: 1rem; line-height: 1.85; }
+  .reading-text p:last-child { margin-bottom: 0; }
+  .reading-section-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin: 36px 0 18px; padding-top: 36px; border-top: 1px solid var(--line-faint); }
+
+  /* Questions */
+  .reading-questions { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
+  .reading-questions-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; display: block; }
+  .question-item { display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; margin-bottom: 18px; align-items: baseline; }
+  .question-num { font-family: 'Courier Prime', monospace; font-size: 0.8rem; color: var(--ink); font-weight: 700; }
+  .question-text { font-size: 0.93rem; color: var(--ink-soft); font-weight: 300; line-height: 1.65; }
+  .question-note { font-size: 0.82rem; color: var(--ink-faint); font-style: italic; margin-top: 5px; }
+  .questions-group-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); margin: 28px 0 14px; display: block; padding-top: 20px; border-top: 1px dotted var(--line-faint); }
+
+  .reading-footer { max-width: 700px; margin: 0 auto; padding: 24px 40px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.06em; color: var(--ink-faint); }
+  .reading-footer a { color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
+  .reading-footer a:hover { color: var(--ink); }
+
+  @media (max-width: 680px) {
+    .nav { padding: 0 22px; } .nav-meta { display: none; }
+    .reading-header, .reading-body, .reading-footer { padding-left: 22px; padding-right: 22px; }
+    .reading-header { padding-top: 40px; padding-bottom: 36px; }
+    .vocab-pre-item { grid-template-columns: 1fr; gap: 3px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-back" href="index.html">← Inici</a>
+    <span class="nav-brand">Filosofia 1r Bat.</span>
+  </div>
+  <span class="nav-meta">L·01 — Russell</span>
+</nav>
+
+<div class="reading-header">
+  <div class="reading-breadcrumb">
+    <a href="index.html">Índex</a> / <a href="index.html#lectures">Lectures</a>
+  </div>
+  <span class="reading-num">Lectura 01</span>
+  <h1 class="reading-title">El valor de la <em>filosofia</em></h1>
+  <div class="reading-author">Bertrand Russell (1872–1970)</div>
+  <div class="reading-source">Capítol XV de <em>Els problemes de la filosofia</em> (The Problems of Philosophy, 1912) · Traducció al català</div>
+</div>
+
+<div class="reading-body">
+
+  <div class="reading-intro">
+    <strong>Context:</strong> Bertrand Russell va ser un dels filòsofs, matemàtics i assagistes britànics més influents del segle XX. <em>Els problemes de la filosofia</em> (1912) és una introducció a la filosofia adreçada al gran públic, escrita amb una claredat inusual. En el capítol final, reproduït aquí, Russell respon la pregunta que sovint es fa a la filosofia: per a quina cosa serveix, si no proporciona respostes definitives? L'argument de Russell és sorprenent: el valor de la filosofia no rau en les respostes, sinó en les preguntes mateixes, i en la transformació que la contemplació filosòfica opera sobre la persona que l'exerceix.
+  </div>
+
+  <div class="vocab-pre">
+    <span class="vocab-pre-label">Vocabulari clau — llegiu-lo abans del text</span>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Home «pràctic»</span>
+      <span class="vocab-pre-def">Russell usa les cometes amb ironia: l'home «pràctic» és aquell que considera que només té valor allò que produeix utilitat material o econòmica. Russell el critica per ignorar els «béns de la ment».</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Béns de la ment</span>
+      <span class="vocab-pre-def">Béns intel·lectuals i espirituals: coneixement, comprensió, meravella, amplitud de mires. S'oposen als béns materials o corporals.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Dogmatisme</span>
+      <span class="vocab-pre-def">Actitud de qui accepta certes creences com a absolutament certes sense examinar-ne els fonaments ni considerar altres possibilitats. Per a Russell, és el principal enemic de la filosofia.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Especulació</span>
+      <span class="vocab-pre-def">En filosofia, la recerca de respostes a preguntes per a les quals no hi ha certesa definitiva. No té connotació negativa: és l'exploració intel·lectual de possibilitats.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">El Jo i el no-Jo</span>
+      <span class="vocab-pre-def">Termes filosòfics de Russell: el «Jo» (Self) és el subjecte pensant, la pròpia perspectiva personal; el «no-Jo» (not-Self) és tot allò exterior a un mateix, el món independent de les nostres preferències i interessos.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Contemplació filosòfica</span>
+      <span class="vocab-pre-def">L'acte d'observar i pensar el món de manera imparcial, sense que els propis interessos, hàbits o desitjos distorsionin allò que s'estudia. Per a Russell, és la forma més alta d'activitat intel·lectual.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Residue (residu)</span>
+      <span class="vocab-pre-def">Russell anomena «residu» les preguntes que no han pogut ser resoltes per cap ciència i que, per això, continuen sent filosòfiques. No és una crítica: és la descripció del territori propi de la filosofia.</span>
+    </div>
+  </div>
+
+  <div class="reading-text">
+
+    <p>Ara que hem arribat al final de la nostra breu i molt incompleta revisió dels problemes de la filosofia, serà convenient considerar, per concloure, quin és el valor de la filosofia i per quina raó s'hauria d'estudiar. Considerar aquesta qüestió és tant més necessari pel fet que moltes persones, sota la influència de la ciència o dels afers pràctics, tendeixen a dubtar que la filosofia sigui res més que un passatemps innocent però inútil, ple de distincions capcioses i de controvèrsies sobre matèries de les quals no és possible tenir coneixement.</p>
+
+    <p>Aquesta visió de la filosofia sembla resultar, en part, d'una concepció equivocada dels fins de la vida, i en part, d'una concepció equivocada del tipus de béns que la filosofia intenta assolir. La ciència física, a través dels invents, és útil per a innombrables persones que en són totalment ignorants; per tant, l'estudi de la ciència física s'ha de recomanar no sols, ni principalment, per l'efecte sobre l'estudiant, sinó per l'efecte sobre la humanitat en general. Aquesta utilitat no pertany a la filosofia. Si l'estudi de la filosofia té algun valor per a persones que no siguin filòsofs de professió, ho ha de ser únicament de manera indirecta, a través dels seus efectes sobre les vides d'aquells qui l'estudien. En aquests efectes, doncs, si en cap lloc, cal buscar principalment el valor de la filosofia.</p>
+
+    <p>Però, a més, si no volem fracassar en el nostre intent de determinar el valor de la filosofia, hem d'alliberar primer la ment dels prejudicis del que s'anomenen, erròniament, els homes «pràctics». L'home «pràctic», tal com s'usa sovint aquesta paraula, és aquell que reconeix només les necessitats materials, que s'adona que les persones necessiten aliment per al cos, però que oblida la necessitat de proporcionar aliment per a la ment. Si tothom estigués ben proveït, si la pobresa i la malaltia s'haguessin reduït al mínim possible, encara quedaria molt per fer per produir una societat valuosa; i fins i tot en el món actual, els béns de la ment són almenys tan importants com els béns del cos. El valor de la filosofia s'ha de trobar exclusivament entre els béns de la ment; i només aquells que no siguin indiferents a aquests béns poden ser persuadits que l'estudi de la filosofia no és una pèrdua de temps.</p>
+
+    <p>La filosofia, com tots els altres estudis, aspira principalment al coneixement. El coneixement al qual aspira és el tipus que proporciona unitat i sistema al cos de les ciències, i el tipus que resulta d'un examen crític dels fonaments de les nostres conviccions, prejudicis i creences. Però no pot afirmar-se que la filosofia hagi tingut gaire èxit en els seus intents de proporcionar respostes definitives a les seves preguntes. Si pregunteu a un matemàtic, un mineralogista, un historiador o qualsevol altra persona del món del saber quin conjunt definit de veritats ha establert la seva ciència, la resposta durarà tant com estigueu disposats a escoltar. Però si féu la mateixa pregunta a un filòsof, aquest, si és sincer, haurà de confessar que el seu estudi no ha assolit resultats positius com els que han assolit les altres ciències. Cert és que això s'explica en part pel fet que, tan aviat com el coneixement definitiu sobre qualsevol tema es fa possible, aquest tema deixa d'anomenar-se filosofia i es converteix en una ciència separada. Tot l'estudi dels cels, que ara pertany a l'astronomia, estava inclòs una vegada en la filosofia; la gran obra de Newton s'anomenava «els principis matemàtics de la filosofia natural». De manera similar, l'estudi de la ment humana, que era una part de la filosofia, s'ha separat ara d'ella i s'ha convertit en la ciència de la psicologia. Així, en gran mesura, la incertesa de la filosofia és més aparent que real: les qüestions que ja admeten respostes definitives passen a les ciències, mentre que aquelles per a les quals, de moment, no es pot donar cap resposta definitiva, romanen per formar el residu que s'anomena filosofia.</p>
+
+    <p>Això, no obstant, és únicament una part de la veritat sobre la incertesa de la filosofia. Hi ha moltes qüestions —i entre elles aquelles que presenten el major interès per a la nostra vida espiritual— que, fins on podem veure, han de romandre insolubles per a la intel·ligència humana, llevat que els seus poders adquireixin un ordre del tot diferent de l'actual. Té l'univers alguna unitat de pla o propòsit, o és una confluència fortuïta d'àtoms? La consciència és una part permanent de l'univers, que obre l'esperança d'un creixement indefinit de la saviesa, o és un accident passatger en un petit planeta en el qual la vida haurà d'arribar finalment a ser impossible? El bé i el mal importen a l'univers o sols a l'home? Tals qüestions les formula la filosofia, i els diversos filòsofs les responen de diverses maneres. Però semblaria que, tant si les respostes poguessin descobrir-se d'una altra manera com si no, les respostes suggerides per la filosofia no es pot demostrar que cap d'elles sigui veritable. No obstant, per poca que sigui l'esperança de descobrir-ne una resposta, forma part de la tasca de la filosofia continuar considerant aquestes qüestions, fer-nos conscients de la seva importància, examinar-ne tots els enfocaments i mantenir viu aquell interès especulatiu per l'univers que acostuma a ser ofegat si ens confinem al coneixement definitivament assolible.</p>
+
+    <p>Molts filòsofs, és cert, han cregut que la filosofia podia establir la veritat de certes respostes a qüestions tan fonamentals. Han suposat que allò que és de màxima importància en les creences religioses podia provar-se per demostració rigorosa com a veritable. Per jutjar aquests intents, cal fer un inventari del coneixement humà i formar-se una opinió sobre els seus mètodes i els seus límits. Sobre un tema com aquest, seria imprudent pronunciar-se de manera dogmàtica; però si les investigacions dels capítols anteriors no ens han dut per camins equivocats, ens veurem obligats a renunciar a l'esperança de trobar proves filosòfiques de les creences religioses. No podem, doncs, incloure com a part del valor de la filosofia cap conjunt definit de respostes a tals qüestions. Per tant, una vegada més, el valor de la filosofia no ha de dependre de cap suposat cos de coneixement definitivament assolible que hagin d'adquirir els qui l'estudien.</p>
+
+    <span class="reading-section-label">El valor de la incertesa</span>
+
+    <p>El valor de la filosofia s'ha de buscar, de fet, en gran mesura en la seva mateixa incertesa. L'home que no té cap rastre de filosofia passa per la vida empresonat en els prejudicis derivats del sentit comú, de les creences habituals de la seva època o la seva nació, i de conviccions que han crescut en la seva ment sense la cooperació ni el consentiment de la seva raó deliberada. Per a tal home, el món tendeix a tornar-se definitiu, finit, obvi; els objectes quotidians no susciten cap pregunta, i les possibilitats no familiars són rebutjades amb menyspreu. Tan aviat com comencem a filosofar, al contrari, trobem, com vam veure en els capítols inicials, que fins les coses més quotidianes plantegen problemes per als quals sols és possible donar respostes molt incompletes. La filosofia, tot i ser incapaç de dir-nos amb certesa quina és la veritable resposta als dubtes que planteja, és capaç de suggerir moltes possibilitats que amplien els nostres pensaments i els alliberen de la tirania del costum. Així, mentre disminueix la nostra sensació de certesa sobre com són les coses, augmenta en gran mesura el nostre coneixement sobre el que podrien ser; elimina el dogmatisme una mica arrogant d'aquells que mai no s'han aventurat en el territori del dubte alliberador, i manté viu el nostre sentit de meravella mostrant les coses familiars des d'un aspecte no familiar.</p>
+
+    <span class="reading-section-label">La contemplació i el Jo</span>
+
+    <p>A banda de la seva utilitat per mostrar possibilitats insospitades, la filosofia té un valor —potser el seu valor principal— a través de la grandesa dels objectes que contempla i de la llibertat respecte als objectius estrets i personals que resulta d'aquesta contemplació. La vida de l'home instintiu està tancada dins del cercle dels seus interessos privats: la família i els amics hi poden estar inclosos, però el món exterior no es considera excepte en la mesura en que pot ajudar o dificultar allò que cau dins del cercle dels desitjos instintius. En tal vida hi ha quelcom de febrós i limitat, en comparació amb el qual la vida filosòfica és tranquil·la i lliure. El món privat dels interessos instintius és petit, enmig d'un món gran i poderós que, tard o d'hora, ha de reduir a runes el nostre món privat. Si no som capaços d'ampliar els nostres interessos fins a abastar tot el món exterior, romandrem com una guarnició en una fortalesa assetjada, sabent que l'enemic impedeix l'escapada i que la rendició final és inevitable. En tal vida no hi ha pau, sinó una lluita constant entre la insistència del desig i la impotència de la voluntat. D'una manera o d'una altra, si la nostra vida ha de ser gran i lliure, hem d'escapar d'aquesta presó i d'aquesta lluita.</p>
+
+    <p>Una manera d'escapar és per la via de la contemplació filosòfica. La contemplació filosòfica no divideix l'univers, en la seva visió més àmplia, en dos bàndols hostils —amics i enemics, el que ajuda i el que perjudica, el bé i el mal—: el veu tot de manera imparcial. La contemplació filosòfica, quan és pura, no aspira a provar que la resta de l'univers és afí a l'home. Tota adquisició de coneixement és un eixamplament del Jo, però aquest eixamplament s'assoleix millor quan no se'l busca directament. S'obté quan únicament opera el desig de coneixement, per mitjà d'un estudi que no desitja d'antuvi que els seus objectes tinguin aquest o aquell caràcter, sinó que adapta el Jo als caràcters que troba en els seus objectes. Aquest eixamplament del Jo no s'obté quan, prenent el Jo tal com és, intentem demostrar que el món és tan semblant a aquest Jo que el coneixement d'ell és possible sense admetre res del que sembla aliè. El desig de provar això és una forma d'autoafirmació i, com tota autoafirmació, és un obstacle per al creixement del Jo que desitja, i del qual el Jo sap que és capaç. L'autoafirmació, en l'especulació filosòfica com arreu, veu el món com un mitjà per als seus propis fins; d'aquesta manera fa que el món valgui menys que el Jo, i el Jo estableix límits a la grandesa dels seus béns. En la contemplació, al contrari, partim del no-Jo, i a través de la seva grandesa les fronteres del Jo s'eixamplen; a través de la infinitat de l'univers, la ment que el contempla assoleix alguna participació en la infinitat.</p>
+
+    <p>Per aquesta raó, la grandesa d'ànima no és fomentada per aquelles filosofies que assimilen l'univers a l'Home. El coneixement és una forma d'unió del Jo i del no-Jo; com tota unió, es veu perjudicada per la dominació, i per tant per qualsevol intent de forçar l'univers a conformar-se amb el que trobem en nosaltres mateixos. Hi ha una àmplia tendència filosòfica cap a la visió que ens diu que l'Home és la mesura de totes les coses, que la veritat és una creació humana, que l'espai i el temps i el món dels universals són propietats de la ment, i que, si hi ha alguna cosa no creada per la ment, és incognoscible i no té cap importància per a nosaltres. Aquesta visió, si les nostres discussions anteriors eren correctes, és falsa; però, a més de ser falsa, té l'efecte de privar la contemplació filosòfica de tot el que li dóna valor, ja que encadena la contemplació al Jo. El que anomena coneixement no és una unió amb el no-Jo, sinó un conjunt de prejudicis, hàbits i desitjos, que formen un vel impenetrable entre nosaltres i el món de més enllà. L'home que troba plaer en tal teoria del coneixement s'assembla a l'home que mai no abandona el cercle domèstic per por que la seva paraula no sigui llei.</p>
+
+    <p>La veritable contemplació filosòfica, al contrari, troba la seva satisfacció en tot eixamplament del no-Jo, en tot allò que magnifica els objectes contemplats i, per tant, el subjecte que contempla. Tot allò que és personal o privat, tot allò que depèn de l'hàbit, de l'interès propi o del desig, distorsiona l'objecte en la contemplació, i per tant perjudica la unió que la intel·ligència cerca. En crear una barrera entre subjecte i objecte, tals coses personals i privades es converteixen en una presó per a la intel·ligència. La intel·ligència lliure veurà com podria veure Déu, sense un aquí i un ara, sense esperances ni pors, sense les traves de les creences habituals i els prejudicis tradicionals, amb calma, desapassionadament, en el desig únic i exclusiu de coneixement —un coneixement tan impersonal, tan purament contemplatiu, com li és possible assolir a l'ésser humà. Per tant, la intel·ligència lliure valorarà més el coneixement abstracte i universal, en el qual no entren els accidents de la història privada, que el coneixement que aporten els sentits, el qual depèn, com ha de fer-ho tal coneixement, d'un punt de vista exclusiu i personal i d'un cos els òrgans sensorials del qual distorsionen tant com revelen.</p>
+
+    <p>La ment que s'ha acostumat a la llibertat i la imparcialitat de la contemplació filosòfica conservarà alguna cosa de la mateixa llibertat i imparcialitat en el món de l'acció i de l'emoció. Veurà els seus propòsits i desitjos com a parts del tot, amb l'absència d'insistència que resulta de veure'ls com fragments infinitesimals en un món del qual tota la resta roman inafectada per l'acció d'un sol home. La imparcialitat que, en la contemplació, és el desig pur de veritat, és la mateixa qualitat mental que, en l'acció, és la justícia, i en l'emoció és aquell amor universal que es pot donar a tots, i no sols a aquells que es jutgen útils o admirables. Així, la contemplació eixampla no sols els objectes dels nostres pensaments, sinó també els objectes de les nostres accions i els nostres afectes: ens fa ciutadans de l'univers, i no sols d'una sola ciutat emmurallada en guerra amb tota la resta. En aquesta ciutadania de l'univers consisteix la veritable llibertat de l'home, i la seva alliberació de la servitud de les esperances i pors estretes.</p>
+
+    <span class="reading-section-label">Conclusió</span>
+
+    <p>Per resumir, doncs, la nostra discussió sobre el valor de la filosofia: la filosofia s'ha d'estudiar no per obtenir un conjunt definit de respostes a les seves preguntes —ja que, per norma general, no es pot saber si cap resposta definitiva és veritable—, sinó per les preguntes mateixes; perquè aquestes preguntes amplien la nostra concepció del que és possible, enriqueixen la imaginació intel·lectual i disminueixen la certesa dogmàtica que tanca la ment davant de l'especulació; però sobretot perquè, a través de la grandesa de l'univers que la filosofia contempla, la ment també es fa gran, i es torna capaç d'aquella unió amb l'univers que constitueix el seu bé suprem.</p>
+
+  </div><!-- /reading-text -->
+
+  <div class="reading-questions">
+    <span class="reading-questions-label">Guia de lectura — Preguntes de comprensió i reflexió</span>
+
+    <span class="questions-group-label" style="margin-top:0; border-top:none; padding-top:0;">Comprensió del text</span>
+
+    <div class="question-item">
+      <span class="question-num">1</span>
+      <div>
+        <div class="question-text">Russell distingeix entre el valor de la ciència i el valor de la filosofia. Explica amb les teves paraules quina és la diferència que estableix: per quina raó l'ú de la ciència és diferent de l'ús de la filosofia?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">2</span>
+      <div>
+        <div class="question-text">Per quina raó Russell critica l'home «pràctic»? Quin error li atribueix en la comprensió de la vida bona? Creus que la seva crítica és justa avui?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">3</span>
+      <div>
+        <div class="question-text">Russell explica per quina raó les ciències com l'astronomia o la psicologia van néixer com a parts de la filosofia. Quina conclusió en treu sobre la naturalesa de la filosofia? Quin «territori» li queda propi?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">4</span>
+      <div>
+        <div class="question-text">Al setè paràgraf, Russell afirma que el valor de la filosofia rau «en la seva mateixa incertesa». Explica aquest argument: per quina raó la incertesa és un valor i no un defecte de la filosofia?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">5</span>
+      <div>
+        <div class="question-text">Explica la imatge de la «guarnició en una fortalesa assetjada» que Russell usa per descriure la vida de l'home instintiu. Quin punt filosòfic vol il·lustrar amb ella?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">6</span>
+      <div>
+        <div class="question-text">Russell diu que el veritable coneixement filosòfic amplia el Jo a través del no-Jo, però que l'autoafirmació fa el contrari: «veu el món com un mitjà per als seus propis fins». Explica la diferència entre les dues actituds davant del coneixement.</div>
+      </div>
+    </div>
+
+        <span class="questions-group-label">Reflexió</span>
+
+    <div class="question-item">
+      <span class="question-num">1</span>
+      <div><div class="question-text">Russell critica l'home «pràctic» que només valora allò que té utilitat material. Creus que la cultura actual —la pressió per tenir un treball «rentable», les xarxes centrades en la productivitat, els estudis avaluats per l'ocupabilitat— confirmaria o contradaria el diagnòstic de Russell? Qui perd més en una societat que prioritza els béns del cos sobre els de la ment?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">2</span>
+      <div><div class="question-text">Russell defensa que la filosofia ens allibera de la «tirania del costum» mostrant-nos les coses familiars des d'un angle nou. Pensa en una convenció social que tothom del teu entorn accepta sense qüestionar-la. Quina pregunta filosòfica concreta la faria semblar menys òbvia? Quin seria l'efecte d'aquella pregunta sobre qui la formulés?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">3</span>
+      <div><div class="question-text">Vivim en una era de cercadors i intel·ligència artificial que proporcionen respostes instantànies. Russell valora precisament les preguntes sense resposta definitiva. Creus que la disponibilitat immediata d'informació facilita o perjudica el tipus de pensament que Russell defensa? Argumenta amb exemples concrets.</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">4</span>
+      <div><div class="question-text">Russell diu que la contemplació filosòfica ens fa «ciutadans de l'univers», i connecta aquesta actitud amb la justícia i l'amor universal. Analitza l'argument: creus que és defensable la connexió entre pensar amb imparcialitat i tractar bé els altres? O és una idealització que no resisteix el contacte amb la realitat?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">5</span>
+      <div><div class="question-text">Russell argumenta que l'autoafirmació —buscar que el món confirmi el que ja creiem— és un obstacle per a la intel·ligència lliure. Creus que les xarxes socials i les seves bombolles algorítmiques en són un exemple contemporani? Quines conseqüències pràctiques té, per a la vida democràtica i per a la pròpia, construir el coneixement dins d'una cambra de ressò?</div></div>
+    </div>
+
+</div>
+
+</div><!-- /reading-body -->
+
+<footer class="reading-footer">
+  <a href="index.html#lectures">← Totes les lectures</a>
+  <span>Filosofia i Ciutadania · 1r Batxillerat</span>
+</footer>
+
+</body>
+</html>

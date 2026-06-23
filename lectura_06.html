@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L06 · De la redistribució al reconeixement? — Filosofia 1r Bat.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111; --ink-soft: #444444; --ink-faint: #8a8a8a;
+    --paper: #ffffff; --paper-off: #fafaf9;
+    --line: #111111; --line-soft: #cfcfcc; --line-faint: #e6e5e1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Spectral', Georgia, serif; background: var(--paper); color: var(--ink); line-height: 1.85; font-size: 17px; font-weight: 400; }
+
+  .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-left { display: flex; align-items: center; }
+  .nav-back { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; display: flex; align-items: center; gap: 8px; padding: 6px 14px 6px 0; border-right: 1px solid var(--line-faint); margin-right: 14px; transition: color 0.15s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-brand { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; font-weight: 700; }
+  .nav-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.06em; }
+
+  .reading-header { max-width: 700px; margin: 0 auto; padding: 64px 40px 48px; border-bottom: 1px solid var(--line); }
+  .reading-breadcrumb { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; }
+  .reading-breadcrumb a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+  .reading-breadcrumb a:hover { opacity: 0.6; }
+  .reading-num { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; }
+  .reading-title { font-family: 'Spectral', serif; font-size: clamp(1.5rem, 3.2vw, 2.2rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.18; color: var(--ink); margin-bottom: 12px; }
+  .reading-title em { font-style: italic; font-weight: 400; }
+  .reading-author { font-family: 'Spectral', serif; font-size: 1rem; color: var(--ink-soft); font-style: italic; margin-bottom: 8px; }
+  .reading-source { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.06em; color: var(--ink-faint); }
+
+  .reading-body { max-width: 700px; margin: 0 auto; padding: 52px 40px 100px; }
+
+  .reading-intro { border-left: 2px solid var(--line-soft); padding: 4px 0 4px 20px; margin-bottom: 36px; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.65; }
+  .reading-intro strong { color: var(--ink); font-weight: 600; }
+
+  .vocab-pre { border: 1px solid var(--line-faint); background: var(--paper-off); padding: 20px 24px; margin-bottom: 40px; }
+  .vocab-pre-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; font-weight: 700; }
+  .vocab-pre-item { display: grid; grid-template-columns: 195px 1fr; gap: 0 16px; padding: 8px 0; border-bottom: 1px solid var(--line-faint); align-items: baseline; font-size: 0.87rem; }
+  .vocab-pre-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .vocab-pre-term { font-weight: 600; color: var(--ink); font-style: italic; }
+  .vocab-pre-def { color: var(--ink-soft); font-weight: 300; line-height: 1.5; }
+
+  .reading-text p { margin-bottom: 22px; color: var(--ink-soft); font-weight: 300; font-size: 1rem; line-height: 1.85; }
+  .reading-text p:last-child { margin-bottom: 0; }
+  .reading-text strong { color: var(--ink); font-weight: 600; }
+  .reading-text em { font-style: italic; }
+
+  .reading-section-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin: 40px 0 18px; padding-top: 36px; border-top: 1px solid var(--line-faint); }
+  .reading-omission { font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: var(--ink-faint); border-top: 1px dashed var(--line-soft); border-bottom: 1px dashed var(--line-soft); padding: 7px 0; margin: 26px 0; text-align: center; }
+
+  .reading-table { width: 100%; border-collapse: collapse; margin: 22px 0; font-size: 0.86rem; }
+  .reading-table th { background: var(--ink); color: var(--paper); padding: 9px 14px; text-align: left; font-family: 'Courier Prime', monospace; font-size: 0.78rem; letter-spacing: 0.04em; font-weight: 400; }
+  .reading-table td { padding: 9px 14px; border-bottom: 1px solid var(--line-faint); color: var(--ink-soft); vertical-align: top; line-height: 1.55; }
+  .reading-table tr:last-child td { border-bottom: 1px solid var(--ink); }
+  .reading-table td strong { color: var(--ink); }
+
+  .reading-questions { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
+  .reading-questions-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; display: block; }
+  .question-item { display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; margin-bottom: 18px; align-items: baseline; }
+  .question-num { font-family: 'Courier Prime', monospace; font-size: 0.8rem; color: var(--ink); font-weight: 700; }
+  .question-text { font-size: 0.93rem; color: var(--ink-soft); font-weight: 300; line-height: 1.65; }
+  .question-note { font-size: 0.82rem; color: var(--ink-faint); font-style: italic; margin-top: 5px; }
+  .questions-group-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); margin: 28px 0 14px; display: block; padding-top: 20px; border-top: 1px dotted var(--line-faint); }
+
+  .reading-footer { max-width: 700px; margin: 0 auto; padding: 24px 40px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.06em; color: var(--ink-faint); }
+  .reading-footer a { color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
+  .reading-footer a:hover { color: var(--ink); }
+
+  @media (max-width: 680px) {
+    .nav { padding: 0 22px; } .nav-meta { display: none; }
+    .reading-header, .reading-body, .reading-footer { padding-left: 22px; padding-right: 22px; }
+    .reading-header { padding-top: 40px; padding-bottom: 36px; }
+    .vocab-pre-item { grid-template-columns: 1fr; gap: 3px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-back" href="index.html">← Inici</a>
+    <span class="nav-brand">Filosofia 1r Bat.</span>
+  </div>
+  <span class="nav-meta">L·06 — Fraser</span>
+</nav>
+
+<div class="reading-header">
+  <div class="reading-breadcrumb">
+    <a href="index.html">Índex</a> / <a href="index.html#lectures">Lectures</a>
+  </div>
+  <span class="reading-num">Lectura 06</span>
+  <h1 class="reading-title">De la redistribució al reconeixement? <em>Dilemes de la justícia en una era postsocialista</em></h1>
+  <div class="reading-author">Nancy Fraser (n. 1947)</div>
+  <div class="reading-source">Adaptació del capítol 1 de <em>Justice Interruptus</em> (Routledge, 1997) · Traducció i adaptació didàctica al català</div>
+</div>
+
+<div class="reading-body">
+
+  <div class="reading-intro">
+    <strong>Context:</strong> Nancy Fraser és filòsofa política i professora a la New School for Social Research de Nova York. El 1997 va publicar <em>Justice Interruptus</em>, on proposa una teoria de la justícia que integra dues dimensions que sovint s'han tractat per separat: la distribució justa de recursos econòmics i el reconeixement de les identitats de grup. El capítol 1, del qual prové aquesta adaptació, és una de les contribucions més influents de la filosofia política de les últimes dècades, molt citada en estudis feministes, antiracistes i de teoria política. Connecta directament amb els debats sobre justícia del Tema 6, i amplia el marc dels autors i autores estudiats (Marx, Rawls, Butler, Young, Nussbaum).
+    <br><br>
+    <strong>Nota sobre aquesta versió:</strong> Adaptació didàctica al català que segueix fidelment l'estructura i els arguments del capítol original. On el text ha estat condensat s'indica amb [···].
+  </div>
+
+  <div class="vocab-pre">
+    <span class="vocab-pre-label">Vocabulari clau — llegiu-lo abans del text</span>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Redistribució</span>
+      <span class="vocab-pre-def">Canvi de l'estructura econòmica i política per reduir la desigualtat material: impostos progressius, reorganització del treball, democratització dels recursos. Remei per a la injustícia socioeconòmica.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Reconeixement</span>
+      <span class="vocab-pre-def">Canvi de les normes culturals i simbòliques que menystenen o invisibilitzen identitats de grup. Remei per a la injustícia cultural: revaloritzar identitats, acceptar la diversitat, transformar els patrons de representació.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Mal-reconeixement (misrecognition)</span>
+      <span class="vocab-pre-def">Injustícia cultural consistent en la invisibilització, la distorsió o el menyspreu d'una identitat de grup. Pot incloure la dominació cultural, la invisibilització i el descrèdit sistemàtic.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Col·lectivitat bivalent</span>
+      <span class="vocab-pre-def">Grup que pateix simultàniament injustícies econòmiques (distribució) i culturals (reconeixement), de manera que cap dels dos remeis per separat és suficient. Fraser identifica el gènere i la raça com a casos paradigmàtics.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Remei afirmatiu</span>
+      <span class="vocab-pre-def">Correcció superficial de la injustícia que no altera l'estructura generadora. Exemples: l'acció afirmativa (reequilibra la distribució sense canviar l'estructura econòmica) i el multiculturalisme <em>mainstream</em> (revaloritza identitats sense canviar els codis culturals profunds).</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Remei transformatiu</span>
+      <span class="vocab-pre-def">Canvi profund de l'estructura mateixa que genera la injustícia. Exemples: el socialisme (redistribució estructural de l'economia) i la deconstrucció (transformació profunda de les categories culturals i identitàries).</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Androcentrisme / Eurocentrisme</span>
+      <span class="vocab-pre-def">Construcció de normes que privilegien respectivament els trets associats amb la masculinitat i amb la perspectiva occidental o «blanca». Fraser els situa com a formes de mal-reconeixement cultural estructural.</span>
+    </div>
+  </div>
+
+  <div class="reading-text">
+
+    <span class="reading-section-label">1. El context: de la redistribució al reconeixement</span>
+
+    <p>En les últimes dècades, la «lluita pel reconeixement» s'ha convertit ràpidament en la forma paradigmàtica de conflicte polític. Les demandes de «reconeixement de la diferència» nodreixen les lluites de grups mobilitzats sota les banderes de la nacionalitat, l'ètnia, la raça, el gènere i la sexualitat. En aquests conflictes «postsocialistes», la <strong>identitat de grup</strong> ha desplaçat l'interès de classe com a principal vehicle de la mobilització política. La <strong>dominació cultural</strong> ha suplantat l'explotació com la injustícia fonamental. I el <strong>reconeixement cultural</strong> ha desplaçat la redistribució socioeconòmica com a remei per a la injustícia i objectiu de la lluita política.</p>
+
+    <p>Però aquesta no és tota la història. Les lluites pel reconeixement es produeixen en un món de profundes desigualtats econòmiques: en la propietat, en l'accés al treball remunerat, a l'educació, a la sanitat i al temps lliure. La desigualtat material és en augment a la majoria de països del món. Com, doncs, hauríem d'entendre l'eclipsi d'un imaginari socialista centrat en termes com «interès», «explotació» i «redistribució»? I com hauríem de valorar l'ascens d'un nou imaginari polític centrat en «identitat», «diferència», «dominació cultural» i «reconeixement»?</p>
+
+    <p>Fraser refusa dues respostes extremes: ni un retorn nostalgiós al marxisme clàssic ni un abandó acríti de la política econòmica en benefici de la política identitària. La seva proposta és construir una <strong>teoria crítica del reconeixement</strong> que pugui combinar-se coherentment amb la política social d'igualtat. La justícia avui requereix tant redistribució com reconeixement, i la seva tasca és examinar la relació entre tots dos.</p>
+
+    <span class="reading-section-label">2. Dos tipus d'injustícia</span>
+
+    <p>Fraser distingeix analíticament dos tipus d'injustícia que, en el món real, sovint es troben entrellaçats però que és important separar conceptualment.</p>
+
+    <p>El primer tipus és la <strong>injustícia socioeconòmica</strong>, arrelada en l'estructura politicoeconòmica de la societat: l'explotació (l'apropiació dels fruits del propi treball per part d'altri), la marginalització econòmica (ser confinat a treballs indesitjables o mal pagats) i la privació (la manca d'un nivell material de vida adequat). Les teories de Rawls, Marx, Sen i Dworkin —malgrat les seves diferències— aborden cadascuna des d'una perspectiva particular aquest tipus d'injustícia.</p>
+
+    <p>El segon tipus és la <strong>injustícia cultural o simbòlica</strong>, arrelada en patrons socials de representació, interpretació i comunicació: la dominació cultural (ser sotmès als patrons d'una cultura aliena o hostil), la no-visibilització (ser invisible en les pràctiques representatives de la pròpia cultura) i el menyspreu (ser difamat o degradat en les representacions culturals públiques). Pensadors com Charles Taylor i Axel Honneth han argumentat que el no-reconeixement o el mal-reconeixement constitueixen formes d'opressió que poden ferir profundament la pròpia comprensió d'un mateix.</p>
+
+    <p>Tots dos tipus d'injustícia —econòmica i cultural— estan entrellaçats en la pràctica. Les normes culturals injustes s'institucionalitzen en l'Estat i en l'economia; i el desavantatge econòmic impedeix la participació igualitària en la producció cultural. El resultat és sovint un <strong>cercle viciós de subordinació econòmica i cultural</strong>. Malgrat tot, Fraser manté la distinció analítica i hi fa correspondre dos remeis igualment distints: la redistribució (canvi de l'estructura econòmica) i el reconeixement (canvi dels patrons culturals i simbòlics).</p>
+
+    <span class="reading-section-label">3. L'espectre: de la classe a la sexualitat</span>
+
+    <p>Imaginem un espectre conceptual de col·lectivitats socials. En un extrem, hi ha modes de col·lectivitat que encaixen amb el model redistributiu; en l'altre, modes que encaixen amb el model del reconeixement. Al mig, hi ha casos híbrids que encaixen amb tots dos simultàniament.</p>
+
+    <p>En l'extrem redistributiu, Fraser situa la <strong>classe obrera marxista</strong> com a tipus ideal. La classe és una col·lectivitat arrelada en l'estructura politicoeconòmica: la injustícia que pateixen els seus membres és en essència una injustícia de distribució (l'apropiació de la plusvàlua), i el remei ha de ser redistributiu. L'última cosa que la classe obrera necessita és el reconeixement de la seva diferència; el que cal és eliminar les condicions que generen la classe com a tal. La lògica del remei és posar la classe <em>fora del negoci</em> com a grup.</p>
+
+    <p>En l'extrem del reconeixement, Fraser situa la <strong>sexualitat menyspreada</strong> com a tipus ideal. Les persones homosexuals es distribueixen per tota l'estructura de classes de la societat capitalista i no ocupen cap posició distintiva en la divisió del treball. La seva col·lectivitat és la d'una sexualitat menyspreada, arrelada en l'estructura cultural-valorativa. Les injustícies que pateixen (l'heterosexisme, la homofòbia, la violència, la discriminació) no deriven de l'economia sinó del codi cultural dominant que privilegia l'heterosexualitat. El remei requerit és, doncs, el reconeixement: canviar les valoracions culturals que devaluen la identitat homosexual, no redistribuir recursos. En aquest cas, la lògica del remei és no eliminar el grup sinó <strong>valorar positivament la seva especificitat</strong>.</p>
+
+    <p>Les coses es compliquen en el centre de l'espectre, quan considerem col·lectivitats híbrides que combinen trets de tots dos extrems. Aquests grups son el que Fraser anomena <strong>col·lectivitats bivalents</strong>: pateixen injustícies atribuïbles simultàniament a l'economia política i a l'estructura cultural-valorativa, de manera que cap dels dos remeis per separat no és suficient. En necessiten tots dos.</p>
+
+    <span class="reading-section-label">4. Gènere i raça com a col·lectivitats bivalents</span>
+
+    <p>El gènere i la raça són els casos paradigmàtics de col·lectivitats bivalents. Tots dos presenten simultàniament una dimensió econòmica i una dimensió cultural.</p>
+
+    <p>El <strong>gènere</strong>, des del punt de vista econòmic, estructura la divisió entre treball productiu remunerat i treball reproductiu i domèstic no remunerat (assignat principalment a les dones), i la divisió dins del treball remunerat entre ocupacions millor pagades (dominades per homes) i pitjor pagades (dominades per dones). Aquesta estructura genera formes d'explotació, marginalització i privació específiques del gènere. Vist des d'aquest angle, la injustícia de gènere sembla una espècie d'injustícia distributiva que reclama remeis redistributius: eliminar la divisió sexual del treball. La lògica és similar a la de la classe: posar el gènere <em>fora del negoci</em> com a tal.</p>
+
+    <p>Però el gènere no és únicament politicoeconòmic: té també una dimensió cultural. L'<strong>androcentrisme</strong> —la construcció de normes que privilegien els trets associats amb la masculinitat— i el sexisme cultural —la devaluació sistemàtica del que es codifica com a «femení»— expressen injustícies de reconeixement. Aquestes injustícies inclouen les representacions estereotipades als mitjans, l'assetjament en tots els àmbits de la vida quotidiana, la sotmissió a normes androcèntriques que fan aparèixer les dones com a inferiors o desviades, i la exclusió de les esferes públiques i les institucions deliberatives. Aquestes injustícies no es resolen amb la redistribució econòmica: requereixen un canvi de les valoracions culturals que privilegien la masculinitat. La lògica aquí és la contrària: no eliminar el gènere sinó <strong>descentrar les normes androcèntriques i valorar positivament el que ha estat menyspreat</strong>.</p>
+
+    <p>El gènere, per tant, és bivalent: conté una cara politicoeconòmica que l'emplaça en l'àmbit de la redistribució, i una cara cultural-valorativa que l'emplaça simultàniament en l'àmbit del reconeixement. Les dues cares s'entrellaçen i es reforcen dialècticament: les normes sexistes i androcèntriques s'institucionalitzen en l'Estat i en l'economia, i el desavantatge econòmic de les dones restringeix la seva capacitat de participar en la producció cultural. El resultat és el cercle viciós esmentat. Redreçar la injustícia de gènere requereix canviar tant l'economia política com la cultura.</p>
+
+    <p>Però el caràcter bivalent del gènere és precisament la font d'un dilema: mentre la lògica de la redistribució exigeix eliminar la diferenciació de gènere, la lògica del reconeixement exigeix valorar positivament l'especificitat d'un col·lectiu menyspreat. Com pot el feminisme lluitar simultàniament per abolir la diferenciació de gènere i per valorar l'especificitat femenina?</p>
+
+    <p>Un dilema anàleg es presenta en la lluita antiracista. La <strong>raça</strong> és igualment bivalent. D'una banda, l'estructura racial del capitalisme —heretada del colonialisme i l'esclavitud— reserva als grups racialitzats els treballs de menor estatus, pagament i condicions, i constitueix àmplies franges de la població com a «superflues» per al sistema productiu. D'altra banda, el <strong>eurocentrisme</strong> i el racisme cultural devaluen sistemàticament el que es codifica com a «negre», «marró» o «groc», a través de representacions estereotipades, violència, discriminació i exclusió de les esferes públiques. Igual que amb el gènere, ni la redistribució sola ni el reconeixement sol no basten: cal un doble remei.</p>
+
+    <span class="reading-section-label">5. Remeis afirmatius i remeis transformatius</span>
+
+    <p>Fins ara, el dilema redistribució-reconeixement sembla insoluble. Però Fraser complica les seves premisses inicials distingint dos grans enfocaments per a remeiar la injustícia que travessen la divisió entre redistribució i reconeixement: els <strong>remeis afirmatius</strong> i els <strong>remeis transformatius</strong>.</p>
+
+    <p>Els remeis <strong>afirmatius</strong> pretenen corregir els resultats inequitatius de les estructures socials sense pertorbar l'estructura generadora subjacent. Es queden en la superfície: redistribueixen una mica sense canviar l'estructura que produeix la desigualtat; o revaloren identitats sense qüestionar el codi cultural que les ha devaluat. El multiculturalisme <em>mainstream</em> n'és l'exemple en el camp del reconeixement: revalora identitats de grup menysprezades sense qüestionar la diferenciació de grup subjacent. L'estat del benestar liberal n'és l'exemple en el camp de la redistribució: incrementa la part del consum dels grups desfavorits sense alterar l'estructura productiva.</p>
+
+    <p>Els remeis <strong>transformatius</strong> pretenen corregir els resultats inequitatius reestructurant el marc generador subjacent. En el camp de la redistribució, el socialisme és l'exemple: reestructura les relacions de producció, tendeix a disminuir la diferenciació de classe i, de passada, pot ajudar a corregir algunes formes de mal-reconeixement. En el camp del reconeixement, la <em>deconstrucció</em> és l'exemple: en lloc de revaloritzar identitats existents, qüestiona les categories que generen les dicotomies (masculí/femení, blanc/negre, hetero/homo), desestabilitzant-les i obrint espai per a configuracions futures més fluides.</p>
+
+    <p>Aquesta distinció permet a Fraser formular la matriu següent, que resumeix les quatre orientacions polítiques en joc:</p>
+
+    <table class="reading-table">
+      <thead>
+        <tr><th></th><th>Remei afirmatiu</th><th>Remei transformatiu</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Redistribució</strong></td>
+          <td><em>Estat del benestar liberal:</em> realocació superficial de recursos entre grups existents; reforça la diferenciació de grup; pot generar un efecte de mal-reconeixement (estigmatització dels beneficiaris).</td>
+          <td><em>Socialisme:</em> reestructuració profunda de les relacions de producció; tendeix a disminuir la diferenciació de grup; pot contribuir a corregir algunes formes de mal-reconeixement.</td>
+        </tr>
+        <tr>
+          <td><strong>Reconeixement</strong></td>
+          <td><em>Multiculturalisme <em>mainstream</em>:</em> realocació superficial de respecte a identitats existents de grups existents; reforça les diferenciacions de grup.</td>
+          <td><em>Deconstrucció:</em> reestructuració profunda de les relacions de reconeixement; desestabilitza les diferenciacions de grup.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="reading-omission">[··· Fraser analitza per a cada cel·la de la matriu com les seves conseqüències s'apliquen concretament als casos del gènere i la raça. Conclou que la combinació de remei afirmatiu en redistribució + remei afirmatiu en reconeixement (estat del benestar + multiculturalisme) genera una paradoxa: pot acabar estigmatitzant els grups que vol ajudar i intensificar el rebuig (backlash) cap a les polítiques d'acció afirmativa. En canvi, la combinació de remeis transformatius en tots dos eixos (socialisme + deconstrucció) és internament coherent i evita aquest efecte pervers, però dista molt dels interessos i identitats tal com els construeix la cultura dominant actual. ···]</div>
+
+    <span class="reading-section-label">6. Conclusions: cap a una estratègia doble</span>
+
+    <p>El dilema redistribució-reconeixement és real. No existeix cap moviment teòric net que el resolgui o el dissolgui completament. El millor que podem fer és intentar <strong>suavitzar el dilema</strong> trobant enfocaments que minimitzin les interferències mútues entre redistribució i reconeixement quan tots dos s'han de perseguir simultàniament.</p>
+
+    <p>Fraser argumenta que, per a les col·lectivitats bivalents del gènere i la raça, la combinació que millor eludeix el dilema és <strong>l'economia socialista combinada amb la política cultural deconstruccionista</strong>: una estratègia doble que transformi simultàniament les estructures econòmiques i les categories culturals. Tots dos remeis transformatius comparteixen la tendència a disminuir la diferenciació de grup a llarg termini i, en lloc de fomentar el rebuig mutu, promouen la reciprocitat i la solidaritat.</p>
+
+    <p>L'objecció evident és que aquesta estratègia doble està molt allunyada dels interessos i identitats tal com els construeix la cultura dominant avui. Superar el dilema requereix, en darrer terme, que les persones se separin de les construccions culturals actuals dels seus propis interessos i identitats. És un repte de dimensions enormes. Però Fraser conclou que és el que demana una teoria de la justícia que prengui seriosament, simultàniament, la desigualtat econòmica i l'opressió cultural. Qualsevol teoria que ignori un dels dos costats d'aquesta dualitat resulta insuficient per als requeriments de la justícia en la nostra època.</p>
+
+  </div><!-- /reading-text -->
+
+  <div class="reading-questions">
+    <span class="reading-questions-label">Guia de lectura — Preguntes de comprensió i reflexió</span>
+
+    <span class="questions-group-label" style="margin-top:0; border-top:none; padding-top:0;">Comprensió del text</span>
+
+    <div class="question-item">
+      <span class="question-num">1</span>
+      <div>
+        <div class="question-text">Explica amb les teves paraules els dos tipus d'injustícia que Fraser distingeix. Posa un exemple propi de cadascun —un que no apareixin al text— i explica per quina raó no seria suficient un sol tipus de remei per a cadascun.</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">2</span>
+      <div>
+        <div class="question-text">Per quina raó Fraser situa la classe obrera a un extrem de l'espectre i la sexualitat menyspreada a l'altre? Quina és la diferència fonamental entre tots dos casos pel que fa al remei que necessiten?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">3</span>
+      <div>
+        <div class="question-text">Explica per quina raó el gènere és una «col·lectivitat bivalent». Quines injustícies econòmiques i quines injustícies culturals pateix? Per quina raó el remei únicament econòmic és insuficient, i per quina raó el remei únicament cultural tampoc no basta?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">4</span>
+      <div>
+        <div class="question-text">Explica la distinció entre remeis afirmatius i remeis transformatius. Posa un exemple concret de cada tipus per a la injustícia econòmica i un per a la injustícia cultural.</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">5</span>
+      <div>
+        <div class="question-text">Fraser argumenta que l'estat del benestar liberal combinat amb el multiculturalisme <em>mainstream</em> pot generar un efecte paradoxal de «backlash» (rebuig). Explica per quina raó: com pot un programa pensat per reduir la injustícia acabar estigmatitzant els grups que pretén ajudar?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">6</span>
+      <div>
+        <div class="question-text">Per quina raó Fraser considera que la combinació de socialisme i deconstrucció és la que millor eludeix el dilema? Quines limitacions pràctiques reconeix ella mateixa d'aquesta proposta?</div>
+      </div>
+    </div>
+
+        <span class="questions-group-label">Reflexió</span>
+
+    <div class="question-item">
+      <span class="question-num">1</span>
+      <div><div class="question-text">Fraser analitza el cas del gènere com a col·lectivitat bivalent que pateix simultàniament injustícies econòmiques i culturals. Pensa en un col·lectiu de la societat en la qual vius que, al teu parer, pateix tots dos tipus d'injustícia. Quines injustícies econòmiques i quines culturals identifiques? Creus que les dues dimensions s'alimenten mútuament, com argumenta Fraser, o en el teu exemple una és clarament més important que l'altra?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">2</span>
+      <div><div class="question-text">Fraser argumenta que les polítiques d'acció afirmativa poden paradoxalment estigmatitzar els grups que pretenen ajudar, generant reaccions de rebuig. Creus que aquesta paradoxa és real en el context actual? Pots identificar algun cas concret —en l'educació, en l'empresa, en els mitjans— en el qual un programa creat per reduir la desigualtat hagi generat resistència o hagi tingut efectes contraproduents?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">3</span>
+      <div><div class="question-text">Una crítica freqüent als moviments feministes i antidiscriminatoris contemporanis és que se centren en la «política d'identitat» i la visibilitat mentre ignoren les desigualtats econòmiques. Avalua aquesta crítica a la llum del marc de Fraser: és justa? O el marc de Fraser demostra que és una falsa disjuntiva —que redistribució i reconeixement no competeixen, sinó que es reforcen mútuament?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">4</span>
+      <div><div class="question-text">Les grans empreses tecnològiques han millorat la representació de minories als seus anuncis i polítiques de diversitat, però mantenen o amplien les bretxes salarials i de propietat entre grups racialitzats i no racialitzats. Quin tipus de «remei» apliquen, en el vocabulari de Fraser? Per quina raó pot ser insuficient o fins i tot contraproduent per a la injustícia de fons?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">5</span>
+      <div><div class="question-text">Fraser escriu el 1997. Han passat gairebé trenta anys. Creus que el dilema que identifica —com perseguir simultàniament redistribució i reconeixement sense que un desplaci l'altre— s'ha anat resolent, s'ha agreujat o simplement ha pres noves formes? Argumenta la teva resposta amb algun exemple o tendència concreta de la realitat actual.</div></div>
+    </div>
+
+</div>
+
+</div><!-- /reading-body -->
+
+<footer class="reading-footer">
+  <a href="index.html#lectures">← Totes les lectures</a>
+  <span>Filosofia i Ciutadania · 1r Batxillerat</span>
+</footer>
+
+</body>
+</html>

@@ -402,6 +402,78 @@
     }
     footer { flex-direction: column; gap: 8px; text-align: center; padding: 22px; }
   }
+
+  /* ── LECTURE LIST ── */
+  .lecture-list {
+    max-width: 900px;
+    margin: 0 auto 90px;
+    padding: 0 48px;
+    border-top: 1px solid var(--line);
+  }
+  a.lecture-row {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 0 28px;
+    align-items: start;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line-faint);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: padding-left 0.2s;
+    cursor: pointer;
+  }
+  a.lecture-row:hover { padding-left: 8px; }
+  a.lecture-row:hover .lecture-title { text-decoration: underline; text-underline-offset: 4px; }
+  .lecture-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    padding-top: 3px;
+    letter-spacing: 0.06em;
+  }
+  a.lecture-row .lecture-num { color: var(--ink); }
+  .lecture-info { min-width: 0; }
+  .lecture-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 6px;
+    display: block;
+  }
+  .lecture-title {
+    font-family: 'Spectral', serif;
+    font-size: 1.12rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .lecture-desc {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    font-weight: 300;
+    max-width: 560px;
+  }
+  .lecture-placeholder {
+    padding: 40px 0;
+    color: var(--ink-faint);
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 1px solid var(--line-faint);
+  }
+  @media (max-width: 680px) {
+    .lecture-list { padding: 0 22px; }
+    a.lecture-row { grid-template-columns: 36px 1fr; gap: 0 16px; }
+  }
+
 </style>
 </head>
 <body>
@@ -412,6 +484,7 @@
   <ul class="nav-links">
     <li><a href="index.html" class="active">Índex</a></li>
     <li><a href="#temes">Temes</a></li>
+    <li><a href="#lectures">Lectures</a></li>
   </ul>
 </nav>
 
@@ -526,6 +599,82 @@
       <a class="btn btn-ghost" href="t06_justicia.html#vocabulari" onclick="event.stopPropagation()">Vocabulari</a>
     </div>
   </div>
+
+</div>
+
+
+<!-- LECTURES -->
+<div class="section-header" id="lectures">
+  <h2>Lectures</h2>
+  <div class="count">7 lectures</div>
+</div>
+
+<div class="lecture-list">
+  <a class="lecture-row" href="lectura_01.html">
+    <div class="lecture-num">L·01</div>
+    <div class="lecture-info">
+      <span class="lecture-tag">Filosofia · Bertrand Russell · 1912</span>
+      <div class="lecture-title">El valor de la filosofia</div>
+      <div class="lecture-desc">Capítol final de <em>Els problemes de la filosofia</em>. Russell argumenta que el valor de la filosofia no rau en les respostes definitives que proporciona, sinó en les preguntes que planteja i en la transformació que opera sobre qui les pensa.</div>
+    </div>
+  </a>
+
+  <a class="lecture-row" href="lectura_02.html">
+    <div class="lecture-num">L·02</div>
+    <div class="lecture-info">
+      <span class="lecture-tag">Filosofia de la ciència · Alan F. Chalmers · 1999</span>
+      <div class="lecture-title">La ciència com a coneixement derivat dels fets de l'experiència</div>
+      <div class="lecture-desc">Adaptació del capítol 1 de <em>¿Qué es esa cosa llamada ciencia?</em> Chalmers examina i qüestiona la idea que el que fa especial la ciència és que es deriva de fets observats de manera neutra i directa.</div>
+    </div>
+  </a>
+
+  <a class="lecture-row" href="lectura_03.html">
+    <div class="lecture-num">L·03</div>
+    <div class="lecture-info">
+      <span class="lecture-tag">Ètica aplicada · Peter Singer · 1999</span>
+      <div class="lecture-title">La solució Singer a la pobresa mundial</div>
+      <div class="lecture-desc">Article del <em>New York Times Magazine</em>. Singer usa els casos de la Dora i d'en Bob per argumentar que les persones adinerades estan moralment obligades a donar la major part dels seus ingressos no essencials per combatre la pobresa extrema.</div>
+    </div>
+  </a>
+
+  <a class="lecture-row" href="lectura_04.html">
+    <div class="lecture-num">L·04</div>
+    <div class="lecture-info">
+      <span class="lecture-tag">Ètica i bona vida · Susan Wolf · 2010</span>
+      <div class="lecture-title">El sentit de la vida</div>
+      <div class="lecture-desc">Adaptació del capítol 1 de <em>Meaning in Life and Why It Matters</em>. Wolf proposa que el sentit de la vida és una tercera categoria de valor —distinta de la felicitat i la moralitat— que sorgeix quan l'amor genuí troba objectes que el mereixen.</div>
+    </div>
+  </a>
+
+
+  <a class="lecture-row" href="lectura_05.html">
+    <div class="lecture-num">L·05</div>
+    <div class="lecture-info">
+      <span class="lecture-tag">Filosofia política · Henry David Thoreau · 1849</span>
+      <div class="lecture-title">Desobediència civil</div>
+      <div class="lecture-desc">Selecció de l'assaig fundacional de la teoria de la desobediència civil. Thoreau argumenta que la consciència individual ha de tenir prioritat sobre la llei positiva, i que negant-se a cooperar amb la injustícia l'individu constitueix ell sol una majoria moral.</div>
+    </div>
+  </a>
+
+
+  <a class="lecture-row" href="lectura_06.html">
+    <div class="lecture-num">L·06</div>
+    <div class="lecture-info">
+      <span class="lecture-tag">Filosofia política · Nancy Fraser · 1997</span>
+      <div class="lecture-title">De la redistribució al reconeixement?</div>
+      <div class="lecture-desc">Adaptació del capítol 1 de <em>Justice Interruptus</em>. Fraser proposa que la justícia requereix dos remeis distints —redistribució econòmica i reconeixement cultural— i analitza el dilema que sorgeix quan s'han de perseguir simultàniament per a col·lectivitats com el gènere i la raça.</div>
+    </div>
+  </a>
+
+
+  <a class="lecture-row" href="lectura_07.html">
+    <div class="lecture-num">L·07</div>
+    <div class="lecture-info">
+      <span class="lecture-tag">Feminisme marxista · Silvia Federici · 1975</span>
+      <div class="lecture-title">Contraatacant des de la cuina</div>
+      <div class="lecture-desc">Adaptació del capítol 1 de <em>El patriarcado del salario</em>. Federici argumenta que el treball domèstic no és aliè al capitalisme sinó el seu pilar invisible, que la manca de salari és el principal instrument d'explotació i divisió de la classe treballadora, i que reclamar un salari pel treball domèstic és una estratègia revolucionària per destruir aquesta estructura.</div>
+    </div>
+  </a>
 
 </div>
 

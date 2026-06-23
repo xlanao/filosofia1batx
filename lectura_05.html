@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L05 · Desobediència civil — Filosofia 1r Bat.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111; --ink-soft: #444444; --ink-faint: #8a8a8a;
+    --paper: #ffffff; --paper-off: #fafaf9;
+    --line: #111111; --line-soft: #cfcfcc; --line-faint: #e6e5e1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Spectral', Georgia, serif; background: var(--paper); color: var(--ink); line-height: 1.85; font-size: 17px; font-weight: 400; }
+
+  .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-left { display: flex; align-items: center; }
+  .nav-back { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; display: flex; align-items: center; gap: 8px; padding: 6px 14px 6px 0; border-right: 1px solid var(--line-faint); margin-right: 14px; transition: color 0.15s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-brand { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; font-weight: 700; }
+  .nav-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.06em; }
+
+  .reading-header { max-width: 700px; margin: 0 auto; padding: 64px 40px 48px; border-bottom: 1px solid var(--line); }
+  .reading-breadcrumb { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; }
+  .reading-breadcrumb a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+  .reading-breadcrumb a:hover { opacity: 0.6; }
+  .reading-num { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; }
+  .reading-title { font-family: 'Spectral', serif; font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.18; color: var(--ink); margin-bottom: 12px; }
+  .reading-title em { font-style: italic; font-weight: 400; }
+  .reading-author { font-family: 'Spectral', serif; font-size: 1rem; color: var(--ink-soft); font-style: italic; margin-bottom: 8px; }
+  .reading-source { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.06em; color: var(--ink-faint); }
+
+  .reading-body { max-width: 700px; margin: 0 auto; padding: 52px 40px 100px; }
+
+  .reading-intro { border-left: 2px solid var(--line-soft); padding: 4px 0 4px 20px; margin-bottom: 36px; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.65; }
+  .reading-intro strong { color: var(--ink); font-weight: 600; }
+
+  .vocab-pre { border: 1px solid var(--line-faint); background: var(--paper-off); padding: 20px 24px; margin-bottom: 40px; }
+  .vocab-pre-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; font-weight: 700; }
+  .vocab-pre-item { display: grid; grid-template-columns: 185px 1fr; gap: 0 16px; padding: 8px 0; border-bottom: 1px solid var(--line-faint); align-items: baseline; font-size: 0.87rem; }
+  .vocab-pre-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .vocab-pre-term { font-weight: 600; color: var(--ink); font-style: italic; }
+  .vocab-pre-def { color: var(--ink-soft); font-weight: 300; line-height: 1.5; }
+
+  .reading-text p { margin-bottom: 22px; color: var(--ink-soft); font-weight: 300; font-size: 1rem; line-height: 1.85; }
+  .reading-text p:last-child { margin-bottom: 0; }
+  .reading-text strong { color: var(--ink); font-weight: 600; }
+  .reading-text em { font-style: italic; }
+
+  .reading-section-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin: 40px 0 18px; padding-top: 36px; border-top: 1px solid var(--line-faint); }
+  .reading-omission { font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: var(--ink-faint); border-top: 1px dashed var(--line-soft); border-bottom: 1px dashed var(--line-soft); padding: 7px 0; margin: 26px 0; text-align: center; }
+
+  .reading-questions { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
+  .reading-questions-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; display: block; }
+  .question-item { display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; margin-bottom: 18px; align-items: baseline; }
+  .question-num { font-family: 'Courier Prime', monospace; font-size: 0.8rem; color: var(--ink); font-weight: 700; }
+  .question-text { font-size: 0.93rem; color: var(--ink-soft); font-weight: 300; line-height: 1.65; }
+  .question-note { font-size: 0.82rem; color: var(--ink-faint); font-style: italic; margin-top: 5px; }
+  .questions-group-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); margin: 28px 0 14px; display: block; padding-top: 20px; border-top: 1px dotted var(--line-faint); }
+
+  .reading-footer { max-width: 700px; margin: 0 auto; padding: 24px 40px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.06em; color: var(--ink-faint); }
+  .reading-footer a { color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
+  .reading-footer a:hover { color: var(--ink); }
+
+  @media (max-width: 680px) {
+    .nav { padding: 0 22px; } .nav-meta { display: none; }
+    .reading-header, .reading-body, .reading-footer { padding-left: 22px; padding-right: 22px; }
+    .reading-header { padding-top: 40px; padding-bottom: 36px; }
+    .vocab-pre-item { grid-template-columns: 1fr; gap: 3px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-back" href="index.html">← Inici</a>
+    <span class="nav-brand">Filosofia 1r Bat.</span>
+  </div>
+  <span class="nav-meta">L·05 — Thoreau</span>
+</nav>
+
+<div class="reading-header">
+  <div class="reading-breadcrumb">
+    <a href="index.html">Índex</a> / <a href="index.html#lectures">Lectures</a>
+  </div>
+  <span class="reading-num">Lectura 05</span>
+  <h1 class="reading-title"><em>Desobediència civil</em></h1>
+  <div class="reading-author">Henry David Thoreau (1817–1862)</div>
+  <div class="reading-source">Selecció de «Civil Disobedience» (1849) · Traducció al català · Domini públic</div>
+</div>
+
+<div class="reading-body">
+
+  <div class="reading-intro">
+    <strong>Context:</strong> Henry David Thoreau va publicar aquest assaig el 1849, originalment amb el títol «Resistance to Civil Government» («Resistència al govern civil»). L'havia llegit com a conferència l'any anterior, poc després de passar una nit a la presó per negar-se a pagar els impostos que finançaven la guerra dels Estats Units contra Mèxic i la institució de l'esclavitud. Thoreau no era un revolucionari violent: era un escriptor, naturalista i filòsof transcendentalista de Concord, Massachusetts. L'assaig va influir profundament sobre Mahatma Gandhi, que el va llegir a Sud-àfrica el 1906, i sobre Martin Luther King, que el va descobrir als vint anys. Les seves idees sobre la relació entre consciència individual, llei positiva i deure moral continuen sent centrals en el debat filosòfic i polític contemporani.
+    <br><br>
+    <strong>Nota sobre aquesta selecció:</strong> S'han triat els passatges filosòficament més rics per als objectius del curs. Les omissions s'indiquen amb [···]. El text és traducció directa de l'original anglès de 1849.
+  </div>
+
+  <div class="vocab-pre">
+    <span class="vocab-pre-label">Vocabulari clau — llegiu-lo abans del text</span>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Desobediència civil</span>
+      <span class="vocab-pre-def">Acte deliberat, públic i no violent de transgressió d'una llei o d'una ordre governamental, motivat per raons de consciència moral. Thoreau en és considerat el primer teòric modern.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Conveniència (expediency)</span>
+      <span class="vocab-pre-def">Actuar per allò que és útil o còmode en cada moment, sense atendre principis morals fixos. Thoreau critica els governs i els ciutadans que es regeixen per la conveniència en lloc de la justícia.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Consciència (conscience)</span>
+      <span class="vocab-pre-def">Per a Thoreau, la capacitat moral innata de l'individu de discernir el bé del mal, que ha de tenir prioritat sobre qualsevol llei humana positiva.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Llei superior (higher law)</span>
+      <span class="vocab-pre-def">Principi moral universal, independent de qualsevol legislació concreta, que l'individu ha de seguir fins i tot quan contradiu la llei de l'Estat. Ressona amb el concepte de llei natural de Locke.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Fidelitat / lleialtat (allegiance)</span>
+      <span class="vocab-pre-def">Deure d'obediència i suport que un ciutadà deu al seu govern. Thoreau argumenta que aquest deure té límits morals i pot —i ha de— ser retirat quan el govern actua injustament.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Govern de la majoria</span>
+      <span class="vocab-pre-def">Sistema en el qual les decisions polítiques les pren el grup més nombrós. Thoreau qüestiona que la majoria determini el que és just: la majoria governa per ser la més forta, no necessàriament per tenir raó.</span>
+    </div>
+  </div>
+
+  <div class="reading-text">
+
+    <span class="reading-section-label">I. El millor govern és el que menys governa</span>
+
+    <p>Accepto de tot cor el lema: «El millor govern és el que menys governa»; i m'agradaria veure'l posat en pràctica de manera més ràpida i sistemàtica. Portat fins a les últimes conseqüències, equival finalment a allò que jo també crec: «El millor govern és el que no governa gens»; i quan els homes estiguin preparats per a això, aquell serà el tipus de govern que tindran. El govern és, en el millor dels casos, un recurs pràctic; però la majoria dels governs solen ser, i tots els governs ho són alguna vegada, inoportuns.</p>
+
+    <p>Aquest govern americà, al capdavall, no és res més que una tradició —una de recent, certament— que s'esforça a transmetre's intacta a la posteritat, però que perd una mica d'integritat a cada instant. No té la vitalitat ni la força d'un sol home viu; perquè un home sol pot doblegar-lo a la seva voluntat. És una mena de pistola de fusta per al propi poble. Però no per això és menys necessari; perquè el poble ha de tenir alguna maquinària complicada o una altra, i sentir-ne el soroll, per satisfer aquella idea de govern que s'ha fet. Els governs mostren d'aquesta manera amb quant èxit els homes poden ser enganyats, i fins i tot enganyar-se ells mateixos, en profit propi.</p>
+
+    <p>Però, per parlar pràcticament i com a ciutadà, a diferència dels qui s'anomenen homes sense govern, jo no demano de cop i volta cap govern, sinó de cop i volta un govern millor. Que cada home faci saber quin tipus de govern es mereixeria el seu respecte, i això seria un pas cap a obtenir-lo.</p>
+
+    <span class="reading-section-label">II. L'home primer, el súbdit després: consciència contra llei</span>
+
+    <p>Després de tot, la raó pràctica per la qual, quan el poder es troba una vegada en mans del poble, se li permet a una majoria governar, i continua governant durant un llarg període, no és que sigui la que probablement tingui raó, ni perquè això sembli el més just per a la minoria, sinó perquè és la físicament més forta. Però un govern en el qual la majoria decideix en tots els casos no pot estar basat en la justícia, fins on els homes l'entenen. <strong>¿No pot existir un govern en el qual no siguin les majories qui decideixin virtualment el que és correcte i el que és incorrecte, sinó la consciència?</strong> ¿Un govern en el qual les majories decideixin únicament aquelles qüestions a les quals s'aplica la regla de la conveniència?</p>
+
+    <p><strong>¿Ha de resignar el ciutadà la seva consciència al legislador, encara que sigui per un moment o en el menor grau? Per a quin propòsit té llavors cada home una consciència?</strong> Crec que hauríem de ser homes primer, i súbdits després. No és desitjable cultivar un respecte per la llei tant com per la justícia. L'única obligació que tinc dret d'assumir és la de fer en qualsevol moment allò que em sembla correcte.</p>
+
+    <p>És prou cert que una societat anònima no té consciència; però una societat anònima d'homes conscienciosos és una societat anònima amb consciència. La llei mai no ha fet els homes ni un àpex més justos; i, per mitjà del respecte que li professen, fins i tot els ben disposats es converteixen diàriament en agents de la injustícia. Un resultat comú i natural d'un respecte excessiu per la llei és que es pot veure un grup de soldats —coronel, capità, caporal, soldats rasos, polvorers i tot— marxant en ordre admirable per turons i valls cap a les guerres, contra la seva voluntat, i, sí, contra el seu sentit comú i la seva consciència; el que fa aquella marxa força empinada i produeix una palpitació del cor. No dubten que l'afer en el qual participen és una cosa maleïda; tots estan pacíficament inclinats. Ara, qui són? ¿Homes, de cap manera? ¿O simplement petits fortins mòbils i polvorers al servei d'algun home sense escrúpols en el poder?</p>
+
+    <span class="reading-section-label">III. Tres tipus de ciutadans</span>
+
+    <p>La massa dels homes serveix l'Estat d'aquesta manera, no principalment com a homes, sinó com a màquines, amb els seus cossos. Són l'exèrcit permanent, i la milícia, els carcellers, els policies, etc. En la majoria dels casos no hi ha cap exercici lliure del judici ni del sentit moral; i es posen al mateix nivell que la fusta, la terra i les pedres; i es podrien manufacturar homes de fusta que servissin tan bé per a l'objectiu. Uns altres —com ara la majoria de legisladors, polítics, advocats, ministres i càrrecs públics— serveixen l'Estat principalment amb els seus caps; i, com que rarament fan distincions morals, és tan probable que serveixin al diable, sense pretendre-ho, com a Déu. Uns molt pocs —com ara els herois, els patriotes, els màrtirs, els reformadors en el gran sentit, i els homes— serveixen l'Estat també amb la seva consciència, i per tant necessàriament li resisteixen en la major part; i l'Estat els tracta comunament com a enemics.</p>
+
+    <div class="reading-omission">[··· Thoreau examina la situació dels Estats Units al moment d'escriure: la guerra de Mèxic i l'esclavitud com a injustícies que el govern americà perpetua. Argumenta que aquells que s'oposen a l'esclavitud en teoria però no fan res en la pràctica —pagant impostos, participant en les institucions— no poden considerar-se veritablement en contra d'ella. ···]</div>
+
+    <span class="reading-section-label">IV. El vot i els seus límits</span>
+
+    <p>Tot votar és una mena de joc, com les dames o el backgammon, amb un lleuger toc moral, un joc amb el que és correcte i el que és incorrecte, amb qüestions morals; i les apostes l'acompanyen naturalment. El caràcter del votant no és el que està en joc. Emeto el meu vot, potser, com crec que és correcte; però no em preocupo vitalment que allò que és correcte prevalgui. Estic disposat a deixar-ho a la majoria. La seva obligació, per tant, mai no excedeix la de la conveniència. <strong>Fins i tot votar pel que és correcte no és fer res en favor seu. Simplement és expressar als homes feblament el teu desig que prevalgui.</strong> Un home savi no deixarà el que és correcte a la mercè de l'atzar, ni desitjarà que prevalgui per mitjà del poder de la majoria. Hi ha ben poca virtut en l'acció de les masses d'homes.</p>
+
+    <p>No és deure d'un home, com a qüestió rutinària, consagrar-se a l'eradicació de cap injustícia, ni tan sols la més enorme; pot perfectament tenir altres assumptes que l'ocupin; però és el seu deure, almenys, rentar-se les mans d'ella, i, si ja no hi pensa més, no donar-li pràcticament el seu suport. Si em consagro a d'altres activitats i contemplacions, primer he de veure, almenys, que no les practico assegut sobre les espatlles d'un altre home. Primer me n'he de baixar, perquè ell també pugui perseguir les seves contemplacions.</p>
+
+    <span class="reading-section-label">V. Quan és legítim trencar la llei?</span>
+
+    <p>Existeixen lleis injustes: ¿n'hem d'estar contents d'obeir-les, o haurem d'esforçar-nos a esmenar-les, i obeir-les fins que ho haguem aconseguit, o haurem de transgredir-les de seguida? Els homes en general, sota un govern com aquest, pensen que han d'esperar fins que hagin persuadit la majoria de canviar-les. Pensen que, si resistissin, el remei seria pitjor que el mal. Però és culpa del govern mateix que el remei sigui pitjor que el mal. Ell en fa un de pitjor. Per quina raó no és més inclinat a anticipar i preveure la reforma? Per quina raó no fa gala de la seva minoria sàvia? Per quina raó no encoratja els seus ciutadans a estar alerta per assenyalar els seus defectes i a fer-ho millor del que ell els demanaria?</p>
+
+    <p>Si la injustícia és part de la fricció necessària de la maquinària del govern, deixeu-la anar, deixeu-la anar: potser s'anirà desgastant fins quedar llisa —certament la maquinària s'anirà gastant. Si la injustícia té una molla, o una politja, o una corda, o una maneta, exclusivament per a ella mateixa, llavors potser podreu considerar si el remei no serà pitjor que el mal; però <strong>si és de tal naturalesa que requereix que sigueu l'agent de la injustícia contra un altre, llavors us dic que trenqueu la llei. Que la vostra vida sigui una contrafricció per aturar la maquinària.</strong> El que jo he de fer és veure, en tot cas, que no em presto a l'injustícia que condemno.</p>
+
+    <p>Quant a adoptar les vies que l'Estat ha previst per remeiar el mal, no en conec de cap. Triguen massa temps, i la vida d'un home s'haurà acabat. Tinc d'altres assumptes als quals atendre. He vingut a aquest món no principalment per fer d'ell un lloc bo on viure, sinó per viure-hi, sigui bo o dolent.</p>
+
+    <p>No vacil·lo a dir que aquells qui s'anomenen abolicionistes haurien de retirar de seguida i eficaçment el seu suport, tant en persona com en propietat, al govern de Massachusetts, i no esperar fins que constitueixin una majoria d'un sol, abans de deixar que el que és correcte prevalgui per mitjà d'ells. I, a més, <strong>qualsevol home que tingui més raó que els seus veïns constitueix ja una majoria d'un sol.</strong></p>
+
+    <p>M'ensopego amb aquest govern americà, o amb el seu representant, el govern estatal, directament i cara a cara, una vegada a l'any —no més— en la persona del recaptador d'impostos; és el únic mode en el qual un home en la meva situació necessàriament s'hi topa; i ell llavors em diu clarament: Reconeix-me. I la manera més simple, la més eficaç i, en la postura present dels assumptes, la més indispensable de tractar-hi sobre aquest punt, d'expressar-li la teva poca satisfacció i amor per ell, és negar-lo llavors.</p>
+
+    <p>Sé molt bé que si mil, si cent, si deu homes que pugui nombrar —si deu homes honrats tan sols— sí, si un sol home HONEST en aquest Estat de Massachusetts, deixant de tenir esclaus, se separés realment d'aquesta coparticipació, i per aquest motiu fos tancat a la presó del comtat, això seria l'abolició de l'esclavitud a Amèrica. Perquè no importa com de petit pugui semblar el principi: el que una vegada es fa bé, es fa per sempre. <strong>Sota un govern que empresona algú injustament, el lloc veritable per a un home just és també una presó.</strong></p>
+
+    <span class="reading-section-label">VI. La nit a la presó</span>
+
+    <p>He pagat cap impost de capitació durant sis anys. Una vegada em van posar a la presó per una nit per aquest motiu; i, mentre estava allà assidu considerant les parets de pedra sòlida, de dos o tres peus de gruix, la porta de fusta i ferro, d'un peu de gruix, i la reixa de ferro que filtrava la llum, no em va poder evitar de quedar colpit per la necietat d'aquella institució que em tractava com si fos merament carn i sang i ossos, per ser empresonat. Em vaig preguntar com havia pogut concloure finalment que aquest era el millor ús que em podia donar, sense haver pensat en aprofitar-se dels meus serveis d'alguna altra manera.</p>
+
+    <p>Vaig veure que, si hi havia un mur de pedra entre mi i els meus conciutadans, n'hi havia un d'encara més difícil d'escalar o trencar abans que poguessin arribar a ser tan lliures com jo. No em vaig sentir ni per un moment confinat, i les parets em semblaven un gran malbaratament de pedra i morter. Em vaig sentir com si jo fos l'únic de tots els meus conciutadans que havia pagat el meu impost. Evidentment no sabien com tractar-me, però es comportaven com persones mal criades. En cada amenaça i en cada compliment hi havia un error; perquè pensaven que el meu desig principal era estar a l'altre costat d'aquell mur de pedra. No podia evitar de somriure veient com, industriosament, tancaven la porta a les meves meditacions, que els seguien igualment cap a fora sense obstacle ni impediment, i eren realment tot el que era perillós. Com que no podien arribar fins a mi, s'havien resolt a castigar el meu cos; igual que els nois, si no poden arribar a alguna persona contra la qual estan ressentits, maltraten el seu gos. Vaig veure que l'Estat era mig idiota, que era tímid com una dona sola amb les seves culleres de plata, i que no sabia distingir els seus amics dels seus enemics, i vaig perdre tot el respecte que em quedava per ell, i el vaig compadir.</p>
+
+    <p>Així l'Estat no s'enfronta mai intencionadament al sentit d'un home, intel·lectual o moral, sinó únicament al seu cos, als seus sentits. No està armat d'una intel·ligència o honestedat superiors, sinó d'una força física superior. No he nascut per ser forçat. Respiraré a la meva pròpia manera.</p>
+
+    <p>La nit a la presó era prou nova i interessant. Els presos en mànigues de camisa gaudien d'una conversa i de l'aire del vespre a la porta quan vaig entrar. [···] El meu company de cel·la era presentat com «un home de primera i un home llest». Quan van tancar la porta, em va mostrar on penjar el barret i com es gestionaven les coses allà. Les habitacions es pintaven de blanc una vegada al mes; i aquesta, almenys, era la més blanca, la de mobiliari més senzill i probablement la més neta de tot el poble.</p>
+
+    <p>Quan vaig sortir de la presó —perquè algú va intervenir i va pagar aquell impost— no vaig percebre que haguessin tingut lloc grans canvis al parc, com els que observa aquell que hi entra de jove i en surt un home vacil·lant i de cabells grisos; i tanmateix un canvi havia passat als meus ulls per sobre de l'escena —el poble, i l'Estat, i el país— més gran que qualsevol que el mer temps pogués efectuar. Vaig veure amb més nitidesa l'Estat en el qual vivia. Vaig veure fins a quin punt es podia confiar en la gent entre la qual vivia com a bons veïns i amics; que la seva amistat era sols per al bon temps; que no tenien el gran propòsit de fer el que és correcte.</p>
+
+    <div class="reading-omission">[··· Thoreau narra el matí de la seva alliberació: algú va pagar l'impost en el seu nom sense demanar-li permís. Se'n va al bosc a recollir nabius amb veïns, com si no hagués passat res. Reflexiona sobre la separació que el seu acte ha creat entre ell i la resta del poble. Discuteix per quina raó no paga l'impost de carreteres (perquè vol ser un bon veí) però sí es nega al de capitació: la seva negativa no és per cap article concret de la factura fiscal, sinó com a declaració de no-fidelitat a l'Estat. ···]</div>
+
+    <span class="reading-section-label">VII. La visió de l'Estat just</span>
+
+    <p>L'autoritat del govern, fins i tot tal com jo estic disposat a sotmetre-m'hi —perquè obeeixo de bon grat aquells que saben i poden fer millor que jo, i de moltes maneres cedo a ells el meu suport— és impura; per ser estrictament just, hauria de tenir el consentiment i l'aprovació dels governats.</p>
+
+    <p>El progrés de l'Estat des d'un govern absolut fins a un govern limitat, i des d'aquest fins a un de democràtic, és el progrés cap a un respecte veritable per l'individu. ¿No és possible fer un pas més cap a reconèixer i organitzar els drets de l'home? Hi haurà mai un Estat veritablement lliure i il·luminat fins que l'Estat no reconegui l'individu com a força superior i independent, de la qual deriven tot el seu poder i autoritat, i el tracti d'acord amb això?</p>
+
+    <p>M'imagino un Estat que finalment pugui permetre's ser just amb tots els homes, i que tracti l'individu amb respecte com un veí; un Estat que fins i tot es pugui permetre que els qui hi viuen i s'hi guanyen la vida en pau la deixin quan hagin complert les seves obligacions com a homes i ciutadans, sense que es pensi que ha d'interferir-hi. Un Estat que produís aquesta mena de fruit i el deixés caure tan aviat com madurés, prepararia el camí per a un Estat encara més perfecte i gloriós, el qual jo també m'he imaginat, però que encara no he vist en cap lloc.</p>
+
+  </div><!-- /reading-text -->
+
+  <div class="reading-questions">
+    <span class="reading-questions-label">Guia de lectura — Preguntes de comprensió i reflexió</span>
+
+    <span class="questions-group-label" style="margin-top:0; border-top:none; padding-top:0;">Comprensió del text</span>
+
+    <div class="question-item">
+      <span class="question-num">1</span>
+      <div>
+        <div class="question-text">Thoreau obre l'assaig acceptant el lema «El millor govern és el que menys governa» i portant-lo fins a la conclusió «El millor govern és el que no governa gens». Per quina raó considera que el govern és essencialment un «recurs pràctic» i no un fi en si mateix? Estàs d'acord?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">2</span>
+      <div>
+        <div class="question-text">Thoreau pregunta: «¿Ha de resignar el ciutadà la seva consciència al legislador, encara que sigui per un moment?» i conclou que «hauríem de ser homes primer, i súbdits després». Explica amb les teves paraules la distinció que estableix entre la consciència individual i la llei positiva. Quina té prioritat per a Thoreau, i per quina raó?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">3</span>
+      <div>
+        <div class="question-text">Descriu els tres tipus de ciutadans que Thoreau identifica. Quins són, com actuen i com valora moralment cada un? Quin és el tipus més escàs i per quina raó és tractat com a enemic per l'Estat?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">4</span>
+      <div>
+        <div class="question-text">Thoreau afirma que «fins i tot votar pel que és correcte no és fer res en favor seu». Per quina raó considera que el vot és moralment insuficient? Creus que la seva crítica del vot segueix sent vàlida en una democràcia representativa contemporània?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">5</span>
+      <div>
+        <div class="question-text">Thoreau proposa un criteri per decidir quan és legítim trencar la llei: quan la llei «requereix que sigueu l'agent de la injustícia contra un altre». Explica aquest criteri amb les teves paraules. Difereix del dret de resistència de Locke que has estudiat al Tema 5? En quins aspectes coincideix i en quins difereix?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">6</span>
+      <div>
+        <div class="question-text">Descriu l'experiència de Thoreau a la presó. Per quina raó se sent «més lliure» dins de la cel·la que els seus conciutadans fora? Quin és el significat filosòfic de l'afirmació que «l'Estat no s'enfronta mai al sentit d'un home, sinó únicament al seu cos»?</div>
+      </div>
+    </div>
+
+        <span class="questions-group-label">Reflexió</span>
+
+    <div class="question-item">
+      <span class="question-num">1</span>
+      <div><div class="question-text">Thoreau escriu que «fins i tot votar pel que és correcte no és fer res en favor seu». Creus que la participació electoral és suficient per a una ciutadania moralment activa, o hi ha situacions on el vot és insuficient o fins i tot còmplice d'una injustícia? Pensa en algun exemple contemporani concret per argumentar la teva postura.</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">2</span>
+      <div><div class="question-text">Extinction Rebellion, els activistes climàtics que bloquegen carreteres, les protestes que interrompen serveis públics: aplica els criteris de Thoreau per avaluar si constitueixen desobediència civil legítima. Quines condicions ha de complir, per a Thoreau, un acte de desobediència per ser moralment justificable? Totes s'hi compleixen en els exemples que has triat?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">3</span>
+      <div><div class="question-text">Thoreau argumenta que l'home que obeeix la llei sense exercir el judici moral «es posa al mateix nivell que la fusta, la terra i les pedres». Analitza aquest argument: és possible participar en una institució que considera injusta —una empresa, una organització, un govern— i mantenir-se moralment íntegre? O la participació implica sempre una mena de complicitat? On és el límit?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">4</span>
+      <div><div class="question-text">Thoreau va passar una nit a la presó i va emergir amb una visió completament nova de l'Estat i dels seus veïns. Pensa en un moment de la teva pròpia vida en el qual dir que no a alguna cosa que s'esperava de tu —no seguir la massa, negar-te a participar en alguna cosa que et semblava injusta— t'hagi canviat la manera d'entendre el poder, les normes o la teva relació amb el grup. Quina lliçó en vas treure?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">5</span>
+      <div><div class="question-text">Les xarxes socials han generat noves formes d'activisme: signatures de peticions <em>online</em>, posts virals de denúncia, «hashtag activism». Avalua si Thoreau les consideraria formes genuïnes de desobediència o simplement la versió moderna de «votar feblament i aplaudir la bondat sense fer res». Creus que el canvi de context digital els dona un valor que Thoreau no podia preveure, o que el seu diagnòstic segueix sent vàlid?</div></div>
+    </div>
+
+</div>
+
+</div><!-- /reading-body -->
+
+<footer class="reading-footer">
+  <a href="index.html#lectures">← Totes les lectures</a>
+  <span>Filosofia i Ciutadania · 1r Batxillerat</span>
+</footer>
+
+</body>
+</html>

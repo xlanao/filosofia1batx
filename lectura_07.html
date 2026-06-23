@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L07 · Contraatacant des de la cuina — Filosofia 1r Bat.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111; --ink-soft: #444444; --ink-faint: #8a8a8a;
+    --paper: #ffffff; --paper-off: #fafaf9;
+    --line: #111111; --line-soft: #cfcfcc; --line-faint: #e6e5e1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Spectral', Georgia, serif; background: var(--paper); color: var(--ink); line-height: 1.85; font-size: 17px; font-weight: 400; }
+
+  .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-left { display: flex; align-items: center; }
+  .nav-back { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; display: flex; align-items: center; gap: 8px; padding: 6px 14px 6px 0; border-right: 1px solid var(--line-faint); margin-right: 14px; transition: color 0.15s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-brand { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; font-weight: 700; }
+  .nav-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.06em; }
+
+  .reading-header { max-width: 700px; margin: 0 auto; padding: 64px 40px 48px; border-bottom: 1px solid var(--line); }
+  .reading-breadcrumb { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; }
+  .reading-breadcrumb a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+  .reading-breadcrumb a:hover { opacity: 0.6; }
+  .reading-num { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; }
+  .reading-title { font-family: 'Spectral', serif; font-size: clamp(1.6rem, 3.3vw, 2.3rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.18; color: var(--ink); margin-bottom: 12px; }
+  .reading-title em { font-style: italic; font-weight: 400; }
+  .reading-author { font-family: 'Spectral', serif; font-size: 1rem; color: var(--ink-soft); font-style: italic; margin-bottom: 8px; }
+  .reading-source { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.06em; color: var(--ink-faint); }
+
+  .reading-body { max-width: 700px; margin: 0 auto; padding: 52px 40px 100px; }
+
+  .reading-intro { border-left: 2px solid var(--line-soft); padding: 4px 0 4px 20px; margin-bottom: 36px; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.65; }
+  .reading-intro strong { color: var(--ink); font-weight: 600; }
+
+  .vocab-pre { border: 1px solid var(--line-faint); background: var(--paper-off); padding: 20px 24px; margin-bottom: 40px; }
+  .vocab-pre-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; font-weight: 700; }
+  .vocab-pre-item { display: grid; grid-template-columns: 195px 1fr; gap: 0 16px; padding: 8px 0; border-bottom: 1px solid var(--line-faint); align-items: baseline; font-size: 0.87rem; }
+  .vocab-pre-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .vocab-pre-term { font-weight: 600; color: var(--ink); font-style: italic; }
+  .vocab-pre-def { color: var(--ink-soft); font-weight: 300; line-height: 1.5; }
+
+  .reading-text p { margin-bottom: 22px; color: var(--ink-soft); font-weight: 300; font-size: 1rem; line-height: 1.85; }
+  .reading-text p:last-child { margin-bottom: 0; }
+  .reading-text strong { color: var(--ink); font-weight: 600; }
+  .reading-text em { font-style: italic; }
+
+  .reading-section-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin: 40px 0 18px; padding-top: 36px; border-top: 1px solid var(--line-faint); }
+  .reading-omission { font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: var(--ink-faint); border-top: 1px dashed var(--line-soft); border-bottom: 1px dashed var(--line-soft); padding: 7px 0; margin: 26px 0; text-align: center; }
+
+  .reading-questions { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
+  .reading-questions-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; display: block; }
+  .question-item { display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; margin-bottom: 18px; align-items: baseline; }
+  .question-num { font-family: 'Courier Prime', monospace; font-size: 0.8rem; color: var(--ink); font-weight: 700; }
+  .question-text { font-size: 0.93rem; color: var(--ink-soft); font-weight: 300; line-height: 1.65; }
+  .question-note { font-size: 0.82rem; color: var(--ink-faint); font-style: italic; margin-top: 5px; }
+  .questions-group-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); margin: 28px 0 14px; display: block; padding-top: 20px; border-top: 1px dotted var(--line-faint); }
+
+  .reading-footer { max-width: 700px; margin: 0 auto; padding: 24px 40px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.06em; color: var(--ink-faint); }
+  .reading-footer a { color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
+  .reading-footer a:hover { color: var(--ink); }
+
+  @media (max-width: 680px) {
+    .nav { padding: 0 22px; } .nav-meta { display: none; }
+    .reading-header, .reading-body, .reading-footer { padding-left: 22px; padding-right: 22px; }
+    .reading-header { padding-top: 40px; padding-bottom: 36px; }
+    .vocab-pre-item { grid-template-columns: 1fr; gap: 3px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-back" href="index.html">← Inici</a>
+    <span class="nav-brand">Filosofia 1r Bat.</span>
+  </div>
+  <span class="nav-meta">L·07 — Federici</span>
+</nav>
+
+<div class="reading-header">
+  <div class="reading-breadcrumb">
+    <a href="index.html">Índex</a> / <a href="index.html#lectures">Lectures</a>
+  </div>
+  <span class="reading-num">Lectura 07</span>
+  <h1 class="reading-title">Contraatacant <em>des de la cuina</em></h1>
+  <div class="reading-author">Silvia Federici (n. 1942) amb Nicole Cox</div>
+  <div class="reading-source">Adaptació del capítol 1 de <em>El patriarcado del salario</em> (pamflet original: 1975; ed. Tinta Limón / Traficantes de Sueños, 2018) · Traducció i adaptació didàctica al català · Llicència CC BY-NC-ND 4.0</div>
+</div>
+
+<div class="reading-body">
+
+  <div class="reading-intro">
+    <strong>Context:</strong> Silvia Federici és una filòsofa i activista italoamericana, professora emèrita a la Hofstra University de Nova York. El 1972 va cofundar el Comitè Internacional per un Salari pel Treball Domèstic, un dels moviments feministes més radicals dels anys setanta. El capítol que es reprodueix aquí en adaptació al català es va escriure originalment el 1975 com a resposta polèmica als sectors de l'esquerra que criticaven la campanya. Federici i Cox hi defensen que el treball domèstic no és una activitat aliena al capitalisme sinó el seu pilar invisible, i que la manca de salari per a aquest treball és la principal eina d'explotació i divisió de la classe treballadora. El text connecta directament amb els debats sobre Marx (explotació, plusvàlua, alienació), sobre justícia social (redistribució, reconeixement) i sobre les lectures de Fraser i Butler treballades al curs.
+    <br><br>
+    <strong>Nota sobre aquesta versió:</strong> Adaptació didàctica al català que segueix fidelment l'estructura i els arguments del text original. On el text ha estat condensat s'indica amb [···].
+  </div>
+
+  <div class="vocab-pre">
+    <span class="vocab-pre-label">Vocabulari clau — llegiu-lo abans del text</span>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Treball domèstic</span>
+      <span class="vocab-pre-def">Per a Federici, no és simplement netejar i cuinar: és la producció diària de la força de treball. Inclou cuidar, alimentar, sostenir emocionalment i sexualment les persones que l'endemà tornaran a la fàbrica o a l'oficina.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Força de treball</span>
+      <span class="vocab-pre-def">Terme marxista: la capacitat humana de treballar, que el capitalisme compra a canvi d'un salari. Federici argumenta que la força de treball es <em>produeix</em> en les llars, principalment per dones no assalariades.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Salari per al treball domèstic</span>
+      <span class="vocab-pre-def">La demanda central de la campanya de Federici. No es tracta d'una «paga», sinó d'una perspectiva política que qüestiona l'estructura salarial capitalista en conjunt i visibilitza l'explotació no assalariada.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Explotació no assalariada</span>
+      <span class="vocab-pre-def">Treball que el capital extrau sense pagar-lo directament. Federici inclou el treball domèstic, el treball esclau i el treball al «Tercer Món» com a formes d'explotació que el marxisme clàssic ha ignorat.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Divisió sexual del treball</span>
+      <span class="vocab-pre-def">Assignació diferenciada de tasques en funció del gènere: als homes el treball remunerat a la fàbrica; a les dones el treball no remunerat a la llar. Federici argumenta que no és natural sinó una construcció capitalista.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Naturalització</span>
+      <span class="vocab-pre-def">Procés pel qual una construcció social es presenta com a «natural» o inevitable. Per a Federici, el treball domèstic ha estat naturalitzat com «amor» o «feminitat» per ocultar que és treball real i explotable.</span>
+    </div>
+  </div>
+
+  <div class="reading-text">
+
+    <span class="reading-section-label">1. L'esquerra i el treball domèstic</span>
+
+    <p>Des dels temps de Marx, ha quedat clar que el salari és l'eina amb la qual el capital governa i es desenvolupa. Però el que mai no ha quedat clar —i que les organitzacions del moviment obrer mai no han assumit— és que ha estat precisament a través del salari com s'ha orquestrat l'explotació dels treballadors <em>no</em> assalariats. Aquesta explotació ha resultat encara més efectiva perquè la manca de remuneració l'oculta: en el cas de les dones, el seu treball apareix com un servei personal aliè al capital.</p>
+
+    <p>Sempre que el moviment feminista ha pres una posició autònoma, l'esquerra s'ha sentit traïda. Perquè aquesta postura implica reconèixer que el capitalisme no funciona únicament a través de la fàbrica, sinó que depèn de tota una esfera de treball invisible que el moviment obrer tradicional ha ignorat sistemàticament. En nom de la «lluita de classes» i de «l'interès unitari de la classe treballadora», l'esquerra ha seleccionat determinats sectors de la classe obrera com a subjectes revolucionaris i ha condemnat els altres a un simple paper de solidaritat. D'aquesta manera, l'esquerra ha reproduït dins dels seus objectius estratègics les mateixes divisions de classe que caracteritzen la divisió capitalista del treball.</p>
+
+    <span class="reading-section-label">2. Ens ofereixen «desenvolupament»</span>
+
+    <p>Des del moment en el qual l'esquerra va acceptar el salari com a línia divisòria entre treball i no-treball, producció i parasitisme, poder potencial i impotència, l'enorme quantitat de treball que les dones fan a la llar per al capital va escapar del seu anàlisi i de les seves estratègies. Des de Lenin fins a Juliet Mitchell, passant per Gramsci, tota la tradició d'esquerra ha coincidit en la <strong>marginalitat del treball domèstic en la reproducció del capital</strong> i en la marginalitat de l'àvia de casa en la lluita revolucionària. Segons l'esquerra, les dones no pateixen el capital, sinó que pateixen per la seva <em>absència</em>. El problema seria que el capital no ha aconseguit arribar a les nostres cuines i dormitoris.</p>
+
+    <p>Però per quina raó el capital permet que sobrevisqui tant de treball no remunerat, tant de temps de treball «improductiu»? Aquesta és una pregunta que l'esquerra mai no s'ha fet, sempre segura de la irracionalitat del capital per planificar. Irònicament, ha traslladat la seva ignorància sobre la relació específica de les dones amb el capital a una teoria en la qual el «subdesenvolupament polític» de les dones s'haurà de superar gràcies a la seva entrada a la fàbrica. La lògica d'un anàlisi que situa l'opressió de la dona com a resultat de la seva exclusió de les relacions capitalistes acaba inevitablement en una estratègia dissenyada per integrar-nos en aquestes relacions en lloc de destruir-les.</p>
+
+    <p>Hi ha una connexió directa entre l'estratègia que l'esquerra ha dissenyat per a les dones i la que ha dissenyat per al «Tercer Món». De la mateixa manera que volen introduir les dones a les fàbriques, volen portar les fàbriques al «Tercer Món». En tots dos casos, l'esquerra pressuposa que els «subdesenvolupats» —aquells de nosaltres que no rebem salaris i que treballem amb un nivell tecnològic menor— estem endarrerits respecte a la «veritable classe treballadora» i que tan sols podrem assolir-la a través d'obtenir un tipus d'explotació capitalista més avançada. <strong>No ens ofereixen el dret a treballar, sinó el dret a treballar més, el dret a ser més explotades.</strong></p>
+
+    <span class="reading-section-label">3. El treball invisibilitzat</span>
+
+    <p>Partint de la nostra situació com a dones, sabem que la jornada laboral que efectuem per al capital no es tradueix necessàriament en un xec, que no comença ni acaba a les portes de la fàbrica. Tan aviat com aixequem la mirada de les mitges que repassem i dels àpats que preparem, observem que, tot i que no es tradueix en un salari per a nosaltres, <strong>produïm ni més ni menys que el producte més valuós que pot aparèixer en el mercat capitalista: la força de treball.</strong></p>
+
+    <p>El treball domèstic és molt més que la neteja de la casa. És servir els qui guanyen el salari —física, emocional i sexualment—, tenir-los a punt per al treball dia rere dia. És la criança i cura dels nostres fills —els futurs treballadors— assegurant-nos que també ells actuaran de la manera esperada sota el capitalisme. Darrere de cada fàbrica, de cada escola, oficina o mina, es troba amagat el treball de milions de dones que han consumit la seva vida, el seu treball, produint la força de treball que s'empra en aquelles fàbriques, escoles, oficines o mines.</p>
+
+    <p>Per tot això, tant en els països «desenvolupats» com en els «subdesenvolupats», el treball domèstic i la família son els pilars de la producció capitalista. La disponibilitat d'una força de treball estable i ben disciplinada és una condició essencial per a la producció en qualsevol estadi del desenvolupament capitalista. Les condicions en les quals es porta a terme el nostre treball varien d'un país a un altre. En alguns països se'ns força a la producció intensiva de fills; en d'altres se'ns conmina a no reproduir-nos, especialment si som negres o pobres. Però en arreu el nostre treball no remunerat i la funció que portem a terme per al capital és la mateixa.</p>
+
+    <p>Assolir un segon treball mai no ens ha alliberat del primer. El doble treball tan sols ha suposat per a les dones tenir encara menys temps i energia per lluitar contra tots dos. Dubtem que la tecnologia domèstica alliberi realment l'àvia de casa: si «no te paguen per hores, dins de certs límits, a ningú li importa quant trigues en fer la teva feina», com va escriure Mariarosa Dalla Costa. La situació als Estats Units demostra que ni la tecnologia ni un segon treball alliberen la dona del treball domèstic.</p>
+
+    <span class="reading-section-label">4. La nostra manca de salari com a disciplina</span>
+
+    <p>La família és essencialment la institucionalització del nostre treball no remunerat, de la nostra dependència salarial dels homes i, en conseqüència, la institucionalització de la desigual divisió de poder que ha disciplinat tant les nostres vides com les d'ells. <strong>La nostra manca de salari i la dependència dels ingressos econòmics dels homes els ha mantingut ells lligats als seus treballs</strong>, ja que si en algun moment volien deixar la feina havien d'enfrontar-se al fet que la seva dona i els seus fills depenien dels seus ingressos. Aquesta és la base dels «vells hàbits, nostres i dels homes».</p>
+
+    <p>El fet que no tinguem salari pel treball que fem a les llars ha estat també la causa principal de la nostra debilitat al mercat laboral. Els empresaris saben que estem acostumades a treballar per res i que estem tan desesperades per aconseguir una mica de diners per a nosaltres que poden obtenir el nostre treball barat. Des que el terme «dona» s'ha convertit en sinònim d'«àvia de casa», arrosseguem, anem on anem, aquesta identitat i les «habilitats domèstiques» que se'ns atorguen per haver nascut dones. Per això el tipus de treball femení habitualment és una extensió del treball reproductiu, i el camí cap al treball assalariat sovint ens porta a fer més treball domèstic.</p>
+
+    <div class="reading-omission">[··· Federici respon les objeccions de Carol Lopate, que argumentava que la demanda d'un salari pel treball domèstic «provenia d'Itàlia» i que als EUA les dones «sí que treballen». Federici replica que la divisió entre dones que «treballen» i dones que «tan sols son àvies de casa» és falsa: ambdues fan treball no remunerat, i negar-ho és ser cec davant de la major part del treball mundial. ···]</div>
+
+    <span class="reading-section-label">5. La glorificació de la família</span>
+
+    <p>Algunes veus d'esquerra han argumentat que la llar i la família proporcionen «l'únic interstici dins del món capitalista en el qual la gent pot ocupar-se de les necessitats dels altres des de la cura i l'amor». Federici i Cox hi responen amb contundència: la literatura produïda pel moviment de les dones ha mostrat els efectes devastadors que aquest tipus d'amor, cura i servilisme ha tingut en les dones. <strong>Aquestes son les cadenes que ens han empresonat en una situació propera a l'esclavitud.</strong></p>
+
+    <p>Glorificar la família com a «àmbit privat» és l'essència de la ideologia capitalista. Aquesta ideologia que contraposa família i fàbrica, el personal al social, el privat al públic, és útil per mantenir-nos esclaves a la llar que, en absència de salari, sempre ha aparegut com si es tractés d'un acte d'amor. Però si aquest treball, en lloc de basar-se en l'amor i la cura, hagués proporcionat una remuneració econòmica a les nostres mares, probablement haurien estat menys amargades i més lliures.</p>
+
+    <p>De la mateixa manera, rebutgen l'argument que demanar un salari pel treball domèstic «tan sols serviria per ocultar encara més les possibilitats d'un treball lliure i no alienat» —com si la única manera de «desalienar» el treball consistís a fer-lo gratuïtament. El treball voluntari sobre el qual descansa cada vegada més l'Estat modern es basa precisament en aquesta dispensació caritativa del nostre temps. Si la relació salarial capitalista mistifica les hores de plusvàlua que el treballador aporta i que no cobra, la manca de salari per al treball domèstic fa desaparèixer del mapa una explotació completa: oculta la durada real de la jornada laboral de les dones.</p>
+
+    <span class="reading-section-label">6. Diferents mercats laborals</span>
+
+    <p>L'ús que el capital fa dels salaris també oculta qui forma la classe treballadora i manté dividits els treballadors. Mitjançant les relacions salarials, el capital organitza <strong>diferents mercats laborals</strong> —un per als negres, un per als joves, un per a les dones joves, un per als homes blancs— i oposa la «classe treballadora» al proletariat «no treballador», suposadament parasitari del treball dels primers. Als qui rebem ajudes socials se'ns diu que vivim dels impostos de la «classe treballadora»; les àvies de casa som retratades com a sacs trencats on desapareixen els sous dels nostres marits.</p>
+
+    <p>Tanmateix, és la debilitat social dels no assalariats el que finalment ha estat i és la debilitat de tota la classe obrera respecte al capital. Com demostren els processos de deslocalització d'empreses, la disponibilitat de treball no remunerat —tant als països «no desenvolupats» com a les metròpolis— ha permès al capital abandonar aquelles àrees de producció on la força de treball s'havia tornat massa cara. <strong>Que el capitalisme es basi en el treball assalariat però que més de la meitat de la població mundial no estigui remunerada no és una paradoxa: és un element essencial de la planificació capitalista</strong>, nacional i internacional, un poderós mecanisme per provocar la competència entre treballadors i fer-nos creure que els nostres interessos són diferentes i contradictoris.</p>
+
+    <p>Aquestes son les arrels del sexisme, del racisme i del menyspreu per als treballadors que obtenen ajudes socials: tots son reflex dels diferents tipus de mercats laborals i, conseqüentment, dels diferents modes de regular i dividir la classe treballadora.</p>
+
+    <span class="reading-section-label">7. Les demandes salarials i el seu significat polític</span>
+
+    <p>La campanya Salari per al Treball Domèstic no és una demanda més entre moltes. És una <strong>perspectiva política que obre un nou camp de batalla</strong>. Quan l'esquerra la redueix a una simple demanda econòmica, evita confrontar-se amb els conflictes polítics que desvela.</p>
+
+    <p>La lluita salarial pren moltes formes i no es limita als augments de sou. La reducció d'horaris, obtenir millors serveis socials, aconseguir més diners —totes aquestes son victòries salarials que determinen quant treball ens arreba el capital i quant poder tenim sobre les nostres vides. El salari sempre ha tingut dues cares: la cara del capital, que l'usa per controlar els treballadors, assegurant-se que darrere de cada augment salarial hi hagi un augment de la productivitat; i la cara dels treballadors, que lluiten per més diners, més poder i menys treball.</p>
+
+    <p>En el cas de les no assalariades, la lluita pel salari suposa un atac encara més clar al capital. <strong>El salari pel treball domèstic significaria que el capital hauria de remunerar l'enorme quantitat de treballadores en els serveis socials que avui s'estalvia carregant sobre nosaltres aquelles tasques.</strong> Més important encara, la demanda del salari domèstic és un clar rebuig a acceptar el nostre treball com a destí biològic —condició necessària per a poder-se revoltar contra ell. Res no ha estat tan poderós en la institucionalització del nostre treball, de la família, de la nostra dependència dels homes, com el fet que mai no hagi estat un salari sinó «amor» el que s'obtenia per aquest treball.</p>
+
+    <p>La nostra lluita pel salari obre, per als assalariats i per als no remunerats, el debat sobre la durada real de la jornada laboral. Fins ara el capital determinava quan «fitxaves» en entrar i quan en sortir. Però aquest temps «lliure» mai no ens ha pertangut: en cada moment de les nostres vides hem pertangut al capital. I és hora que li fem pagar per cada un d'aquells moments.</p>
+
+    <span class="reading-section-label">8. Que pagui el capital</span>
+
+    <p>La nostra força com a dones comença amb la lluita social pel salari: no per a ser incloses dins de les relacions salarials —ja que mai no n'hem estat fora—, sinó per alliberar-nos-en, perquè tots els sectors de la classe obrera se n'alliberin. No considerem que aconseguir un salari suposi la revolució. Afirmem que és una <strong>estratègia revolucionària perquè soscava el rol que se'ns ha assignat en la divisió capitalista del treball</strong> i, en conseqüència, altera les relacions de poder dins de la classe treballadora en termes més favorables per a nosaltres i per a la unitat de la classe.</p>
+
+    <p>El nostre objectiu no és «una redistribució més equitativa del mateix treball». No estem lluitant per canviar d'un grau d'explotació a un altre. Estem en lluita per <strong>posar fi a aquest treball</strong>, i el primer pas és posar-li un preu. Quan el capital no ha pogut fugir al «Tercer Món» ha obert les portes a les dones, els negres i la joventut de les metròpolis o als migrants. Per tant, no és cap accident que, tot i que el capitalisme es basi suposadament en el treball assalariat, més de la meitat de la població mundial no estigui remunerada. Hem de lluitar juntes, assalariades i no assalariades, per destruir aquesta màquina: és la mateixa màquina per a totes.</p>
+
+  </div><!-- /reading-text -->
+
+  <div class="reading-questions">
+    <span class="reading-questions-label">Guia de lectura — Preguntes de comprensió i reflexió</span>
+
+    <span class="questions-group-label" style="margin-top:0; border-top:none; padding-top:0;">Comprensió del text</span>
+
+    <div class="question-item">
+      <span class="question-num">1</span>
+      <div>
+        <div class="question-text">Federici argumenta que el treball domèstic no és aliè al capitalisme sinó el seu «pilar invisible». Explica amb les teves paraules per quina raó considera que el treball domèstic <em>produeix</em> quelcom que el capitalisme necessita, i per quina raó la manca de salari el fa més útil al capital, no menys.</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">2</span>
+      <div>
+        <div class="question-text">Federici critica l'esquerra per oferir a les dones «el dret a treballar més, el dret a ser més explotades». Explica quin és l'error que detecta en la postura de l'esquerra tradicional sobre la integració de les dones al mercat laboral. Per quina raó considera que entrar a la fàbrica no és una solució?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">3</span>
+      <div>
+        <div class="question-text">Federici distingeix entre «demanda salarial» i «perspectiva política». Explica per quina raó considera que la campanya Salari per al Treball Domèstic no és simplement una demanda econòmica sinó «un nou camp de batalla» que afecta tota la classe treballadora.</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">4</span>
+      <div>
+        <div class="question-text">Per quina raó Federici considera que glorificar la família com a «espai d'amor fora del capitalisme» és una ideologia al servei del capital? Quin efecte té, en la seva anàlisi, presentar el treball domèstic com a expressió d'amor en lloc de com a treball remunerable?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">5</span>
+      <div>
+        <div class="question-text">Federici defensa que el sexisme, el racisme i el menyspreu per als treballadors que reben ajudes socials no son simplement prejudicis morals o «falsa consciència», sinó expressions de la divisió capitalista del mercat laboral. Explica la seva lògica: com es relacionen els «mercats laborals diferenciats» amb la divisió i el control de la classe treballadora?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">6</span>
+      <div>
+        <div class="question-text">Federici afirma que el seu objectiu últim no és que les dones cobrin per rentar plats per sempre, sinó «posar fi a aquest treball». Per quina raó, paradoxalment, demana un salari pel treball que vol abolir? Quin mecanisme polític connecta la demanda del salari amb la destrucció de l'estructura que ho fa necessari?</div>
+      </div>
+    </div>
+
+    <span class="questions-group-label">Reflexió</span>
+
+    <div class="question-item">
+      <span class="question-num">7</span>
+      <div>
+        <div class="question-text">Federici escrivia el 1975. Avui, el treball domèstic i de cura segueix essent majoritàriament femení i no remunerat. Les estadístiques mostren que les dones fan globalment entre dues i deu vegades més hores de treball de cura no remunerat que els homes. Creus que l'anàlisi de Federici segueix sent vàlid? Quines han canviat les condicions des del 1975 i quines no?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">8</span>
+      <div>
+        <div class="question-text">Federici argumenta que la naturalització del treball domèstic com a «amor» o «feminitat» és una de les seves estratègies de control més eficaces. Pensa en altres formes de treball no remunerat o mal remunerat en la societat actual —treball de voluntariat, cura de persones grans, treball emocional a les relacions— i analitza si segueix el mateix patró: es presenten com a expressió de valors (altruisme, amor, vocació) en lloc de com a treball que mereix compensació?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">9</span>
+      <div>
+        <div class="question-text">Avalua l'argument central de Federici: el treball domèstic és treball real que produeix valor econòmic per al capitalisme i per tant mereix compensació. Per una banda, l'argument té una coherència interna forta. Per altra banda, alguns crítics diuen que salariar el treball domèstic acabaria mercantilitzant les relacions afectives i familiars. Creus que la crítica és vàlida? Com respondria Federici?</div>
+      </div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">10</span>
+      <div>
+        <div class="question-text">Federici conecta la situació de les dones a les llars del «Primer Món» amb la de les poblacions del «Tercer Món» i amb el treball esclau: tots son formes de treball no assalariat que sosté el capitalisme. Creus que aquesta connexió és sòlida, o és massa àmplia per ser analíticament útil? Quina diferència hi ha entre una àvia de casa europea i una persona en situació d'esclavitud moderna, i quina semblança estructural identifica Federici?</div>
+      </div>
+    </div>
+
+  </div>
+
+</div><!-- /reading-body -->
+
+<footer class="reading-footer">
+  <a href="index.html#lectures">← Totes les lectures</a>
+  <span>Filosofia i Ciutadania · 1r Batxillerat</span>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L03 · La solució Singer a la pobresa mundial — Filosofia 1r Bat.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #111111; --ink-soft: #444444; --ink-faint: #8a8a8a;
+    --paper: #ffffff; --paper-off: #fafaf9;
+    --line: #111111; --line-soft: #cfcfcc; --line-faint: #e6e5e1;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Spectral', Georgia, serif; background: var(--paper); color: var(--ink); line-height: 1.85; font-size: 17px; font-weight: 400; }
+  .nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-left { display: flex; align-items: center; }
+  .nav-back { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); text-decoration: none; display: flex; align-items: center; gap: 8px; padding: 6px 14px 6px 0; border-right: 1px solid var(--line-faint); margin-right: 14px; transition: color 0.15s; }
+  .nav-back:hover { color: var(--ink); }
+  .nav-brand { font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); text-decoration: none; font-weight: 700; }
+  .nav-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.06em; }
+  .reading-header { max-width: 700px; margin: 0 auto; padding: 64px 40px 48px; border-bottom: 1px solid var(--line); }
+  .reading-breadcrumb { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; }
+  .reading-breadcrumb a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+  .reading-breadcrumb a:hover { opacity: 0.6; }
+  .reading-num { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; }
+  .reading-title { font-family: 'Spectral', serif; font-size: clamp(1.6rem, 3.3vw, 2.3rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.18; color: var(--ink); margin-bottom: 12px; }
+  .reading-title em { font-style: italic; font-weight: 400; }
+  .reading-author { font-family: 'Spectral', serif; font-size: 1rem; color: var(--ink-soft); font-style: italic; margin-bottom: 8px; }
+  .reading-source { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.06em; color: var(--ink-faint); }
+  .reading-body { max-width: 700px; margin: 0 auto; padding: 52px 40px 100px; }
+  .reading-intro { border-left: 2px solid var(--line-soft); padding: 4px 0 4px 20px; margin-bottom: 36px; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.65; }
+  .reading-intro strong { color: var(--ink); font-weight: 600; }
+  .vocab-pre { border: 1px solid var(--line-faint); background: var(--paper-off); padding: 20px 24px; margin-bottom: 40px; }
+  .vocab-pre-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; font-weight: 700; }
+  .vocab-pre-item { display: grid; grid-template-columns: 180px 1fr; gap: 0 16px; padding: 8px 0; border-bottom: 1px solid var(--line-faint); align-items: baseline; font-size: 0.87rem; }
+  .vocab-pre-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .vocab-pre-term { font-weight: 600; color: var(--ink); font-style: italic; }
+  .vocab-pre-def { color: var(--ink-soft); font-weight: 300; line-height: 1.5; }
+  .reading-text p { margin-bottom: 22px; color: var(--ink-soft); font-weight: 300; font-size: 1rem; line-height: 1.85; }
+  .reading-text p:last-child { margin-bottom: 0; }
+  .reading-text strong { color: var(--ink); font-weight: 600; }
+  .reading-text em { font-style: italic; }
+  .reading-section-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin: 40px 0 18px; padding-top: 36px; border-top: 1px solid var(--line-faint); }
+  .reading-questions { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
+  .reading-questions-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; display: block; }
+  .question-item { display: grid; grid-template-columns: 28px 1fr; gap: 0 14px; margin-bottom: 18px; align-items: baseline; }
+  .question-num { font-family: 'Courier Prime', monospace; font-size: 0.8rem; color: var(--ink); font-weight: 700; }
+  .question-text { font-size: 0.93rem; color: var(--ink-soft); font-weight: 300; line-height: 1.65; }
+  .question-note { font-size: 0.82rem; color: var(--ink-faint); font-style: italic; margin-top: 5px; }
+  .questions-group-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); margin: 28px 0 14px; display: block; padding-top: 20px; border-top: 1px dotted var(--line-faint); }
+  .reading-footer { max-width: 700px; margin: 0 auto; padding: 24px 40px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.06em; color: var(--ink-faint); }
+  .reading-footer a { color: var(--ink-faint); text-decoration: none; transition: color 0.15s; }
+  .reading-footer a:hover { color: var(--ink); }
+  @media (max-width: 680px) {
+    .nav { padding: 0 22px; } .nav-meta { display: none; }
+    .reading-header, .reading-body, .reading-footer { padding-left: 22px; padding-right: 22px; }
+    .reading-header { padding-top: 40px; padding-bottom: 36px; }
+    .vocab-pre-item { grid-template-columns: 1fr; gap: 3px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-back" href="index.html">← Inici</a>
+    <span class="nav-brand">Filosofia 1r Bat.</span>
+  </div>
+  <span class="nav-meta">L·03 — Singer</span>
+</nav>
+
+<div class="reading-header">
+  <div class="reading-breadcrumb">
+    <a href="index.html">Índex</a> / <a href="index.html#lectures">Lectures</a>
+  </div>
+  <span class="reading-num">Lectura 03</span>
+  <h1 class="reading-title">La solució Singer a la <em>pobresa mundial</em></h1>
+  <div class="reading-author">Peter Singer (n. 1946)</div>
+  <div class="reading-source">Basat en «The Singer Solution to World Poverty», <em>The New York Times Magazine</em>, 5 set. 1999 · Adaptació didàctica al català</div>
+</div>
+
+<div class="reading-body">
+  <div class="reading-intro">
+    <strong>Context:</strong> Peter Singer (n. 1946) és un filòsof australià de la Universitat de Princeton, especialista en ètica aplicada i autor de <em>Famine, Affluence, and Morality</em> (1972). Aquell article fundacional argumentava que les persones d'països rics estan moralment obligades a donar una part molt significativa dels seus ingressos per combatre la fam extrema. El 1999, en plena polèmica al voltant de la seva contractació a Princeton, el <em>New York Times</em> li va demanar que exposés aquest argument de manera accessible per al gran públic. El resultat és l'article que serveix de base a aquesta adaptació: una de les peces d'ètica aplicada més llegides i debatudes de les últimes dècades.
+    <br><br>
+    <strong>Advertència:</strong> L'argument de Singer és deliberadament incòmode. No us demanem que hi estigueu d'acord, sinó que l'entengueu, que n'avalueu la lògica i que formuleu les vostres objeccions de manera rigorosa.
+  </div>
+
+  <div class="vocab-pre">
+    <span class="vocab-pre-label">Vocabulari clau — llegiu-lo abans del text</span>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Utilitarisme</span>
+      <span class="vocab-pre-def">Teoria ètica que considera correcta l'acció que maximitza la felicitat total de tots els afectats. Singer s'hi identifica explícitament: el que compta és el resultat, no la intenció ni les regles.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Ètica aplicada</span>
+      <span class="vocab-pre-def">Branca de la filosofia que aplica les teories ètiques a problemes concrets: pobresa, medi ambient, drets animals, bioètica. Singer és un dels seus fundadors.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Equivalent moral</span>
+      <span class="vocab-pre-def">Dues situacions són moralment equivalents si les conseqüències moralment rellevants (qui viu, qui mor, qui pateix) són les mateixes, encara que el context extern difereixi.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Part justa (fair share)</span>
+      <span class="vocab-pre-def">L'objecció que sosté que cadascú només hauria de contribuir la seva part proporcional i no és responsable de compensar el que no fan els altres. Singer la examina i la rebutja.</span>
+    </div>
+    <div class="vocab-pre-item">
+      <span class="vocab-pre-term">Psicologia evolutiva</span>
+      <span class="vocab-pre-def">Camp que estudia com l'evolució biològica ha configurat la ment humana. Singer s'hi enfronta en respondre l'objecció que «la naturalesa humana no és prou altruista».</span>
+    </div>
+  </div>
+
+  <div class="reading-text">
+
+    <span class="reading-section-label">El cas de la Dora</span>
+
+    <p>Singer obre l'article amb un cas pres de la pel·lícula brasilera <em>Central do Brasil</em>. La Dora és una mestra jubilada que malviu escrivint cartes a l'estació per a persones analfabetes. Inesperadament, se li presenta l'oportunitat de guanyar mil dòlars: tot el que ha de fer és convèncer un nen de nou anys, sense llar, perquè la segueixi fins a una adreça determinada. Li diuen que serà adoptat per una família estrangera adinerada. La Dora l'hi porta, cobra els diners, i en compra un televisor nou. Però la veïna li revela que el nen era massa gran per ser adoptat: el vendran per a extracció d'òrgans. La Dora passa una nit en blanc i, al matí, surt a rescatar el nen.</p>
+
+    <p>Singer proposa un contrafactual: i si la Dora s'hagués encongit d'espatlles i hagués dit que el món és dur i que el nen no era més que un nen de carrer? El públic al cinema l'hauria condemnat com a monstre. Es redimeix únicament pel risc que assumeix per salvar-lo.</p>
+
+    <p>El punt és el següent: les persones que han vist la pel·lícula i haurien condemnat la Dora si no hagués actuat tornen a casa, en les nacions adinerades, a pisos molt més còmodes que el d'ella. La família nord-americana mitjana, apunta Singer, gasta prop d'un terç dels seus ingressos en coses que no li són més necessàries que el televisor nou ho era per a la Dora: sopars de restaurant, roba de temporada, vacances a la platja. Donats a organitzacions humanitàries, aquells mateixos diners podrien ser la diferència entre la vida i la mort per a nens en situació de pobresa extrema.</p>
+
+    <p>D'aquí la pregunta que vehicula tot l'article: <strong>quina és la distinció ètica entre la Dora, que ven un nen a traficants d'òrgans, i el consumidor americà que compra un televisor millor sabent que aquells diners podrien salvar vides?</strong></p>
+
+    <span class="reading-section-label">La comparació i la postura de Singer</span>
+
+    <p>Singer reconeix diferències entre els dos casos. Condemnar un nen a la mort quan el tens davant requereix una fredor que és emocionalment molt diferent d'ignorar una petició d'ajuda per a nens que no veuràs mai. Psicològicament, la distància importa. Però, argumenta Singer, des d'una perspectiva utilitarista —que avalua les accions per les seves conseqüències—, si el resultat de no donar és que un nen més mor, la gravetat moral és comparable. I fins i tot qui no accepti el marc utilitarista hauria de reconèixer que hi ha una incongruència pertorbadora entre la rapidesa amb la qual condemnem la Dora i la indiferència amb la qual tractem el comportament del consumidor.</p>
+
+    <span class="reading-section-label">El cas d'en Bob i el Bugatti</span>
+
+    <p>Per precisar l'argument, Singer pren prestada la situació del filòsof Peter Unger, del seu llibre <em>Living High and Letting Die</em> (1996). En Bob és un home a punt de jubilar-se que ha invertit tots els seus estalvis en un Bugatti antiquíssim i rarísim, que no ha pogut assegurar. El cotxe és el seu tresor i la seva garantia financera per a la vellesa. Un dia, mentre passeja per les vies del ferrocarril, veu un tren desbocat avançant cap a un nen que no pot escapar. En Bob podria desviar el tren accionant un canvi d'agulles, però el tren destruiria el Bugatti, que és a la via morta. Decideix no accionar l'agulla. El nen mor. En Bob conserva el cotxe.</p>
+
+    <p>La reacció gairebé unànime, diu Singer, és que en Bob ha actuat de manera greument incorrecta. Però llavors arriba la pregunta incòmoda: quant caldria donar a organitzacions com UNICEF o Oxfam per tenir una probabilitat alta de salvar la vida d'un nen amenaçat per malalties prevenibles? Unger ho va calcular: al voltant de dos-cents dòlars. La informació per fer-ho és pública i accessible.</p>
+
+    <span class="reading-section-label">L'analogia entre en Bob i el lector</span>
+
+    <p>Singer subratlla les semblances entre en Bob i qualsevol lector que no doni: en Bob no tenia relació personal amb el nen, no el va enganyar ni va iniciar la cadena de perill; simplement va poder actuar i no va actuar. Exactament el mateix és vàlid per al lector. Si la conducta d'en Bob era greument incorrecta, argumenta Singer, la del lector que no dona és moralment equivalent.</p>
+
+    <p>Una objecció freqüent és que, a diferència d'en Bob, el lector és un entre milions de persones que podrien ajudar. ¿L'excusa que els altres tampoc no ho fan? Singer ho refuta amb l'analogia dels propietaris de cotxes: imagineu que tots els Carol, Dave, Emma i Fred es trobessin en la mateixa situació que en Bob i decidissin igualment no accionar l'agulla. ¿Faria això que la conducta d'en Bob estigués justificada? No. El que era moralment incorrecte no ho deixa de ser perquè molts altres facin el mateix: és exactament l'argument que va permetre que molts alemanys miressin cap a un altre costat davant les atrocitats nazis.</p>
+
+    <span class="reading-section-label">Fins on arriba l'obligació?</span>
+
+    <p>Singer és conscient del recel que genera la seva conclusió. Si donar dos-cents dòlars ens obliga moralment, per quina raó no ens obliga a donar dos-cents dòlars més, i llavors dos-cents més? ¿Hem de donar fins a no tenir res? Per explorar-ho, porta el cas d'en Bob als extrems: i si desviar el tren li amputés el dit gros del peu? ¿I el peu sencer? ¿I la cama?</p>
+
+    <p>La resposta intuïtiva és que en Bob no tindria obligació de fer-ho si el sacrifici és suficientment gran. Singer ho concedeix, però observa que el llindar on la majoria de persones diria que en Bob es justifica per no accionar l'agulla és molt alt. I la xifra equivalent en donacions per a un americà de classe mitjana seria molt superior als dos-cents dòlars: podria arribar als dos-cents mil dòlars.</p>
+
+    <span class="reading-section-label">Les objeccions i la conclusió radical</span>
+
+    <p>Singer examina dues objeccions principals. La primera: «si tothom donés la seva part justa, jo no hauria de donar tant; per quina raó hauria de compensar el que no fan els altres?» La resposta: en el món real, la majoria de persones no donarà la seva part justa en el futur previsible, i ni els governs assoliran l'objectiu mínim de l'ONU (el 0,7% del PNB). Si sabem que els nens moriran per mort prevenible a menys que algú doni més que la seva part, l'argument de la «part justa» no és suficient per excusar-nos.</p>
+
+    <p>La conclusió de Singer és explícitament radical: qualsevol diners que estiguem gastant en luxes —no en necessitats— hauria de ser donat. Un vestit de mil dòlars podria salvar cinc vides. Per a una família que ingressa cinquanta mil dòlars, si les necessitats bàsiques suposen trenta mil, la donació hauria de ser de prop de vint mil.</p>
+
+    <p>La segona objecció és la de la psicologia evolutiva: la naturalesa humana no és prou altruista per a tanta exigència. Singer admet que, com a descripció empírica, potser és correcta. Però no en treu cap conclusió moral: el fet que la majoria de persones no actuï d'una manera determinada no implica que no <em>hagi</em> d'actuar-hi. Si viure moralment decent és enormement exigent, doncs bé, les coses són com són. El primer pas és reconèixer-ho.</p>
+
+    <p>L'article acaba amb la imatge d'en Bob, que va creure que era extraordinàriament poc afortunat de trobar-se davant aquell dilema. Però, conclou Singer, <strong>en Bob no era gens poc afortunat. Tots estem en aquella situació.</strong></p>
+
+  </div>
+
+  <div class="reading-questions">
+    <span class="reading-questions-label">Guia de lectura — Preguntes de comprensió i reflexió</span>
+
+    <span class="questions-group-label" style="margin-top:0; border-top:none; padding-top:0;">Comprensió del text</span>
+
+    <div class="question-item"><span class="question-num">1</span><div><div class="question-text">Descriu el cas de la Dora. Per quina raó Singer comença amb un exemple cinematogràfic en lloc d'un argument filosòfic abstracte? Quin efecte pretén aconseguir en el lector?</div></div></div>
+
+    <div class="question-item"><span class="question-num">2</span><div><div class="question-text">Singer estableix una analogia entre la Dora i el consumidor americà. Explica quina semblança al·lega i quines diferències reconeix ell mateix. Creus que les diferències invaliden l'analogia o no?</div></div></div>
+
+    <div class="question-item"><span class="question-num">3</span><div><div class="question-text">Descriu el cas d'en Bob i el Bugatti. Quina funció argumentativa té en el text? Per quina raó Singer usa un exemple tan extravagant en lloc d'un de més quotidià?</div></div></div>
+
+    <div class="question-item"><span class="question-num">4</span><div><div class="question-text">Reconstrueix pas a pas l'argument per analogia que Singer construeix entre la situació d'en Bob i la del lector que no dona. Quins elements comparteixen les dues situacions i quins difereixen?</div></div></div>
+
+    <div class="question-item"><span class="question-num">5</span><div><div class="question-text">Singer examina l'objecció de la «part justa». Explica l'objecció i la seva resposta. Trobes la resposta convincent, o creus que l'objecció té força suficient per resistir-la?</div></div></div>
+
+    <div class="question-item"><span class="question-num">6</span><div><div class="question-text">Quina és la conclusió radical de Singer sobre quant han de donar les persones adinerades? Creus que la conclusió se segueix necessàriament de les seves premisses, o hi ha algun salt lògic?</div></div></div>
+
+        <span class="questions-group-label">Reflexió</span>
+
+    <div class="question-item">
+      <span class="question-num">1</span>
+      <div><div class="question-text">Singer ens incomoda deliberadament. Llegida la seva argumentació, com et sents realment? Ha canviat alguna cosa en la manera com penses sobre la propera compra que faràs? Si la resposta és «no», intenta explicar honestament per quina raó l'argument no et convenç —o et resulta impossible d'aplicar a la teva vida— sense recórrer simplement a dir que Singer va massa lluny.</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">2</span>
+      <div><div class="question-text">Existeix el fenomen psicològic de la «fatiga de la compassió»: com més gran és la magnitud d'una catàstrofe, menys resposta emocional genera en les persones. Singer equipara moralment deixar morir un nen al qual no veus amb la decisió de la Dora i d'en Bob. Creus que la distància psicològica i la invisibilitat de les víctimes és un argument <em>contra</em> la seva proposta, o simplement una limitació de la natura humana que no modifica la conclusió moral?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">3</span>
+      <div><div class="question-text">Singer equipara moralment actuar i no actuar: vendre un nen / no donar diners a qui pot salvar vides. Moltes persones rebutgen instintivament aquesta equiparació. Analitza si el rebuig intuïtiu és filosòficament defensable: hi ha una diferència moralment rellevant entre fer un dany activament i permetre passivament que passi, o és simplement una convenció psicològica còmoda per no assumir responsabilitat?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">4</span>
+      <div><div class="question-text">L'efectivisme altruista (<em>effective altruism</em>) és un moviment inspirat en Singer que calcula quines donacions salven el màxim de vides per euro. Alguns dels seus membres més rics inverteixen en empreses tecnològiques poc ètiques amb l'argument que posteriorment donaran molt més. Avalua aquest raonament des de les tres teories ètiques que coneixes: quina el defensaria? Quines l'atacarien, i per quines raons?</div></div>
+    </div>
+
+    <div class="question-item">
+      <span class="question-num">5</span>
+      <div><div class="question-text">Si acceptes la lògica de Singer, on traçaries el límit de l'obligació de donar? Pensa concretament: quin percentatge dels teus ingressos futurs creus que tens obligació moral de destinar a ajudar persones en pobresa extrema? Si la xifra és inferior al que Singer suggeriria, intenta articular la raó per la qual la teva proposta és filosòficament defensable i no simplement convenient.</div></div>
+    </div>
+
+</div>
+
+<footer class="reading-footer">
+  <a href="index.html#lectures">← Totes les lectures</a>
+  <span>Filosofia i Ciutadania · 1r Batxillerat</span>
+</footer>
+
+</body>
+</html>
