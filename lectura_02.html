@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L02 · La ciència com a coneixement derivat dels fets — Filosofia 1r Bat.</title>
+<title>L02 · Coneixements situats — Filosofia 1r Bat.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
@@ -28,7 +28,7 @@
   .reading-breadcrumb a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
   .reading-breadcrumb a:hover { opacity: 0.6; }
   .reading-num { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; }
-  .reading-title { font-family: 'Spectral', serif; font-size: clamp(1.5rem, 3.2vw, 2.2rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.18; color: var(--ink); margin-bottom: 12px; }
+  .reading-title { font-family: 'Spectral', serif; font-size: clamp(1.6rem, 3.3vw, 2.3rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.18; color: var(--ink); margin-bottom: 12px; }
   .reading-title em { font-style: italic; font-weight: 400; }
   .reading-author { font-family: 'Spectral', serif; font-size: 1rem; color: var(--ink-soft); font-style: italic; margin-bottom: 8px; }
   .reading-source { font-family: 'Courier Prime', monospace; font-size: 10px; letter-spacing: 0.06em; color: var(--ink-faint); }
@@ -40,7 +40,7 @@
 
   .vocab-pre { border: 1px solid var(--line-faint); background: var(--paper-off); padding: 20px 24px; margin-bottom: 40px; }
   .vocab-pre-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 14px; font-weight: 700; }
-  .vocab-pre-item { display: grid; grid-template-columns: 180px 1fr; gap: 0 16px; padding: 8px 0; border-bottom: 1px solid var(--line-faint); align-items: baseline; font-size: 0.87rem; }
+  .vocab-pre-item { display: grid; grid-template-columns: 195px 1fr; gap: 0 16px; padding: 8px 0; border-bottom: 1px solid var(--line-faint); align-items: baseline; font-size: 0.87rem; }
   .vocab-pre-item:last-child { border-bottom: none; padding-bottom: 0; }
   .vocab-pre-term { font-weight: 600; color: var(--ink); font-style: italic; }
   .vocab-pre-def { color: var(--ink-soft); font-weight: 300; line-height: 1.5; }
@@ -51,16 +51,7 @@
   .reading-text em { font-style: italic; }
 
   .reading-section-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); display: block; margin: 40px 0 18px; padding-top: 36px; border-top: 1px solid var(--line-faint); }
-
-  .reading-quote { margin: 24px 0; padding: 14px 0 14px 24px; border-left: 2px solid var(--ink); font-style: italic; color: var(--ink-soft); font-size: 0.97rem; line-height: 1.7; }
-  .reading-quote cite { display: block; margin-top: 8px; font-style: normal; font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.1em; color: var(--ink-faint); }
-
-  .reading-example { background: var(--paper-off); border: 1px solid var(--line-faint); padding: 16px 20px; margin: 20px 0; font-size: 0.92rem; }
-  .reading-example-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); display: block; margin-bottom: 8px; font-weight: 700; }
-  .reading-example p { color: var(--ink-soft); font-weight: 300; margin-bottom: 8px; font-size: 0.92rem; }
-  .reading-example p:last-child { margin-bottom: 0; }
-
-  .reading-omission { font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: var(--ink-faint); border-top: 1px dashed var(--line-soft); border-bottom: 1px dashed var(--line-soft); padding: 6px 0; margin: 28px 0; text-align: center; }
+  .reading-omission { font-family: 'Courier Prime', monospace; font-size: 9.5px; letter-spacing: 0.1em; color: var(--ink-faint); border-top: 1px dashed var(--line-soft); border-bottom: 1px dashed var(--line-soft); padding: 7px 0; margin: 26px 0; text-align: center; }
 
   .reading-questions { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
   .reading-questions-label { font-family: 'Courier Prime', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 24px; display: block; }
@@ -89,7 +80,7 @@
     <a class="nav-back" href="index.html">← Inici</a>
     <span class="nav-brand">Filosofia 1r Bat.</span>
   </div>
-  <span class="nav-meta">L·02 — Chalmers</span>
+  <span class="nav-meta">L·02 — Haraway</span>
 </nav>
 
 <div class="reading-header">
@@ -97,132 +88,78 @@
     <a href="index.html">Índex</a> / <a href="index.html#lectures">Lectures</a>
   </div>
   <span class="reading-num">Lectura 02</span>
-  <h1 class="reading-title">La ciència com a coneixement derivat dels <em>fets de l'experiència</em></h1>
-  <div class="reading-author">Alan F. Chalmers (n. 1939)</div>
-  <div class="reading-source">Adaptació del capítol 1 de <em>¿Qué es esa cosa llamada ciencia?</em> (3a ed., 1999) · Traducció i adaptació didàctica al català</div>
+  <h1 class="reading-title">Coneixements situats: <em>la qüestió de la ciència en el feminisme i el privilegi de la perspectiva parcial</em></h1>
+  <div class="reading-author">Donna J. Haraway (n. 1944)</div>
+  <div class="reading-source">Adaptació i traducció al català de «Situated Knowledges: The Science Question in Feminism and the Privilege of Partial Perspective», publicat a <em>Feminist Studies</em>, vol. 14, núm. 3 (tardor de 1988), pp. 575-599 · Traducció i adaptació didàctica al català · Llicència CC BY-NC-ND 4.0</div>
 </div>
 
 <div class="reading-body">
 
   <div class="reading-intro">
-    <strong>Context:</strong> Alan Chalmers és un filòsof australià de la ciència. El seu llibre <em>¿Qué es esa cosa llamada ciencia?</em> (títol original: <em>What Is This Thing Called Science?</em>, 1976, 3a ed. 1999) és una de les introduccions a la filosofia de la ciència més llegides al món. El capítol 1 examina la idea —àmpliament estesa però problemàtica— que el que fa especial la ciència és que es deriva de fets observats amb els sentits. Chalmers defensarà que aquesta idea és correcta en un sentit molt limitat, però que en la seva forma ingènua és insostenible.
-    <br><br>
-    <strong>Nota sobre aquesta versió:</strong> Es tracta d'una adaptació didàctica al català que segueix fidelment l'estructura i els arguments del capítol original, amb il·lustracions i exemples propis de Chalmers. On s'ha comprimit o omès text es marca [···].
+    <strong>Context:</strong> Donna Haraway és biòloga i filòsofa de la ciència, professora emèrita a la Universitat de Califòrnia a Santa Cruz. El 1988 va publicar aquest assaig en resposta a un debat que dividia el feminisme acadèmic: d'una banda, hi havia les feministes que desconfiaven de la ciència perquè consideraven que era inherentment masculinista; de l'altra, les que creien que la ciència podia ser reformada per ser més objectiva. Haraway rebutja ambdues posicions. La seva proposta és una tercera via: <strong>no el relativisme</strong> («totes les perspectives valen igual») ni l'objectivisme ingenu («el científic no té posició»), sinó el que ella anomena <em>objectivitat feminista</em>: la responsabilitat de saber des d'on mires. L'assaig connecta directament amb els continguts del Tema 02 sobre l'observació carregada de teoria (Chalmers) i els problemes del mètode científic, però planteja una pregunta que Chalmers no fa: <em>qui observa i des d'on?</em>
   </div>
 
   <div class="vocab-pre">
-    <span class="vocab-pre-label">Vocabulari clau — llegiu-lo abans del text</span>
+    <span class="vocab-pre-label">Vocabulari clau — Llegiu abans de començar</span>
     <div class="vocab-pre-item">
-      <span class="vocab-pre-term">Inductivisme</span>
-      <span class="vocab-pre-def">Teoria filosòfica que defensa que el coneixement científic s'obté a partir de l'observació dels fets, seguida d'una generalització inductiva. «Primer observa, després conclou.»</span>
+      <span class="vocab-pre-term">El truc de Déu</span>
+      <span class="vocab-pre-def">Expressió de Haraway per descriure la pretensió de veure-ho tot des de cap lloc en particular: una mirada omniscient i sense cos que fingeix no tenir perspectiva pròpia.</span>
     </div>
     <div class="vocab-pre-item">
-      <span class="vocab-pre-term">Enunciat observacional</span>
-      <span class="vocab-pre-def">Una afirmació sobre allò que s'ha observat, formulada en paraules. Distingeix-lo de l'experiència directa: «veig quelcom vermell» és una experiència; «el semàfor és vermell» és un enunciat observacional.</span>
+      <span class="vocab-pre-term">Coneixement situat</span>
+      <span class="vocab-pre-def">Coneixement que reconeix d'on prové: quin cos, quina posició social, quina història el produeix. Per a Haraway, és el contrari del relativisme, no la seva confirmació.</span>
     </div>
     <div class="vocab-pre-item">
-      <span class="vocab-pre-term">Observació carregada de teoria</span>
-      <span class="vocab-pre-def">La idea que allò que «veiem» depèn en part del que ja sabem, esperem o creiem. Dues persones amb coneixements molt diferents poden observar la mateixa cosa i «veure-hi» coses molt diferents.</span>
+      <span class="vocab-pre-term">Perspectiva parcial</span>
+      <span class="vocab-pre-def">El fet que tota visió és des d'algun lloc, amb uns límits determinats. Per a Haraway, la parcialitat no és un defecte sinó la condició d'un coneixement responsable i localitzable.</span>
     </div>
     <div class="vocab-pre-item">
-      <span class="vocab-pre-term">Fal·libilitat</span>
-      <span class="vocab-pre-def">Capacitat de ser erroni. Que els enunciats observacionals siguin fal·libles significa que poden estar equivocats malgrat haver estat obtinguts per observació directa.</span>
+      <span class="vocab-pre-term">Objectivitat feminista</span>
+      <span class="vocab-pre-def">La proposta de Haraway: no la pretensió d'una vista des de cap lloc, sinó la responsabilitat de saber des d'on veus i quines limitacions té la teva posició.</span>
     </div>
     <div class="vocab-pre-item">
-      <span class="vocab-pre-term">Imatge retiniana</span>
-      <span class="vocab-pre-def">La imatge que es forma a la retina de l'ull quan llum procedent d'un objecte hi incideix. El model ingenu diu que l'experiència visual és simplement la «lectura» d'aquesta imatge, però Chalmers argumentarà que no és tan senzill.</span>
+      <span class="vocab-pre-term">Relativisme</span>
+      <span class="vocab-pre-def">La postura que totes les perspectives valen igual perquè cap és objectiva. Haraway la critica tant com l'objectivisme: ambdues pretenen no tenir posició.</span>
     </div>
   </div>
 
   <div class="reading-text">
 
-    <span class="reading-section-label">1. La visió de sentit comú: «la ciència es deriva dels fets»</span>
+    <span class="reading-section-label">1. El problema: feminisme i objectivitat científica</span>
 
-    <p>Hi ha una concepció de la ciència àmpliament estesa que podria formular-se amb el lema: <strong>«la ciència es deriva dels fets»</strong>. Segons aquesta visió, el que fa especial el coneixement científic és que no es basa en opinions personals, intuïcions ni especulacions imaginatives, sinó en allò que podem observar directament: el que veiem, sentim i toquem.</p>
+    <p>El meu problema, i el «nostre» problema, és com tenir simultàniament un relat de la contingència històrica radical de totes les afirmacions de coneixement i dels subjectes que coneixen, una pràctica crítica per reconèixer les nostres pròpies «tecnologies semiòtiques» per produir significat, i un compromís sense ambigüitats amb relats fidels d'un món «real», un món que pugui ser parcialment compartit i que sigui favorable als projectes d'una llibertat finita, una abundància material suficient, un significat modest en el sofriment, i una ximpleria limitada.</p>
 
-    <p>L'idea fonamental és la següent: si l'observació del món es duu a terme de manera curada i desprejudiciada, els fets establerts d'aquesta manera constituiran una base sòlida i objectiva per a la ciència. I si, a partir d'aquesta base factual, el raonament que ens porta a les lleis i teories científiques és lògicament correcte, llavors el coneixement científic resultant podrà considerar-se establert amb seguretat i objectivitat. [···]</p>
+    <p>Em sembla que alguna cosa es resol demanant la versió feminista de l'objectivitat. Em sembla que el feminisme s'estima més la metàfora de la visió i que hauria d'insistir en una doctrina encarnada i específica de l'objectivitat, i alhora rebutjar la versió que pretén l'adequació de la representació des de cap perspectiva particular i sense cos —el <strong>truc de Déu</strong>. Necessitem les potències de les teories crítiques modernes sobre com els significats i els cossos es construeixen, no per negar els significats i els cossos, sinó per viure amb les fronteres, les construccions i les recons­truccions —i, al mateix temps, per habitar la terra i els cossos donats com a condicions de possibilitat d'un coneixement responsable.</p>
 
-    <p>Aquesta visió rep el nom de <strong>inductivisme</strong>. L'inductivista sosté que la ciència comença per l'observació. L'observador científic ha de tenir òrgans sensorials que funcionin correctament, ha de registrar fidelment el que observa i ha de fer-ho lliure de prejudicis. Si es compleixen aquestes condicions, els fets que s'acumulin d'aquesta manera seran fets verídics i objectius.</p>
+    <span class="reading-section-label">2. La visió: bones perspectives i males perspectives</span>
 
-    <p>A partir d'una col·lecció suficientment àmplia de fets d'aquest tipus, el científic pot derivar lleis i teories per inducció. Per exemple: si s'observa un nombre suficientment gran de corbs i es comprova que tots ells són negres, s'estaria en condicions de concloure inductivament que tots els corbs són negres. De manera similar, Galileu va establir lleis del moviment dels pèndols i dels projectils observant molts moviments i generalitzant el resultat.</p>
+    <p>Amb totes les possibilitats per a la reproducció biològica i cultural de la prole fora del cos, ens atrevim a reclamar que la visió feminista necessita una revisió radical del que comptem com a coneixement, les normes del coneixement, i el coneixent i el conegut. Fins i tot la versió del constructivisme social que acusa el feminisme de «ciència» d'ingenuïtat és freturosa d'un sentit crític adequat dels cossos encarnats, de les maneres reals en les quals els cossos, que inclouen cossos de coneixement, es construeixen.</p>
 
-    <div class="reading-example">
-      <span class="reading-example-label">El prestigis de la ciència</span>
-      <p>La noció que la ciència és especial perquè es basa en fets és tan estesa que fins i tot s'usa estratègicament. Quan un producte comercial afirma que «s'ha demostrat científicament» que és millor que els altres, el que es pretén és indicar que la seva superioritat no és una mera opinió: hi ha <em>fets</em> que la sustenten. L'apel·lació a la ciència és, en gran mesura, una apel·lació a l'autoritat dels fets per sobre de les opinions.</p>
-    </div>
+    <p>Necessitem aprender en els nostres cossos, dotats de visió cromàtica i estereoscòpica de primat, com adjuntar l'objectiu als nostres escàners teòrics i polítics per nomenar on som i on no som, en dimensions d'espai mental i físic que pràcticament no sabem nomenar. Doncs, <strong>no tan perversament, l'objectivitat resulta ser sobre la corporeïtat específica i particular, i definitivament no sobre la falsa visió que promet la transcendència de tots els límits i la responsabilitat.</strong> La lliçó és simple: <strong>només la perspectiva parcial promet una visió objectiva.</strong> Totes les narracions culturals occidentals sobre l'objectivitat són al·legories de les ideologies que governen les relacions del que anomenem ment i cos, distància i responsabilitat.</p>
 
-    <span class="reading-section-label">2. Veure és creure? El model ingenu de la percepció</span>
+    <p><strong>L'objectivitat feminista és sobre la localització limitada i el coneixement situat, no sobre la transcendència i la divisió de subjecte i objecte.</strong> Ens permet tornar-nos responsables del que aprenem a veure.</p>
 
-    <p>La visió inductivista de la ciència pressuposa que l'observació és un procés relativamente simple i directe. La idea intuïtiva és quelcom semblant a un model fotogràfic de la percepció: la llum procedent dels objectes del món incideix sobre la retina de l'ull i hi forma una imatge; el cervell «llegeix» aquesta imatge i n'obté una representació fidel de com és l'objecte. En termes generals: si dues persones miren la mateixa cosa en les mateixes condicions d'il·luminació, veuran la mateixa cosa.</p>
+    <span class="reading-section-label">3. El truc de Déu i el seu doble: el relativisme</span>
 
-    <p>Seguint aquest model, sembla que l'observació proporciona una base factual segura i directa: els <strong>fets estan «donats» pels sentits</strong>, independentment de qui observi i del que ja sàpiga. La percepció seria, en principi, passiva i neutral.</p>
+    <p>Sóc una defensora parcial de la posició de visió de tots els ulls, incloent els ulls orgànics, tenint en compte la perspectiva corporal específica mediada per tecnologies específiques de visualització. <strong>No sóc defensora del relativisme, sinó de les epistemologies i polítiques parcialment compartides i susceptibles de connexió.</strong> El relativisme és una manera de ser en cap lloc mentre es pretén estar en tot arreu igualment. La «igualtat» de posicionament és una negació de responsabilitat i recerca crítica. El relativisme és el mirall perfecte del totalitarisme en les ideologies de l'objectivitat; tots dos neguen el joc de posicions i el poder constitutiu i parcial del coneixement. Tots dos segueixen el truc de Déu.</p>
 
-    <p>Si aquesta visió fos correcta, la idea inductivista seria molt plausible. Els científics haurien de limitar-se a observar el món acuradament, acumular fets i generalitzar-los. Chalmers, però, argumentarà que aquesta imatge ingènua de la percepció és incorrecta en un sentit filosòficament important. [···]</p>
+    <p>Per al coneixement feminista, la qüestió de la ciència en el feminisme tracta d'objectivitat com a racionalitat posicionada. Els seus pràctics i teòrics no busquen l'estabilitat i la universalitat acceptant les relacions d'autoritat mimetitzant el model «masculí». Sóc defensora del punt de vista des d'un cos, sempre un cos complex, contradictori, estructurant i estructurat, en oposició al punt de vista des de dalt, des de cap lloc, des de la simplicitat. Només el truc de Déu és prohibit.</p>
 
-    <span class="reading-section-label">3. L'experiència visual no depèn sols de l'objecte observat</span>
+    <div class="reading-omission">[ El text original conté una secció sobre la metàfora de la visió en ciència i tecnologia que s'ha omès per raons d'extensió. ]</div>
 
-    <p>Considerem el cas dels anomenats <strong>dibuixos ambigus</strong>, la figura ànim­a-conill de Joseph Jastrow, popularitzada per Wittgenstein, n'és el cas clàssic: un mateix dibuix pot ser vist com una ànec (el bec apunta a l'esquerra) o com un conill (el bec es converteix en les orelles). El dibuix sobre el paper no ha canviat. El que ha canviat és com l'interpreta l'observador. Dues persones que miren el mateix paper en el mateix moment poden «veure» animals completament diferents.</p>
+    <span class="reading-section-label">4. Qui pot veure bé? El privilegi epistèmic des de baix</span>
 
-    <p>Chalmers addueix aquest i altres exemples similars per il·lustrar un punt filosòfic important: <strong>allò que «veiem» no és una simple lectura de la imatge retiniana</strong>. L'experiència visual depèn també d'altres factors, entre ells el coneixement previ, les expectatives i el context conceptual de l'observador. [···]</p>
+    <p>Estic argumentant a favor de polítiques i epistemologies de la localització, el posicionament i la situació, on la parcialitat —i no la universalitat— és la condició de ser escoltada per fer afirmacions racionals de coneixement. Aquestes afirmacions afecten les vides de les persones. Estic argumentant a favor de la visió des d'un cos, sempre un cos complex, contradictori, estructurant i estructurat.</p>
 
-    <p>Un exemple encara més rellevant per a la ciència és el que va proposar el filòsof <strong>N. R. Hanson</strong>. Imaginem que l'astrònom Tycho Brahe (que creia en un model geocèntric, en el qual el Sol gira al voltant de la Terra) i l'astrònom Johannes Kepler (que defensava el model heliocèntric, en el qual la Terra gira al voltant del Sol) observen junts l'alba. Tots dos «veuen» el Sol sortint per l'horitzó. Però, veuen realment el <em>mateix</em>?</p>
+    <p>Hi ha un perillós encant a la postura dels subalterns i de les perspectives des de baix. En l'eufòria per invertir les jerarquies, es corre el risc de romantitzar i/o d'apro­piar-se de la visió dels menys poderosos tot reclamant veure des de la seva posició. Però és precisament en el reconeixement d'aquest perill on rau la força política de la perspectiva parcial. <strong>Afirmar la perspectiva situada no és el mateix que afirmar que totes les perspectives valen igual.</strong> Alguns posicionaments suggereixen una visió més àmplia i fidedigna sobre les possibilitats de comprensió i de transformació del món. Les visions crítiques des de baix als mapes del poder no promet una visió innocent: promet una visió sobre com s'ha construït la dominació i, potencialment, com podria funcionar diferent.</p>
 
-    <p>Hanson argumenta que, en un sentit filosòfic important, <strong>no veuen el mateix</strong>. Brahe veu el Sol movent-se sobre una Terra immòbil. Kepler veu l'horitzó de la Terra inclinant-se mentre la Terra gira i el Sol roman fix. Les dues experiències visuals estan tenyides per les seves respectives teories sobre el moviment del sistema solar. Això és el que es coneix com la tesi que <strong>«l'observació és carregada de teoria»</strong> (<em>theory-laden</em>): el que un científic «veu» quan fa una observació depèn en part de les teories que ja accepta.</p>
+    <span class="reading-section-label">5. Coneixement com a responsabilitat</span>
 
-    <div class="reading-example">
-      <span class="reading-example-label">Exemple addicional: el metge i el neòfit</span>
-      <p>Un metge expert i un estudiant de primer curs miren la mateixa radiografia de tòrax. L'expert «veu» signes d'una infecció pulmonar incipient; l'estudiant veu taques difuses sobre un fons grisós. Objectivament, la imatge de la radiografia és idèntica per als dos. Però l'experiència visual de «veure-hi» quelcom diferent depèn del coneixement anatòmic i patològic que cada un aporta a l'acte de mirar. L'observació no és mai completament neutra.</p>
-    </div>
+    <p>La ciència es converteix en el model paradigmàtic, no del tancament, sinó d'allò que és contestable i contestat. La ciència es converteix en el mite, no del que s'escapa de l'agència i la responsabilitat humanes en un àmbit per sobre de la controvèrsia, sinó de la responsabilitat i el compte de les traduccions i solidaritats que uneixen les visions cacofòniques i les veus visionàries que caracteritzen els coneixements dels subjugats.</p>
 
-    <p>La conclusió que en treu Chalmers no és que l'observació sigui inútil o subjectiva. És una conclusió més matisada: el model ingenu que presenta els fets observats com a dades neutres, directes i independents de tot marc conceptual, no pot mantenir-se. L'observació i la teoria no poden separar-se tan nítidament com l'inductivisme suposa. [···]</p>
+    <p>La política i l'epistemologia de la visió parcial i de la veu situada obren la possibilitat de la connexió a través de les diferències. No és una esperança de «comunitat», ni d'una cosa que ho abarqui tot o tot ho fundi. És una esperança d'una conversa parcial, real, sempre incompleta, en un espai compartit de diferències irreductibles. En definitiva: <strong>el coneixement és sempre responsabilitat. Afirmar que veus des de cap lloc és la mentida més gran.</strong></p>
 
-    <span class="reading-section-label">4. Els fets com a enunciats, no com a experiències directes</span>
-
-    <p>La ciència no treballa directament amb experiències sensorials privades. Treballa amb <strong>enunciats</strong>: afirmacions formulades en paraules que descriuen allò que s'ha observat. «La lluna té 384.400 km de distància mitjana de la Terra», «l'àcid sulfúric corroia la mostra en 3,2 minuts», «el pèndol oscil·la cada 2,1 segons»: aquests són enunciats observacionals, que poden ser comunicats, repetits, verificats per altres observadors i incorporats al corpus de la ciència.</p>
-
-    <p>La distinció entre l'<strong>experiència directa</strong> i l'<strong>enunciat observacional</strong> que la descriu és filosòficament important per diverses raons:</p>
-
-    <p><strong>Primera:</strong> les experiències directes són privades. Ningú no pot tenir accés a l'experiència visual exacta d'una altra persona. Els enunciats, en canvi, són públics: tot aquell que parla el mateix llenguatge pot entendre'ls, discutir-los i sotmetre'ls a crítica.</p>
-
-    <p><strong>Segona:</strong> formular un enunciat observacional requereix ja un <strong>marc conceptual</strong>. Per dir «el metall s'ha dilatat», cal tenir els conceptes de «metall», «dilatació» i saber com s'apliquen. Aquests conceptes no vénen donats per l'experiència directa: s'aprenen, es transmeten culturalment i depenen de teories prèvies sobre la naturalesa dels materials. [···]</p>
-
-    <p>Adonem-nos de la implicació: si els enunciats observacionals requereixen un marc conceptual i aquest marc pot variar d'un observador a un altre o d'una època a una altra, llavors la «base factual» de la ciència no és tan neutral i atemporal com l'inductivisme suposa. Els fets que una teoria considera rellevants i observables depenen en part de la teoria mateixa.</p>
-
-    <span class="reading-section-label">5. Per quina raó els fets haurien de precedir la teoria?</span>
-
-    <p>Una de les tesis centrals de l'inductivisme és que els fets han de precedir la teoria: primer observem, i a partir de les observacions construïm les teories. Però aquesta prescripció resulta molt difícil de complir en la pràctica, i Chalmers ho il·lustra amb un argument senzill.</p>
-
-    <p>Imaginem que un científic decideix observar el món de manera totalment rigorosa i sense prejudicis, tal com prescriu l'inductivista. La primera pregunta immediata és: <strong>observar <em>quina cosa</em>?</strong> El món és infinitament complex. En qualsevol moment i lloc hi ha milers de coses que es podrien observar: la temperatura de l'aire, el color del cel, el nombre de formigues que passen per una llosa, la pressió del vent, la disposició de les pedres, etc. Sense algun criteri previ de rellevància, l'observació no té punt de partida.</p>
-
-    <p>La conclusió de Chalmers és que <strong>la teoria —o almenys alguna mena d'hipòtesi o expectativa prèvia— guia necessàriament l'observació</strong>, indicant-li al científic en quina direcció mirar i quins fenòmens registrar. L'inductivista pur que pretén observar «sense prejudicis» és una ficció: fins i tot triar observar <em>una cosa concreta</em> i no una altra implica ja una decisió teòrica sobre el que és rellevant. [···]</p>
-
-    <div class="reading-example">
-      <span class="reading-example-label">El problema de la rellevància</span>
-      <p>Considerem que un científic decideix estudiar per quina raó els objectes cauen. Per observar-ho «sense teoria», hauria d'enregistrar el color dels objectes, el dia de la setmana, la posició de les estrelles, la pressió atmosfèrica, la temperatura, el so ambient, el color de l'observador, etc. Tot és potencialment un «fet». La teoria de la gravetat és el que li diu que la massa i la distància al centre de la Terra són rellevants i que el color de l'objecte no ho és. Sense teoria, no hi ha observació rellevant possible.</p>
-    </div>
-
-    <span class="reading-section-label">6. La fal·libilitat dels enunciats observacionals</span>
-
-    <p>L'última objecció de Chalmers a la visió inductivista ingènua és potser la més directa: <strong>els enunciats observacionals poden estar equivocats</strong>. El fet que algú hagi observat quelcom no garanteix que l'enunciat que en resulta sigui veritable.</p>
-
-    <p>Chalmers addueix un exemple històric notable. Al segle XIX, diversos astrònoms, aplicant les lleis de Newton, van calcular que les pertorbacions en l'òrbita del planeta Mercuri no s'explicaven plenament per la gravetat dels altres planetes coneguts. Van concloure, per inducció, que devia existir un planeta no descobert entre Mercuri i el Sol, al qual van anomenar <strong>Vulcà</strong>. Alguns astrònoms creien fins i tot haver-lo observat. No obstant això, el planeta Vulcà no existia: les anomàlies de Mercuri s'explicarien finalment per la teoria de la relativitat general d'Einstein. El que s'havia «observat» era un error. [···]</p>
-
-    <p>Els enunciats observacionals poden ser erronis per diverses raons: perquè l'instrument de mesura estava mal calibrat, perquè el context conceptual de l'observador era incorrecte, perquè les condicions d'observació eren desfavorables, o perquè la teoria subjacent que guiava la interpretació de l'observació era falsa. Cap observació, per molt acurada que sigui, no és infal·lible.</p>
-
-    <p>Això no significa que l'observació no serveixi de res. Significa que <strong>la base factual de la ciència no és tan sòlida, directa i independent com suposa l'inductivisme</strong>. Els fets no es presenten a la ciència com a dades indubtables: es construeixen, s'interpreten i s'avaluen en el marc de teories, i per tant poden ser revisats o fins i tot rebutjats.</p>
-
-    <span class="reading-section-label">Conclusió del capítol: una versió defensable</span>
-
-    <p>Chalmers no conclou que l'observació no tingui cap paper en la ciència. La seva conclusió és molt més matisada: la versió <em>ingènua</em> de l'inductivisme —la que presenta els fets com a neutres, directes, previs a la teoria i infal·libles— no és sostenible. Però una versió més sofisticada de la idea que la ciència es basa en l'observació pot defensar-se si es reconeix que:</p>
-
-    <p>1. Els fets observacionals estan sempre parcialment influïts per les teories de l'observador.</p>
-    <p>2. Registrar un fet significa formular-lo en un enunciat que requereix un marc conceptual.</p>
-    <p>3. L'observació sense guia teòrica no és possible ni útil.</p>
-    <p>4. Els enunciats observacionals són públics, intersubjectius i criticables, però no infal·libles.</p>
-
-    <p>Reconèixer aquests límits no destrueix la idea que la ciència té una relació especial amb els fets i l'experiència. Però sí que transforma profundament com entenem aquesta relació. La ciència no és una lectura passiva i directa del món: és una activitat crítica, col·lectiva i mediada teòricament, en la qual els fets i les teories es co-construeixen i es co-critiquen. Chalmers dedicarà la resta del llibre a explorar les implicacions d'aquesta conclusió.</p>
-
-  </div><!-- /reading-text -->
+  </div>
 
   <div class="reading-questions">
     <span class="reading-questions-label">Guia de lectura — Preguntes de comprensió i reflexió</span>
@@ -232,75 +169,78 @@
     <div class="question-item">
       <span class="question-num">1</span>
       <div>
-        <div class="question-text">Explica amb les teves paraules el que Chalmers anomena «inductivisme». Quin és el seu lema central? Quins passos segueix el mètode inductivista per arribar a una llei científica?</div>
+        <div class="question-text">Haraway critica el que anomena el «truc de Déu». Explica amb les teves paraules en què consisteix aquest truc: qui el practica, en quin context, i per quina raó Haraway considera que és un truc —és a dir, una il·lusió— i no una possibilitat real.</div>
       </div>
     </div>
 
     <div class="question-item">
       <span class="question-num">2</span>
       <div>
-        <div class="question-text">Descriu el «model fotogràfic» de la percepció que Chalmers presenta com la base del model ingenu. Per quina raó és important per a l'inductivisme que la percepció funcioni d'aquesta manera?</div>
+        <div class="question-text">Haraway diu que «només la perspectiva parcial promet una visió objectiva». Aquesta afirmació sembla paradoxal: normalment pensem que la parcialitat és el contrari de l'objectivitat. Explica la lògica de Haraway: per quina raó la parcialitat —saber des d'on mires— és <em>condició</em> de l'objectivitat i no el seu obstacle?</div>
       </div>
     </div>
 
     <div class="question-item">
       <span class="question-num">3</span>
       <div>
-        <div class="question-text">Explica l'argument de Hanson sobre Tycho Brahe i Kepler observant l'alba. En quin sentit «veuen el mateix» i en quin sentit «no veuen el mateix»? Quina conclusió filosòfica treu Chalmers d'aquest exemple?</div>
+        <div class="question-text">Haraway afirma que el relativisme és «el mirall perfecte del totalitarisme». Explica per quina raó equipara dues postures que semblen oposades. Quin defecte comparteixen, segons Haraway, el relativisme («totes les perspectives valen igual») i l'objectivisme ingenu («el científic no té perspectiva»)?</div>
       </div>
     </div>
 
     <div class="question-item">
       <span class="question-num">4</span>
       <div>
-        <div class="question-text">Chalmers distingeix entre l'experiència directa i l'enunciat observacional. Explica la distinció amb un exemple propi i per quina raó és filosòficament important per al debat sobre els fonaments de la ciència.</div>
+        <div class="question-text">Haraway adverteix d'un «perillós encant» en romantitzar el punt de vista dels oprimits. Explica a quina temptació fa referència: per quina raó dir «els de baix veuen millor» pot ser, en si mateix, un nou «truc de Déu» en versió progressista?</div>
       </div>
     </div>
 
     <div class="question-item">
       <span class="question-num">5</span>
       <div>
-        <div class="question-text">Quin és el problema de la «rellevància» que Chalmers planteja contra la idea que els fets han de precedir la teoria? Per quina raó no pot existir una observació veritablement «sense prejudicis»?</div>
+        <div class="question-text">L'última afirmació del text és: «Afirmar que veus des de cap lloc és la mentida més gran.» Qui diu que veu des de cap lloc, en el context del text? Pensa en exemples concrets: quines institucions, quins tipus de discursos o quines persones utilitzen habitualment la pretensió de «no tenir perspectiva»?</div>
       </div>
     </div>
+
+    <span class="questions-group-label">Reflexió</span>
 
     <div class="question-item">
       <span class="question-num">6</span>
       <div>
-        <div class="question-text">Explica el cas del planeta Vulcà. Per quina raó és un exemple de la fal·libilitat dels enunciats observacionals? Quines lliçons filosòfiques n'extreu Chalmers?</div>
+        <div class="question-text">Compara la postura de Haraway amb la de Chalmers (Lectura 02). Chalmers diu que l'observació científica no és neutra perquè «l'observació és carregada de teoria». Haraway diu que el coneixement no és neutral perquè tota perspectiva és <em>situada</em>. Quin argument va més lluny? Quin és el que te sembla més difícil de refutar?</div>
       </div>
     </div>
 
-        <span class="questions-group-label">Reflexió</span>
-
     <div class="question-item">
-      <span class="question-num">1</span>
-      <div><div class="question-text">Chalmers mostra que fins i tot científics experts «veuen» a través de les teories que ja accepten. Pensa en el debat sobre vacunes, canvi climàtic o nutrició: pots identificar algun cas en el qual creences prèvies —polítiques, econòmiques, culturals— hagin influït en la manera com la gent ha interpretat l'evidència científica? Qui té interès que determinats «fets» es vegin d'una manera o d'una altra?</div></div>
+      <span class="question-num">7</span>
+      <div>
+        <div class="question-text">Pensa en un exemple concret d'«objectivitat científica» que hagi tingut conseqüències sobre un grup social: estudis sobre la intel·ligència i la raça, estudis sobre diferències cerebrals entre homes i dones, estadístiques de criminalitat. Aplica l'argument de Haraway: qui va produir aquests coneixements? Des d'on? Quins interessos podia tenir la seva posició? Canvia l'anàlisi de Haraway el valor epistèmic d'aquests estudis?</div>
+      </div>
     </div>
 
     <div class="question-item">
-      <span class="question-num">2</span>
-      <div><div class="question-text">La popularitat de les teories conspiratòries és molt alta avui. Aplicant el marc de Chalmers, com explicaries el fenomen? En quin sentit la teoria conspiranoica és ella mateixa una teoria que «carrega» les observacions del creient? Quin és el problema específic que planteja per a qui vol convèncer algú que ja té una teoria molt arrelada?</div></div>
+      <span class="question-num">8</span>
+      <div>
+        <div class="question-text">Un algorisme d'intel·ligència artificial entrena amb dades recollides per humans en contextos específics, i produeix prediccions que es presenten com a «objectives» i «neutrals». Aplica l'argument de Haraway a aquest cas: en quin sentit un algorisme pot practicar el «truc de Déu»? Qui decideix amb quines dades s'entrena? Des d'on?</div>
+      </div>
     </div>
 
     <div class="question-item">
-      <span class="question-num">3</span>
-      <div><div class="question-text">Chalmers presenta dos arguments en tensió sobre el valor de la ciència: l'argument del «no-miracle» (les teories funcionen perquè són aproximadament certes) i la metainducció pessimista (les teories passades eren falses i les actuals probablement també ho seran). Avalua els dos arguments: quin trobes més sòlid? Quines conseqüències pràctiques tindria acceptar l'un o l'altre per a la teva actitud davant l'evidència científica sobre el canvi climàtic o la salut pública?</div></div>
+      <span class="question-num">9</span>
+      <div>
+        <div class="question-text">Haraway és biòloga de formació, no sociòloga. La seva crítica va dirigida a la ciència natural, no només a les ciències socials. Creus que la seva proposta —reconèixer la posició del científic com a condició de millor objectivitat— és aplicable a la física o a la química, o bé és rellevant principalment per a les ciències que estudien els éssers humans? Raona la resposta.</div>
+      </div>
     </div>
 
     <div class="question-item">
-      <span class="question-num">4</span>
-      <div><div class="question-text">Pensa en un moment de la teva pròpia vida en el qual alguna cosa que creies certa perquè l'havies «vist directament» va resultar ser un error o una interpretació esbiaixada per allò que ja esperaves trobar. Quina conclusió en treus sobre la fiabilitat de la pròpia experiència com a font de coneixement?</div></div>
+      <span class="question-num">10</span>
+      <div>
+        <div class="question-text">Haraway afirma que «el coneixement és sempre responsabilitat». Avalua aquesta afirmació: si un científic o un periodista o un professor és responsable de <em>des d'on</em> produeix el seu coneixement, quines obligacions pràctiques se'n derivarien? Pensa en un exemple concret de la teva vida quotidiana com a consumidor d'informació.</div>
+      </div>
     </div>
 
-    <div class="question-item">
-      <span class="question-num">5</span>
-      <div><div class="question-text">Chalmers conclou que la ciència és una activitat crítica, col·lectiva i mediada teòricament. Les xarxes socials han democratitzat la producció d'informació i permeten que qualsevol pugui publicar «fets». Creus que la informació distribuïda a internet compleix els requisits d'una veritable producció de coneixement intersubjectiu, o hi ha diferències estructurals importants respecte al que Chalmers descriu com a ciència?</div></div>
-    </div>
+  </div>
 
 </div>
-
-</div><!-- /reading-body -->
 
 <footer class="reading-footer">
   <a href="index.html#lectures">← Totes les lectures</a>
